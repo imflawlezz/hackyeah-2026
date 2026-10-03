@@ -251,7 +251,7 @@ export function InstitutionFlow({
           role="alert"
           className="flex flex-col items-start gap-4 rounded-md border-2 border-destructive p-4 print:hidden"
         >
-          <p className="flex items-start gap-2 text-base font-medium">
+          <p className="flex items-start gap-2 text-base font-semibold">
             <ExclamationCircleIcon
               aria-hidden="true"
               className="mt-0.5 size-5 shrink-0 text-destructive"
@@ -372,7 +372,7 @@ export function InstitutionFlow({
                       className="mt-1.5 size-5 accent-primary"
                     />
                     <span className="flex flex-col gap-1">
-                      <span className="font-heading text-xl leading-snug font-semibold text-heading">
+                      <span className="text-xl leading-snug font-semibold text-heading">
                         {innovation.title}
                       </span>
                       <span className="text-base">

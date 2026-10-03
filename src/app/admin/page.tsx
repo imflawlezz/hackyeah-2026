@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageAccess } from "@/app/admin/access";
@@ -101,7 +100,7 @@ export default async function AdminOverviewPage() {
               className="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[minmax(0,1fr)_6rem]"
             >
               <dt className="flex flex-col">
-                <span className="font-medium">{kpi.label}</span>
+                <span className="font-semibold">{kpi.label}</span>
                 <span className="text-base text-muted-foreground">
                   {kpi.hint}
                 </span>
@@ -135,10 +134,9 @@ export default async function AdminOverviewPage() {
                 <span>{item.text}</span>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-sm font-medium text-primary underline underline-offset-4 hover:no-underline"
+                  className="inline-flex min-h-11 shrink-0 items-center gap-1 rounded-sm text-primary underline underline-offset-4 hover:no-underline"
                 >
                   {item.link}
-                  <ArrowRightIcon aria-hidden="true" className="size-5" />
                 </Link>
               </li>
             ))}

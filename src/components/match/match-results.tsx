@@ -99,7 +99,7 @@ export function MatchResults({
               id="match-results-heading"
               ref={headingRef}
               tabIndex={-1}
-              className="rounded-sm text-2xl font-semibold tracking-tight"
+              className="rounded-sm text-2xl font-semibold"
             >
               {foundInnovationsText(state.results.length)}
             </h2>

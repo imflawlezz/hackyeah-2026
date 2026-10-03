@@ -19,7 +19,7 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
   return (
     <p
       id={id}
-      className="flex items-start gap-1.5 font-medium text-destructive"
+      className="flex items-start gap-1.5 font-semibold text-destructive"
     >
       <ExclamationCircleIcon
         aria-hidden="true"
@@ -44,7 +44,7 @@ export function FormAlert({ message }: { message: string | null }) {
       ref={ref}
       role="alert"
       tabIndex={-1}
-      className="flex items-start gap-2 rounded-md border border-destructive bg-background p-4 font-medium text-destructive"
+      className="flex items-start gap-2 rounded-md border border-destructive bg-background p-4 font-semibold text-destructive"
     >
       <ExclamationCircleIcon
         aria-hidden="true"

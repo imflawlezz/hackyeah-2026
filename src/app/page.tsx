@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ForbiddenNotice } from "@/components/auth/forbidden-notice";
@@ -81,7 +80,6 @@ export default function HomePage() {
               )}
             >
               Opisz problem{" "}
-              <ArrowRightIcon aria-hidden="true" className="size-5" />
             </Link>
             <Link
               href="/knowledge"
@@ -135,7 +133,7 @@ export default function HomePage() {
             >
               <span
                 aria-hidden="true"
-                className="font-heading text-2xl text-heading"
+                className="text-2xl font-semibold text-heading tabular-nums"
               >
                 0{index + 1}
               </span>
@@ -173,10 +171,6 @@ export default function HomePage() {
                 className="flex min-h-11 items-center justify-between gap-4 py-3 text-primary underline underline-offset-4"
               >
                 {label}
-                <ArrowRightIcon
-                  aria-hidden="true"
-                  className="size-5 shrink-0"
-                />
               </Link>
             </li>
           ))}
@@ -192,9 +186,7 @@ export default function HomePage() {
               key={title}
               className="grid gap-3 py-6 sm:grid-cols-[2fr_3fr] sm:gap-12"
             >
-              <dt className="font-heading text-xl font-semibold text-heading">
-                {title}
-              </dt>
+              <dt className="text-xl font-semibold text-heading">{title}</dt>
               <dd className="max-w-[65ch]">{description}</dd>
             </div>
           ))}

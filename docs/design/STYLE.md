@@ -10,6 +10,8 @@ Build a calm, editorial civic service for Małopolska residents, NGOs, gminy, CU
 
 No gradient blobs or mesh backgrounds, glassmorphism, backdrop blur, emoji icons, sparkles motifs, "✨ AI-powered" labels, centred-everything heroes, three identical feature cards, stock photos, AI-generated images, pill-shaped everything or decorative animation. Loading feedback may animate only with reduced-motion support.
 
+Also avoid: all-caps or letter-spaced labels above headings; number markers (01, 02, 03) on content that is not a real sequence; an arrow icon appended to every link or button in a list; a bordered box around every item of a list when a divided list would do.
+
 ## Palette and contrast
 
 Use only existing tokens from `src/app/globals.css`. Primary is for actions and links; navy is for headings and the footer. Use the semantic `heading` token for headings so high contrast remains readable. Crimson `highlight` appears at most once per screen, for example a "Nowe" badge or one key number. Use the muted surface for alternating sections. Never convey status by colour alone.
@@ -33,6 +35,8 @@ The [full contrast table](../../README.md#palette) covers status and hover token
 Headings use **Source Serif 4**, weights 600/700. Body uses **Source Sans 3**, weights 400/600. Both use `next/font/google`, `latin` and `latin-ext`, `display: swap`; font files are served locally after build. Verify `ąćęłńóśźż ĄĆĘŁŃÓŚŹŻ` in both families.
 
 Use an 18 px base and a scale near 1.25: 14 / 16 / 18 / 22 / 28 / 35 / 44 px. Express sizes in rem so A, A+ and A++ scale them. Tailwind `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, `text-3xl`, `text-4xl` approximate the scale at our base. Body line-height is 1.5–1.6, heading line-height 1.15–1.25. Keep reading lines around 60–75ch and balance headings with `text-wrap: balance`.
+
+Only the loaded weights exist, so use only these classes: serif `font-semibold` or `font-bold`; sans `font-normal` or `font-semibold`. Never `font-medium` or sans `font-bold`: the first falls back to 400 and the second is synthesised. `globals.css` gives h1–h4 serif 600 and `th`, `strong`, `b` sans 600 by default. The serif is for h1–h4 and the HubMI.pl wordmark only. Field legends, definition terms, step numbers and key figures use the sans at 600. Do not tighten or widen letter-spacing. Paragraphs are capped at 75ch in `globals.css`; do not truncate text with an ellipsis, because WCAG 1.4.12 text spacing must not hide content.
 
 ## Spacing and shape
 

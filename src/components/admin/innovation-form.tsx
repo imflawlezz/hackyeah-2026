@@ -83,7 +83,7 @@ function Field({
       {error?.message && (
         <p
           id={`${id}-error`}
-          className="flex items-start gap-1.5 text-base font-medium text-destructive"
+          className="flex items-start gap-1.5 text-base font-semibold text-destructive"
         >
           <ExclamationCircleIcon
             aria-hidden="true"

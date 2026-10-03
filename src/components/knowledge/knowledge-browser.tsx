@@ -85,7 +85,7 @@ export function KnowledgeBrowser({
           <Tabs.Tab
             key={id}
             value={id}
-            className="-mb-px inline-flex min-h-12 cursor-pointer items-center border-l-4 border-transparent px-4 py-2 text-left text-base font-medium text-foreground hover:bg-muted sm:border-b-4 sm:border-l-0 data-active:border-primary data-active:font-bold data-active:text-heading"
+            className="-mb-px inline-flex min-h-12 cursor-pointer items-center border-l-4 border-transparent px-4 py-2 text-left text-base font-semibold text-foreground hover:bg-muted sm:border-b-4 sm:border-l-0 data-active:border-primary data-active:font-semibold data-active:text-heading"
           >
             {label}
           </Tabs.Tab>

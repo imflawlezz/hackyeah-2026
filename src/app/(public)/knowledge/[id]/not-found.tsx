@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export default function InnovationNotFound() {
   return (
     <div className="flex max-w-2xl flex-col items-start gap-4">
-      <h1 className="font-heading text-3xl font-bold tracking-tight text-balance">
+      <h1 className="font-heading text-3xl font-bold text-balance">
         Nie znaleźliśmy tej innowacji.
       </h1>
       <p className="text-lg">

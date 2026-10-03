@@ -11,7 +11,7 @@ const UPDATED = { iso: "2026-10-03", text: "3 października 2026 r." };
 const CONTACT_EMAIL = "kontakt@hubmi.example";
 
 const linkClassName =
-  "rounded-sm font-medium text-primary underline underline-offset-4 hover:decoration-2";
+  "rounded-sm text-primary underline underline-offset-4 hover:decoration-2";
 
 function Section({
   id,
@@ -34,10 +34,8 @@ function Section({
 
 export default function AccessibilityStatementPage() {
   return (
-    <article className="max-w-3xl">
-      <h1 className="text-3xl font-bold tracking-tight">
-        Deklaracja dostępności
-      </h1>
+    <article className="max-w-[75ch]">
+      <h1 className="text-3xl font-bold">Deklaracja dostępności</h1>
 
       <Section id="intro" title="Wstęp">
         <p>

@@ -21,16 +21,16 @@ export function IdeaArticle({ idea }: { idea: Idea }) {
         <h1 className="text-3xl text-heading">{idea.title}</h1>
         <p className="max-w-2xl text-lg">{idea.summary}</p>
         <p>
-          <span className="font-medium">Dla kogo: </span>
+          <span className="font-semibold">Dla kogo: </span>
           {idea.targetGroup}
         </p>
         <p>
-          <span className="font-medium">Etap: </span>
+          <span className="font-semibold">Etap: </span>
           {STAGE_LABEL[idea.stage]}
         </p>
         {idea.municipality ? (
           <p>
-            <span className="font-medium">Gmina: </span>
+            <span className="font-semibold">Gmina: </span>
             {idea.municipality}
           </p>
         ) : null}
@@ -42,7 +42,7 @@ export function IdeaArticle({ idea }: { idea: Idea }) {
         <dl className="flex flex-col gap-4">
           {CANVAS_FIELDS.map((field) => (
             <div key={field.key} className="border-t border-border pt-4">
-              <dt className="font-medium">{field.label}</dt>
+              <dt className="font-semibold">{field.label}</dt>
               <dd className="mt-1 max-w-2xl">
                 {idea.canvas?.[field.key]?.trim() || "Nie podano."}
               </dd>

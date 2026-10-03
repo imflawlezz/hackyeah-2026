@@ -20,7 +20,7 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
     <p
       id={id}
       role="alert"
-      className="flex items-start gap-1.5 text-base font-medium text-destructive"
+      className="flex items-start gap-1.5 text-base font-semibold text-destructive"
     >
       <ExclamationCircleIcon
         aria-hidden="true"

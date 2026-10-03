@@ -1,5 +1,4 @@
 import {
-  ArrowRightIcon,
   CheckCircleIcon,
   ExclamationTriangleIcon,
   InformationCircleIcon,
@@ -155,7 +154,6 @@ export function MatchResultCard({
         >
           Zobacz szczegóły
           <span className="sr-only">: {innovation.title}</span>
-          <ArrowRightIcon aria-hidden="true" className="size-5" />
         </Link>
       </div>
     </article>
