@@ -7,7 +7,12 @@ import type { GrantCall, GrantDraftSection } from "@/types";
 import { hasOpenAI, REASON_MODEL } from "@/lib/ai/models";
 import { GRANT_DRAFT_SYSTEM_PROMPT } from "@/lib/ai/prompts";
 import { withCopyStyle } from "@/lib/ai/style";
-import { clip, templateGrantSections } from "@/lib/ideas/grant-template";
+import {
+  clip,
+  hasPlaceholder,
+  stripPlaceholders,
+  templateGrantSections,
+} from "@/lib/ideas/grant-template";
 import { clientIp, createRateLimiter } from "@/lib/rate-limit";
 
 export const maxDuration = 30;
@@ -77,6 +82,12 @@ export async function POST(request: Request) {
         system: withCopyStyle(GRANT_DRAFT_SYSTEM_PROMPT),
         prompt: JSON.stringify({
           idea: parsed.data.idea,
+          call: {
+            title: call.title,
+            startsAt: call.startsAt,
+            endsAt: call.endsAt,
+            maxAmountPln: call.maxAmountPln ?? null,
+          },
           sections: call.requiredSections.map((section) => ({
             key: section.key,
             heading: section.heading,
@@ -125,7 +136,12 @@ function alignSections(
     const match = generated.find((item) => item.key === section.key);
     const fallback =
       template.find((item) => item.key === section.key)?.body ?? "";
-    const body = match?.body.trim() ? match.body : fallback;
+    // A section that is only a placeholder falls back to the template text.
+    const cleaned = match ? stripPlaceholders(match.body) : "";
+    const body =
+      cleaned && !(hasPlaceholder(match!.body) && cleaned.length < 40)
+        ? cleaned
+        : fallback;
     return {
       key: section.key,
       heading: section.heading,

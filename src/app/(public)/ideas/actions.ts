@@ -65,21 +65,23 @@ export async function saveIdea(
     parsed.data.id && UUID.test(parsed.data.id) ? parsed.data.id : null;
 
   if (existingId) {
-    const { error } = await supabase
+    // RLS lets the author update only their own draft; a draft can become
+    // "submitted" in place, so sending never creates a second row.
+    const { data: updated, error } = await supabase
       .from("ideas")
       .update(payload)
-      .eq("id", existingId);
-    if (error) {
-      console.warn("Idea update failed", { code: error.code });
+      .eq("id", existingId)
+      .eq("author_id", user.id)
+      .select("id");
+    if (error || !updated?.length) {
+      console.warn("Idea update failed", { code: error?.code ?? "no rows" });
       return {
         ok: false,
         error:
           "Nie udało się zapisać szkicu. Sprawdź, czy pomysł jest nadal szkicem.",
       };
     }
-    if (parsed.data.status === "submitted") {
-      // TODO(#26): insert a notification for admins when an idea is submitted.
-    }
+    // Admins are notified by the notify_idea_status trigger.
     return { ok: true, storage: "database", id: existingId };
   }
 
@@ -94,9 +96,6 @@ export async function saveIdea(
       ok: false,
       error: "Nie udało się wysłać pomysłu. Spróbuj ponownie za chwilę.",
     };
-  }
-  if (parsed.data.status === "submitted") {
-    // TODO(#26): insert a notification for admins when an idea is submitted.
   }
   return { ok: true, storage: "database", id: String(data.id) };
 }

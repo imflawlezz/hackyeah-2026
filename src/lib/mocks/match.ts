@@ -1,5 +1,6 @@
 import type { Innovation, MatchRequest, MatchResult } from "@/types";
 import { innovations } from "@/lib/mocks/innovations";
+import { detectCategories, GENERIC_WORDS } from "@/lib/match/rerank";
 
 const STOP_WORDS = new Set([
   "oraz",
@@ -55,7 +56,10 @@ function tokenize(value: string): string[] {
     .toLocaleLowerCase("pl")
     .split(/[^a-ząćęłńóśźż0-9]+/)
     .filter(
-      (token) => token.length >= MIN_TOKEN_LENGTH && !STOP_WORDS.has(token),
+      (token) =>
+        token.length >= MIN_TOKEN_LENGTH &&
+        !STOP_WORDS.has(token) &&
+        !GENERIC_WORDS.has(token),
     );
 }
 
@@ -81,12 +85,19 @@ function innovationWords(innovation: Innovation): string[] {
   );
 }
 
+/** Points for a problem whose theme points to the innovation's category. */
+const THEME_POINTS = 2;
+
 function buildReason(
   hits: string[],
   categoryMatch: boolean,
   category: string,
+  themeMatch = false,
 ): string {
   const parts: string[] = [];
+  if (themeMatch && !categoryMatch) {
+    parts.push(`Twój opis dotyczy obszaru: ${category}.`);
+  }
   if (hits.length > 0) {
     parts.push(`Wspólne słowa z Twoim opisem: ${hits.join(", ")}.`);
   }
@@ -101,6 +112,7 @@ export function mockMatch(request: MatchRequest): MatchResult[] {
   const limit = requestedLimit > 0 ? requestedLimit : DEFAULT_LIMIT;
   const tokens = tokenize(request.problem);
   const category = request.category?.trim().toLocaleLowerCase("pl");
+  const themes = detectCategories(request.problem);
 
   // Same strict rule as the AI path: a requested category limits the results to it.
   const candidates = category
@@ -119,11 +131,16 @@ export function mockMatch(request: MatchRequest): MatchResult[] {
       const categoryMatch = Boolean(
         category && innovation.category.toLocaleLowerCase("pl") === category,
       );
+      const themeMatch = themes.has(innovation.category);
       return {
         innovation,
         hits,
         categoryMatch,
-        score: hits.length + (categoryMatch ? 3 : 0),
+        themeMatch,
+        score:
+          hits.length +
+          (categoryMatch ? 3 : 0) +
+          (themeMatch ? THEME_POINTS : 0),
       };
     })
     .filter((item) => item.score > 0)
@@ -141,6 +158,7 @@ export function mockMatch(request: MatchRequest): MatchResult[] {
         item.hits,
         item.categoryMatch,
         item.innovation.category,
+        item.themeMatch,
       ),
     }));
 }

@@ -2,7 +2,20 @@
 
 ![CI](https://github.com/imflawlezz/hackyeah-2026/actions/workflows/ci.yml/badge.svg)
 
-Prototype of the Małopolska Social Innovation Hub. The platform connects residents, local governments, experts, and the ROPS Kraków team: it matches social problems with existing innovations and will host a knowledge base, idea creator, innovation testing, messages, and an admin panel.
+Prototype of the Małopolska Social Innovation Hub. The platform connects residents, local governments, experts, and the ROPS Kraków team.
+
+Production: https://hubml-hackyeah2026-ab.vercel.app (Vercel functions in `dub1` Dublin, next to the database).
+
+| Module (challenge brief)       | Route                         | What works                                                                                                          |
+| ------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| I. Social matchmaking          | `/match`, `POST /api/match`   | embeddings + pgvector, keyword rerank, Polish reasons from the model; keyword mock when AI is unavailable           |
+| II. Knowledge base             | `/knowledge`                  | regional challenges, innovation library, materials linking to rops.krakow.pl                                        |
+| II. Need trends (admin only)   | `/admin/trends`               | problems from `/match` aggregated by category and week                                                              |
+| III. Idea creator              | `/ideas`, `/ideas/new`        | idea card + Social Innovation Canvas wizard, drafts, AI assistant, grant application generator while a call is open |
+| IV. Innovation tester          | `/test`                       | sign-up for tests (slots enforced in the database), ratings and feedback                                            |
+| V. Communication               | `/messages`, `/notifications` | conversations with ROPS, experts and partners; notifications with Realtime                                          |
+| VI. Admin panel                | `/admin`                      | overview, idea moderation, innovation CRUD (draft / published / archived), trends                                   |
+| VII. Innovation middleman (AI) | `/institutions`               | institution profile → candidate innovations → implementation plan with costs, risks and KPIs                        |
 
 Accessibility target: WCAG 2.1 AA. Interface copy is Polish. Code, file names, and URLs are English.
 
@@ -50,14 +63,16 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 src/app/(public)/          match, knowledge, ideas, test, messages, institutions, accessibility
 src/app/(auth)/login/      sign-in
 src/app/admin/             admin panel
-src/app/api/               match (AI with mock fallback), institutions (candidates, plan), assistant (501), embed
+src/app/api/               match (AI with mock fallback), institutions (candidates, plan), assistant (streams AI replies; template reply without OPENAI_API_KEY), ideas/grant-draft, embed
 src/components/ui/         shadcn/ui
 src/components/layout/     skip link, header, footer, accessibility toolbar
 src/lib/supabase/          browser, server and admin clients
 src/lib/auth/              roles, route access, session helpers, form schemas
 src/components/auth/       sign-in and sign-up forms
 src/proxy.ts               session refresh and route protection
-src/lib/ai/                embeddings, batch backfill, Polish match reasons
+src/lib/ai/                embeddings, batch backfill, Polish match reasons, prompts
+src/lib/match/             match service, keyword rerank, score display
+src/lib/notifications/     shared notification store (RLS client + Realtime, or browser demo store)
 src/lib/validators/        Zod schemas for the shared contracts
 src/lib/mocks/             Polish fixtures and mockMatch
 src/types/                 shared TypeScript contracts
@@ -72,15 +87,23 @@ Import shared code with the `@/` alias, for example `@/types`, `@/lib/mocks`, an
 
 ## Database
 
-Supabase (Postgres, Frankfurt `eu-central-1`) with pgvector. Keys live in `.env.local` and the team password manager, never in git.
+Supabase (Postgres 17, Ireland `eu-west-1`) with pgvector. `vercel.json` pins the Vercel functions to `dub1` (Dublin) so database round trips stay in the same region. Keys live in `.env.local` and the team password manager, never in git.
 
 To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
-1. `supabase/migrations/0001_init.sql`
+1. `supabase/migrations/0001_init.sql` (tables, RLS, `match_innovations`)
 2. `supabase/migrations/0002_auth_profiles.sql` (sign-up role and municipality on profiles; safe to re-run)
 3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
 4. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
 5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
+6. `supabase/migrations/0005_messages_notifications.sql` (conversations, messages, notifications, triggers, Realtime publication)
+7. `supabase/migrations/0006_admin_moderation.sql` (innovation status, problem scores, idea review fields, `problem_trends`)
+
+Then, from the repo root with `.env.local` filled in:
+
+8. `npm run embed:innovations` embeds innovations that have no vector yet (needs `OPENAI_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY`). Add `-- --all` to re-embed every row, which is required whenever `innovationEmbeddingText` in `src/lib/ai/embeddings.ts` changes.
+9. `npm run demo:users` creates the four demo accounts (see [Demo accounts](#demo-accounts)).
+10. In the Supabase dashboard, set the auth URLs (see [Auth URL configuration](#auth-url-configuration)).
 
 | Table                       | Who can read                                   | Who can write                                                                                 |
 | --------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -102,7 +125,7 @@ After `0006`, `innovations.status` is `draft`, `published` (default) or `archive
 
 `0006` also adds `problems.best_score` (top raw cosine similarity, `null` for mock matches), `problems.source` (`ai` or `mock`), `problems.admin_note`, and `ideas.review_note`, `reviewed_at`, `reviewed_by`. `problem_trends(p_days, p_unmet_score)` returns problems per category and week with an `unmet_count`; RLS limits it to admins.
 
-Messages use the signed-in user's RLS client and Postgres Changes, following the [Supabase Realtime guide](https://supabase.com/docs/guides/realtime/postgres-changes). With no signed-in user, three fictional conversations and two notifications are stored only in this browser and synchronized across tabs with BroadcastChannel. Demo identities are fictional. Partnership conversations remain private; there is no public partnership board.
+Notifications (`/notifications` and the header bell) come from one shared store in `src/lib/notifications/`: signed in, it reads the user's rows with the RLS browser client, marks them read with `update(read_at)` and refreshes on Postgres Changes; signed out with Supabase configured, it shows a sign-in prompt; without Supabase, it uses the browser demo store. Messages use the signed-in user's RLS client and Postgres Changes, following the [Supabase Realtime guide](https://supabase.com/docs/guides/realtime/postgres-changes). With no signed-in user, three fictional conversations and two notifications are stored only in this browser and synchronized across tabs with BroadcastChannel. Demo identities are fictional. Partnership conversations remain private; there is no public partnership board.
 
 A profile row is created automatically for every new auth user. The role and municipality come from the sign-up form, but the trigger accepts only `resident`, `jst` and `expert`; anything else, including `admin`, becomes `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
@@ -129,6 +152,10 @@ Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ 
 
 `match_innovations(query_embedding vector(1536), match_count int default 5)` returns innovation rows plus `similarity` (cosine, 1 = closest), best first. From the app: `supabase.rpc("match_innovations", { query_embedding, match_count })`.
 
+`src/lib/match/service.ts` asks for at least 15 nearest rows and reranks them in `src/lib/match/rerank.ts`: +0.06 when the problem's wording points to the innovation's category (stems such as "wózk", "samotn", "smartfon") and +0.015 per word shared with the title, tags or target group (at most +0.045). Similarities for short Polish texts sit close together, so this small, explainable boost decides between near ties. The stored `problems.best_score` stays the raw similarity.
+
+Each innovation is embedded as labelled text (`Tytuł`, `Obszar` with a plain-language description of the category, `Dla kogo`, `Słowa kluczowe`, `Streszczenie`, `Opis`); see `innovationEmbeddingText`. When no AI is available, `mockMatch` scores keywords and themes, and `normalizeMockScores` maps the points onto an absolute scale capped at 95%, so results are never all shown as 100%.
+
 The seed leaves `embedding` empty, and rows without an embedding are skipped, so the function returns nothing until you run `npm run embed:innovations` (needs `OPENAI_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY`). To check it on a fresh database without storing fake vectors, run this; it fills in throwaway vectors, queries, and rolls back:
 
 ```sql
@@ -148,7 +175,16 @@ rollback;
 
 ## Authentication and roles
 
-Supabase Auth with e-mail and password. Without `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` the app runs in demo mode: sign-in is disabled, every module is open and the header shows "Wersja demonstracyjna".
+Supabase Auth with e-mail and password. Without `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` the app runs in demo mode: sign-in is disabled, every module is open and the header shows "Wersja demonstracyjna". `NEXT_PUBLIC_*` values are inlined at build time, so after changing them in Vercel, redeploy.
+
+### Auth URL configuration
+
+Sign-up confirmation links go to `${origin}/auth/callback?next=…`, where `origin` is the site the visitor signed up on. In Supabase → Authentication → URL Configuration:
+
+- **Site URL**: the production URL, `https://hubml-hackyeah2026-ab.vercel.app`.
+- **Redirect URLs**: `https://hubml-hackyeah2026-ab.vercel.app/auth/callback`, `http://localhost:3000/auth/callback`, and a wildcard for Vercel previews if you test sign-up there (for example `https://*-<team-slug>.vercel.app/auth/callback`).
+
+A callback URL that is not on the list makes Supabase fall back to the Site URL, and the visitor lands on `/login?error=callback`.
 
 | Role       | Label in the UI             | How you get it                 |
 | ---------- | --------------------------- | ------------------------------ |
@@ -179,7 +215,7 @@ A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/au
 
 ### Demo accounts
 
-`npm run demo:users` creates four fictional accounts with confirmed e-mails. It needs `SUPABASE_SERVICE_ROLE_KEY` and `DEMO_USER_PASSWORD` (at least 8 characters) in `.env.local`. The password is shared in the team password manager, never in git. Existing accounts are skipped, so the script is safe to re-run.
+`npm run demo:users` creates four fictional accounts with confirmed e-mails and sets their roles, including `admin`, through the service role. It needs `SUPABASE_SERVICE_ROLE_KEY` and `DEMO_USER_PASSWORD` (at least 8 characters) in `.env.local`. The password is shared in the team password manager, never in git. Existing accounts are skipped, so the script is safe to re-run.
 
 | E-mail                   | Role       |
 | ------------------------ | ---------- |

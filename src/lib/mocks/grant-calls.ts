@@ -24,13 +24,15 @@ const requiredSections: GrantSection[] = [
   {
     key: "harmonogram",
     heading: "Harmonogram",
-    guidance: "Zostaw placeholder, jeśli nie znasz dat.",
+    guidance:
+      "Rozpisz etapy na miesiące. Jeśli nie znasz dat, podaj oznaczony szacunek.",
     maxChars: 800,
   },
   {
     key: "budżet",
     heading: "Budżet",
-    guidance: "Nie wpisuj kwoty, której nie podała osoba zgłaszająca.",
+    guidance:
+      "Wypisz główne koszty z kwotami. Jeśli ich nie znasz, podaj oznaczony szacunek.",
     maxChars: 600,
   },
 ];

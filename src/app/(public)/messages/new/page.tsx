@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { NewMessageForm } from "@/components/messages/new-message-form";
 import { getCurrentUser } from "@/lib/auth/session";
 import { listExperts } from "@/lib/data/messages";
@@ -5,10 +6,21 @@ import { getInnovationById } from "@/lib/data/innovations";
 import { mockExperts } from "@/lib/mocks/messages";
 import { conversationKindSchema } from "@/lib/messages/schemas";
 import { createClient } from "@/lib/supabase/server";
+export const metadata: Metadata = {
+  title: "Napisz wiadomość · Wiadomości",
+  description:
+    "Zadaj pytanie zespołowi ROPS Kraków, ekspertowi albo partnerowi.",
+};
+
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ innovation?: string; idea?: string; kind?: string }>;
+  searchParams: Promise<{
+    innovation?: string;
+    idea?: string;
+    kind?: string;
+    subject?: string;
+  }>;
 }) {
   const query = await searchParams;
   const user = await getCurrentUser();
@@ -46,7 +58,9 @@ export default async function Page({
           ? `Pytanie o: ${innovation.title}`
           : ideaTitle
             ? `Pytanie o: ${ideaTitle}`
-            : ""
+            : typeof query.subject === "string"
+              ? query.subject.trim().slice(0, 200)
+              : ""
       }
     />
   );

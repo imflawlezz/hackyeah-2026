@@ -12,7 +12,10 @@ async function main() {
   const client = createAdminClient();
   if (!client || !hasOpenAI)
     throw new Error("Skonfiguruj Supabase i OpenAI w .env.local.");
-  const count = await backfillInnovations(client, {}, (count) =>
+  // --all re-embeds every innovation (needed after the embedding text changes);
+  // without it only rows that have no vector yet are embedded.
+  const all = process.argv.includes("--all");
+  const count = await backfillInnovations(client, { all }, (count) =>
     console.log(`Embedded innovations: ${count}`),
   );
   console.log(`Completed: ${count} innovations.`);

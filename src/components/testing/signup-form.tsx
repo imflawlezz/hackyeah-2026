@@ -72,7 +72,7 @@ export function SignupForm({
   testTitle: string;
   /** Slots still free, not counting a sign-up made in this session. */
   slotsLeft: number;
-  /** Demo mode only: this browser has a sign-up for the test. */
+  /** The user (or, in demo mode, this browser) is already signed up. */
   alreadySignedUp: boolean;
   mode: TestingMode;
   loginHref: string;
@@ -117,7 +117,22 @@ export function SignupForm({
     );
   }
   if (alreadySignedUp) {
-    return <Notice tone="info">{SIGNUP_MESSAGES.duplicate}</Notice>;
+    return (
+      <div className="flex flex-col gap-2">
+        <Notice tone="success">{SIGNUP_MESSAGES.signedUp}</Notice>
+        {mode === "signed-in" && (
+          <p className="text-base">
+            {SIGNUP_MESSAGES.cancelHint}{" "}
+            <Link
+              href={`/messages/new?kind=ask_rops&subject=${encodeURIComponent(`Rezygnacja z testu: ${testTitle}`)}`}
+              className="inline-flex min-h-11 items-center rounded-sm font-medium text-primary underline underline-offset-4 hover:decoration-2"
+            >
+              Napisz do zespołu ROPS
+            </Link>
+          </p>
+        )}
+      </div>
+    );
   }
   if (slotsLeft <= 0) {
     return <Notice tone="info">{SIGNUP_MESSAGES.full}</Notice>;

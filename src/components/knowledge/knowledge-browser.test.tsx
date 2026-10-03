@@ -54,14 +54,22 @@ describe("KnowledgeBrowser", () => {
     expect(within(panel).getAllByRole("listitem")).toHaveLength(
       materials.length,
     );
+    const mapLink = within(panel).getByRole("link", {
+      name: "Pobierz: Mapa Wyzwań Społecznych (PDF, 7,8 MB, po polsku), otwiera się w nowej karcie",
+    });
+    expect(mapLink).toHaveAttribute("target", "_blank");
     expect(
       within(panel).getByRole("link", {
-        name: "Pobierz: Kanwa Innowacji Społecznych (Szablon, 1,2 MB, po polsku)",
+        name: "Wypełnij w kreatorze: Kanwa Innowacji Społecznych (Szablon, po polsku)",
       }),
-    ).toBeInTheDocument();
+    ).toHaveAttribute("href", "/ideas/new");
     expect(materialLinkText(materials[2]!)).toBe(
-      "Przeczytaj: Jak przetestować innowację w małej skali (Artykuł, po polsku)",
+      "Przeczytaj: Biblioteka Innowacji Społecznych: rozwiązania dla seniorów (Artykuł, po polsku)",
     );
+    for (const material of materials) {
+      expect(material.url).toMatch(/^(https:\/\/rops\.krakow\.pl\/|\/)/);
+    }
+    expect(screen.queryByText(/jeszcze nie działają/)).not.toBeInTheDocument();
   });
 
   it("opens the library pre-filtered from the URL", () => {

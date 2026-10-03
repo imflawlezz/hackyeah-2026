@@ -27,9 +27,10 @@ const TYPES: Record<
 
 const LANGUAGES: Record<Material["language"], string> = { pl: "po polsku" };
 
-/** "Pobierz: Kanwa Innowacji Społecznych (Szablon, 1,2 MB, po polsku)". */
+/** "Pobierz: Mapa Wyzwań Społecznych (PDF, 7,8 MB, po polsku)". */
 export function materialLinkText(material: Material): string {
-  const { label, verb } = TYPES[material.type];
+  const { label, verb: typeVerb } = TYPES[material.type];
+  const verb = material.verb ?? typeVerb;
   const details = [label, material.sizeLabel, LANGUAGES[material.language]]
     .filter(Boolean)
     .join(", ");
@@ -48,7 +49,8 @@ export function MaterialList({
   return (
     <div className="flex flex-col gap-4">
       <p className="max-w-2xl text-base text-muted-foreground">
-        Dane przykładowe. Linki do plików jeszcze nie działają.
+        Raporty i opracowania Regionalnego Ośrodka Polityki Społecznej w
+        Krakowie. Odnośniki do rops.krakow.pl otwierają się w nowej karcie.
       </p>
       <ul className="border-t border-border">
         {materials.map((material) => {
@@ -68,6 +70,9 @@ export function MaterialList({
                   {material.title}
                 </h3>
                 <p className="text-base">{material.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  Źródło: {material.source}
+                </p>
                 <p>
                   <a
                     href={material.url}

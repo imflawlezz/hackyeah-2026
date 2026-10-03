@@ -71,7 +71,7 @@ export default async function RootLayout({
             {children}
           </main>
           <SiteFooter />
-          <Toaster />
+          <Toaster containerAriaLabel="Powiadomienia" />
         </ThemeProvider>
       </body>
     </html>

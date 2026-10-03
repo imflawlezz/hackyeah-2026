@@ -82,6 +82,28 @@ describe("/api/assistant", () => {
     ).toBe(400);
   });
 
+  it.each([
+    [{}, "Wpisz pytanie do asystenta."],
+    [{ messages: [] }, "Wpisz pytanie do asystenta."],
+    [
+      { messages: [{ role: "user", content: "a".repeat(2001) }] },
+      "Wiadomość jest za długa. Skróć ją do 2000 znaków.",
+    ],
+    [
+      {
+        messages: Array.from({ length: 13 }, () => ({
+          role: "user",
+          content: "Pytanie.",
+        })),
+      },
+      "Rozmowa jest za długa. Zacznij nową rozmowę z asystentem.",
+    ],
+  ])("explains what is wrong with %j", async (body, message) => {
+    const response = await POST(request(body, "192.0.2.47"));
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: message });
+  });
+
   it("returns 429 after fifteen questions from one address", async () => {
     const ip = "192.0.2.44";
     const body = {

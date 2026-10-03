@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 import { GrantDraftPanel } from "@/components/ideas/grant-draft-panel";
 import { IdeaArticle } from "@/components/ideas/idea-article";
 import { IdeaWorkspace } from "@/components/ideas/idea-workspace";
@@ -31,6 +33,16 @@ export default async function IdeaDetailsPage({
 
   return (
     <IdeaWorkspace idea={idea}>
+      {idea.status === "draft" && user && idea.authorId === user.id ? (
+        <p>
+          <Link
+            href={`/ideas/new?draft=${encodeURIComponent(idea.id)}`}
+            className={buttonVariants()}
+          >
+            Edytuj i wyślij szkic
+          </Link>
+        </p>
+      ) : null}
       <IdeaArticle idea={idea} />
       {call ? (
         <GrantDraftPanel call={call} idea={idea} signedIn={signedIn} />

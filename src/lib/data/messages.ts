@@ -10,7 +10,7 @@ export async function sessionClient() {
 }
 function checked<T>(result: { data: T; error: unknown }): T {
   if (result.error)
-    throw new Error("Nie udaЕ‚o siД™ pobraД‡ danych. SprГіbuj ponownie.");
+    throw new Error("Nie udało się pobrać danych. Spróbuj ponownie.");
   return result.data;
 }
 export function toMessage(row: Record<string, string>): Message {
@@ -121,7 +121,7 @@ export async function listExperts() {
 export async function startConversation(input: unknown): Promise<string> {
   const v = startConversationSchema.parse(input);
   const { client } = await sessionClient();
-  if (!client) throw new Error("Zaloguj siД™, aby wysЕ‚aД‡ wiadomoЕ›Д‡.");
+  if (!client) throw new Error("Zaloguj się, aby wysłać wiadomość.");
   return checked(
     await client.rpc("start_conversation", {
       p_kind: v.kind,
@@ -135,7 +135,7 @@ export async function startConversation(input: unknown): Promise<string> {
 }
 export async function sendMessage(conversationId: string, body: string) {
   const { client, user } = await sessionClient();
-  if (!client || !user) throw new Error("Zaloguj siД™.");
+  if (!client || !user) throw new Error("Zaloguj się.");
   return toMessage(
     checked(
       await client
@@ -170,7 +170,7 @@ export async function listNotifications() {
 }
 export async function markNotificationRead(id: string) {
   const { client, user } = await sessionClient();
-  if (!client || !user) throw new Error("Zaloguj siД™.");
+  if (!client || !user) throw new Error("Zaloguj się.");
   checked(
     await client
       .from("notifications")
@@ -181,7 +181,7 @@ export async function markNotificationRead(id: string) {
 }
 export async function markAllNotificationsRead() {
   const { client, user } = await sessionClient();
-  if (!client || !user) throw new Error("Zaloguj siД™.");
+  if (!client || !user) throw new Error("Zaloguj się.");
   checked(
     await client
       .from("notifications")

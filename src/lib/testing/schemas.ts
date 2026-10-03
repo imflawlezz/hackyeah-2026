@@ -126,6 +126,10 @@ export const SIGNUP_MESSAGES = {
   closed: "Ten test jest już zamknięty. Wybierz inny z listy otwartych testów.",
   duplicate:
     "Masz już zgłoszenie do tego testu. Nie musisz wysyłać go ponownie.",
+  signedUp:
+    "Jesteś zapisany lub zapisana na ten test. Odezwiemy się przed jego startem.",
+  cancelHint:
+    "Chcesz zrezygnować? Napisz do zespołu ROPS, a usuniemy Twoje zgłoszenie.",
   signedOut: "Zaloguj się, żeby się zgłosić.",
   invalid: "Popraw zaznaczone pola i wyślij zgłoszenie jeszcze raz.",
   failed: "Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę.",

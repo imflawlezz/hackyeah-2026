@@ -94,7 +94,7 @@ export function MessagesWorkspace({ id }: { id?: string }) {
     }
   }
   return (
-    <main className="mx-auto max-w-6xl space-y-6 px-4 py-8">
+    <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="text-3xl text-heading">Wiadomości</h1>
         <Link
@@ -197,51 +197,53 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                   </Link>
                 </p>
               )}
-              <ol
+              <div
                 role="log"
                 aria-label="Wiadomości w rozmowie"
                 aria-live="off"
-                className="max-h-[55vh] space-y-6 overflow-y-auto border-y py-6"
+                className="max-h-[55vh] overflow-y-auto border-y py-6"
               >
-                {displayed.map((m) => (
-                  <li key={m.id} className="border-l-2 border-primary pl-4">
-                    <p className="font-semibold">
-                      {conversation.people.find((p) => p.id === m.authorId)
-                        ?.displayName ?? "Uczestnik rozmowy"}
-                    </p>
-                    <time
-                      className="text-sm text-muted-foreground"
-                      dateTime={m.createdAt}
-                    >
-                      {new Intl.DateTimeFormat("pl", {
-                        dateStyle: "short",
-                        timeStyle: "short",
-                      }).format(new Date(m.createdAt))}
-                    </time>
-                    <p className="mt-2 break-words whitespace-pre-wrap">
-                      {m.body}
-                    </p>
-                    {failed.includes(m.id) && (
-                      <div role="alert">
-                        <p>Nie udało się wysłać. Spróbuj ponownie.</p>
-                        <button
-                          className="min-h-11 text-primary underline"
-                          onClick={() =>
-                            startTransition(() => {
-                              void send(m);
-                            })
-                          }
-                        >
-                          Spróbuj ponownie
-                        </button>
-                      </div>
-                    )}
+                <ol className="space-y-6">
+                  {displayed.map((m) => (
+                    <li key={m.id} className="border-l-2 border-primary pl-4">
+                      <p className="font-semibold">
+                        {conversation.people.find((p) => p.id === m.authorId)
+                          ?.displayName ?? "Uczestnik rozmowy"}
+                      </p>
+                      <time
+                        className="text-sm text-muted-foreground"
+                        dateTime={m.createdAt}
+                      >
+                        {new Intl.DateTimeFormat("pl", {
+                          dateStyle: "short",
+                          timeStyle: "short",
+                        }).format(new Date(m.createdAt))}
+                      </time>
+                      <p className="mt-2 break-words whitespace-pre-wrap">
+                        {m.body}
+                      </p>
+                      {failed.includes(m.id) && (
+                        <div role="alert">
+                          <p>Nie udało się wysłać. Spróbuj ponownie.</p>
+                          <button
+                            className="min-h-11 text-primary underline"
+                            onClick={() =>
+                              startTransition(() => {
+                                void send(m);
+                              })
+                            }
+                          >
+                            Spróbuj ponownie
+                          </button>
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                  <li aria-hidden="true">
+                    <div ref={bottom} />
                   </li>
-                ))}
-                <li aria-hidden="true">
-                  <div ref={bottom} />
-                </li>
-              </ol>
+                </ol>
+              </div>
               <form
                 className="mt-6 space-y-4"
                 onSubmit={(e) => {
@@ -284,6 +286,6 @@ export function MessagesWorkspace({ id }: { id?: string }) {
           )}
         </section>
       </div>
-    </main>
+    </div>
   );
 }

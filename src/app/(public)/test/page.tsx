@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { OpenTestsList } from "@/components/testing/open-tests-list";
-import { listOpenTests } from "@/lib/data/testing";
+import { getMySignupTestIds, listOpenTests } from "@/lib/data/testing";
 import { hasSupabase } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -10,7 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default async function TestPage() {
-  const tests = await listOpenTests();
+  const [tests, signedUpTestIds] = await Promise.all([
+    listOpenTests(),
+    getMySignupTestIds(),
+  ]);
 
   return (
     <div className="flex flex-col gap-8">
@@ -24,7 +27,11 @@ export default async function TestPage() {
         </p>
       </header>
 
-      <OpenTestsList tests={tests} demo={!hasSupabase} />
+      <OpenTestsList
+        tests={tests}
+        demo={!hasSupabase}
+        signedUpTestIds={signedUpTestIds}
+      />
     </div>
   );
 }

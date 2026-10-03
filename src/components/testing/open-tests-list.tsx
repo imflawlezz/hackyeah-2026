@@ -28,10 +28,13 @@ function testHref(test: OpenTest): string {
 export function OpenTestsList({
   tests,
   demo,
+  signedUpTestIds = [],
 }: {
   tests: OpenTest[];
   /** Demo mode: sign-ups stored in this browser reduce the slots shown. */
   demo: boolean;
+  /** Signed in: tests the user already signed up for. */
+  signedUpTestIds?: string[];
 }) {
   const [municipality, setMunicipality] = useState("");
   const localSignups = useLocalSignups();
@@ -95,8 +98,9 @@ export function OpenTestsList({
         <ul>
           {visible.map((test) => {
             const titleId = `open-test-${test.id}-title`;
-            const signedUp = demo && localSignups.includes(test.id);
-            const slotsLeft = test.slotsLeft - (signedUp ? 1 : 0);
+            const localSignup = demo && localSignups.includes(test.id);
+            const signedUp = localSignup || signedUpTestIds.includes(test.id);
+            const slotsLeft = test.slotsLeft - (localSignup ? 1 : 0);
             return (
               <li
                 key={test.id}
@@ -134,12 +138,17 @@ export function OpenTestsList({
                     href={testHref(test)}
                     className={cn(
                       buttonVariants({
-                        variant: slotsLeft > 0 ? "default" : "outline",
+                        variant:
+                          slotsLeft > 0 && !signedUp ? "default" : "outline",
                       }),
                       "h-auto min-h-11 gap-2 px-4 py-2 text-base whitespace-normal",
                     )}
                   >
-                    {slotsLeft > 0 ? "Zgłoś się" : "Zobacz test"}
+                    {signedUp
+                      ? "Zapisano: zobacz test"
+                      : slotsLeft > 0
+                        ? "Zgłoś się"
+                        : "Zobacz test"}
                     <span className="sr-only">: {test.innovationTitle}</span>
                     <ArrowRightIcon aria-hidden="true" className="size-5" />
                   </Link>
