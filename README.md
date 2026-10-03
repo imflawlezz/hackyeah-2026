@@ -49,11 +49,11 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 src/app/(public)/          match, knowledge, ideas, test, messages, institutions, accessibility
 src/app/(auth)/login/      sign-in
 src/app/admin/             admin panel
-src/app/api/               match (mock), assistant (501), embed (501)
+src/app/api/               match (AI with mock fallback), assistant (501), embed
 src/components/ui/         shadcn/ui
 src/components/layout/     skip link, header, footer, accessibility toolbar
 src/lib/supabase/          browser and server clients
-src/lib/ai/                AI helpers (empty for now)
+src/lib/ai/                embeddings, batch backfill, Polish match reasons
 src/lib/validators/        Zod schemas for the shared contracts
 src/lib/mocks/             Polish fixtures and mockMatch
 src/types/                 shared TypeScript contracts
