@@ -60,7 +60,7 @@ export function fallbackAssistantReply(
   return [
     `Następne pytanie z kanwy: ${nextCanvasQuestion(idea)}`,
     similar,
-    "Warto też skontaktować się z Małopolskim Hubem Innowacji Społecznych i omówić pomysł z doradcą.",
+    "Możesz też napisać do Małopolskiego Hubu Innowacji Społecznych i omówić pomysł z doradcą.",
   ].join("\n\n");
 }
 

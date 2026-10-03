@@ -170,7 +170,7 @@ export function MatchExperience({
   );
 }
 
-/** Reads ?q= and ?category= — must be rendered inside <Suspense>. */
+/** Reads ?q= and ?category=. Must be rendered inside <Suspense>. */
 export function MatchExperienceFromUrl() {
   const searchParams = useSearchParams();
   const problem = searchParams.get("q") ?? "";

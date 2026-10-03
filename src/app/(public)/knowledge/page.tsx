@@ -24,8 +24,8 @@ export default async function KnowledgePage() {
           Baza wiedzy
         </h1>
         <p className="text-lg">
-          Sprawdź, z jakimi wyzwaniami mierzy się Małopolska, jakie rozwiązania
-          już działają i z jakich materiałów możesz skorzystać.
+          Sprawdź, jakie wyzwania społeczne ma Małopolska, jakie rozwiązania już
+          działają i z jakich materiałów możesz skorzystać.
         </p>
       </header>
 
