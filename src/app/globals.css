@@ -2,12 +2,10 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -26,6 +24,16 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-heading: var(--heading);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -33,6 +41,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
@@ -47,92 +56,151 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-body {
-  font-family: var(--font-sans);
-}
-
-:focus-visible {
-  outline: 2px solid #1e40af;
-  outline-offset: 2px;
-}
-
+/* Default theme. Contrast ratios are documented in README.md and asserted in
+   src/lib/a11y/contrast.test.ts. */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: #1e40af;
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #2462ad;
+  --primary-hover: #1d508d;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f7fa;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f7fa;
+  --muted-foreground: #4d4d4d;
+  --accent: #e8f0fa;
+  --accent-foreground: #0f4a91;
+  --navy: #0f4a91;
+  --navy-foreground: #ffffff;
+  --heading: #0f4a91;
+  --highlight: #d10a52;
+  --highlight-foreground: #ffffff;
+  --success: #1e7f3c;
+  --success-foreground: #ffffff;
+  --warning: #b45309;
+  --warning-foreground: #ffffff;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: #d5dbe3;
+  --input: #6b7280;
+  --ring: #2462ad;
+  --chart-1: #2462ad;
+  --chart-2: #d10a52;
+  --chart-3: #1e7f3c;
+  --chart-4: #b45309;
+  --chart-5: #6d3fb0;
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #f5f7fa;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #2462ad;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f0fa;
+  --sidebar-accent-foreground: #0f4a91;
+  --sidebar-border: #d5dbe3;
+  --sidebar-ring: #2462ad;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* High contrast: black background, white text, yellow links and focus.
+   Every text pair is at least 7:1. */
+[data-theme="high-contrast"] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffff00;
+  --primary-hover: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ffffff;
+  --muted: #1a1a1a;
+  --muted-foreground: #ffffff;
+  --accent: #1a1a1a;
+  --accent-foreground: #ffff00;
+  --navy: #000000;
+  --navy-foreground: #ffffff;
+  --heading: #ffffff;
+  --highlight: #ff8ab5;
+  --highlight-foreground: #000000;
+  --success: #6ee7a0;
+  --success-foreground: #000000;
+  --warning: #ffd24d;
+  --warning-foreground: #000000;
+  --destructive: #ff8a8a;
+  --destructive-foreground: #000000;
+  --border: #ffffff;
+  --input: #ffffff;
+  --ring: #ffff00;
+  --chart-1: #ffff00;
+  --chart-2: #ff8ab5;
+  --chart-3: #6ee7a0;
+  --chart-4: #ffd24d;
+  --chart-5: #c4a6ff;
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffff00;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #ffff00;
+  --sidebar-border: #ffffff;
+  --sidebar-ring: #ffff00;
+}
+
+/* Base size is 18px. The accessibility toolbar scales it via data-font-size. */
+html {
+  font-size: 112.5%;
+}
+
+html[data-font-size="large"] {
+  font-size: 129.375%;
+}
+
+html[data-font-size="largest"] {
+  font-size: 146.25%;
+}
+
+/* Unlayered on purpose so it wins over the `outline-none` utilities that
+   shadcn components carry. */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+    @apply border-border;
   }
   html {
     @apply font-sans;
+  }
+  body {
+    @apply bg-background text-foreground;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--heading);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
   }
 }

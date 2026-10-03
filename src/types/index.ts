@@ -57,6 +57,7 @@ export interface MatchRequest {
 
 export interface MatchResult {
   innovation: Innovation;
+  /** Relevance in [0, 1], rounded to two decimals; mock scores are relative to the top result. */
   score: number;
   reason: string;
 }

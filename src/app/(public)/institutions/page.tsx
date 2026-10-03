@@ -3,6 +3,7 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Dla instytucji",
+  description: "Dostosuj sprawdzoną innowację do potrzeb swojej instytucji.",
 };
 
 export default function InstitutionsPage() {
