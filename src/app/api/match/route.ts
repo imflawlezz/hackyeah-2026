@@ -1,8 +1,19 @@
 import { NextResponse } from "next/server";
-import { mockMatch } from "@/lib/mocks";
+import { matchProblem } from "@/lib/match/service";
+import { allowMatchRequest } from "@/lib/match/rate-limit";
 import { matchRequestSchema } from "@/lib/validators";
 
+export const maxDuration = 30;
+
 export async function POST(request: Request) {
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!allowMatchRequest(ip)) {
+    return NextResponse.json(
+      { error: "Zbyt wiele zapytań. Spróbuj ponownie za minutę." },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
+  }
   let body: unknown;
   try {
     body = await request.json();
@@ -24,5 +35,17 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json(mockMatch(parsed.data));
+  const problem = parsed.data.problem.trim();
+  if (problem.length < 3 || problem.length > 2000) {
+    return NextResponse.json(
+      { error: "Opis problemu musi mieć od 3 do 2000 znaków." },
+      { status: 400 },
+    );
+  }
+  const { results, source } = await matchProblem({
+    ...parsed.data,
+    problem,
+    limit: Math.max(1, Math.min(10, parsed.data.limit ?? 5)),
+  });
+  return NextResponse.json(results, { headers: { "X-Match-Source": source } });
 }
