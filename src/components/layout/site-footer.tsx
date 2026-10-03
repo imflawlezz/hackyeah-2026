@@ -12,7 +12,7 @@ const linkClassName =
 export function SiteFooter() {
   return (
     // The focus ring switches to the footer text colour to stay visible on navy.
-    <footer className="border-t border-border bg-navy text-navy-foreground [--ring:var(--navy-foreground)]">
+    <footer className="border-t border-border bg-navy text-navy-foreground [--ring:var(--navy-foreground)] print:hidden">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
         <div className="md:col-span-1">
           <p className="text-xl font-bold">HubMI.pl</p>

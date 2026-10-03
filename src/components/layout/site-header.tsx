@@ -65,7 +65,7 @@ export function SiteHeader() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="border-b border-border bg-background">
+    <header className="border-b border-border bg-background print:hidden">
       <div className="border-b border-border bg-muted">
         <div className="mx-auto flex w-full max-w-6xl justify-end px-4 py-2">
           <AccessibilityToolbar />

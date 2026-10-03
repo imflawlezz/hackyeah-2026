@@ -95,6 +95,7 @@ export function TextField<TValues extends FieldValues, TOutput>({
   registration,
   error,
   rows = 3,
+  maxLength = TEXT_MAX_LENGTH,
 }: {
   id: string;
   label: string;
@@ -104,10 +105,12 @@ export function TextField<TValues extends FieldValues, TOutput>({
   registration: UseFormRegisterReturn;
   error?: string;
   rows?: number;
+  /** The limit shown in the counter; validation itself lives in the schema. */
+  maxLength?: number;
 }) {
   const value: unknown = useWatch({ control, name });
   const length = typeof value === "string" ? value.length : 0;
-  const overLimit = length > TEXT_MAX_LENGTH;
+  const overLimit = length > maxLength;
   const hintId = `${id}-hint`;
   const errorId = `${id}-error`;
   const countId = `${id}-count`;
@@ -141,7 +144,7 @@ export function TextField<TValues extends FieldValues, TOutput>({
               : "text-muted-foreground",
           )}
         >
-          {length} / {TEXT_MAX_LENGTH}
+          {length} / {maxLength}
           <span className="sr-only"> znaków</span>
         </p>
       </div>

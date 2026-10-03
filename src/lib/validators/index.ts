@@ -4,8 +4,10 @@ import type {
   Feedback,
   FeedbackSummary,
   Idea,
+  ImplementationPlan,
   Innovation,
   InnovationTest,
+  InstitutionProfile,
   MatchRequest,
   MatchResult,
   Problem,
@@ -144,3 +146,75 @@ export const matchResultSchema = z.object({
   score: z.number(),
   reason: z.string(),
 }) satisfies z.ZodType<MatchResult>;
+
+export const institutionProfileSchema = z.object({
+  institutionType: z.enum([
+    "gmina",
+    "powiat",
+    "ops_cus",
+    "pcpr",
+    "dps_sds",
+    "ngo",
+    "school",
+    "other",
+  ]),
+  municipalityType: z
+    .enum(["wiejska", "miejsko-wiejska", "miejska"])
+    .optional(),
+  populationBand: z.enum(["<5k", "5-20k", "20-100k", ">100k"]),
+  budgetBand: z.enum(["<20k", "20-100k", "100-500k", ">500k"]),
+  staffAvailable: z.number().int().min(0).max(20),
+  targetGroup: z.string().trim().min(1).max(200),
+  need: z.string().trim().min(10).max(1500),
+  constraints: z.string().trim().max(1000).optional(),
+  timeline: z.union([z.literal(3), z.literal(6), z.literal(12)]),
+  innovationId: z.string().min(1).max(100).optional(),
+}) satisfies z.ZodType<InstitutionProfile>;
+
+const planText = z.string().trim().min(1);
+const pln = z.number().int().nonnegative();
+
+export const implementationPlanSchema = z.object({
+  innovationId: z.string().min(1),
+  title: planText,
+  summary: planText,
+  whyItFits: planText,
+  adaptations: z.array(planText).min(1),
+  steps: z
+    .array(
+      z.object({
+        title: planText,
+        description: planText,
+        weeks: z.number().int().positive(),
+        owner: planText,
+      }),
+    )
+    .min(1),
+  costs: z
+    .array(
+      z.object({
+        item: planText,
+        minPln: pln,
+        maxPln: pln,
+        note: z.string().optional(),
+      }),
+    )
+    .min(1),
+  totalMinPln: pln,
+  totalMaxPln: pln,
+  people: z
+    .array(
+      z.object({
+        role: planText,
+        fte: z.number().positive().optional(),
+        note: z.string().optional(),
+      }),
+    )
+    .min(1),
+  partners: z.array(z.object({ type: planText, role: planText })).min(1),
+  risks: z.array(z.object({ risk: planText, mitigation: planText })).min(1),
+  kpis: z.array(z.object({ indicator: planText, target: planText })).min(1),
+  fundingOptions: z.array(planText).min(1),
+  assumptions: z.array(planText).min(1),
+  source: z.enum(["ai", "template"]),
+}) satisfies z.ZodType<ImplementationPlan>;
