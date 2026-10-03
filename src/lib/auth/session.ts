@@ -1,5 +1,5 @@
-import type { Profile, Role } from "@/types";
 import { createClient, hasSupabase } from "@/lib/supabase/server";
+import type { Profile } from "@/types";
 
 export type CurrentUser = {
   id: string;
@@ -7,44 +7,40 @@ export type CurrentUser = {
   profile: Profile | null;
 };
 
-const ROLES: readonly Role[] = ["resident", "jst", "admin", "expert"];
-
-function isRole(value: unknown): value is Role {
-  return typeof value === "string" && ROLES.includes(value as Role);
-}
-
-// TODO(#12)
+// TODO(#12): the auth issue owns this file; this is the agreed contract so
+// other modules can be built before sign-in exists.
 /** null when Supabase is not configured or nobody is signed in. Uses supabase.auth.getUser(). */
 export async function getCurrentUser(): Promise<CurrentUser | null> {
   if (!hasSupabase) return null;
+  const client = await createClient();
+  if (!client) return null;
+
   try {
-    const supabase = await createClient();
-    if (!supabase) return null;
-    const { data, error } = await supabase.auth.getUser();
+    const { data, error } = await client.auth.getUser();
     if (error || !data.user) return null;
-    const { data: row } = await supabase
+    const { user } = data;
+
+    const { data: row } = await client
       .from("profiles")
       .select("id, role, display_name, municipality, created_at")
-      .eq("id", data.user.id)
+      .eq("id", user.id)
       .maybeSingle();
-    const profile =
-      row && isRole(row.role)
-        ? {
-            id: String(row.id),
-            role: row.role,
-            displayName: String(row.display_name ?? ""),
-            municipality: row.municipality
-              ? String(row.municipality)
-              : undefined,
-            createdAt: String(row.created_at ?? ""),
-          }
-        : null;
+
     return {
-      id: data.user.id,
-      email: data.user.email ?? "",
-      profile,
+      id: user.id,
+      email: user.email ?? "",
+      profile: row
+        ? {
+            id: row.id,
+            role: row.role,
+            displayName: row.display_name,
+            municipality: row.municipality ?? undefined,
+            createdAt: row.created_at,
+          }
+        : null,
     };
   } catch {
+    console.warn("Current user unavailable", { cause: "auth request failed" });
     return null;
   }
 }

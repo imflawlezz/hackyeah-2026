@@ -125,7 +125,7 @@ export function AssistantPanel({
     >
       <h2
         id={`${baseId}-title`}
-        className={`font-serif text-xl text-heading ${showHeading ? "" : "sr-only"}`}
+        className={`text-xl text-heading ${showHeading ? "" : "sr-only"}`}
       >
         Asystent
       </h2>

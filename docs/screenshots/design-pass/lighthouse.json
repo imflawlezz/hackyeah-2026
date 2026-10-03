@@ -1,0 +1,38 @@
+[
+  {
+    "route": "/",
+    "theme": "default",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "route": "/match",
+    "theme": "default",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "route": "/accessibility",
+    "theme": "default",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "route": "/",
+    "theme": "high-contrast",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "route": "/match",
+    "theme": "high-contrast",
+    "score": 100,
+    "failures": []
+  },
+  {
+    "route": "/accessibility",
+    "theme": "high-contrast",
+    "score": 100,
+    "failures": []
+  }
+]

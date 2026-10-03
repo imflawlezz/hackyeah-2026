@@ -198,7 +198,7 @@ export function IdeaWizard({
           id="idea-step-heading"
           ref={headingRef}
           tabIndex={-1}
-          className="font-serif text-2xl text-heading outline-none"
+          className="text-2xl text-heading outline-none"
         >
           {current.title}
         </h2>
@@ -274,7 +274,7 @@ function Review({
       aria-labelledby="review-heading"
       className="flex max-w-2xl flex-col gap-3"
     >
-      <h3 id="review-heading" className="font-serif text-xl text-heading">
+      <h3 id="review-heading" className="text-xl text-heading">
         Podsumowanie
       </h3>
       <dl className="flex flex-col gap-2">

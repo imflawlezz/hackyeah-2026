@@ -16,7 +16,7 @@ export default async function NewIdeaPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="font-serif text-3xl text-heading">Dodaj pomysł</h1>
+      <h1 className="text-3xl text-heading">Dodaj pomysł</h1>
       <IdeaWizard call={call} signedIn={Boolean(user)} />
     </div>
   );

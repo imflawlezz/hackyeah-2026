@@ -119,7 +119,7 @@ export function GrantDraftPanel({
       aria-labelledby={`${baseId}-title`}
       className="flex flex-col gap-4 border border-border p-4"
     >
-      <h2 id={`${baseId}-title`} className="font-serif text-2xl text-heading">
+      <h2 id={`${baseId}-title`} className="text-2xl text-heading">
         Generator wniosków
       </h2>
       <p className="max-w-2xl">{call.title}</p>

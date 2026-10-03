@@ -4,14 +4,14 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 export const metadata: Metadata = {
   title: "Logowanie",
   description:
-    "Zaloguj się jako mieszkaniec, instytucja, ekspert albo administrator.",
+    "W tej części zalogujesz się na swoje konto. Logowanie jest w przygotowaniu.",
 };
 
 export default function LoginPage() {
   return (
     <PlaceholderPage
       title="Logowanie"
-      description="Zaloguj się jako mieszkaniec, instytucja, ekspert albo administrator."
+      description="W tej części zalogujesz się na swoje konto. Logowanie jest w przygotowaniu."
     />
   );
 }

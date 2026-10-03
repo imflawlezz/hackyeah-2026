@@ -1,0 +1,155 @@
+[
+  {
+    "name": "home",
+    "width": 1440,
+    "errors": []
+  },
+  {
+    "name": "home",
+    "width": 360,
+    "errors": []
+  },
+  {
+    "name": "match",
+    "width": 1440,
+    "errors": []
+  },
+  {
+    "name": "match",
+    "width": 360,
+    "errors": []
+  },
+  {
+    "route": "/",
+    "theme": "default",
+    "axe": []
+  },
+  {
+    "route": "/match",
+    "theme": "default",
+    "axe": []
+  },
+  {
+    "route": "/accessibility",
+    "theme": "default",
+    "axe": []
+  },
+  {
+    "route": "/",
+    "theme": "high-contrast",
+    "axe": []
+  },
+  {
+    "route": "/match",
+    "theme": "high-contrast",
+    "axe": []
+  },
+  {
+    "route": "/accessibility",
+    "theme": "high-contrast",
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 320,
+    "layout": {
+      "width": 320,
+      "scroll": 320,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/match",
+    "width": 320,
+    "layout": {
+      "width": 320,
+      "scroll": 320,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/accessibility",
+    "width": 320,
+    "layout": {
+      "width": 320,
+      "scroll": 320,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/",
+    "width": 360,
+    "layout": {
+      "width": 360,
+      "scroll": 360,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/match",
+    "width": 360,
+    "layout": {
+      "width": 360,
+      "scroll": 360,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/accessibility",
+    "width": 360,
+    "layout": {
+      "width": 360,
+      "scroll": 360,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "layout": {
+      "width": 1440,
+      "scroll": 1440,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/match",
+    "width": 1440,
+    "layout": {
+      "width": 1440,
+      "scroll": 1440,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "route": "/accessibility",
+    "width": 1440,
+    "layout": {
+      "width": 1440,
+      "scroll": 1440,
+      "font": "23.4px",
+      "heading": "\"Source Serif 4\", \"Source Serif 4 Fallback\", ui-serif, Georgia, serif",
+      "body": "\"Source Sans 3\", \"Source Sans 3 Fallback\", ui-sans-serif, system-ui, sans-serif"
+    }
+  },
+  {
+    "matchFocus": true,
+    "url": "http://127.0.0.1:3004/match?q=Seniorzy+w+naszej+gminie+s%C4%85+samotni+i+potrzebuj%C4%85+opieki."
+  }
+]

@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/placeholder-page";
+import { OpenTestsList } from "@/components/testing/open-tests-list";
+import { listOpenTests } from "@/lib/data/testing";
+import { hasSupabase } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Testuj innowacje",
   description:
-    "Zgłoś się do testów i przekaż opinię o istniejących rozwiązaniach.",
+    "Sprawdź nowe rozwiązania, zgłoś chęć udziału w testach i przekaż swoją opinię.",
 };
 
-export default function TestPage() {
+export default async function TestPage() {
+  const tests = await listOpenTests();
+
   return (
-    <PlaceholderPage
-      title="Testuj innowacje"
-      description="Zgłoś się do testów i przekaż opinię o istniejących rozwiązaniach."
-    />
+    <div className="flex flex-col gap-8">
+      <header className="flex max-w-3xl flex-col gap-3">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+          Testuj innowacje
+        </h1>
+        <p className="text-lg">
+          Sprawdź nowe rozwiązania, zanim trafią do kolejnych gmin. Twoja opinia
+          pomoże je poprawić.
+        </p>
+      </header>
+
+      <OpenTestsList tests={tests} demo={!hasSupabase} />
+    </div>
   );
 }

@@ -13,7 +13,7 @@ export function IdeaFlashcard({ idea }: { idea: Idea }) {
 
   return (
     <article className="flex flex-col gap-3 border border-border bg-card p-4">
-      <h3 className="font-serif text-xl text-heading">
+      <h3 className="text-xl text-heading">
         <Link
           href={`/ideas/${idea.id}`}
           className="underline-offset-4 hover:underline"

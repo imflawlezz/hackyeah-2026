@@ -74,7 +74,7 @@ export function IdeasBrowser({
       </div>
 
       <section aria-labelledby="public-ideas" className="flex flex-col gap-4">
-        <h2 id="public-ideas" className="font-serif text-2xl text-heading">
+        <h2 id="public-ideas" className="text-2xl text-heading">
           Pomysły w Hubie
         </h2>
         {visiblePublic.length ? (
@@ -92,7 +92,7 @@ export function IdeasBrowser({
 
       {visibleDrafts.length ? (
         <section aria-labelledby="draft-ideas" className="flex flex-col gap-4">
-          <h2 id="draft-ideas" className="font-serif text-2xl text-heading">
+          <h2 id="draft-ideas" className="text-2xl text-heading">
             Twoje szkice
           </h2>
           <ul className="flex flex-col gap-4">

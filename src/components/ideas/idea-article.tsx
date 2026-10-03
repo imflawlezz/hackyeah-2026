@@ -18,7 +18,7 @@ export function IdeaArticle({ idea }: { idea: Idea }) {
   return (
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-3">
-        <h1 className="font-serif text-3xl text-heading">{idea.title}</h1>
+        <h1 className="text-3xl text-heading">{idea.title}</h1>
         <p className="max-w-2xl text-lg">{idea.summary}</p>
         <p>
           <span className="font-medium">Dla kogo: </span>
@@ -36,7 +36,7 @@ export function IdeaArticle({ idea }: { idea: Idea }) {
         ) : null}
       </header>
       <section aria-labelledby="canvas-heading" className="flex flex-col gap-4">
-        <h2 id="canvas-heading" className="font-serif text-2xl text-heading">
+        <h2 id="canvas-heading" className="text-2xl text-heading">
           Kanwa innowacji
         </h2>
         <dl className="flex flex-col gap-4">

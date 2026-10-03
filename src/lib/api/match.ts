@@ -9,7 +9,7 @@ export interface MatchResponse {
 }
 
 export const GENERIC_MATCH_ERROR =
-  "Nie udało się wyszukać rozwiązań. Spróbuj ponownie za chwilę.";
+  "Nie udało się pobrać propozycji. Spróbuj ponownie za chwilę.";
 
 const matchResultsSchema = matchResultSchema.array();
 

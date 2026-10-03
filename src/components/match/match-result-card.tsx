@@ -1,11 +1,10 @@
 import {
   ArrowRightIcon,
-  CircleCheckBigIcon,
-  CircleDashedIcon,
-  CircleDotIcon,
-  type LucideIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
   UsersIcon,
-} from "lucide-react";
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,22 +21,27 @@ const MAX_TAGS = 3;
 
 const TIER_STYLES: Record<
   ScoreTier,
-  { icon: LucideIcon; className: string; accent: string; filled: number }
+  {
+    icon: typeof CheckCircleIcon;
+    className: string;
+    accent: string;
+    filled: number;
+  }
 > = {
   high: {
-    icon: CircleCheckBigIcon,
+    icon: CheckCircleIcon,
     className: "border-success bg-success/10",
     accent: "text-success",
     filled: 3,
   },
   medium: {
-    icon: CircleDotIcon,
+    icon: InformationCircleIcon,
     className: "border-primary bg-primary/10",
     accent: "text-primary",
     filled: 2,
   },
   low: {
-    icon: CircleDashedIcon,
+    icon: ExclamationTriangleIcon,
     className: "border-dashed border-warning bg-warning/10",
     accent: "text-warning",
     filled: 1,
@@ -66,7 +70,7 @@ export function MatchResultCard({
   return (
     <article
       aria-labelledby={titleId}
-      className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-5 text-card-foreground shadow-xs sm:p-6"
+      className="flex h-full flex-col gap-4 border-b border-border bg-card py-8 text-card-foreground"
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Badge
@@ -78,13 +82,13 @@ export function MatchResultCard({
         <p
           data-tier={tier}
           className={cn(
-            "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-semibold text-foreground",
+            "inline-flex items-center gap-2 rounded-md border px-3 py-1 text-sm font-semibold text-foreground",
             tierClassName,
           )}
         >
           <TierIcon
             aria-hidden="true"
-            className={cn("size-4 shrink-0", accent)}
+            className={cn("size-5 shrink-0", accent)}
           />
           <span>{scoreLabel(relevance)}</span>
           {showPercent && (
@@ -122,7 +126,7 @@ export function MatchResultCard({
       </p>
 
       {innovation.tags.length > 0 && (
-        <ul aria-label="Tagi" className="flex flex-wrap gap-2">
+        <ul aria-label="Tematy" className="flex flex-wrap gap-2">
           {innovation.tags.slice(0, MAX_TAGS).map((tag) => (
             <li
               key={tag}
@@ -135,7 +139,7 @@ export function MatchResultCard({
       )}
 
       {reason && (
-        <div className="rounded-lg border-l-4 border-primary bg-muted/60 px-4 py-3">
+        <div className="max-w-[70ch] border-l border-border pl-4">
           <p className="text-sm font-semibold">Dlaczego to pasuje</p>
           <p className="mt-1 text-base">{reason}</p>
         </div>
@@ -151,7 +155,7 @@ export function MatchResultCard({
         >
           Zobacz szczegóły
           <span className="sr-only">: {innovation.title}</span>
-          <ArrowRightIcon aria-hidden="true" />
+          <ArrowRightIcon aria-hidden="true" className="size-5" />
         </Link>
       </div>
     </article>
