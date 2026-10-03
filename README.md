@@ -46,12 +46,12 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 ## Folder map
 
 ```text
-src/app/(public)/          match, knowledge, ideas, test, messages, institutions
+src/app/(public)/          match, knowledge, ideas, test, messages, institutions, accessibility
 src/app/(auth)/login/      sign-in
 src/app/admin/             admin panel
 src/app/api/               match (AI with mock fallback), assistant (501), embed
 src/components/ui/         shadcn/ui
-src/components/layout/     skip link, header, footer
+src/components/layout/     skip link, header, footer, accessibility toolbar
 src/lib/supabase/          browser and server clients
 src/lib/ai/                embeddings, batch backfill, Polish match reasons
 src/lib/validators/        Zod schemas for the shared contracts
@@ -66,52 +66,53 @@ docs/pitch/                pitch materials
 
 Import shared code with the `@/` alias, for example `@/types`, `@/lib/mocks`, and `@/lib/validators`.
 
-## Matchmaking API
+## Design system and accessibility
 
-`POST /api/match` accepts `{ "problem": "samotni seniorzy na wsi", "category": "Seniorzy", "limit": 5 }`.
-The trimmed problem must contain 3–2000 characters; category is optional, and the positive integer limit defaults to 5 and is capped at 10.
-The response stays a bare `MatchResult[]`, for example:
+The theme lives in `src/app/globals.css` as CSS variables mapped to Tailwind classes (`bg-primary`, `text-muted-foreground`, `bg-success`, `text-highlight`, `bg-navy`). Components use those classes only and never hardcode hex values.
 
-```json
-[
-  {
-    "innovation": {
-      "id": "example-club",
-      "title": "Klub seniora",
-      "description": "Wspólne spotkania seniorów na wsi.",
-      "category": "Seniorzy",
-      "targetGroup": "Seniorzy na wsi",
-      "tags": ["seniorzy", "spotkania"],
-      "createdAt": "2026-10-03T00:00:00.000Z"
-    },
-    "score": 0.88,
-    "reason": "Wspólne spotkania mogą pomóc ograniczyć samotność."
-  }
-]
-```
+### Palette
 
-This illustrative response uses fictional innovation data. Scores are in [0, 1], rounded to two decimals.
-AI scores use cosine similarity; mock scores are divided by the highest score in the returned set, so the top mock result scores 1.
-`X-Match-Source: ai | mock` identifies the source. Missing Supabase/OpenAI configuration, embedding or RPC failures, empty search results, and search timeouts fall back to local mocks (possibly an empty array) with HTTP 200.
-Reason-generation failures keep AI matches and use Polish template reasons. Embeddings time out after 4 seconds, reasons after 6 seconds, and the entire search has a 7.5-second budget.
-Invalid requests return Polish HTTP 400 errors. The best-effort per-instance IP limiter allows 20 requests per minute and then returns HTTP 429; production needs a shared store and trusted proxy configuration.
+Ratios are WCAG 2.x contrast against white unless noted, computed by `contrastRatio` in `src/lib/a11y/contrast.ts`. `src/lib/a11y/contrast.test.ts` reads the variables from `globals.css` and fails when a text pair drops below 4.5:1 (7:1 in high contrast) or a control boundary below 3:1.
 
-```bash
-curl -i -X POST http://localhost:3000/api/match \
-  -H 'content-type: application/json' \
-  -d '{"problem":"samotni seniorzy na wsi"}'
-```
+| Token                 | Hex       | Use                                                    | Contrast                                |
+| --------------------- | --------- | ------------------------------------------------------ | --------------------------------------- |
+| `primary`             | `#2462ad` | buttons, links, active nav, focus ring                 | 6.13:1 on white, 5.71:1 on surface      |
+| `primary-hover`       | `#1d508d` | hover and pressed state of primary                     | 8.13:1                                  |
+| `navy`                | `#0f4a91` | headings, footer background                            | 8.72:1 (white text on navy 8.72:1)      |
+| `highlight` (crimson) | `#d10a52` | sparingly: "Nowe" badge, highlight, match score accent | 5.42:1                                  |
+| `foreground`          | `#1a1a1a` | body text                                              | 17.4:1                                  |
+| `muted-foreground`    | `#4d4d4d` | secondary text                                         | 8.45:1                                  |
+| `muted` / `secondary` | `#f5f7fa` | cards, alternating sections (surface)                  | n/a                                     |
+| `accent`              | `#e8f0fa` | hover backgrounds, with `accent-foreground` `#0f4a91`  | 7.6:1 (navy text on accent)             |
+| `success`             | `#1e7f3c` | status                                                 | 5.05:1                                  |
+| `warning`             | `#b45309` | status                                                 | 5.02:1                                  |
+| `destructive`         | `#b91c1c` | errors                                                 | 6.47:1                                  |
+| `input`               | `#6b7280` | form-control and outline-button borders                | 4.83:1 (WCAG 1.4.11 needs at least 3:1) |
+| `border`              | `#d5dbe3` | decorative dividers only                               | n/a                                     |
 
-For AI search, configure Supabase and `OPENAI_API_KEY`, apply the schema and `match_innovations` RPC from #4, and embed the seed data.
-Search uses `text-embedding-3-small` (1536 dimensions) and at most one `gpt-4o-mini` call for the entire result set, keeping cost low; the mock path makes no paid AI calls.
+Crimson is `highlight`, not `accent`: shadcn uses `accent` for hover backgrounds. Status is never conveyed by colour alone; pair it with an icon and text.
 
-Set server-only `SUPABASE_SERVICE_ROLE_KEY` and a nonempty `EMBED_SECRET` in `.env.local` to enable `POST /api/embed`.
-Send the secret in `x-embed-secret`; absent/wrong secrets return 401, and missing provider configuration returns 503.
-The body `{}` embeds only rows with null embeddings, `{ "all": true }` recomputes all rows, and `{ "ids": ["innovation-id"] }` recomputes selected rows (up to 500 IDs). Processing uses batches of 50 and returns `{ "count": 50 }` on success.
-Completed writes remain if a later batch fails; rerun `{}` to resume missing embeddings. GET returns 405.
+Typography is Inter (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
 
-Alternatively, run `npm run embed:innovations` from the repository root. The script loads `.env.local`, resolves `@/` through `tsx`, prints completed counts, and exits nonzero on failure.
-It embeds only missing vectors and does not require `EMBED_SECRET`. Never expose `OPENAI_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, or `EMBED_SECRET` in client code.
+### Font size and high contrast
+
+Both settings sit in the "Ustawienia dostępności" toolbar at the top of the header and persist in `localStorage`.
+
+- **Font size.** `A` / `A+` / `A++` set `data-font-size` on `<html>` to `default`, `large` or `largest`, which scales the root font size to 100%, 115% or 130% of the base. Spacing and control heights are in `rem`, so they scale too. An inline script in `<head>` applies the stored value before first paint (key `hubmi-font-size`); `parseFontSize` in `src/lib/a11y/preferences.ts` falls back to `default` for unknown values.
+- **High contrast.** `next-themes` sets `data-theme` on `<html>` to `default` or `high-contrast` (key `hubmi-theme`) and applies it before first paint. The `[data-theme="high-contrast"]` block swaps the variables to a black background, white text, yellow (`#ffff00`) links and focus ring, and white borders.
+
+Focus is a 3 px solid outline in `--ring` with a 2 px offset on every `:focus-visible` element. With "reduce motion" enabled in the OS, animations, transitions and smooth scrolling are turned off.
+
+### Manual test checklist
+
+- [ ] First Tab on any page shows "Przejdź do treści"; Enter moves focus to `<main>`.
+- [ ] Tab through header, page and footer: every stop shows the 3 px focus ring, in order, with no trap.
+- [ ] At 360 px the header shows "Menu"; it opens with Enter, Esc closes it, focus returns to the button, and following a link closes it.
+- [ ] At 320 px there is no horizontal scroll; at 200% browser zoom nothing is clipped.
+- [ ] `A+` / `A++` and "Wysoki kontrast" apply, survive a reload and do not flash the default on load.
+- [ ] With OS "reduce motion" on, the mobile menu opens without animation.
+- [ ] Lighthouse Accessibility is at least 95 and axe reports no serious or critical issues on `/`, `/match` and `/accessibility`, in both themes.
+- [ ] A screen reader (NVDA or VoiceOver) announces landmarks, the current page in the nav and the pressed state of the toolbar buttons.
 
 ## Before you open a PR
 

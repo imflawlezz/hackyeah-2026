@@ -3,6 +3,7 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Dopasuj innowację",
+  description: "Opisz problem społeczny, a system wskaże pasujące innowacje.",
 };
 
 export default function MatchPage() {
