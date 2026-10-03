@@ -74,14 +74,17 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+3. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
 
-| Table         | Who can read                  | Who can write                           |
-| ------------- | ----------------------------- | --------------------------------------- |
-| `innovations` | everyone, including anonymous | admin                                   |
-| `problems`    | author, admin                 | signed-in users insert their own; admin |
-| `ideas`       | author, admin                 | signed-in users insert their own; admin |
-| `feedback`    | author, admin                 | signed-in users insert their own; admin |
-| `profiles`    | owner, admin                  | owner (not `role`); admin               |
+| Table          | Who can read                                   | Who can write                                             |
+| -------------- | ---------------------------------------------- | --------------------------------------------------------- |
+| `innovations`  | everyone, including anonymous                  | admin                                                     |
+| `problems`     | author, admin                                  | signed-in users insert their own; admin                   |
+| `ideas`        | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin |
+| `feedback`     | author, admin                                  | signed-in users insert their own; admin                   |
+| `profiles`     | owner, admin                                   | owner (not `role`); admin                                 |
+| `grant_calls`  | everyone, including anonymous                  | admin                                                     |
+| `grant_drafts` | author, admin                                  | author; admin                                             |
 
 A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
@@ -92,6 +95,8 @@ Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ 
 | Database                                      | `src/types`             | Note                                     |
 | --------------------------------------------- | ----------------------- | ---------------------------------------- |
 | `ideas.essence`                               | `Idea.summary`          | different name, same field               |
+| `ideas.canvas`                                | `Idea.canvas`           | jsonb                                    |
+| `ideas.municipality`                          | `Idea.municipality`     | optional                                 |
 | `innovations.summary`, `region`               | not in `Innovation` yet | nullable                                 |
 | `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only         |
 | `id`                                          | `id: string`            | uuid in the database, slugs in the mocks |
