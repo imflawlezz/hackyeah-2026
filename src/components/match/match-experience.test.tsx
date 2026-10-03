@@ -1,6 +1,12 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MatchExperience } from "@/components/match/match-experience";
@@ -36,12 +42,12 @@ afterEach(() => {
 });
 
 describe("MatchExperience", () => {
-  it("shows an inline Polish error and focuses the field for a short problem", async () => {
+  it("shows an inline Polish error and focuses the error summary for a short problem", async () => {
     const user = userEvent.setup();
     const fetchMock = respondWith([]);
     render(<MatchExperience />);
 
-    const field = screen.getByLabelText("Opis problemu");
+    const field = screen.getByRole("textbox", { name: "Opis problemu" });
     await user.type(field, "za mało");
     await user.click(
       screen.getByRole("button", { name: "Znajdź rozwiązania" }),
@@ -53,7 +59,13 @@ describe("MatchExperience", () => {
         "Opis jest za krótki. Napisz co najmniej 10 znaków.",
       ),
     );
-    expect(field).toHaveFocus();
+    const summary = screen.getByRole("alert");
+    await waitFor(() => expect(summary).toHaveFocus());
+    expect(
+      within(summary).getByRole("link", {
+        name: "Opis jest za krótki. Napisz co najmniej 10 znaków.",
+      }),
+    ).toHaveAttribute("href", "#problem");
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -68,7 +80,7 @@ describe("MatchExperience", () => {
     const example = problems.find(
       (problem) => problem.id === "prob-after-school",
     )!;
-    const field = screen.getByLabelText("Opis problemu");
+    const field = screen.getByRole("textbox", { name: "Opis problemu" });
     expect(field).toHaveValue(example.description);
     expect(field).toHaveFocus();
     expect(screen.getByText(/^\d+ \/ 2000/)).toHaveTextContent(
@@ -89,7 +101,10 @@ describe("MatchExperience", () => {
     );
     render(<MatchExperience />);
 
-    await user.type(screen.getByLabelText("Opis problemu"), problem);
+    await user.type(
+      screen.getByRole("textbox", { name: "Opis problemu" }),
+      problem,
+    );
     await user.click(
       screen.getByRole("button", { name: "Znajdź rozwiązania" }),
     );
@@ -110,7 +125,10 @@ describe("MatchExperience", () => {
     });
     render(<MatchExperience />);
 
-    await user.type(screen.getByLabelText("Opis problemu"), problem);
+    await user.type(
+      screen.getByRole("textbox", { name: "Opis problemu" }),
+      problem,
+    );
     await user.click(
       screen.getByRole("button", { name: "Znajdź rozwiązania" }),
     );
@@ -150,7 +168,7 @@ describe("MatchExperience", () => {
     const fetchMock = respondWith(mockMatch({ problem }));
     render(<MatchExperience />);
 
-    const field = screen.getByLabelText("Opis problemu");
+    const field = screen.getByRole("textbox", { name: "Opis problemu" });
     const submit = screen.getByRole("button", { name: "Znajdź rozwiązania" });
     await user.type(field, problem);
     await user.click(submit);
@@ -160,9 +178,12 @@ describe("MatchExperience", () => {
     await user.type(field, "za mało");
     await user.click(submit);
 
-    expect(field).toHaveFocus();
+    await waitFor(() => expect(screen.getByRole("alert")).toHaveFocus());
+    expect(field).toHaveAttribute("aria-invalid", "true");
     expect(
-      screen.getByText("Opis jest za krótki. Napisz co najmniej 10 znaków."),
+      screen.getAllByText(
+        "Opis jest za krótki. Napisz co najmniej 10 znaków.",
+      )[0],
     ).toBeVisible();
     expect(screen.queryByRole("article")).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: /^Znaleźliśmy/ })).toBeNull();
@@ -175,7 +196,7 @@ describe("MatchExperience", () => {
     render(<MatchExperience />);
 
     await user.type(
-      screen.getByLabelText("Opis problemu"),
+      screen.getByRole("textbox", { name: "Opis problemu" }),
       "xyzqwerty xyzqwerty",
     );
     await user.click(
@@ -197,7 +218,7 @@ describe("MatchExperience", () => {
     render(<MatchExperience />);
 
     await user.type(
-      screen.getByLabelText("Opis problemu"),
+      screen.getByRole("textbox", { name: "Opis problemu" }),
       "samotni seniorzy na wsi",
     );
     await user.click(
@@ -225,7 +246,7 @@ describe("MatchExperience", () => {
     render(<MatchExperience />);
 
     await user.type(
-      screen.getByLabelText("Opis problemu"),
+      screen.getByRole("textbox", { name: "Opis problemu" }),
       "samotni seniorzy na wsi",
     );
     await user.click(
@@ -246,10 +267,10 @@ describe("MatchExperience", () => {
       />,
     );
 
-    expect(screen.getByLabelText("Opis problemu")).toHaveValue(
+    expect(screen.getByRole("textbox", { name: "Opis problemu" })).toHaveValue(
       "samotni seniorzy",
     );
-    expect(screen.getByLabelText("Kategoria (opcjonalnie)")).toHaveValue(
+    expect(screen.getByRole("combobox", { name: "Kategoria" })).toHaveValue(
       "Samotność",
     );
     await screen.findByRole("heading", { name: /^Znaleźliśmy/ });

@@ -23,7 +23,9 @@ it("announces an incoming message without moving composer focus and updates the 
       <NotificationBell />
     </>,
   );
-  const composer = await screen.findByLabelText("Twoja wiadomość");
+  const composer = await screen.findByLabelText("Twoja wiadomość", {
+    exact: false,
+  });
   composer.focus();
   await waitFor(() =>
     expect(

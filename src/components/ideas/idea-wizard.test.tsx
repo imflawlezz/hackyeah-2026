@@ -1,6 +1,12 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { IdeaWizard } from "@/components/ideas/idea-wizard";
@@ -50,7 +56,12 @@ describe("IdeaWizard", () => {
     render(<IdeaWizard call={null} signedIn={false} />);
 
     await user.click(screen.getByRole("button", { name: "Dalej" }));
-    const alert = await screen.findByRole("alert");
+    const [summary, alert] = await screen.findAllByRole("alert");
+    await waitFor(() => expect(summary).toHaveFocus());
+    expect(within(summary).getByRole("link")).toHaveAttribute(
+      "href",
+      "#idea-problem",
+    );
     expect(alert).toHaveTextContent("Jaki problem chcesz rozwiązać?");
     expect(
       screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
@@ -145,9 +156,12 @@ describe("IdeaWizard", () => {
       await user.click(screen.getByRole("button", { name: "Dalej" }));
     }
 
-    await user.type(screen.getByLabelText("Czego potrzebujesz?"), answers[5]);
     await user.type(
-      screen.getByLabelText("Z kim chcesz współpracować?"),
+      screen.getByLabelText("Czego potrzebujesz?", { exact: false }),
+      answers[5],
+    );
+    await user.type(
+      screen.getByLabelText("Z kim chcesz współpracować?", { exact: false }),
       answers[6],
     );
     await user.click(screen.getByRole("button", { name: "Dalej" }));
@@ -163,7 +177,7 @@ describe("IdeaWizard", () => {
     await user.click(screen.getByRole("button", { name: "Dalej" }));
 
     await user.type(
-      screen.getByLabelText("Tytuł pomysłu"),
+      screen.getByLabelText("Tytuł pomysłu", { exact: false }),
       "Wypożyczalnia sprzętu",
     );
     expect(

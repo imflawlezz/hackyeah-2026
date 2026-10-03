@@ -107,7 +107,7 @@ describe("Moderation", () => {
     );
     expect(actions.reviewIdeaAction).not.toHaveBeenCalled();
     await user.type(
-      screen.getByLabelText("Wiadomość do autora (opcjonalnie)"),
+      screen.getByLabelText("Wiadomość do autora"),
       "  Dziękujemy  ",
     );
     await user.click(

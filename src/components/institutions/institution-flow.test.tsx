@@ -62,14 +62,16 @@ const planOk: Responder = (body) => {
 /** Fills the whole form with the keyboard only. */
 async function fillProfile(user: ReturnType<typeof userEvent.setup>) {
   await user.tab();
-  expect(screen.getByLabelText("Typ instytucji")).toHaveFocus();
+  expect(
+    screen.getByLabelText("Typ instytucji", { exact: false }),
+  ).toHaveFocus();
   await user.keyboard("G"); // selects "Gmina" by typing
-  await user.selectOptions(screen.getByLabelText("Typ instytucji"), "gmina");
-  await user.tab();
   await user.selectOptions(
-    screen.getByLabelText("Rodzaj gminy (opcjonalnie)"),
-    "wiejska",
+    screen.getByLabelText("Typ instytucji", { exact: false }),
+    "gmina",
   );
+  await user.tab();
+  await user.selectOptions(screen.getByLabelText("Rodzaj gminy"), "wiejska");
   await user.tab();
   // One tab stop per radio group; arrows move inside it.
   expect(screen.getByRole("radio", { name: "Do 5 tys." })).toHaveFocus();
@@ -113,10 +115,7 @@ describe("InstitutionFlow", () => {
       screen.getByRole("button", { name: "Dobierz rozwiązania" }),
     );
 
-    const alerts = (await screen.findAllByRole("alert")).map(
-      (alert) => alert.textContent,
-    );
-    expect(alerts).toEqual([
+    const missing = [
       "Wybierz typ instytucji.",
       "Wybierz liczbę mieszkańców.",
       "Wybierz roczny budżet.",
@@ -124,16 +123,27 @@ describe("InstitutionFlow", () => {
       "Napisz, kogo ma objąć wsparcie.",
       "Opisz potrzebę. Napisz co najmniej 10 znaków.",
       "Wybierz termin.",
-    ]);
-    expect(screen.getByLabelText("Typ instytucji")).toHaveAccessibleDescription(
-      "Wybierz typ instytucji.",
-    );
+    ];
+    const [summary, ...fieldAlerts] = await screen.findAllByRole("alert");
+    // Gov.pl error summary first: focused, one link per missing answer.
+    await waitFor(() => expect(summary).toHaveFocus());
+    expect(
+      within(summary)
+        .getAllByRole("link")
+        .map((link) => link.textContent),
+    ).toEqual(missing);
+    expect(fieldAlerts.map((alert) => alert.textContent)).toEqual(missing);
+    expect(
+      screen.getByLabelText("Typ instytucji", { exact: false }),
+    ).toHaveAccessibleDescription("Wybierz typ instytucji.");
     expect(
       screen.getByRole("group", { name: "Liczba mieszkańców" }),
     ).toHaveAccessibleDescription(
       "Gminy albo obszaru, na którym działasz. Wybierz liczbę mieszkańców.",
     );
-    const need = screen.getByLabelText("Jakiej zmiany potrzebujecie?");
+    const need = screen.getByLabelText("Jakiej zmiany potrzebujecie?", {
+      exact: false,
+    });
     expect(need).toHaveAttribute("aria-invalid", "true");
     expect(need).toHaveAccessibleDescription(
       expect.stringContaining("Opisz potrzebę. Napisz co najmniej 10 znaków."),
@@ -260,9 +270,9 @@ describe("InstitutionFlow", () => {
 
     // Restored from sessionStorage; the preselected innovation skips step 2.
     await waitFor(() =>
-      expect(screen.getByLabelText("Kogo ma objąć wsparcie?")).toHaveValue(
-        ruralProfile.targetGroup,
-      ),
+      expect(
+        screen.getByLabelText("Kogo ma objąć wsparcie?", { exact: false }),
+      ).toHaveValue(ruralProfile.targetGroup),
     );
     expect(screen.getByText("Krok 1 z 2")).toBeVisible();
     expect(
@@ -333,9 +343,9 @@ describe("InstitutionFlow", () => {
     });
     render(<InstitutionFlow preselected={telecare} />);
     await waitFor(() =>
-      expect(screen.getByLabelText("Kogo ma objąć wsparcie?")).toHaveValue(
-        "opiekunowie",
-      ),
+      expect(
+        screen.getByLabelText("Kogo ma objąć wsparcie?", { exact: false }),
+      ).toHaveValue("opiekunowie"),
     );
 
     await user.click(screen.getByRole("button", { name: "Przygotuj plan" }));
@@ -382,9 +392,9 @@ describe("InstitutionFlow", () => {
     stubApi({ plan: planOk });
     render(<InstitutionFlow preselected={telecare} />);
     await waitFor(() =>
-      expect(screen.getByLabelText("Kogo ma objąć wsparcie?")).toHaveValue(
-        ruralProfile.targetGroup,
-      ),
+      expect(
+        screen.getByLabelText("Kogo ma objąć wsparcie?", { exact: false }),
+      ).toHaveValue(ruralProfile.targetGroup),
     );
     await user.click(screen.getByRole("button", { name: "Przygotuj plan" }));
     await screen.findByRole("heading", { level: 2, name: /^Plan wdrożenia/ });
@@ -412,9 +422,9 @@ describe("InstitutionFlow", () => {
     await user.click(
       screen.getAllByRole("button", { name: "Zmień opis instytucji" })[0]!,
     );
-    expect(screen.getByLabelText("Kogo ma objąć wsparcie?")).toHaveValue(
-      ruralProfile.targetGroup,
-    );
+    expect(
+      screen.getByLabelText("Kogo ma objąć wsparcie?", { exact: false }),
+    ).toHaveValue(ruralProfile.targetGroup);
   });
 
   it("explains a preselected innovation that does not exist", () => {
