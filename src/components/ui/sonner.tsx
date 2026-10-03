@@ -2,12 +2,12 @@
 
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 import {
-  CircleCheckIcon,
-  InfoIcon,
-  TriangleAlertIcon,
-  OctagonXIcon,
-  Loader2Icon,
-} from "lucide-react";
+  CheckCircleIcon,
+  InformationCircleIcon,
+  ExclamationTriangleIcon,
+  XCircleIcon,
+  ArrowPathIcon,
+} from "@heroicons/react/16/solid";
 
 const Toaster = ({ ...props }: ToasterProps) => {
   // Colours come from the CSS variables below, which follow data-theme.
@@ -16,11 +16,15 @@ const Toaster = ({ ...props }: ToasterProps) => {
       theme="light"
       className="toaster group"
       icons={{
-        success: <CircleCheckIcon className="size-4" />,
-        info: <InfoIcon className="size-4" />,
-        warning: <TriangleAlertIcon className="size-4" />,
-        error: <OctagonXIcon className="size-4" />,
-        loading: <Loader2Icon className="size-4 animate-spin" />,
+        success: <CheckCircleIcon aria-hidden="true" className="size-4" />,
+        info: <InformationCircleIcon aria-hidden="true" className="size-4" />,
+        warning: (
+          <ExclamationTriangleIcon aria-hidden="true" className="size-4" />
+        ),
+        error: <XCircleIcon aria-hidden="true" className="size-4" />,
+        loading: (
+          <ArrowPathIcon aria-hidden="true" className="size-4 animate-spin" />
+        ),
       }}
       style={
         {

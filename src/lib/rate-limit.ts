@@ -1,9 +1,6 @@
-const MAX_KEYS = 10_000;
+type Bucket = { count: number; expires: number };
 
-/**
- * Fixed-window, in-memory limiter. Per server instance only; production should
- * use a shared store. Returns true when the call identified by `key` is allowed.
- */
+// Per-instance only in serverless; production should use a shared store.
 export function createRateLimiter({
   limit,
   windowMs,
@@ -11,19 +8,25 @@ export function createRateLimiter({
   limit: number;
   windowMs: number;
 }): (key: string, now?: number) => boolean {
-  const entries = new Map<string, { count: number; expires: number }>();
+  const entries = new Map<string, Bucket>();
   return (key, now = Date.now()) => {
-    for (const [entryKey, entry] of entries) {
-      if (entry.expires <= now) entries.delete(entryKey);
+    for (const [id, entry] of entries) {
+      if (entry.expires <= now) entries.delete(id);
     }
     const entry = entries.get(key);
     if (!entry) {
-      if (entries.size >= MAX_KEYS) return false;
+      if (entries.size >= 10_000) return false;
       entries.set(key, { count: 1, expires: now + windowMs });
-      return limit > 0;
+      return true;
     }
     if (entry.count >= limit) return false;
-    entry.count++;
+    entry.count += 1;
     return true;
   };
+}
+
+export function clientIp(request: Request): string {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
+  );
 }

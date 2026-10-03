@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { ContrastIcon } from "lucide-react";
+import { EyeIcon } from "@heroicons/react/20/solid";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
@@ -70,12 +70,13 @@ export function AccessibilityToolbar() {
       aria-label="Ustawienia dostępności"
       className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2"
     >
+      <span className="text-sm">Dostępność</span>
       <div role="group" aria-label="Rozmiar tekstu" className="flex gap-1">
         {FONT_SIZE_OPTIONS.map((option) => (
           <Button
             key={option.value}
             variant="outline"
-            aria-label={option.label}
+            aria-label={`${option.text}: ${option.label}`}
             aria-pressed={fontSize === option.value}
             onClick={() => writeFontSize(option.value)}
             className={`min-w-11 px-2 font-semibold ${toggleClassName}`}
@@ -90,7 +91,7 @@ export function AccessibilityToolbar() {
         onClick={() => setTheme(highContrast ? "default" : "high-contrast")}
         className={toggleClassName}
       >
-        <ContrastIcon aria-hidden="true" />
+        <EyeIcon aria-hidden="true" className="size-5" />
         Wysoki kontrast
       </Button>
     </div>

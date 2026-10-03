@@ -1,5 +1,5 @@
 import { innovations as mockInnovations } from "@/lib/mocks";
-import { mockIdeas } from "@/lib/mocks/ideas";
+import { ideas as mockIdeas } from "@/lib/mocks/ideas";
 import { getMockTrendProblems } from "@/lib/mocks/trends";
 import type {
   AdminIdea,
@@ -56,7 +56,16 @@ function seed(): DemoStore {
       })),
       DRAFT,
     ],
-    ideas: mockIdeas.map((idea) => ({ ...idea })),
+    ideas: mockIdeas.map((idea): AdminIdea => ({
+      id: idea.id,
+      title: idea.title,
+      summary: idea.summary,
+      targetGroup: idea.targetGroup,
+      stage: idea.stage,
+      status: idea.status,
+      reviewNote: null,
+      createdAt: idea.createdAt,
+    })),
     problems: getMockTrendProblems(),
   };
 }

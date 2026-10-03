@@ -10,7 +10,7 @@ import {
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Moderation } from "@/components/admin/moderation";
-import { mockIdeas } from "@/lib/mocks/ideas";
+import { getDemoStore } from "@/lib/admin/demo-store";
 import { getMockTrendProblems } from "@/lib/mocks/trends";
 
 const actions = vi.hoisted(() => ({
@@ -21,7 +21,9 @@ const actions = vi.hoisted(() => ({
 vi.mock("@/app/admin/actions", () => actions);
 vi.mock("sonner", () => ({ toast: { success: vi.fn(), error: vi.fn() } }));
 
-const ideas = mockIdeas.filter(({ status }) => status === "submitted");
+const ideas = getDemoStore().ideas.filter(
+  ({ status }) => status === "submitted",
+);
 const problems = getMockTrendProblems(new Date("2026-10-03T12:00:00Z"))
   .filter(({ status }) => status === "new")
   .slice(0, 2)

@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/.npm-cache/
+/.browser-before/
+/.design-tools/
 
 # next.js
 /.next/

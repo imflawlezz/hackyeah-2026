@@ -48,7 +48,7 @@ const calls = {
   setInnovationStatus: () =>
     setInnovationStatusAction("inn-telecare", "archived"),
   recomputeEmbeddings: () => recomputeEmbeddingsAction(),
-  reviewIdea: () => reviewIdeaAction("mock-idea-01", "Dziękujemy"),
+  reviewIdea: () => reviewIdeaAction("idea-mobility-library", "Dziękujemy"),
   closeProblem: () => closeProblemAction("mock-problem-02", ""),
   summarizeTrends: () => summarizeTrendsAction("30"),
 };
@@ -126,7 +126,7 @@ describe("admin server actions", () => {
     it("reviews ideas, closes problems and fills missing vectors", async () => {
       const store = resetDemoStore();
       expect(
-        (await reviewIdeaAction("mock-idea-01", "  Dziękujemy  ")).ok,
+        (await reviewIdeaAction("idea-mobility-library", "  Dziękujemy  ")).ok,
       ).toBe(true);
       expect(store.ideas[0]).toMatchObject({
         status: "reviewed",

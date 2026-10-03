@@ -37,6 +37,11 @@ function kpis(overview: Overview): Kpi[] {
       value: overview.withoutEmbedding,
       hint: "Nie biorą udziału w dopasowaniu AI.",
     },
+    {
+      label: "Otwarte testy innowacji",
+      value: overview.openTests,
+      hint: "Testy, na które mieszkańcy mogą się zapisać na stronie /test.",
+    },
   ];
 }
 

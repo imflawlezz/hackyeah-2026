@@ -31,10 +31,7 @@ function ModeNotice({ mode }: { mode: "preview" | "demo" }) {
   const Icon = mode === "demo" ? InformationCircleIcon : EyeIcon;
   return (
     <div className="flex items-start gap-3 rounded-md border border-border bg-muted px-4 py-3 text-base">
-      <Icon
-        aria-hidden="true"
-        className="mt-0.5 size-5 shrink-0 text-heading"
-      />
+      <Icon aria-hidden="true" className="size-6 shrink-0 text-heading" />
       <p>
         {mode === "demo"
           ? "Wersja demonstracyjna. Zmiany nie są zapisywane."

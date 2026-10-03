@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageAccess } from "@/app/admin/access";

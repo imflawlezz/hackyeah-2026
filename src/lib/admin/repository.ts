@@ -22,6 +22,7 @@ import {
   type AdminInnovationRow,
   type AdminProblemRow,
 } from "@/lib/data/admin";
+import { listOpenTests } from "@/lib/data/testing";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -172,6 +173,16 @@ export interface Overview {
   published: number | null;
   drafts: number | null;
   withoutEmbedding: number | null;
+  openTests: number | null;
+}
+
+/** Open innovation tests are public, so every mode reads them the same way. */
+async function countOpenTests(): Promise<number | null> {
+  try {
+    return (await listOpenTests()).length;
+  } catch {
+    return null;
+  }
 }
 
 async function count(
@@ -211,6 +222,7 @@ export async function getOverview(
         withoutEmbedding: store.innovations.filter(
           ({ hasEmbedding }) => !hasEmbedding,
         ).length,
+        openTests: await countOpenTests(),
       },
       notice: null,
     };
@@ -232,6 +244,7 @@ export async function getOverview(
         published: null,
         drafts: null,
         withoutEmbedding: null,
+        openTests: await countOpenTests(),
       },
       notice: access.mode === "preview" ? null : LOAD_ERROR,
     };
@@ -244,6 +257,7 @@ export async function getOverview(
     published,
     drafts,
     withoutEmbedding,
+    openTests,
   ] = await Promise.all([
     count(() =>
       client.from("problems").select("id", head).gte("created_at", since),
@@ -267,6 +281,7 @@ export async function getOverview(
     count(() =>
       client.from("innovations").select("id", head).is("embedding", null),
     ),
+    countOpenTests(),
   ]);
   const migrated = published !== null;
   return {
@@ -277,6 +292,7 @@ export async function getOverview(
       published,
       drafts,
       withoutEmbedding,
+      openTests,
     },
     notice: migrated || access.mode !== "admin" ? null : MIGRATION_NOTICE,
   };

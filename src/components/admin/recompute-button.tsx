@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/20/solid";
 import { recomputeEmbeddingsAction } from "@/app/admin/actions";
 import { useAdminAction } from "@/components/admin/use-admin-action";
 import { Button } from "@/components/ui/button";

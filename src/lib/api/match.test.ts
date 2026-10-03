@@ -64,7 +64,10 @@ describe("fetchMatches", () => {
   it("throws the server's Polish message on 400", async () => {
     stubFetch(
       jsonResponse(
-        { error: "Żądanie nie spełnia kontraktu MatchRequest." },
+        {
+          error:
+            "Nie udało się odczytać opisu lub kategorii. Sprawdź formularz i spróbuj ponownie.",
+        },
         { status: 400 },
       ),
     );
@@ -72,7 +75,9 @@ describe("fetchMatches", () => {
     const error = await fetchMatches(request).catch((caught) => caught);
 
     expect(error).toBeInstanceOf(MatchApiError);
-    expect(error.message).toBe("Żądanie nie spełnia kontraktu MatchRequest.");
+    expect(error.message).toBe(
+      "Nie udało się odczytać opisu lub kategorii. Sprawdź formularz i spróbuj ponownie.",
+    );
     expect(error.status).toBe(400);
   });
 

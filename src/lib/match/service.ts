@@ -187,7 +187,7 @@ export async function matchProblem(
         ...result,
         reason:
           reasons[result.innovation.id] ||
-          `Rozwiązanie z kategorii „${result.innovation.category}” skierowane do: ${result.innovation.targetGroup}.`,
+          `Kategoria: ${result.innovation.category}. Dla kogo: ${result.innovation.targetGroup}.`,
       })),
     };
   } catch {

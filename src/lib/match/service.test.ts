@@ -131,7 +131,7 @@ describe("AI matching", () => {
     const response = await matchProblem({ problem: "seniorzy" });
     expect(response.source).toBe("ai");
     expect(response.results[0].reason).toBe(
-      "Rozwiązanie z kategorii „Seniorzy” skierowane do: Seniorzy na wsi.",
+      "Kategoria: Seniorzy. Dla kogo: Seniorzy na wsi.",
     );
   });
   it("bounds a hung embedding with the overall deadline", async () => {

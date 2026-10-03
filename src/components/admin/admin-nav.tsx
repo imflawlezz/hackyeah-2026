@@ -52,7 +52,7 @@ export function AdminNav() {
                     : "border-transparent text-foreground hover:border-border hover:bg-muted",
                 )}
               >
-                <Icon aria-hidden="true" className="size-5 shrink-0" />
+                <Icon aria-hidden="true" className="size-6 shrink-0" />
                 {item.label}
               </Link>
             </li>

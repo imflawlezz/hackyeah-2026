@@ -9,6 +9,17 @@ const eslintConfig = defineConfig([
   // flatConfigs.recommended also registers jsx-a11y, which eslint-config-next already defines.
   {
     rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "lucide-react",
+              message: "Use @heroicons/react (see docs/design/STYLE.md).",
+            },
+          ],
+        },
+      ],
       ...jsxA11y.flatConfigs.recommended.rules,
       "jsx-a11y/label-has-associated-control": [
         "error",
@@ -22,6 +33,9 @@ const eslintConfig = defineConfig([
     },
   },
   globalIgnores([
+    ".design-tools/**",
+    ".browser-before/**",
+    ".npm-cache/**",
     ".next/**",
     "out/**",
     "build/**",

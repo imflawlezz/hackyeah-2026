@@ -1,6 +1,6 @@
 "use client";
 
-import { DocumentTextIcon } from "@heroicons/react/24/outline";
+import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { summarizeTrendsAction } from "@/app/admin/actions";
 import { useAdminAction } from "@/components/admin/use-admin-action";

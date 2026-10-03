@@ -1,5 +1,8 @@
 .next
 node_modules
 coverage
+.npm-cache
+.browser-before
+.design-tools
 package-lock.json
 docs/task/
