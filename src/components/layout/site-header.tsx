@@ -1,7 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MenuIcon } from "lucide-react";
+import { AccessibilityToolbar } from "@/components/layout/accessibility-toolbar";
+import { HeaderActions } from "@/components/layout/header-actions";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { isCurrentRoute } from "@/lib/navigation";
 
 const NAV_ITEMS = [
   { href: "/", label: "Strona główna" },
@@ -11,40 +25,119 @@ const NAV_ITEMS = [
   { href: "/test", label: "Testuj innowacje" },
   { href: "/messages", label: "Wiadomości" },
   { href: "/institutions", label: "Dla instytucji" },
-  { href: "/admin", label: "Panel administratora" },
-  { href: "/login", label: "Logowanie" },
 ] as const;
 
-export function SiteHeader() {
+const MOBILE_NAV_ID = "mobile-nav";
+
+function NavList({
+  className,
+  linkClassName,
+  onNavigate,
+}: {
+  className: string;
+  linkClassName: string;
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-slate-300 bg-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4">
-        <Link href="/" className="w-fit text-xl font-semibold text-slate-900">
-          HubMI.pl
-        </Link>
-        <nav aria-label="Główna nawigacja">
-          <ul className="flex flex-wrap gap-x-4 gap-y-2">
-            {NAV_ITEMS.map((item) => {
-              const current = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={current ? "page" : undefined}
-                    className={`rounded-sm text-blue-800 underline underline-offset-4 hover:text-blue-950 ${
-                      current ? "font-semibold" : "font-medium"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+    <ul className={className}>
+      {NAV_ITEMS.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            aria-current={
+              isCurrentRoute(pathname, item.href) ? "page" : undefined
+            }
+            onClick={onNavigate}
+            className={`rounded-md font-medium text-primary underline-offset-4 hover:bg-accent hover:text-accent-foreground hover:underline aria-[current=page]:font-bold aria-[current=page]:text-accent-foreground aria-[current=page]:underline aria-[current=page]:decoration-2 ${linkClassName}`}
+          >
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <header className="border-b border-border bg-background">
+      <div className="border-b border-border bg-muted">
+        <div className="mx-auto flex w-full max-w-6xl justify-end px-4 py-2">
+          <AccessibilityToolbar />
+        </div>
       </div>
+
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4">
+        <Link href="/" className="flex flex-col rounded-md">
+          <span className="text-2xl leading-tight font-bold text-heading">
+            HubMI.pl
+          </span>
+          <span className="text-sm text-muted-foreground">
+            Małopolski Hub Innowacji Społecznych
+          </span>
+        </Link>
+
+        <div data-slot="header-actions" className="hidden gap-2 md:flex">
+          <HeaderActions />
+        </div>
+
+        <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+          <SheetTrigger
+            render={
+              <Button
+                variant="outline"
+                className="md:hidden"
+                aria-controls={MOBILE_NAV_ID}
+              />
+            }
+          >
+            <MenuIcon aria-hidden="true" />
+            Menu
+          </SheetTrigger>
+          <SheetContent
+            id={MOBILE_NAV_ID}
+            side="right"
+            className="overflow-y-auto text-base data-[side=right]:w-full data-[side=right]:sm:max-w-sm"
+          >
+            <SheetHeader>
+              <SheetTitle className="text-lg font-bold text-heading">
+                Menu
+              </SheetTitle>
+              <SheetDescription className="sr-only">
+                Nawigacja po serwisie HubMI.pl
+              </SheetDescription>
+            </SheetHeader>
+            <nav aria-label="Główna nawigacja" className="px-4">
+              <NavList
+                className="flex flex-col gap-1"
+                linkClassName="flex min-h-11 items-center px-3 py-2"
+                onNavigate={closeMenu}
+              />
+            </nav>
+            <div
+              data-slot="header-actions"
+              className="flex flex-col gap-2 border-t border-border p-4"
+            >
+              <HeaderActions onNavigate={closeMenu} />
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      <nav
+        aria-label="Główna nawigacja"
+        className="mx-auto hidden w-full max-w-6xl px-4 pb-3 md:block"
+      >
+        <NavList
+          className="-mx-3 flex flex-wrap gap-x-1 gap-y-1"
+          linkClassName="inline-flex min-h-11 items-center px-3 py-1"
+        />
+      </nav>
     </header>
   );
 }

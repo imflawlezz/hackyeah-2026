@@ -1,8 +1,9 @@
 -- Demo innovations for HubMI.pl. Fictional sample data: no real people,
 -- organisations or contact details. Safe to re-run; existing ids are skipped.
 --
--- Embeddings are left null here. They are generated from the text by the embed
--- job (OpenAI, 1536 dimensions); match_innovations skips rows without one.
+-- Embeddings are left null here. `npm run embed:innovations` generates them
+-- from the text (OpenAI, 1536 dimensions); match_innovations skips rows
+-- without one.
 
 insert into public.innovations
   (id, title, summary, description, category, target_group, region, tags, created_at)

@@ -10,7 +10,12 @@ import type {
   Role,
 } from "@/types";
 
-export const roleSchema = z.enum(["resident", "jst", "admin", "expert"]) satisfies z.ZodType<Role>;
+export const roleSchema = z.enum([
+  "resident",
+  "jst",
+  "admin",
+  "expert",
+]) satisfies z.ZodType<Role>;
 
 export const profileSchema = z.object({
   id: z.string(),
