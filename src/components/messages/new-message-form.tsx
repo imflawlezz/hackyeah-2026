@@ -1,4 +1,7 @@
 "use client";
+import { VoiceFieldInput } from "@/components/voice/voice-field-input";
+import { appendTranscript } from "@/lib/voice/append";
+
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, startTransition } from "react";
@@ -22,6 +25,7 @@ export function NewMessageForm({
   ideaId?: string;
   initialKind: ConversationKind;
 }) {
+  const [body, setBody] = useState("");
   const [kind, setKind] = useState(initialKind);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -152,12 +156,24 @@ export function NewMessageForm({
           Twoja wiadomość
           <textarea
             name="body"
+            value={body}
+            onChange={(event) => setBody(event.target.value)}
             required
             maxLength={4000}
             className="mt-2 min-h-40 w-full border border-input p-3"
             aria-describedby={error ? "new-error" : undefined}
           />
         </label>
+        <VoiceFieldInput
+          getValue={() => body}
+          onChange={(_value, text) =>
+            setBody(
+              (current) => appendTranscript(current, text, 4000) ?? current,
+            )
+          }
+          limit={4000}
+          disabled={busy}
+        />
         {error && (
           <p id="new-error" role="alert">
             {error}

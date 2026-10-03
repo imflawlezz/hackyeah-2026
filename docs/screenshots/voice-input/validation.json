@@ -1,0 +1,37 @@
+[
+  {
+    "highContrast": false,
+    "layout": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "highContrast": true,
+    "layout": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "uploads": [
+      {
+        "size": 10340,
+        "type": "audio/webm",
+        "name": "recording.webm",
+        "header": [26, 69, 223, 163]
+      },
+      {
+        "size": 8396,
+        "type": "audio/webm",
+        "name": "recording.webm",
+        "header": [26, 69, 223, 163]
+      }
+    ],
+    "value": "Edycja podczas rozpoznawania.\nSzukam wsparcia dla opiekunów osób starszych.",
+    "browser": "154.0.8037.58",
+    "recording": "Native MediaRecorder with synthetic browser microphone; HTTP transcription mocked; no provider calls"
+  }
+]

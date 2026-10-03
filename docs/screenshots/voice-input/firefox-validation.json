@@ -1,0 +1,10 @@
+{
+  "browser": "155.0",
+  "capture": {
+    "size": 13881,
+    "type": "audio/webm",
+    "name": "recording.webm"
+  },
+  "text": "Polskie słowa do sprawdzenia.",
+  "recording": "Native MediaRecorder with synthetic browser microphone; HTTP transcription mocked; no provider calls"
+}

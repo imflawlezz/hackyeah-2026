@@ -1,5 +1,6 @@
 "use client";
 
+import { VoiceFieldInput } from "@/components/voice/voice-field-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ExclamationCircleIcon,
@@ -62,6 +63,7 @@ export function MatchForm({
 }) {
   const {
     register,
+    getValues,
     handleSubmit,
     setValue,
     setFocus,
@@ -121,6 +123,17 @@ export function MatchForm({
             "field-sizing-fixed min-h-40 resize-y px-4 py-3 text-lg leading-relaxed md:text-lg",
           )}
           {...register("problem")}
+        />
+        <VoiceFieldInput
+          getValue={() => getValues("problem")}
+          onChange={(value) =>
+            setValue("problem", value, {
+              shouldDirty: true,
+              shouldValidate: isSubmitted,
+            })
+          }
+          limit={PROBLEM_MAX_LENGTH}
+          disabled={loading}
         />
         <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
           {problemError ? (

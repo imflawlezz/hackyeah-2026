@@ -19,6 +19,8 @@ Production: https://hubml-hackyeah2026-ab.vercel.app (Vercel functions in `dub1`
 
 Accessibility target: WCAG 2.1 AA. Interface copy is Polish. Code, file names, and URLs are English.
 
+Voice input for match, idea and message forms uses server-side Polish transcription with `OPENAI_API_KEY`. Typing always remains available. See [voice input setup, limits and verification](docs/voice-input.md).
+
 ## Stack
 
 - Next.js (App Router) and React
