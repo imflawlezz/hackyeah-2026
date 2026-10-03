@@ -79,27 +79,33 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/migrations/0002_auth_profiles.sql` (sign-up role and municipality on profiles; safe to re-run)
 3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+4. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 
-| Table         | Who can read                  | Who can write                           |
-| ------------- | ----------------------------- | --------------------------------------- |
-| `innovations` | everyone, including anonymous | admin                                   |
-| `problems`    | author, admin                 | signed-in users insert their own; admin |
-| `ideas`       | author, admin                 | signed-in users insert their own; admin |
-| `feedback`    | author, admin                 | signed-in users insert their own; admin |
-| `profiles`    | owner, admin                  | owner (not `role`); admin               |
+| Table              | Who can read                  | Who can write                                                                       |
+| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------- |
+| `innovations`      | everyone, including anonymous | admin                                                                               |
+| `problems`         | author, admin                 | signed-in users insert their own; admin                                             |
+| `ideas`            | author, admin                 | signed-in users insert their own; admin                                             |
+| `feedback`         | author, admin                 | signed-in users insert their own; admin                                             |
+| `innovation_tests` | everyone, including anonymous | admin                                                                               |
+| `test_signups`     | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
+| `profiles`         | owner, admin                  | owner (not `role`); admin                                                           |
 
 A profile row is created automatically for every new auth user. The role and municipality come from the sign-up form, but the trigger accepts only `resident`, `jst` and `expert`; anything else, including `admin`, becomes `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
+
+Feedback rows and sign-ups stay private, so public pages read numbers only, through two functions anyone may call: `innovation_feedback_summary(p_innovation_id)` (count, averages, rating distribution, recommend share) and `test_slots_taken(p_test_id)`. A `before insert` trigger on `test_signups` rejects a sign-up to a closed or full test (`TEST_CLOSED`, `TEST_FULL`), which the app turns into Polish messages.
 
 ### Column mapping
 
 Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
 
-| Database                                      | `src/types`             | Note                                     |
-| --------------------------------------------- | ----------------------- | ---------------------------------------- |
-| `ideas.essence`                               | `Idea.summary`          | different name, same field               |
-| `innovations.summary`, `region`               | not in `Innovation` yet | nullable                                 |
-| `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only         |
-| `id`                                          | `id: string`            | uuid in the database, slugs in the mocks |
+| Database                                                                               | `src/types`             | Note                                     |
+| -------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------- |
+| `ideas.essence`                                                                        | `Idea.summary`          | different name, same field               |
+| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, … | optional, added in `0004`                |
+| `test_signups.user_id`                                                                 | `TestSignup.userId`     | defaults to the signed-in user           |
+| `innovations.embedding`, `problems.embedding`                                          | not exposed             | `vector(1536)`, server-side only         |
+| `id`                                                                                   | `id: string`            | uuid in the database, slugs in the mocks |
 
 ### Matching
 
@@ -190,7 +196,11 @@ Ratios are WCAG 2.x contrast against white unless noted, computed by `contrastRa
 
 Crimson is `highlight`, not `accent`: shadcn uses `accent` for hover backgrounds. Status is never conveyed by colour alone; pair it with an icon and text.
 
-Typography is Inter (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
+The screen design and Polish copy rules live in [docs/design/STYLE.md](docs/design/STYLE.md).
+
+`components.json` retains the shadcn CLI icon setting. After each `npx shadcn@latest add`, replace emitted lucide imports with `@heroicons/react`; the ESLint restriction catches missed imports.
+
+Typography pairs Source Serif 4 (600/700) for headings with Source Sans 3 (400/600) for body text, both self-hosted through `next/font/google` (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
 
 ### Font size and high contrast
 

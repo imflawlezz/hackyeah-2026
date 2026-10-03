@@ -1,0 +1,35 @@
+[
+  {
+    "skipLinkFirst": true
+  },
+  {
+    "skipFocus": true
+  },
+  {
+    "menuFocusReturned": true
+  },
+  {
+    "size": "A: Domyślny rozmiar tekstu",
+    "pressed": "true",
+    "fonts": {
+      "serif": true,
+      "sans": true
+    }
+  },
+  {
+    "size": "A+: Większy tekst",
+    "pressed": "true",
+    "fonts": {
+      "serif": true,
+      "sans": true
+    }
+  },
+  {
+    "size": "A++: Największy tekst",
+    "pressed": "true",
+    "fonts": {
+      "serif": true,
+      "sans": true
+    }
+  }
+]

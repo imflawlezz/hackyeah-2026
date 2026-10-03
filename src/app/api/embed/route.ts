@@ -26,7 +26,10 @@ function hasValidSecret(request: Request): boolean {
 
 export function GET() {
   return NextResponse.json(
-    { error: "Użyj metody POST." },
+    {
+      error:
+        "Nie można przygotować bazy z tego adresu. Skontaktuj się z administratorem.",
+    },
     { status: 405, headers: { Allow: "POST" } },
   );
 }
@@ -34,13 +37,22 @@ export function GET() {
 export async function POST(request: Request) {
   // Either the shared secret (scripts, cron) or a signed-in admin session.
   if (!hasValidSecret(request) && !isAdmin(await getCurrentUser())) {
-    return NextResponse.json({ error: "Brak uprawnień." }, { status: 401 });
+    return NextResponse.json(
+      {
+        error:
+          "Nie masz uprawnień do przygotowania bazy. Skontaktuj się z administratorem.",
+      },
+      { status: 401 },
+    );
   }
   try {
     const admin = createAdminClient();
     if (!admin || !hasOpenAI) {
       return NextResponse.json(
-        { error: "Supabase lub OpenAI nie jest skonfigurowane." },
+        {
+          error:
+            "Usługa przygotowania bazy jest niedostępna. Skontaktuj się z administratorem.",
+        },
         { status: 503 },
       );
     }
@@ -49,14 +61,17 @@ export async function POST(request: Request) {
       body = await request.json();
     } catch {
       return NextResponse.json(
-        { error: "Treść żądania nie jest poprawnym JSON." },
+        { error: "Nie udało się odczytać danych. Spróbuj wysłać je ponownie." },
         { status: 400 },
       );
     }
     const parsed = embedRequestSchema.safeParse(body);
     if (!parsed.success)
       return NextResponse.json(
-        { error: "Niepoprawne żądanie obliczenia wektorów." },
+        {
+          error:
+            "Nie udało się odczytać ustawień. Sprawdź dane i spróbuj ponownie.",
+        },
         { status: 400 },
       );
     const count = await backfillInnovations(admin, parsed.data);
@@ -64,7 +79,10 @@ export async function POST(request: Request) {
   } catch {
     console.warn("Innovation embedding backfill failed");
     return NextResponse.json(
-      { error: "Nie udało się obliczyć wektorów innowacji. Spróbuj ponownie." },
+      {
+        error:
+          "Nie udało się przygotować bazy do wyszukiwania. Spróbuj ponownie.",
+      },
       { status: 503 },
     );
   }

@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { error: "Treść żądania nie jest poprawnym JSON." },
+      { error: "Nie udało się odczytać danych. Spróbuj wysłać je ponownie." },
       { status: 400 },
     );
   }
@@ -28,7 +28,8 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json(
       {
-        error: "Żądanie nie spełnia kontraktu MatchRequest.",
+        error:
+          "Nie udało się odczytać opisu lub kategorii. Sprawdź formularz i spróbuj ponownie.",
         issues: parsed.error.issues,
       },
       { status: 400 },
