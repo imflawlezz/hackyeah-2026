@@ -1,4 +1,11 @@
 import { z } from "zod";
+export {
+  conversationSchema,
+  conversationKindSchema,
+  messageSchema,
+  notificationSchema,
+  startConversationSchema,
+} from "@/lib/messages/schemas";
 import type {
   Availability,
   Feedback,

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { signOut } from "@/app/(auth)/login/actions";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ROLE_LABELS } from "@/lib/auth/roles";
+import { NotificationBell } from "@/components/notifications/notification-bell";
 import { isCurrentRoute } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import type { Role } from "@/types";
@@ -45,6 +46,7 @@ export function HeaderActions({
   if (demo) {
     return (
       <>
+        <NotificationBell />
         <p className="text-sm text-muted-foreground">Wersja demonstracyjna</p>
         {link("/admin", "Panel administratora", "outline")}
         {link("/login", "Zaloguj się", "default")}
@@ -56,6 +58,7 @@ export function HeaderActions({
 
   return (
     <>
+      <NotificationBell />
       <p className="flex flex-col">
         <span className="sr-only">Zalogowano jako </span>
         <span className="leading-tight font-semibold">{user.displayName}</span>

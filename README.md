@@ -81,23 +81,28 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
 4. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
 5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
-6. `supabase/migrations/0006_admin_moderation.sql` (innovation status, problem matching outcome, idea review; idempotent)
 
-| Table              | Who can read                                   | Who can write                                                                                 |
-| ------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `innovations`      | everyone: `published` rows only; admin: all    | admin                                                                                         |
-| `problems`         | author, admin                                  | signed-in users insert their own; admin; the server (service role) after each `/match` search |
-| `ideas`            | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                                     |
-| `feedback`         | author, admin                                  | signed-in users insert their own; admin                                                       |
-| `innovation_tests` | everyone, including anonymous                  | admin                                                                                         |
-| `test_signups`     | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin           |
-| `profiles`         | owner, admin                                   | owner (not `role`); admin                                                                     |
-| `grant_calls`      | everyone, including anonymous                  | admin                                                                                         |
-| `grant_drafts`     | author, admin                                  | author; admin                                                                                 |
+| Table                       | Who can read                                   | Who can write                                                                                 |
+| --------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `innovations`               | everyone: `published` rows only; admin: all    | admin                                                                                         |
+| `problems`                  | author, admin                                  | signed-in users insert their own; admin; the server (service role) after each `/match` search |
+| `ideas`                     | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                                     |
+| `feedback`                  | author, admin                                  | signed-in users insert their own; admin                                                       |
+| `innovation_tests`          | everyone, including anonymous                  | admin                                                                                         |
+| `test_signups`              | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin           |
+| `profiles`                  | owner, admin                                   | owner (not `role`); admin                                                                     |
+| `grant_calls`               | everyone, including anonymous                  | admin                                                                                         |
+| `grant_drafts`              | author, admin                                  | author; admin                                                                                 |
+| `conversations`             | participants, admin                            | start_conversation RPC; admin                                                                 |
+| `conversation_participants` | participants, admin                            | owner updates last_read_at; admin                                                             |
+| `messages`                  | participants, admin                            | participants insert with their own author_id; admin                                           |
+| `notifications`             | owner, admin                                   | owner updates read_at; database triggers create notifications                                 |
 
 After `0006`, `innovations.status` is `draft`, `published` (default) or `archived`. Drafts and archived rows are hidden from public pages and, because `match_innovations` runs with the caller's rights, from matching too.
 
 `0006` also adds `problems.best_score` (top raw cosine similarity, `null` for mock matches), `problems.source` (`ai` or `mock`), `problems.admin_note`, and `ideas.review_note`, `reviewed_at`, `reviewed_by`. `problem_trends(p_days, p_unmet_score)` returns problems per category and week with an `unmet_count`; RLS limits it to admins.
+
+Messages use the signed-in user's RLS client and Postgres Changes, following the [Supabase Realtime guide](https://supabase.com/docs/guides/realtime/postgres-changes). With no signed-in user, three fictional conversations and two notifications are stored only in this browser and synchronized across tabs with BroadcastChannel. Demo identities are fictional. Partnership conversations remain private; there is no public partnership board.
 
 A profile row is created automatically for every new auth user. The role and municipality come from the sign-up form, but the trigger accepts only `resident`, `jst` and `expert`; anything else, including `admin`, becomes `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
