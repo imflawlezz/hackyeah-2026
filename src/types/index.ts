@@ -31,6 +31,16 @@ export interface Problem {
   createdAt: string;
 }
 
+export interface IdeaCanvas {
+  problem?: string;
+  solution?: string;
+  novelty?: string;
+  resources?: string;
+  partners?: string;
+  risks?: string;
+  successMeasures?: string;
+}
+
 export interface Idea {
   id: string;
   authorId?: string;
@@ -39,7 +49,44 @@ export interface Idea {
   targetGroup: string;
   stage: "idea" | "prototype" | "pilot";
   status: "draft" | "submitted" | "reviewed";
+  canvas?: IdeaCanvas;
+  municipality?: string;
   createdAt: string;
+}
+
+export interface GrantSection {
+  key: string;
+  heading: string;
+  guidance: string;
+  maxChars: number;
+}
+
+export interface GrantCall {
+  id: string;
+  title: string;
+  organizer: string;
+  description: string;
+  startsAt: string;
+  endsAt: string;
+  maxAmountPln?: number;
+  requiredSections: GrantSection[];
+  createdAt: string;
+}
+
+export interface GrantDraftSection {
+  key: string;
+  heading: string;
+  body: string;
+}
+
+export interface GrantDraft {
+  id: string;
+  ideaId: string;
+  callId: string;
+  authorId?: string;
+  content: { sections: GrantDraftSection[] };
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type Rating = 1 | 2 | 3 | 4 | 5;

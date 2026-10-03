@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { profileToProblem } from "@/lib/institutions/problem-text";
 import { matchProblem } from "@/lib/match/service";
-import { clientKey, createRateLimiter } from "@/lib/rate-limit";
+import { clientIp, createRateLimiter } from "@/lib/rate-limit";
 import { institutionProfileSchema } from "@/lib/validators";
 
 export const maxDuration = 30;
@@ -10,7 +10,7 @@ const CANDIDATE_COUNT = 3;
 const allowRequest = createRateLimiter({ limit: 20, windowMs: 60_000 });
 
 export async function POST(request: Request) {
-  if (!allowRequest(clientKey(request))) {
+  if (!allowRequest(clientIp(request))) {
     return NextResponse.json(
       { error: "Zbyt wiele zapytań. Spróbuj ponownie za minutę." },
       { status: 429, headers: { "Retry-After": "60" } },

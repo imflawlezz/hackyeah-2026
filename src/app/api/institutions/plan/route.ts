@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getInnovationById } from "@/lib/data/innovations";
 import { buildPlan } from "@/lib/institutions/plan-service";
-import { clientKey, createRateLimiter } from "@/lib/rate-limit";
+import { clientIp, createRateLimiter } from "@/lib/rate-limit";
 import { institutionProfileSchema } from "@/lib/validators";
 
 // Generation is capped at 20 s; the rest is headroom for loading the innovation.
@@ -16,7 +16,7 @@ const planRequestSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  if (!allowRequest(clientKey(request))) {
+  if (!allowRequest(clientIp(request))) {
     return NextResponse.json(
       {
         error:
