@@ -115,6 +115,31 @@ describe("MatchExperience", () => {
     );
   });
 
+  it("hides previous results when the problem becomes too short", async () => {
+    const user = userEvent.setup();
+    const problem = "Młodzież po lekcjach nie ma gdzie spędzać czasu";
+    const fetchMock = respondWith(mockMatch({ problem }));
+    render(<MatchExperience />);
+
+    const field = screen.getByLabelText("Opisz problem społeczny");
+    const submit = screen.getByRole("button", { name: "Znajdź rozwiązania" });
+    await user.type(field, problem);
+    await user.click(submit);
+    await screen.findByRole("heading", { name: /^Znaleźliśmy/ });
+
+    await user.clear(field);
+    await user.type(field, "za mało");
+    await user.click(submit);
+
+    expect(field).toHaveFocus();
+    expect(
+      screen.getByText("Opisz problem – minimum 10 znaków."),
+    ).toBeVisible();
+    expect(screen.queryByRole("article")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /^Znaleźliśmy/ })).toBeNull();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("shows the empty state", async () => {
     const user = userEvent.setup();
     respondWith([], { headers: { "X-Match-Source": "ai" } });

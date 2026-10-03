@@ -120,6 +120,12 @@ export function MatchExperience({
     void runSearch(request);
   }
 
+  // Stale results under an invalid field look like answers to the new text.
+  function handleInvalid() {
+    abortRef.current?.abort();
+    setState({ status: "idle" });
+  }
+
   function handleRetry() {
     if (lastRequestRef.current) {
       void runSearch(lastRequestRef.current);
@@ -132,6 +138,7 @@ export function MatchExperience({
         defaultValues={initialValues}
         loading={state.status === "loading"}
         onSearch={handleSearch}
+        onInvalid={handleInvalid}
       />
       <MatchResults
         state={state}

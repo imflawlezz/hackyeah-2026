@@ -47,17 +47,18 @@ export function MatchForm({
   defaultValues,
   loading,
   onSearch,
+  onInvalid,
 }: {
   defaultValues: MatchFormValues;
   loading: boolean;
   onSearch: (values: MatchFormValues) => void;
+  onInvalid?: () => void;
 }) {
   const {
     register,
     handleSubmit,
     setValue,
     setFocus,
-
     control,
     formState: { errors, isSubmitted },
   } = useForm<MatchFormValues>({
@@ -69,11 +70,14 @@ export function MatchForm({
   const problemError = errors.problem?.message;
   const overLimit = problemLength > PROBLEM_MAX_LENGTH;
 
-  const submit = handleSubmit((values) => {
-    if (!loading) {
-      onSearch(values);
-    }
-  });
+  const submit = handleSubmit(
+    (values) => {
+      if (!loading) {
+        onSearch(values);
+      }
+    },
+    () => onInvalid?.(),
+  );
 
   function fillExample(description: string) {
     setValue("problem", description, {
