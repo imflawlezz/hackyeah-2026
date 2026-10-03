@@ -79,20 +79,8 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/migrations/0002_auth_profiles.sql` (sign-up role and municipality on profiles; safe to re-run)
 3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
-4. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
-
-| Table              | Who can read                  | Who can write                                                                       |
-| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------- |
-| `innovations`      | everyone, including anonymous | admin                                                                               |
-| `problems`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `ideas`            | author, admin                 | signed-in users insert their own; admin                                             |
-| `feedback`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `innovation_tests` | everyone, including anonymous | admin                                                                               |
-| `test_signups`     | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
-| `profiles`         | owner, admin                  | owner (not `role`); admin                                                           |
-2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
-3. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
-4. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
+4. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
+5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 
 | Table              | Who can read                                   | Who can write                                                                       |
 | ------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------- |
