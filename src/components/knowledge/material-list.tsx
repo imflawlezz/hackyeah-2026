@@ -79,7 +79,7 @@ export function MaterialList({
                     {...(external
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="inline-flex min-h-11 items-center rounded-sm text-base font-medium text-primary underline underline-offset-4 hover:decoration-2"
+                    className="inline-flex min-h-11 items-center rounded-sm text-base text-primary underline underline-offset-4 hover:decoration-2"
                   >
                     <span>
                       {materialLinkText(material)}

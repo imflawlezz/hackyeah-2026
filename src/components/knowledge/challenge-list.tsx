@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { challenges } from "@/lib/knowledge/challenges";
@@ -18,7 +17,7 @@ export function ChallengeList({
 }) {
   return (
     <ol className="border-t border-border">
-      {challenges.map((challenge, index) => {
+      {challenges.map((challenge) => {
         const Icon = challenge.icon;
         const titleId = `challenge-${challenge.id}-title`;
         const count = filterInnovations(innovations, {
@@ -32,12 +31,6 @@ export function ChallengeList({
             className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-4 border-b border-border py-8 sm:grid-cols-[4rem_minmax(0,1fr)] lg:grid-cols-[4rem_minmax(0,1fr)_17rem]"
           >
             <div className="flex items-center gap-3 sm:flex-col sm:items-start">
-              <span
-                aria-hidden="true"
-                className="font-heading text-3xl leading-none font-semibold text-muted-foreground tabular-nums"
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
               <Icon aria-hidden="true" className="size-6 text-primary" />
             </div>
 
@@ -62,7 +55,6 @@ export function ChallengeList({
               >
                 Zobacz innowacje
                 <span className="sr-only">: {challenge.title}</span>
-                <ArrowRightIcon aria-hidden="true" className="size-5" />
               </Link>
               <Link
                 href={matchHref(challenge.categories[0]!)}

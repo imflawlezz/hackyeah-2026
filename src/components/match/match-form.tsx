@@ -126,7 +126,7 @@ export function MatchForm({
           {problemError ? (
             <p
               id="problem-error"
-              className="flex items-center gap-1.5 font-medium text-destructive"
+              className="flex items-center gap-1.5 font-semibold text-destructive"
             >
               <ExclamationCircleIcon
                 aria-hidden="true"

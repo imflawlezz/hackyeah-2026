@@ -30,7 +30,7 @@ export function NotificationList() {
         <p>Zaloguj się, aby zobaczyć swoje powiadomienia.</p>
         <Link
           href={loginPath("/notifications")}
-          className="inline-flex min-h-11 items-center font-medium text-primary underline"
+          className="inline-flex min-h-11 items-center text-primary underline"
         >
           Zaloguj się
         </Link>

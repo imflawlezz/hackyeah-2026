@@ -53,7 +53,7 @@ function NavList({
               isCurrentRoute(pathname, item.href) ? "page" : undefined
             }
             onClick={onNavigate}
-            className={`rounded-sm font-medium text-primary underline-offset-8 hover:underline aria-[current=page]:font-bold aria-[current=page]:text-accent-foreground aria-[current=page]:underline aria-[current=page]:decoration-2 ${linkClassName}`}
+            className={`rounded-sm text-primary underline-offset-8 hover:underline aria-[current=page]:font-semibold aria-[current=page]:text-accent-foreground aria-[current=page]:underline aria-[current=page]:decoration-2 ${linkClassName}`}
           >
             {item.label}
           </Link>

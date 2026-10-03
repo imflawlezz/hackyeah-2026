@@ -71,7 +71,7 @@ export function FeedbackForm({
       <p className="text-base">
         <Link
           href={loginHref}
-          className="inline-flex min-h-11 items-center rounded-sm font-medium text-primary underline underline-offset-4 hover:decoration-2"
+          className="inline-flex min-h-11 items-center rounded-sm text-primary underline underline-offset-4 hover:decoration-2"
         >
           {FEEDBACK_MESSAGES.signedOut}
         </Link>
@@ -121,7 +121,7 @@ export function FeedbackForm({
           ref={messageRef}
           tabIndex={-1}
           role="status"
-          className="flex items-start gap-2 rounded-md border border-success p-4 text-base font-medium"
+          className="flex items-start gap-2 rounded-md border border-success p-4 text-base font-semibold"
         >
           <CheckCircleIcon
             aria-hidden="true"
@@ -135,7 +135,7 @@ export function FeedbackForm({
           ref={messageRef}
           tabIndex={-1}
           role="alert"
-          className="flex items-start gap-2 rounded-md border-2 border-destructive p-4 text-base font-medium"
+          className="flex items-start gap-2 rounded-md border-2 border-destructive p-4 text-base font-semibold"
         >
           <ExclamationCircleIcon
             aria-hidden="true"

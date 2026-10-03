@@ -81,7 +81,7 @@ export default async function AdminLayout({
   return (
     <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-10">
       <aside className="flex flex-col gap-3 lg:border-r lg:border-border lg:pr-6">
-        <p className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+        <p className="text-base font-semibold text-muted-foreground">
           {MODE_LABELS[access.mode]}
         </p>
         <AdminNav />

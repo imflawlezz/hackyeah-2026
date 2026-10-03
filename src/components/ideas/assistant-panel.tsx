@@ -141,7 +141,7 @@ export function AssistantPanel({
         {messages.length ? (
           messages.map((message) => (
             <p key={message.id}>
-              <span className="font-medium">
+              <span className="font-semibold">
                 {message.role === "user" ? "Ty" : "Asystent"}:{" "}
               </span>
               {message.content}
@@ -155,7 +155,7 @@ export function AssistantPanel({
       </div>
       {streaming ? (
         <p aria-hidden="true">
-          <span className="font-medium">Asystent: </span>
+          <span className="font-semibold">Asystent: </span>
           {streaming}
         </p>
       ) : null}

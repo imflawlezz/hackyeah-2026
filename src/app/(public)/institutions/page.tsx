@@ -23,7 +23,7 @@ export default async function InstitutionsPage({ searchParams }: PageProps) {
   return (
     <div className="flex flex-col gap-8">
       <header className="flex max-w-3xl flex-col gap-3 print:hidden">
-        <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+        <h1 className="text-3xl font-bold text-balance sm:text-4xl">
           Dla instytucji
         </h1>
         <p className="text-lg">

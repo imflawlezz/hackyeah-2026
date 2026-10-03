@@ -1,5 +1,4 @@
 import { ChevronRightIcon } from "@heroicons/react/16/solid";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -155,7 +154,7 @@ export default async function InnovationPage({ params }: PageProps) {
             >
               {innovation.category}
             </Badge>
-            <h1 className="font-heading text-3xl leading-tight font-bold tracking-tight text-balance break-words sm:text-4xl">
+            <h1 className="font-heading text-3xl leading-tight font-bold text-balance break-words sm:text-4xl">
               {innovation.title}
             </h1>
             {showSummary && <p className="text-xl">{innovation.summary}</p>}
@@ -226,7 +225,6 @@ export default async function InnovationPage({ params }: PageProps) {
                   )}
                 >
                   {action.label}
-                  <ArrowRightIcon aria-hidden="true" className="size-5" />
                 </Link>
               </li>
             ))}

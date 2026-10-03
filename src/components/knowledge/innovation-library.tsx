@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { PlayCircleIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -265,7 +264,6 @@ export function InnovationLibrary({
                       >
                         Zobacz szczegóły
                         <span className="sr-only">: {innovation.title}</span>
-                        <ArrowRightIcon aria-hidden="true" className="size-5" />
                       </Link>
                     </div>
                   </article>
