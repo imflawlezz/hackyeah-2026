@@ -61,7 +61,7 @@ it("appends to the controlled new message body without sending", () => {
   render(
     <NewMessageForm demo experts={[]} subject="" initialKind="ask_rops" />,
   );
-  const field = screen.getByLabelText("Twoja wiadomość");
+  const field = screen.getByLabelText("Twoja wiadomość", { exact: false });
   fireEvent.change(field, { target: { value: "Wpisana wiadomość" } });
   fireEvent.click(
     screen.getByRole("button", { name: "Wstaw transkrypcję testową" }),
@@ -72,7 +72,9 @@ it("appends to the controlled new message body without sending", () => {
 });
 it("appends to the conversation composer without sending", async () => {
   render(<MessagesWorkspace id="demo-conversation-0" />);
-  const field = await screen.findByLabelText("Twoja wiadomość");
+  const field = await screen.findByLabelText("Twoja wiadomość", {
+    exact: false,
+  });
   fireEvent.change(field, { target: { value: "Bieżąca wiadomość" } });
   await waitFor(() =>
     expect(

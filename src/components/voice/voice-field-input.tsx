@@ -27,7 +27,7 @@ export function VoiceFieldInput({
         }}
       />
       {overflow && (
-        <div className="space-y-2 border border-input p-3">
+        <div className="space-y-2 border border-input p-2.5">
           <p role="status" aria-live="polite">
             Rozpoznany tekst przekracza limit {limit} znaków. Pole pozostaje bez
             zmian. Skróć tekst i skopiuj go do pola.
@@ -35,7 +35,7 @@ export function VoiceFieldInput({
           <label className="block">
             Rozpoznany tekst do skrócenia
             <textarea
-              className="mt-2 min-h-28 w-full border border-input bg-background p-3"
+              className="mt-2 min-h-28 w-full border border-input bg-background p-2.5"
               value={overflow}
               onChange={(event) => setOverflow(event.target.value)}
             />
