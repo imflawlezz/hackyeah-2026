@@ -15,7 +15,7 @@ const FIELD =
 
 // Below sm the table stacks into labelled rows instead of scrolling sideways.
 const CELL =
-  "flex flex-wrap items-baseline gap-x-2 px-3 py-1 align-top sm:table-cell sm:py-3 max-sm:before:min-w-28 max-sm:before:text-sm max-sm:before:font-semibold max-sm:before:text-muted-foreground max-sm:before:content-[attr(data-label)]";
+  "flex flex-wrap items-baseline gap-x-2 px-3 py-1 align-top @min-[50rem]:table-cell @min-[50rem]:py-3 @max-[50rem]:before:min-w-28 @max-[50rem]:before:text-sm @max-[50rem]:before:font-semibold @max-[50rem]:before:text-muted-foreground @max-[50rem]:before:content-[attr(data-label)]";
 
 function normalize(text: string) {
   return text.toLocaleLowerCase("pl");
@@ -63,7 +63,7 @@ export function InnovationsTable({
   );
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="@container flex flex-col gap-4">
       <div
         role="search"
         aria-label="Filtruj innowacje"
@@ -126,9 +126,9 @@ export function InnovationsTable({
         Wyświetlono {visible.length} z {innovations.length}.
       </p>
 
-      <table className="block w-full border-collapse text-base sm:table">
+      <table className="block w-full border-collapse text-base @min-[50rem]:table">
         <caption className="sr-only">Innowacje w bazie wiedzy</caption>
-        <thead className="hidden border-b-2 border-border text-left sm:table-header-group">
+        <thead className="hidden border-b-2 border-border text-left @min-[50rem]:table-header-group">
           <tr>
             <th scope="col" className="px-3 py-2 font-semibold">
               Tytuł
@@ -152,11 +152,11 @@ export function InnovationsTable({
             )}
           </tr>
         </thead>
-        <tbody className="block sm:table-row-group">
+        <tbody className="block @min-[50rem]:table-row-group">
           {visible.map((item) => (
             <tr
               key={item.id}
-              className="block border-b border-border py-2 sm:table-row sm:py-0"
+              className="block border-b border-border py-2 @min-[50rem]:table-row @min-[50rem]:py-0"
             >
               <th
                 scope="row"
@@ -179,17 +179,14 @@ export function InnovationsTable({
               <td data-label="Wektor" className={CELL}>
                 <EmbeddingBadge ready={item.hasEmbedding} />
               </td>
-              <td
-                data-label="Zmieniono"
-                className={cn(CELL, "whitespace-nowrap tabular-nums")}
-              >
+              <td data-label="Zmieniono" className={cn(CELL, "tabular-nums")}>
                 {formatDate(item.updatedAt)}
               </td>
               {canEdit && (
-                <td className={cn(CELL, "max-sm:before:content-none")}>
+                <td className={cn(CELL, "@max-[50rem]:before:content-none")}>
                   <Link
                     href={`/admin/innovations/${encodeURIComponent(item.id)}/edit`}
-                    className="inline-flex min-h-11 items-center gap-1.5 rounded-sm font-medium text-primary underline underline-offset-4 hover:no-underline"
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-sm text-primary underline underline-offset-4 hover:no-underline"
                   >
                     <PencilSquareIcon aria-hidden="true" className="size-5" />
                     Edytuj<span className="sr-only">: {item.title}</span>
