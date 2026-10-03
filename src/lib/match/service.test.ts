@@ -6,6 +6,11 @@ const mocks = vi.hoisted(() => ({
   reasons: vi.fn(),
   rpc: vi.fn(),
   client: vi.fn(),
+  adminClient: vi.fn(),
+  insert: vi.fn(),
+}));
+vi.mock("@/lib/supabase/admin", () => ({
+  createAdminClient: mocks.adminClient,
 }));
 vi.mock("@/lib/ai/models", () => ({ hasOpenAI: true }));
 vi.mock("@/lib/ai/embeddings", () => ({ embedText: mocks.embed }));
@@ -38,7 +43,20 @@ beforeEach(() => {
     abortSignal: () => Promise.resolve({ data: [row()], error: null }),
   });
   mocks.client.mockResolvedValue({ rpc: mocks.rpc });
+  mocks.adminClient.mockReturnValue(null);
+  mocks.insert.mockReturnValue({
+    abortSignal: () => Promise.resolve({ error: null }),
+  });
 });
+
+function withAdminClient() {
+  mocks.adminClient.mockReturnValue({
+    from: (table: string) => {
+      expect(table).toBe("problems");
+      return { insert: mocks.insert };
+    },
+  });
+}
 afterEach(() => {
   vi.restoreAllMocks();
   vi.useRealTimers();
@@ -127,5 +145,61 @@ describe("AI matching", () => {
     const result = matchProblem({ problem: "seniorzy" });
     await vi.advanceTimersByTimeAsync(7500);
     expect((await result).source).toBe("mock");
+  });
+});
+
+describe("problem persistence", () => {
+  it("stores AI matches with the top raw similarity, scrubbed text and embedding", async () => {
+    withAdminClient();
+    await matchProblem({
+      problem: "samotni seniorzy, kontakt: jan@hubmi.example",
+      category: "Seniorzy",
+    });
+    expect(mocks.insert).toHaveBeenCalledTimes(1);
+    expect(mocks.insert).toHaveBeenCalledWith({
+      description: "samotni seniorzy, kontakt: [e-mail]",
+      category: "Seniorzy",
+      embedding: [0.1],
+      status: "matched",
+      best_score: 0.876,
+      source: "ai",
+    });
+  });
+  it("stores mock fallbacks without a score and marks empty results as new", async () => {
+    withAdminClient();
+    mocks.rpc.mockReturnValue({
+      abortSignal: () => Promise.resolve({ data: [], error: null }),
+    });
+    await matchProblem({ problem: "xyzqwerty" });
+    expect(mocks.insert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "new",
+        best_score: null,
+        source: "mock",
+        embedding: [0.1],
+        category: null,
+      }),
+    );
+  });
+  it("skips the insert when the admin client is not configured", async () => {
+    await matchProblem({ problem: "samotni seniorzy" });
+    expect(mocks.adminClient).toHaveBeenCalled();
+    expect(mocks.insert).not.toHaveBeenCalled();
+  });
+  it("never fails or blocks the match when the insert fails or hangs", async () => {
+    withAdminClient();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    mocks.insert.mockReturnValue({
+      abortSignal: () => Promise.resolve({ error: { message: "denied" } }),
+    });
+    expect((await matchProblem({ problem: "seniorzy" })).source).toBe("ai");
+    expect(warn).toHaveBeenCalledWith("Problem persistence failed", {
+      problemLength: 8,
+    });
+
+    mocks.insert.mockReturnValue({ abortSignal: () => new Promise(() => {}) });
+    const started = Date.now();
+    expect((await matchProblem({ problem: "seniorzy" })).source).toBe("ai");
+    expect(Date.now() - started).toBeLessThan(1500);
   });
 });
