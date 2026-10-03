@@ -2,28 +2,78 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { buttonVariants } from "@/components/ui/button";
+import { signOut } from "@/app/(auth)/login/actions";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { ROLE_LABELS } from "@/lib/auth/roles";
 import { isCurrentRoute } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
+import type { Role } from "@/types";
 
-const ACTION_ITEMS = [
-  { href: "/admin", label: "Panel administratora", variant: "outline" },
-  { href: "/login", label: "Logowanie", variant: "default" },
-] as const;
+export type HeaderUser = { displayName: string; role: Role };
 
-/** Right-hand header actions. Rendered in the header and in the mobile menu. */
-export function HeaderActions({ onNavigate }: { onNavigate?: () => void }) {
+/**
+ * Right-hand header actions. Rendered in the header and in the mobile menu.
+ * `user` is read on the server in the root layout; `demo` means Supabase is
+ * not configured and every module is open.
+ */
+export function HeaderActions({
+  user,
+  demo,
+  onNavigate,
+}: {
+  user: HeaderUser | null;
+  demo: boolean;
+  onNavigate?: () => void;
+}) {
   const pathname = usePathname();
 
-  return ACTION_ITEMS.map((item) => (
+  const link = (
+    href: string,
+    label: string,
+    variant: "default" | "outline",
+  ) => (
     <Link
-      key={item.href}
-      href={item.href}
-      aria-current={isCurrentRoute(pathname, item.href) ? "page" : undefined}
+      href={href}
+      aria-current={isCurrentRoute(pathname, href) ? "page" : undefined}
       onClick={onNavigate}
-      className={cn(buttonVariants({ variant: item.variant }))}
+      className={cn(buttonVariants({ variant }))}
     >
-      {item.label}
+      {label}
     </Link>
-  ));
+  );
+
+  if (demo) {
+    return (
+      <>
+        <p className="text-sm text-muted-foreground">Wersja demonstracyjna</p>
+        {link("/admin", "Panel administratora", "outline")}
+        {link("/login", "Zaloguj się", "default")}
+      </>
+    );
+  }
+
+  if (!user) return link("/login", "Zaloguj się", "default");
+
+  return (
+    <>
+      <p className="flex flex-col">
+        <span className="sr-only">Zalogowano jako </span>
+        <span className="leading-tight font-semibold">{user.displayName}</span>
+        <span
+          data-slot="role-badge"
+          className="w-fit rounded-sm border border-input px-1.5 text-sm text-muted-foreground"
+        >
+          {ROLE_LABELS[user.role]}
+        </span>
+      </p>
+      {user.role === "admin"
+        ? link("/admin", "Panel administratora", "outline")
+        : null}
+      <form action={signOut} className="contents">
+        <Button type="submit" variant="outline">
+          Wyloguj
+        </Button>
+      </form>
+    </>
+  );
 }
