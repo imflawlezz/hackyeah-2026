@@ -76,6 +76,31 @@ describe("MatchExperience", () => {
     );
   });
 
+  it("shows a typical best AI similarity as a strong match", async () => {
+    const user = userEvent.setup();
+    const problem = "Samotni seniorzy na wsi nie mają z kim porozmawiać";
+    const [first, second] = mockMatch({ problem, limit: 2 });
+    respondWith(
+      [
+        { ...first!, score: 0.45 },
+        { ...second!, score: 0.25 },
+      ],
+      { headers: { "X-Match-Source": "ai" } },
+    );
+    render(<MatchExperience />);
+
+    await user.type(screen.getByLabelText("Opis problemu"), problem);
+    await user.click(
+      screen.getByRole("button", { name: "Znajdź rozwiązania" }),
+    );
+
+    await screen.findByRole("heading", { level: 2, name: /^Znaleźliśmy/ });
+    expect(screen.getByText("Bardzo dobre dopasowanie")).toBeInTheDocument();
+    expect(screen.getByText("(83%)")).toBeInTheDocument();
+    expect(screen.getByText("Częściowe dopasowanie")).toBeInTheDocument();
+    expect(screen.getByText("(17%)")).toBeInTheDocument();
+  });
+
   it("renders results, focuses the heading and syncs the URL", async () => {
     const user = userEvent.setup();
     const problem = "Młodzież po lekcjach nie ma gdzie spędzać czasu";

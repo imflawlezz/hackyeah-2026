@@ -78,7 +78,7 @@ export function MatchExperience({
       setState({
         status: "success",
         results,
-        relevance: toRelevance(results),
+        relevance: toRelevance(results, source),
         source,
       });
     } catch (error) {

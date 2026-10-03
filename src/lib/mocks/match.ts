@@ -102,7 +102,15 @@ export function mockMatch(request: MatchRequest): MatchResult[] {
   const tokens = tokenize(request.problem);
   const category = request.category?.trim().toLocaleLowerCase("pl");
 
-  return innovations
+  // Same strict rule as the AI path: a requested category limits the results to it.
+  const candidates = category
+    ? innovations.filter(
+        (innovation) =>
+          innovation.category.toLocaleLowerCase("pl") === category,
+      )
+    : innovations;
+
+  return candidates
     .map((innovation) => {
       const words = innovationWords(innovation);
       const hits = tokens.filter((token) =>

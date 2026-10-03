@@ -41,4 +41,31 @@ describe("mockMatch", () => {
       ),
     );
   });
+
+  it("returns only the requested category even with stronger keyword hits elsewhere", () => {
+    const results = mockMatch({
+      problem: "samotni seniorzy na wsi, młodzież po lekcjach",
+      category: "Samotność",
+      limit: 5,
+    });
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(
+      results.every((result) => result.innovation.category === "Samotność"),
+    ).toBe(true);
+  });
+
+  it("matches the category case- and whitespace-insensitively", () => {
+    const results = mockMatch({ problem: "seniorzy", category: " samotność " });
+    expect(results.length).toBeGreaterThan(0);
+    expect(
+      results.every((result) => result.innovation.category === "Samotność"),
+    ).toBe(true);
+  });
+
+  it("returns nothing for an unknown category, like the AI path", () => {
+    expect(
+      mockMatch({ problem: "samotni seniorzy", category: "Nieistniejąca" }),
+    ).toEqual([]);
+  });
 });
