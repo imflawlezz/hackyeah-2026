@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import { GrantDraftPanel } from "@/components/ideas/grant-draft-panel";
+import { IdeaArticle } from "@/components/ideas/idea-article";
+import { IdeaWorkspace } from "@/components/ideas/idea-workspace";
+import { LocalIdeaPage } from "@/components/ideas/local-idea-page";
+import { getCurrentUser } from "@/lib/auth/session";
+import { getActiveGrantCall } from "@/lib/data/grant-calls";
+import { getIdea } from "@/lib/data/ideas";
+
+export const metadata: Metadata = {
+  title: "Fiszka pomysłu",
+  description: "Pełna kanwa zgłoszonego pomysłu.",
+};
+
+export default async function IdeaDetailsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const [idea, call, user] = await Promise.all([
+    getIdea(id),
+    getActiveGrantCall(),
+    getCurrentUser(),
+  ]);
+  const signedIn = Boolean(user);
+
+  if (!idea) {
+    return <LocalIdeaPage id={id} call={call} signedIn={signedIn} />;
+  }
+
+  return (
+    <IdeaWorkspace idea={idea}>
+      <IdeaArticle idea={idea} />
+      {call ? (
+        <GrantDraftPanel call={call} idea={idea} signedIn={signedIn} />
+      ) : null}
+    </IdeaWorkspace>
+  );
+}

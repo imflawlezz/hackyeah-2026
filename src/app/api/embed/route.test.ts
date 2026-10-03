@@ -4,6 +4,12 @@ const mocks = vi.hoisted(() => ({
   admin: vi.fn(),
   backfill: vi.fn(),
   configured: false,
+  user: vi.fn(),
+}));
+vi.mock("@/lib/auth/session", () => ({
+  getCurrentUser: mocks.user,
+  isAdmin: (user: { profile?: { role?: string } | null } | null) =>
+    user?.profile?.role === "admin",
 }));
 vi.mock("@/lib/supabase/admin", () => ({ createAdminClient: mocks.admin }));
 vi.mock("@/lib/ai/models", () => ({
@@ -26,6 +32,7 @@ beforeEach(() => {
   mocks.configured = false;
   mocks.admin.mockReset().mockReturnValue(null);
   mocks.backfill.mockReset();
+  mocks.user.mockReset().mockResolvedValue(null);
 });
 afterEach(() => vi.unstubAllEnvs());
 
@@ -35,6 +42,40 @@ it("rejects absent, wrong and unconfigured secrets", async () => {
   vi.stubEnv("EMBED_SECRET", "");
   expect((await POST(request("test-only-secret"))).status).toBe(401);
   expect(mocks.admin).not.toHaveBeenCalled();
+});
+it("accepts a signed-in admin session without the secret", async () => {
+  mocks.configured = true;
+  const client = {};
+  mocks.admin.mockReturnValue(client);
+  mocks.backfill.mockResolvedValue(3);
+  mocks.user.mockResolvedValue({
+    id: "admin-id",
+    email: "admin@hubmi.example",
+    profile: { role: "admin" },
+  });
+  const response = await POST(request(undefined, { all: true }));
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual({ count: 3 });
+  expect(mocks.backfill).toHaveBeenCalledWith(client, { all: true });
+});
+it("rejects signed-in users who are not admins", async () => {
+  mocks.user.mockResolvedValue({
+    id: "resident-id",
+    email: "resident@hubmi.example",
+    profile: { role: "resident" },
+  });
+  expect((await POST(request())).status).toBe(401);
+  mocks.user.mockResolvedValue({
+    id: "no-profile",
+    email: "x@hubmi.example",
+    profile: null,
+  });
+  expect((await POST(request())).status).toBe(401);
+  expect(mocks.admin).not.toHaveBeenCalled();
+});
+it("does not read the session when the secret is valid", async () => {
+  await POST(request("test-only-secret"));
+  expect(mocks.user).not.toHaveBeenCalled();
 });
 it("returns 503 when providers are not configured", async () => {
   expect((await POST(request("test-only-secret"))).status).toBe(503);

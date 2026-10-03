@@ -40,6 +40,7 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 | `npm run lint`         | ESLint, including jsx-a11y                |
 | `npm run typecheck`    | Next.js route types, then `tsc --noEmit`  |
 | `npm test`             | Vitest                                    |
+| `npm run demo:users`   | Create the four demo accounts in Supabase |
 | `npm run format`       | Prettier, write changes                   |
 | `npm run format:check` | Prettier, fail when files need formatting |
 
@@ -49,10 +50,13 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 src/app/(public)/          match, knowledge, ideas, test, messages, institutions, accessibility
 src/app/(auth)/login/      sign-in
 src/app/admin/             admin panel
-src/app/api/               match (AI with mock fallback), assistant (501), embed
+src/app/api/               match (AI with mock fallback), institutions (candidates, plan), assistant (501), embed
 src/components/ui/         shadcn/ui
 src/components/layout/     skip link, header, footer, accessibility toolbar
-src/lib/supabase/          browser and server clients
+src/lib/supabase/          browser, server and admin clients
+src/lib/auth/              roles, route access, session helpers, form schemas
+src/components/auth/       sign-in and sign-up forms
+src/proxy.ts               session refresh and route protection
 src/lib/ai/                embeddings, batch backfill, Polish match reasons
 src/lib/validators/        Zod schemas for the shared contracts
 src/lib/mocks/             Polish fixtures and mockMatch
@@ -73,27 +77,34 @@ Supabase (Postgres, Frankfurt `eu-central-1`) with pgvector. Keys live in `.env.
 To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
 1. `supabase/migrations/0001_init.sql`
-2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
-3. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
-4. `supabase/migrations/0005_messages_notifications.sql` (private conversations, notifications and Realtime; idempotent)
+2. `supabase/migrations/0002_auth_profiles.sql` (sign-up role and municipality on profiles; safe to re-run)
+3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+4. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
+5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 
-| Table                       | Who can read                  | Who can write                                                                       |
-| --------------------------- | ----------------------------- | ----------------------------------------------------------------------------------- |
-| `innovations`               | everyone, including anonymous | admin                                                                               |
-| `problems`                  | author, admin                 | signed-in users insert their own; admin                                             |
-| `ideas`                     | author, admin                 | signed-in users insert their own; admin                                             |
-| `feedback`                  | author, admin                 | signed-in users insert their own; admin                                             |
-| `innovation_tests`          | everyone, including anonymous | admin                                                                               |
-| `test_signups`              | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
-| `profiles`                  | owner, admin                  | owner (not `role`); admin                                                           |
-| `conversations`             | participants, admin           | start_conversation RPC; admin                                                       |
-| `conversation_participants` | participants, admin           | owner updates last_read_at; admin                                                   |
-| `messages`                  | participants, admin           | participants insert with their own author_id; admin                                 |
-| `notifications`             | owner, admin                  | owner updates read_at; database triggers create notifications                       |
+| Table                       | Who can read                                   | Who can write                                                                                 |
+| --------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `innovations`               | everyone: `published` rows only; admin: all    | admin                                                                                         |
+| `problems`                  | author, admin                                  | signed-in users insert their own; admin; the server (service role) after each `/match` search |
+| `ideas`                     | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                                     |
+| `feedback`                  | author, admin                                  | signed-in users insert their own; admin                                                       |
+| `innovation_tests`          | everyone, including anonymous                  | admin                                                                                         |
+| `test_signups`              | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin           |
+| `profiles`                  | owner, admin                                   | owner (not `role`); admin                                                                     |
+| `grant_calls`               | everyone, including anonymous                  | admin                                                                                         |
+| `grant_drafts`              | author, admin                                  | author; admin                                                                                 |
+| `conversations`             | participants, admin                            | start_conversation RPC; admin                                                                 |
+| `conversation_participants` | participants, admin                            | owner updates last_read_at; admin                                                             |
+| `messages`                  | participants, admin                            | participants insert with their own author_id; admin                                           |
+| `notifications`             | owner, admin                                   | owner updates read_at; database triggers create notifications                                 |
+
+After `0006`, `innovations.status` is `draft`, `published` (default) or `archived`. Drafts and archived rows are hidden from public pages and, because `match_innovations` runs with the caller's rights, from matching too.
+
+`0006` also adds `problems.best_score` (top raw cosine similarity, `null` for mock matches), `problems.source` (`ai` or `mock`), `problems.admin_note`, and `ideas.review_note`, `reviewed_at`, `reviewed_by`. `problem_trends(p_days, p_unmet_score)` returns problems per category and week with an `unmet_count`; RLS limits it to admins.
 
 Messages use the signed-in user's RLS client and Postgres Changes, following the [Supabase Realtime guide](https://supabase.com/docs/guides/realtime/postgres-changes). With no signed-in user, three fictional conversations and two notifications are stored only in this browser and synchronized across tabs with BroadcastChannel. Demo identities are fictional. Partnership conversations remain private; there is no public partnership board.
 
-A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
+A profile row is created automatically for every new auth user. The role and municipality come from the sign-up form, but the trigger accepts only `resident`, `jst` and `expert`; anything else, including `admin`, becomes `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
 Feedback rows and sign-ups stay private, so public pages read numbers only, through two functions anyone may call: `innovation_feedback_summary(p_innovation_id)` (count, averages, rating distribution, recommend share) and `test_slots_taken(p_test_id)`. A `before insert` trigger on `test_signups` rejects a sign-up to a closed or full test (`TEST_CLOSED`, `TEST_FULL`), which the app turns into Polish messages.
 
@@ -101,13 +112,18 @@ Feedback rows and sign-ups stay private, so public pages read numbers only, thro
 
 Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
 
-| Database                                                                               | `src/types`             | Note                                     |
-| -------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------- |
-| `ideas.essence`                                                                        | `Idea.summary`          | different name, same field               |
-| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, … | optional, added in `0004`                |
-| `test_signups.user_id`                                                                 | `TestSignup.userId`     | defaults to the signed-in user           |
-| `innovations.embedding`, `problems.embedding`                                          | not exposed             | `vector(1536)`, server-side only         |
-| `id`                                                                                   | `id: string`            | uuid in the database, slugs in the mocks |
+| Database                                                                               | `src/types`                    | Note                                                           |
+| -------------------------------------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------- |
+| `ideas.essence`                                                                        | `Idea.summary`                 | different name, same field                                     |
+| `ideas.canvas`                                                                         | `Idea.canvas`                  | jsonb                                                          |
+| `ideas.municipality`                                                                   | `Idea.municipality`            | optional                                                       |
+| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, …        | optional, added in `0004`                                      |
+| `test_signups.user_id`                                                                 | `TestSignup.userId`            | defaults to the signed-in user                                 |
+| `innovations.summary`, `region`                                                        | `Innovation.summary`, `region` | optional; also in `AdminInnovation` (`src/lib/admin/types.ts`) |
+| `innovations.status`, `updated_at`                                                     | `AdminInnovation`              | from `0006`                                                    |
+| `problems.best_score`, `source`, `admin_note`                                          | `AdminProblem`                 | from `0006`; mappers in `src/lib/data/admin.ts`                |
+| `innovations.embedding`, `problems.embedding`                                          | not exposed                    | `vector(1536)`, server-side only                               |
+| `id`                                                                                   | `id: string`                   | uuid in the database, slugs in the mocks                       |
 
 ### Matching
 
@@ -129,6 +145,48 @@ from match_innovations(
 );
 rollback;
 ```
+
+## Authentication and roles
+
+Supabase Auth with e-mail and password. Without `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` the app runs in demo mode: sign-in is disabled, every module is open and the header shows "Wersja demonstracyjna".
+
+| Role       | Label in the UI             | How you get it                 |
+| ---------- | --------------------------- | ------------------------------ |
+| `resident` | Mieszkaniec lub organizacja | sign-up (default)              |
+| `jst`      | Samorząd (JST)              | sign-up                        |
+| `expert`   | Ekspert                     | sign-up                        |
+| `admin`    | Administrator ROPS          | promoted by hand in SQL Editor |
+
+Route access is defined in `src/lib/auth/access.ts` and enforced in `src/proxy.ts`, which also refreshes the session cookies:
+
+| Route                      | Who can open it    | Otherwise                              |
+| -------------------------- | ------------------ | -------------------------------------- |
+| `/admin`, `/admin/*`       | admins             | `/login?next=…` or `/?error=forbidden` |
+| `/messages`, `/messages/*` | any signed-in user | `/login?next=…`                        |
+| `/ideas/new`               | any signed-in user | `/login?next=…`                        |
+| everything else            | everyone           |                                        |
+
+The proxy is a first check, not the security boundary. `src/app/admin/layout.tsx` and `src/app/(public)/messages/layout.tsx` repeat the check on the server, and row level security decides what each user can read and write.
+
+In server code, use the helpers from `src/lib/auth/session.ts`:
+
+- `getCurrentUser()` returns `{ id, email, profile }` or `null` (always `null` in demo mode).
+- `requireUser(next?)` redirects logged-out visitors to `/login?next=…`.
+- `requireRole(roles, next?)` also redirects the wrong role to `/?error=forbidden`.
+- `isAdmin(user)`.
+
+A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/auth/roles.ts` and the `handle_new_user` trigger apply the same rule. `POST /api/embed` accepts the `x-embed-secret` header or a signed-in admin session.
+
+### Demo accounts
+
+`npm run demo:users` creates four fictional accounts with confirmed e-mails. It needs `SUPABASE_SERVICE_ROLE_KEY` and `DEMO_USER_PASSWORD` (at least 8 characters) in `.env.local`. The password is shared in the team password manager, never in git. Existing accounts are skipped, so the script is safe to re-run.
+
+| E-mail                   | Role       |
+| ------------------------ | ---------- |
+| `resident@hubmi.example` | `resident` |
+| `jst@hubmi.example`      | `jst`      |
+| `expert@hubmi.example`   | `expert`   |
+| `admin@hubmi.example`    | `admin`    |
 
 ## Design system and accessibility
 
