@@ -1,6 +1,6 @@
-# HubMI.pl — miesięczny koszt i zasoby utrzymania
+# HubMI.pl: miesięczny koszt i zasoby utrzymania
 
-Wymagany element zgłoszenia: [brief, §4 — wymagania formalne](../task/CHALLENGE.md). Kosztorys pilotażu, stan cenników sprawdzony 3 października 2026. Kwoty netto; podatki i opłaty przewalutowania nie są uwzględnione.
+Wymagany element zgłoszenia: [brief, §4, wymagania formalne](../task/CHALLENGE.md). Kosztorys pilotażu, stan cenników sprawdzony 3 października 2026. Kwoty netto; podatki i opłaty przewalutowania nie są uwzględnione.
 
 ## Założenia
 
@@ -8,7 +8,7 @@ Wymagany element zgłoszenia: [brief, §4 — wymagania formalne](../task/CHALLE
 - Jedno konto wdrażające Vercel Pro, jeden projekt Supabase Pro z instancją Micro. Ruch i zasoby mieszczą się w pakietach; to założenie do sprawdzenia w pilotażu.
 - Na dopasowanie: 3000 tokenów wejścia i 600 wyjścia modelu uzasadnień oraz 200 tokenów wejścia modelu wektorowego. To szacunek, nie pomiar; dłuższe opisy i większa liczba wyników zwiększą rachunek.
 - Miesięczne aktualizacje katalogu: 100 opisów po 400 tokenów do przeliczenia wektorów.
-- **1 USD = 4,00 PLN** — jawnie przyjęty kurs planistyczny, nie bieżący kurs NBP ani kurs banku. Kwoty USD należy przemnożyć przez rzeczywisty kurs rozliczenia.
+- **1 USD = 4,00 PLN**. To kurs planistyczny, który przyjęliśmy jawnie. Nie jest to bieżący kurs NBP ani kurs banku. Kwoty USD należy przemnożyć przez rzeczywisty kurs rozliczenia.
 
 ## Usługi miesięcznie
 
@@ -26,10 +26,10 @@ Rezerwa nie pokrywa przekroczeń Vercel ani Supabase. Dodatkowe konto wdrażają
 
 Źródła stawek:
 
-- [Vercel Pro — opłata platformowa, kredyt i dodatkowe konta](https://vercel.com/docs/plans/pro-plan).
-- [Supabase — Pro, Micro i kredyt obliczeniowy](https://supabase.com/pricing).
-- [OpenAI GPT-4o mini — standardowe stawki za milion tokenów](https://developers.openai.com/api/docs/models/gpt-4o-mini).
-- [OpenAI text-embedding-3-small — standardowa stawka za milion tokenów](https://developers.openai.com/api/docs/models/text-embedding-3-small).
+- [Vercel Pro: opłata platformowa, kredyt i dodatkowe konta](https://vercel.com/docs/plans/pro-plan).
+- [Supabase: Pro, Micro i kredyt obliczeniowy](https://supabase.com/pricing).
+- [OpenAI GPT-4o mini: standardowe stawki za milion tokenów](https://developers.openai.com/api/docs/models/gpt-4o-mini).
+- [OpenAI text-embedding-3-small: standardowa stawka za milion tokenów](https://developers.openai.com/api/docs/models/text-embedding-3-small).
 
 Nie zakładamy rabatów za pamięć podręczną ani przetwarzanie wsadowe. Pierwsze zaindeksowanie 200 opisów po 400 tokenów kosztuje jednorazowo około 0,0016 USD, czyli 0,0064 PLN; import i weryfikacja danych wymagają dodatkowo pracy człowieka.
 

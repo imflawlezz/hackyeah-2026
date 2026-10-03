@@ -8,11 +8,11 @@ Build a calm, editorial civic service for Małopolska residents, NGOs, gminy, CU
 
 ## Banned treatments
 
-No gradient blobs or mesh backgrounds, glassmorphism, backdrop blur, emoji icons, sparkles motifs, “✨ AI-powered” labels, centred-everything heroes, three identical feature cards, stock photos, AI-generated images, pill-shaped everything or decorative animation. Loading feedback may animate only with reduced-motion support.
+No gradient blobs or mesh backgrounds, glassmorphism, backdrop blur, emoji icons, sparkles motifs, "✨ AI-powered" labels, centred-everything heroes, three identical feature cards, stock photos, AI-generated images, pill-shaped everything or decorative animation. Loading feedback may animate only with reduced-motion support.
 
 ## Palette and contrast
 
-Use only existing tokens from `src/app/globals.css`. Primary is for actions and links; navy is for headings and the footer. Use the semantic `heading` token for headings so high contrast remains readable. Crimson `highlight` appears at most once per screen, for example a “Nowe” badge or one key number. Use the muted surface for alternating sections. Never convey status by colour alone.
+Use only existing tokens from `src/app/globals.css`. Primary is for actions and links; navy is for headings and the footer. Use the semantic `heading` token for headings so high contrast remains readable. Crimson `highlight` appears at most once per screen, for example a "Nowe" badge or one key number. Use the muted surface for alternating sections. Never convey status by colour alone.
 
 | Token             | Default | Contrast on white | Usage                          |
 | ----------------- | ------- | ----------------- | ------------------------------ |
@@ -50,13 +50,13 @@ Use [Heroicons](https://heroicons.com), following the [React README](https://git
 - Inline text and buttons: `@heroicons/react/20/solid`, `size-5`.
 - Badges and dense tables: `@heroicons/react/16/solid`, `size-4`.
 
-Keep one style per context. Decorative icons get `aria-hidden="true"`. Icon-only buttons have a Polish `aria-label`, such as “Zamknij menu”. Navigation always has a visible text label. The shadcn CLI still generates lucide imports; replace them after each add command. ESLint rejects `lucide-react`.
+Keep one style per context. Decorative icons get `aria-hidden="true"`. Icon-only buttons have a Polish `aria-label`, such as "Zamknij menu". Navigation always has a visible text label. The shadcn CLI still generates lucide imports; replace them after each add command. ESLint rejects `lucide-react`.
 
 ## Polish copy
 
-Use concrete Polish about social services in Małopolska: gminy, CUS/OPS, NGOs, seniors and caregivers. Write short sentences in active voice. Address residents with friendly-formal “Ty”: “Opisz problem”, “Sprawdź”. Use neutral “Ty” for institutions too: “Twoja gmina”, never “Państwo”. Labels are nouns; buttons are verbs. Errors explain what happened and what to do next.
+Use concrete Polish about social services in Małopolska: gminy, CUS/OPS, NGOs, seniors and caregivers. Write short sentences in active voice. Address residents with friendly-formal "Ty": "Opisz problem", "Sprawdź". Use neutral "Ty" for institutions too: "Twoja gmina", never "Państwo". Labels are nouns; buttons are verbs. Errors explain what happened and what to do next.
 
-No marketing fluff: “rewolucyjny”, “innowacyjna platforma oparta na AI”, “przełomowy”, “kompleksowe rozwiązanie”, “z łatwością”. No exclamation marks in UI. Prefer full stops to long dashes, at most one dash per paragraph. Avoid English loanwords when Polish words exist. Do not put “AI” in headings unless necessary to explain data handling.
+No marketing fluff: "rewolucyjny", "innowacyjna platforma oparta na AI", "przełomowy", "kompleksowe rozwiązanie", "z łatwością". No exclamation marks in UI. Prefer full stops to long dashes, at most one dash per paragraph. Avoid English loanwords when Polish words exist. Do not put "AI" in headings unless necessary to explain data handling.
 
 | Context          | Do                                                            | Don't                                             |
 | ---------------- | ------------------------------------------------------------- | ------------------------------------------------- |
@@ -74,7 +74,7 @@ No marketing fluff: “rewolucyjny”, “innowacyjna platforma oparta na AI”,
 
 ## AI-generated text
 
-Generated text follows these same rules through `src/lib/ai/style.ts`. Wrap every system prompt in `withCopyStyle`; do not duplicate the guide in feature prompts. Never invent facts, numbers or names. Say plainly when data is missing. No emoji or Markdown headings unless asked. In the UI label generated output: “Tekst przygotowany automatycznie. Sprawdź go przed wysłaniem.” Use plain text, never sparkles. Matching reasons describe possible relevance, not guaranteed success.
+Generated text follows these same rules through `src/lib/ai/style.ts`. Wrap every system prompt in `withCopyStyle`; do not duplicate the guide in feature prompts. Never invent facts, numbers or names. Say plainly when data is missing. No emoji or Markdown headings unless asked. In the UI label generated output: "Tekst przygotowany automatycznie. Sprawdź go przed wysłaniem." Use plain text, never sparkles. Matching reasons describe possible relevance, not guaranteed success.
 
 ## Accessibility non-negotiables
 
