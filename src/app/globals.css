@@ -5,8 +5,25 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-open-sans), system-ui, sans-serif;
+  --font-heading: var(--font-open-sans), system-ui, sans-serif;
+  /* Gov.pl type scale 12 / 14 / 16 / 20 / 24 / 28 / 32 / 40 px at the 16 px base. */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.25;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.25;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 1.25;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 1.25;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -59,54 +76,64 @@
 /* Default theme. Contrast ratios are documented in README.md and asserted in
    src/lib/a11y/contrast.test.ts. */
 :root {
+  /* Design System Gov.pl palette (.agents/skills/govpl-design §1). Token names
+     stay the same so components do not change. */
   --background: #ffffff;
-  --foreground: #1a1a1a;
+  --foreground: #1b1b1b;
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #1b1b1b;
   --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #2462ad;
-  --primary-hover: #1d508d;
+  --popover-foreground: #1b1b1b;
+  /* primary; hover = primary-light; pressed = navy */
+  --primary: #0052a5;
+  --primary-hover: #006cd7;
   --primary-foreground: #ffffff;
-  --secondary: #f5f7fa;
-  --secondary-foreground: #1a1a1a;
-  --muted: #f5f7fa;
-  --muted-foreground: #4d4d4d;
-  --accent: #e8f0fa;
-  --accent-foreground: #0f4a91;
-  --navy: #0f4a91;
+  /* gray-100 surfaces, gray-700 secondary text */
+  --secondary: #f1f1f1;
+  --secondary-foreground: #1b1b1b;
+  --muted: #f1f1f1;
+  --muted-foreground: #656565;
+  --accent: #f1f1f1;
+  --accent-foreground: #00468d;
+  --navy: #00468d;
   --navy-foreground: #ffffff;
-  --heading: #0f4a91;
-  --highlight: #d10a52;
+  --heading: #1b1b1b;
+  /* Gov.pl has no accent colour; one restrained emphasis uses danger-dark. */
+  --highlight: #a7162d;
   --highlight-foreground: #ffffff;
-  --success: #1e7f3c;
+  /* success is 4.37:1 on white: icons, borders and bars only, never text. */
+  --success: #598527;
   --success-foreground: #ffffff;
-  --warning: #b45309;
-  --warning-foreground: #ffffff;
-  --destructive: #b91c1c;
+  /* warning is a background only, with dark text. Never text or an icon on white. */
+  --warning: #eba828;
+  --warning-foreground: #1b1b1b;
+  --destructive: #a7162d;
   --destructive-foreground: #ffffff;
-  --border: #d5dbe3;
-  --input: #6b7280;
-  --ring: #2462ad;
-  --chart-1: #2462ad;
-  --chart-2: #d10a52;
-  --chart-3: #1e7f3c;
-  --chart-4: #b45309;
-  --chart-5: #6d3fb0;
-  --radius: 0.375rem;
-  --sidebar: #f5f7fa;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #2462ad;
+  /* gray-200 for dividers; form controls need 3:1, so they use gray-600. */
+  --border: #dadada;
+  --input: #767676;
+  --ring: #0052a5;
+  --chart-1: #0052a5;
+  --chart-2: #a7162d;
+  --chart-3: #598527;
+  --chart-4: #656565;
+  --chart-5: #00468d;
+  --radius: 0.25rem;
+  --sidebar: #f1f1f1;
+  --sidebar-foreground: #1b1b1b;
+  --sidebar-primary: #0052a5;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e8f0fa;
-  --sidebar-accent-foreground: #0f4a91;
-  --sidebar-border: #d5dbe3;
-  --sidebar-ring: #2462ad;
+  --sidebar-accent: #f1f1f1;
+  --sidebar-accent-foreground: #00468d;
+  --sidebar-border: #dadada;
+  --sidebar-ring: #0052a5;
 }
 
 /* High contrast: black background, white text, yellow links and focus.
    Every text pair is at least 7:1. */
 [data-theme="high-contrast"] {
+  /* Native controls and scrollbars follow the dark surface. */
+  color-scheme: dark;
   --background: #000000;
   --foreground: #ffffff;
   --card: #000000;
@@ -151,17 +178,35 @@
   --sidebar-ring: #ffff00;
 }
 
-/* Base size is 18px. The accessibility toolbar scales it via data-font-size. */
+/* Gov.pl base: 16px on desktop, 14px below 700px. The accessibility toolbar
+   scales it by 115% (A+) and 130% (A++) via data-font-size. */
 html {
-  font-size: 112.5%;
+  font-size: 100%;
 }
 
 html[data-font-size="large"] {
-  font-size: 129.375%;
+  font-size: 115%;
 }
 
 html[data-font-size="largest"] {
-  font-size: 146.25%;
+  font-size: 130%;
+}
+
+@media (max-width: 699.98px) {
+  html {
+    font-size: 87.5%;
+    /* Text shrinks to 14px, but spacing and 44px touch targets keep their
+       pixel size: Tailwind sizes are multiples of --spacing. */
+    --spacing: calc(0.25rem / 0.875);
+  }
+
+  html[data-font-size="large"] {
+    font-size: 100.625%;
+  }
+
+  html[data-font-size="largest"] {
+    font-size: 113.75%;
+  }
 }
 
 /* Unlayered on purpose so it wins over the `outline-none` utilities that
@@ -180,27 +225,34 @@ html[data-font-size="largest"] {
   }
   body {
     @apply bg-background text-foreground;
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  /* Source Serif 4 is loaded at 600 and 700 only; preflight resets headings
-     to the inherited 400, so set the lighter loaded weight explicitly. */
+  /* No double-tap zoom delay on controls; pinch zoom stays available. */
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  summary {
+    touch-action: manipulation;
+  }
+  /* Preflight resets headings to the inherited 400; Gov.pl headings are bold. */
   h1,
   h2,
   h3,
   h4 {
     @apply font-heading;
-    font-weight: 600;
-    line-height: 1.2;
+    font-weight: 700;
+    line-height: 1.25;
     text-wrap: balance;
     /* Long Polish words at A++ with WCAG 1.4.12 spacing must not overflow. */
     overflow-wrap: break-word;
   }
-  /* Source Sans 3 is loaded at 400 and 600; the browser's default bold (700)
-     would be synthesised. */
   th,
   strong,
   b {
-    font-weight: 600;
+    font-weight: 700;
   }
   /* Reading measure from STYLE.md (60–75 characters). Only caps the width. */
   p,

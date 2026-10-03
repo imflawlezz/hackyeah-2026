@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -10,16 +10,10 @@ import { getCurrentUser } from "@/lib/auth/session";
 import { hasSupabase } from "@/lib/supabase/server";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  weight: ["400", "600"],
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  weight: ["600", "700"],
+// Design System Gov.pl: Open Sans only, with latin-ext for Polish letters.
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  weight: ["400", "600", "700"],
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
@@ -34,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2462ad",
+  themeColor: "#ffffff",
 };
 
 export default async function RootLayout({
@@ -53,7 +47,7 @@ export default async function RootLayout({
   return (
     <html
       lang="pl"
-      className={`${sourceSans.variable} ${sourceSerif.variable} h-full`}
+      className={`${openSans.variable} h-full`}
       suppressHydrationWarning
     >
       <head>
