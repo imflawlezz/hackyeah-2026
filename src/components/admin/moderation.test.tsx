@@ -48,6 +48,43 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("Moderation", () => {
+  it("shows each tab with its label and count, and marks the selected one", async () => {
+    const user = userEvent.setup();
+    renderModeration("problems");
+
+    const tabs = screen.getAllByRole("tab");
+    expect(
+      tabs.map((tab) => [
+        tab.firstChild?.textContent,
+        within(tab).getByText(/^\d+$/).textContent,
+        tab.getAttribute("aria-selected"),
+      ]),
+    ).toEqual([
+      ["Pomysły", String(ideas.length), "false"],
+      ["Problemy", String(problems.length), "true"],
+      ["Szkice innowacji", "0", "false"],
+    ]);
+    expect(
+      screen.getByRole("tab", { name: `Problemy ${problems.length}` }),
+    ).toHaveAttribute("aria-selected", "true");
+    expect(
+      screen.getByRole("heading", { name: "Nowe zgłoszenia problemów" }),
+    ).toBeVisible();
+
+    // Arrow keys move between tabs; Enter selects the focused one.
+    tabs[1]!.focus();
+    await user.keyboard("{ArrowRight}");
+    expect(tabs[2]).toHaveFocus();
+    await user.keyboard("{Enter}");
+    expect(tabs[2]).toHaveAttribute("aria-selected", "true");
+    expect(tabs[1]).toHaveAttribute("aria-selected", "false");
+    expect(
+      screen.getByRole("heading", { name: "Szkice innowacji" }),
+    ).toBeVisible();
+    await user.keyboard("{ArrowLeft}{ArrowLeft}");
+    expect(tabs[0]).toHaveFocus();
+  });
+
   it("confirms an idea review with a note and announces the result", async () => {
     const user = userEvent.setup();
     actions.reviewIdeaAction.mockResolvedValue({
