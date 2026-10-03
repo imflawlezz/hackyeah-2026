@@ -59,6 +59,25 @@ function textResponse(text: string, source: "ai" | "fallback") {
   });
 }
 
+/** A Polish message that names what is actually wrong with the request. */
+function validationMessage(issues: z.core.$ZodIssue[]): string {
+  const issue = issues[0];
+  if (!issue || issue.path[0] !== "messages") {
+    return "Nie udało się odczytać wiadomości. Odśwież stronę i spróbuj ponownie.";
+  }
+  if (issue.path.length === 1) {
+    if (issue.code === "too_big") {
+      return "Rozmowa jest za długa. Zacznij nową rozmowę z asystentem.";
+    }
+    // Missing, not a list, or an empty list.
+    return "Wpisz pytanie do asystenta.";
+  }
+  if (issue.code === "too_big") {
+    return "Wiadomość jest za długa. Skróć ją do 2000 znaków.";
+  }
+  return "Nie udało się odczytać wiadomości. Odśwież stronę i spróbuj ponownie.";
+}
+
 export function GET() {
   return NextResponse.json(
     { error: "Ta ścieżka przyjmuje tylko POST." },
@@ -87,7 +106,7 @@ export async function POST(request: Request) {
   const parsed = assistantBodySchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Wiadomość jest za długa albo jest ich za dużo." },
+      { error: validationMessage(parsed.error.issues) },
       { status: 400 },
     );
   }

@@ -10,6 +10,7 @@ import { getInnovationById } from "@/lib/data/innovations";
 import {
   getFeedbackSummary,
   getMockFeedbackScores,
+  getMySignupTestIds,
   getTestsForInnovation,
 } from "@/lib/data/testing";
 import { hasSupabase } from "@/lib/supabase/server";
@@ -48,10 +49,11 @@ export default async function InnovationTestPage({ params }: PageProps) {
   const innovation = await loadInnovation(innovationId);
   if (!innovation) notFound();
 
-  const [tests, summary, user] = await Promise.all([
+  const [tests, summary, user, signedUpTestIds] = await Promise.all([
     getTestsForInnovation(innovation.id),
     getFeedbackSummary(innovation.id),
     getCurrentUser(),
+    getMySignupTestIds(),
   ]);
   const encodedId = encodeURIComponent(innovation.id);
   const mode = !hasSupabase ? "demo" : user ? "signed-in" : "signed-out";
@@ -105,6 +107,7 @@ export default async function InnovationTestPage({ params }: PageProps) {
         summary={summary}
         demoScores={hasSupabase ? [] : getMockFeedbackScores(innovation.id)}
         mode={mode}
+        signedUpTestIds={signedUpTestIds}
         loginHref={`/login?next=${encodeURIComponent(`/test/${innovation.id}`)}`}
       />
     </div>

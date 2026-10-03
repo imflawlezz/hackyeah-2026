@@ -236,8 +236,25 @@ describe("demo mode", () => {
     );
     renderTesting();
 
-    expect(screen.getByText(SIGNUP_MESSAGES.duplicate)).toBeVisible();
+    expect(screen.getByText(SIGNUP_MESSAGES.signedUp)).toBeVisible();
     expect(screen.queryByRole("button", { name: /^Zgłoś się/ })).toBeNull();
+  });
+
+  it("shows the signed-up state from the server after a reload", () => {
+    renderTesting({
+      mode: "signed-in",
+      demoScores: [],
+      signedUpTestIds: ["test-telecare-nowy-targ"],
+    });
+
+    expect(screen.getByText(SIGNUP_MESSAGES.signedUp)).toBeVisible();
+    expect(screen.queryByRole("button", { name: /^Zgłoś się/ })).toBeNull();
+    expect(
+      screen.getByRole("link", { name: "Napisz do zespołu ROPS" }),
+    ).toHaveAttribute(
+      "href",
+      `/messages/new?kind=ask_rops&subject=${encodeURIComponent("Rezygnacja z testu: Codzienny telefon do seniora")}`,
+    );
   });
 
   it("refuses a full test with the agreed message", () => {
@@ -371,6 +388,22 @@ describe("OpenTestsList", () => {
     );
     expect(screen.getAllByRole("listitem")).toHaveLength(1);
     expect(screen.getByRole("listitem")).toHaveTextContent("Wieliczka");
+  });
+
+  it("marks tests the signed-in user already joined", () => {
+    render(
+      <OpenTestsList
+        tests={[assistant, telecare]}
+        demo={false}
+        signedUpTestIds={[telecare.id]}
+      />,
+    );
+    expect(
+      screen.getByRole("link", { name: /Zapisano.*Teleopieka sąsiedzka/ }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Zgłoś się: Gminny asystent cyfrowy" }),
+    ).toBeInTheDocument();
   });
 
   it("shows the empty state", () => {

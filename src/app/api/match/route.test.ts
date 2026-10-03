@@ -45,8 +45,8 @@ describe("POST /api/match", () => {
     const results = matchResultSchema.array().parse(await response.json());
     expect(results.length).toBeGreaterThan(0);
     expect(results.length).toBeLessThanOrEqual(5);
-    expect(results[0].score).toBe(1);
-    expect(results.every(({ score }) => score >= 0 && score <= 1)).toBe(true);
+    expect(results[0].score).toBeGreaterThan(0);
+    expect(results.every(({ score }) => score >= 0 && score < 1)).toBe(true);
     expect(mocks.embed).not.toHaveBeenCalled();
   });
 
@@ -76,9 +76,9 @@ describe("POST /api/match", () => {
     );
     expect(response.status).toBe(200);
     expect(response.headers.get("X-Match-Source")).toBe("mock");
-    expect(
-      matchResultSchema.array().parse(await response.json())[0].score,
-    ).toBe(1);
+    const results = matchResultSchema.array().parse(await response.json());
+    expect(results[0].score).toBeGreaterThan(0);
+    expect(results[0].score).toBeLessThan(1);
   });
 
   it("returns an empty array when no mocks match", async () => {

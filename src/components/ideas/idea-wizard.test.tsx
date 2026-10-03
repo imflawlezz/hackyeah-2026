@@ -75,16 +75,57 @@ describe("IdeaWizard", () => {
     ).toHaveFocus();
   });
 
-  it("autosaves the current step to localStorage", async () => {
-    const user = userEvent.setup();
-    render(<IdeaWizard call={null} signedIn={false} />);
-    await user.type(
-      screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
-      "Brak balkoników.",
+  it("starts a new idea at step 1, empty, ignoring an old autosave", () => {
+    window.localStorage.setItem(
+      LOCAL_DRAFT_KEY,
+      JSON.stringify({ step: 8, values: { problem: "Stary szkic." } }),
     );
-    await waitFor(() => {
-      const saved = window.localStorage.getItem(LOCAL_DRAFT_KEY);
-      expect(saved).toContain("Brak balkoników.");
+    render(<IdeaWizard call={null} signedIn={false} />);
+
+    expect(screen.getByText("Krok 1 z 9")).toBeInTheDocument();
+    expect(
+      screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
+    ).toHaveValue("");
+    expect(window.localStorage.getItem(LOCAL_DRAFT_KEY)).toBeNull();
+  });
+
+  it("submits an edited draft as an update of the same row", async () => {
+    const user = userEvent.setup();
+    saveIdea.mockResolvedValueOnce({
+      ok: true,
+      storage: "database",
+      id: "11111111-1111-4111-8111-111111111111",
+    } as never);
+    const values = {
+      problem: answers[0],
+      targetGroup: answers[1],
+      summary: answers[2],
+      solution: answers[3],
+      novelty: answers[4],
+      resources: answers[5],
+      partners: answers[6],
+      risks: answers[7],
+      successMeasures: answers[8],
+      title: "Wypożyczalnia sprzętu",
+      stage: "idea" as const,
+      municipality: "Gdów",
+    };
+    render(
+      <IdeaWizard
+        call={null}
+        signedIn
+        initialDraft={{ id: "11111111-1111-4111-8111-111111111111", values }}
+      />,
+    );
+
+    expect(screen.getByText("Krok 9 z 9")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Wyślij do Hubu" }));
+
+    await waitFor(() => expect(saveIdea).toHaveBeenCalledTimes(1));
+    expect(saveIdea.mock.calls[0]![0]).toMatchObject({
+      id: "11111111-1111-4111-8111-111111111111",
+      status: "submitted",
+      title: "Wypożyczalnia sprzętu",
     });
   });
 

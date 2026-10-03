@@ -21,11 +21,16 @@ import {
   EMPTY_IDEA_DRAFT,
   fieldLabel,
   IDEA_STEPS,
+  ideaToDraftValues,
   validateIdeaStep,
   type IdeaDraftValues,
 } from "@/lib/ideas/draft";
 import { STAGE_LABEL } from "@/lib/ideas/labels";
-import { LOCAL_DRAFT_KEY, writeLocalIdea } from "@/lib/ideas/storage";
+import {
+  LOCAL_DRAFT_KEY,
+  readLocalIdea,
+  writeLocalIdea,
+} from "@/lib/ideas/storage";
 
 const BROWSER_NOTICE =
   "Pomysł jest zapisany tylko w tej przeglądarce. Zaloguj się, żeby wysłać go do Hubu.";
@@ -34,48 +39,50 @@ function subscribe() {
   return () => {};
 }
 
-function parseDraft(raw: string): { step: number; values: IdeaDraftValues } {
-  if (!raw) return { step: 0, values: EMPTY_IDEA_DRAFT };
-  try {
-    const saved = JSON.parse(raw) as {
-      step?: number;
-      values?: Partial<IdeaDraftValues>;
-    };
-    return {
-      step:
-        typeof saved.step === "number"
-          ? Math.min(Math.max(saved.step, 0), IDEA_STEPS.length - 1)
-          : 0,
-      values: { ...EMPTY_IDEA_DRAFT, ...saved.values },
-    };
-  } catch {
-    return { step: 0, values: EMPTY_IDEA_DRAFT };
-  }
-}
+/** Existing draft the author is editing; absent for a new idea. */
+export type WizardDraft = { id: string; values: IdeaDraftValues };
+
+const LAST_STEP = IDEA_STEPS.length - 1;
 
 export function IdeaWizard({
   call,
   signedIn,
+  initialDraft,
+  localDraftId,
 }: {
   call: GrantCall | null;
   signedIn: boolean;
+  /** A database draft owned by the signed-in user. */
+  initialDraft?: WizardDraft;
+  /** A draft kept in this browser (demo mode or signed out). */
+  localDraftId?: string;
 }) {
   const router = useRouter();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const skipFocus = useRef(true);
   const fieldRefs = useRef(new Map<string, HTMLElement>());
-  const stored = parseDraft(
-    useSyncExternalStore(
-      subscribe,
-      () => window.localStorage.getItem(LOCAL_DRAFT_KEY) ?? "",
-      () => "",
-    ),
-  );
-  const client = useSyncExternalStore(
+  const localRaw = useSyncExternalStore(
     subscribe,
-    () => true,
-    () => false,
+    () => {
+      if (!localDraftId) return "";
+      const idea = readLocalIdea(localDraftId);
+      return idea?.status === "draft" ? JSON.stringify(idea) : "";
+    },
+    () => "",
   );
+  const localDraft: WizardDraft | undefined =
+    localDraftId && localRaw
+      ? {
+          id: localDraftId,
+          values: ideaToDraftValues(JSON.parse(localRaw) as Idea),
+        }
+      : undefined;
+  const editing = initialDraft ?? localDraft;
+  // A new idea starts empty at step 1; an edited draft opens at the summary,
+  // where it can be checked and sent.
+  const stored = editing
+    ? { step: LAST_STEP, values: editing.values }
+    : { step: 0, values: EMPTY_IDEA_DRAFT };
   const [edits, setEdits] = useState<{
     step: number;
     values: IdeaDraftValues;
@@ -89,15 +96,19 @@ export function IdeaWizard({
   const [notice, setNotice] = useState("");
   const [formError, setFormError] = useState("");
   const [saving, setSaving] = useState(false);
-  const [savedId, setSavedId] = useState<string>();
+  const [newId, setNewId] = useState<string>();
+  // Saving or sending an edited draft always updates that row, never inserts.
+  const savedId = newId ?? editing?.id;
 
   useEffect(() => {
-    if (!client) return;
-    window.localStorage.setItem(
-      LOCAL_DRAFT_KEY,
-      JSON.stringify({ step, values }),
-    );
-  }, [client, step, values]);
+    // Older versions autosaved a half-filled form here and reopened it at the
+    // last step on every visit; that copy is no longer used.
+    try {
+      window.localStorage.removeItem(LOCAL_DRAFT_KEY);
+    } catch {
+      /* Storage may be blocked; nothing to clean up then. */
+    }
+  }, []);
 
   useEffect(() => {
     if (skipFocus.current) {
@@ -157,7 +168,10 @@ export function IdeaWizard({
     setFormError("");
     const id = savedId ?? `local-${crypto.randomUUID()}`;
     const idea = draftToIdea(values, status, id);
-    const result = await saveIdea({ ...idea, id: savedId });
+    const result = await saveIdea({
+      ...idea,
+      id: savedId?.startsWith("local-") ? undefined : savedId,
+    });
     setSaving(false);
     if (!result.ok) {
       setFormError(result.error);
@@ -165,10 +179,12 @@ export function IdeaWizard({
     }
     if (result.storage === "browser") {
       writeLocalIdea(idea);
-      setSavedId(id);
+      setNewId(id);
       setNotice(BROWSER_NOTICE);
       return;
     }
+    // Remember the row so a second click updates it instead of inserting.
+    setNewId(result.id);
     router.push(`/ideas/${result.id}`);
   }
 

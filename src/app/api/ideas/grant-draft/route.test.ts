@@ -60,13 +60,93 @@ describe("POST /api/ideas/grant-draft", () => {
       "harmonogram",
       "budżet",
     ]);
+    for (const section of payload.sections) {
+      expect(section.body).not.toMatch(/\[|uzupełnij/i);
+    }
     expect(
       payload.sections.find((section) => section.key === "harmonogram")?.body,
-    ).toContain("[uzupełnij:");
+    ).toContain("Rozpisz działania na kolejne miesiące");
     expect(
       payload.sections.find((section) => section.key === "budżet")?.body,
-    ).toContain("[uzupełnij:");
+    ).toMatch(/nie może przekroczyć 20\s000 zł/);
     expect(mocks.generate).not.toHaveBeenCalled();
+  });
+
+  it("asks the model for marked estimates and passes the call limits", async () => {
+    mocks.openAI = true;
+    POST = (await import("./route")).POST;
+    mocks.generate.mockResolvedValue({
+      output: {
+        sections: [
+          { key: "problem", heading: "Problem", body: "Brakuje sprzętu." },
+          { key: "rozwiązanie", heading: "Rozwiązanie", body: "Pożyczamy." },
+          { key: "odbiorcy", heading: "Odbiorcy", body: "Seniorzy." },
+          {
+            key: "harmonogram",
+            heading: "Harmonogram",
+            body: "Szacunek: listopad – przygotowanie, grudzień – realizacja.",
+          },
+          {
+            key: "budżet",
+            heading: "Budżet",
+            body: "Szacunek: sprzęt 8000 zł, promocja 1000 zł.",
+          },
+        ],
+      },
+    });
+    const response = await POST(
+      request({ callId: DEMO_GRANT_CALL_ID, idea }, "192.0.2.30"),
+    );
+    expect(response.headers.get("X-Draft-Source")).toBe("ai");
+    const call = mocks.generate.mock.calls[0]![0] as {
+      system: string;
+      prompt: string;
+    };
+    expect(call.system).toContain("Szacunek:");
+    expect(call.system).not.toContain("wstawiasz [uzupełnij");
+    expect(JSON.parse(call.prompt).call.maxAmountPln).toBe(20000);
+    const payload = (await response.json()) as {
+      sections: { key: string; body: string }[];
+    };
+    expect(payload.sections.find((s) => s.key === "budżet")?.body).toBe(
+      "Szacunek: sprzęt 8000 zł, promocja 1000 zł.",
+    );
+  });
+
+  it("removes bracket placeholders from model output", async () => {
+    mocks.openAI = true;
+    POST = (await import("./route")).POST;
+    mocks.generate.mockResolvedValue({
+      output: {
+        sections: [
+          {
+            key: "problem",
+            heading: "Problem",
+            body: "Seniorzy nie mają sprzętu [uzupełnij: liczba osób] na czas rehabilitacji.",
+          },
+          {
+            key: "harmonogram",
+            heading: "Harmonogram",
+            body: "[uzupełnij: daty]",
+          },
+        ],
+      },
+    });
+    const response = await POST(
+      request({ callId: DEMO_GRANT_CALL_ID, idea }, "192.0.2.31"),
+    );
+    const payload = (await response.json()) as {
+      sections: { key: string; body: string }[];
+    };
+    for (const section of payload.sections) {
+      expect(section.body).not.toMatch(/\[|uzupełnij/i);
+    }
+    expect(payload.sections.find((s) => s.key === "problem")?.body).toBe(
+      "Seniorzy nie mają sprzętu na czas rehabilitacji.",
+    );
+    expect(
+      payload.sections.find((s) => s.key === "harmonogram")?.body,
+    ).toContain("Rozpisz działania");
   });
 
   it("rejects invalid input", async () => {

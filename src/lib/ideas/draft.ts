@@ -133,3 +133,21 @@ export function draftToIdea(
     createdAt: new Date().toISOString(),
   };
 }
+
+/** Fills the wizard from a saved idea, e.g. when an author edits a draft. */
+export function ideaToDraftValues(idea: Idea): IdeaDraftValues {
+  return {
+    problem: idea.canvas?.problem ?? "",
+    targetGroup: idea.targetGroup ?? "",
+    summary: idea.summary ?? "",
+    solution: idea.canvas?.solution ?? "",
+    novelty: idea.canvas?.novelty ?? "",
+    resources: idea.canvas?.resources ?? "",
+    partners: idea.canvas?.partners ?? "",
+    risks: idea.canvas?.risks ?? "",
+    successMeasures: idea.canvas?.successMeasures ?? "",
+    title: idea.title ?? "",
+    stage: idea.stage ?? "idea",
+    municipality: idea.municipality ?? "",
+  };
+}

@@ -4,6 +4,7 @@ import {
   testSlotsTaken as mockSlotsTaken,
 } from "@/lib/mocks/testing";
 import { innovations as mockInnovations } from "@/lib/mocks/innovations";
+import { getCurrentUser } from "@/lib/auth/session";
 import { createClient, hasSupabase } from "@/lib/supabase/server";
 import {
   EMPTY_SUMMARY,
@@ -212,5 +213,32 @@ export async function getFeedbackSummary(
   } catch {
     console.warn("Feedback summary unavailable", { cause: "rpc threw" });
     return EMPTY_SUMMARY;
+  }
+}
+
+/**
+ * Ids of the tests the signed-in user has already signed up for, read with
+ * their own RLS client. Empty in demo mode (sign-ups live in the browser) and
+ * when nobody is signed in.
+ */
+export async function getMySignupTestIds(): Promise<string[]> {
+  if (!hasSupabase) return [];
+  const user = await getCurrentUser();
+  if (!user) return [];
+  const client = await createClient();
+  if (!client) return [];
+  try {
+    const { data, error } = await client
+      .from("test_signups")
+      .select("test_id")
+      .eq("user_id", user.id);
+    if (error) {
+      console.warn("Sign-ups unavailable", { code: error.code });
+      return [];
+    }
+    return (data ?? []).map((row: { test_id: string }) => row.test_id);
+  } catch {
+    console.warn("Sign-ups unavailable", { cause: "query threw" });
+    return [];
   }
 }

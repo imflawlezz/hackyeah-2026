@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useSyncExternalStore } from "react";
+import { buttonVariants } from "@/components/ui/button";
 import type { GrantCall } from "@/types";
 import { GrantDraftPanel } from "@/components/ideas/grant-draft-panel";
 import { IdeaArticle } from "@/components/ideas/idea-article";
@@ -35,6 +37,16 @@ export function LocalIdeaPage({
 
   return (
     <IdeaWorkspace idea={idea}>
+      {idea.status === "draft" ? (
+        <p>
+          <Link
+            href={`/ideas/new?draft=${encodeURIComponent(idea.id)}`}
+            className={buttonVariants()}
+          >
+            Edytuj szkic
+          </Link>
+        </p>
+      ) : null}
       <IdeaArticle idea={idea} />
       {call ? (
         <GrantDraftPanel call={call} idea={idea} signedIn={signedIn} />

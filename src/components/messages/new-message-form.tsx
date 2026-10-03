@@ -27,7 +27,7 @@ export function NewMessageForm({
   const [busy, setBusy] = useState(false);
   const router = useRouter();
   return (
-    <main className="mx-auto max-w-3xl space-y-6 px-4 py-8">
+    <div className="mx-auto max-w-3xl space-y-6">
       <h1 className="text-3xl text-heading">Napisz wiadomość</h1>
       {demo && <DemoBanner />}
       {(innovationId || ideaId) && (
@@ -170,6 +170,6 @@ export function NewMessageForm({
           {busy ? "Wysyłamy…" : "Wyślij"}
         </button>
       </form>
-    </main>
+    </div>
   );
 }

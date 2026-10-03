@@ -8,9 +8,12 @@ import { toInnovation } from "@/lib/data/innovations";
 import { innovationSchema } from "@/lib/validators";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { scrubPII } from "@/lib/admin/scrub";
+import { rerank } from "@/lib/match/rerank";
 
 /** Longest the response waits for the problem insert; the insert itself may finish later. */
 export const PERSIST_WAIT_MS = 300;
+/** Minimum number of nearest innovations fetched before the rerank. */
+export const RERANK_POOL = 15;
 
 type ProblemRecord = {
   request: MatchRequest;
@@ -63,12 +66,28 @@ export function normalizeScore(score: number): number {
     : 0;
 }
 
+/** Keyword points at which a mock result reads as a 50% match. */
+export const MOCK_HALF_POINTS = 4;
+/** Mock matching is a rough fallback, so it never claims a perfect match. */
+export const MOCK_MAX_SCORE = 0.95;
+
+/**
+ * Maps raw keyword points onto 0–1 on an absolute, saturating scale
+ * (points / (points + MOCK_HALF_POINTS)), so ties stay ties but several
+ * results no longer all show as 100%, and a weak best match stays weak.
+ */
 export function normalizeMockScores(results: MatchResult[]): MatchResult[] {
-  const highest = Math.max(0, ...results.map(({ score }) => score));
-  return results.map((result) => ({
-    ...result,
-    score: normalizeScore(highest ? result.score / highest : 0),
-  }));
+  return results.map((result) => {
+    const points = Number.isFinite(result.score)
+      ? Math.max(0, result.score)
+      : 0;
+    return {
+      ...result,
+      score: normalizeScore(
+        Math.min(MOCK_MAX_SCORE, points / (points + MOCK_HALF_POINTS)),
+      ),
+    };
+  });
 }
 
 async function fallback(
@@ -126,11 +145,13 @@ export async function matchProblem(
     const client = await withinDeadline(createClient(), signal);
     if (!client) return fallback(request, "Supabase unavailable", embedding);
     const limit = request.limit ?? 5;
+    // Fetch a wider pool than shown, so the keyword rerank can promote a close
+    // runner-up (similarities are often within a few hundredths of each other).
     const { data, error } = await withinDeadline(
       client
         .rpc("match_innovations", {
           query_embedding: embedding,
-          match_count: request.category ? limit * 3 : limit,
+          match_count: Math.max(limit * 3, RERANK_POOL),
         })
         .abortSignal(signal),
       signal,
@@ -141,19 +162,24 @@ export async function matchProblem(
     const similarity = new Map<string, number>(
       data.map((row) => [String(row.id), Number(row.similarity)]),
     );
-    let results: MatchResult[] = data.map((row) => ({
+    let candidates = data.map((row) => ({
       innovation: innovationSchema.parse(toInnovation(row)),
-      score: normalizeScore(Number(row.similarity)),
-      reason: "",
+      similarity: Number(row.similarity),
     }));
     if (request.category) {
       const category = request.category.trim().toLocaleLowerCase("pl");
-      results = results.filter(
+      candidates = candidates.filter(
         ({ innovation }) =>
           innovation.category.toLocaleLowerCase("pl") === category,
       );
     }
-    results = results.sort((a, b) => b.score - a.score).slice(0, limit);
+    const results: MatchResult[] = rerank(request.problem, candidates)
+      .slice(0, limit)
+      .map(({ innovation, score }) => ({
+        innovation,
+        score: normalizeScore(score),
+        reason: "",
+      }));
     if (!results.length)
       return fallback(request, "no category matches", embedding);
     const topSimilarity = Math.max(

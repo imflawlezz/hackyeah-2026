@@ -19,6 +19,7 @@ export function InnovationTesting({
   summary: initialSummary,
   demoScores,
   mode,
+  signedUpTestIds = [],
   loginHref,
 }: {
   innovationId: string;
@@ -27,6 +28,8 @@ export function InnovationTesting({
   /** Demo mode: the mock opinions the local ones are added to. */
   demoScores: FeedbackScores[];
   mode: TestingMode;
+  /** Signed in: tests the user already has a row for in test_signups. */
+  signedUpTestIds?: string[];
   loginHref: string;
 }) {
   const [serverSummary, setServerSummary] = useState(initialSummary);
@@ -58,9 +61,13 @@ export function InnovationTesting({
             <p className="text-base">{NO_TESTS_TEXT}</p>
           ) : (
             tests.map((test) => {
-              const signedUpHere =
+              const localSignup =
                 mode === "demo" && localSignups.includes(test.id);
-              const slotsLeft = test.slotsLeft - (signedUpHere ? 1 : 0);
+              const signedUpHere =
+                localSignup ||
+                (mode === "signed-in" && signedUpTestIds.includes(test.id));
+              // Server counts already include the user's own sign-up.
+              const slotsLeft = test.slotsLeft - (localSignup ? 1 : 0);
               return (
                 <article
                   key={test.id}

@@ -63,15 +63,18 @@ afterEach(() => {
 });
 
 describe("score normalization", () => {
-  it("normalizes mocks relative to their highest score and handles empty or zero scores", () => {
-    const results = [4, 3, 1].map((score) => ({
+  it("scales mock points absolutely, never to 100%, and handles empty or zero scores", () => {
+    const results = [4, 3, 1, 4, 500].map((score) => ({
       score,
       innovation: innovations[0],
       reason: "Powód",
     }));
     expect(normalizeMockScores(results).map(({ score }) => score)).toEqual([
-      1, 0.75, 0.25,
+      0.5, 0.43, 0.2, 0.5, 0.95,
     ]);
+    expect(
+      normalizeMockScores(results).filter(({ score }) => score === 1),
+    ).toHaveLength(0);
     expect(results[0].score).toBe(4);
     expect(normalizeMockScores([])).toEqual([]);
     expect(normalizeMockScores([{ ...results[0], score: 0 }])[0].score).toBe(0);
@@ -90,12 +93,13 @@ describe("AI matching", () => {
       limit: 5,
     });
     expect(response.source).toBe("ai");
-    expect(response.results[0].score).toBe(0.88);
+    // 0.876 similarity + 0.015 for the shared word "seniorzy".
+    expect(response.results[0].score).toBe(0.89);
     expect(response.results[0].innovation.targetGroup).toBe("Seniorzy na wsi");
     expect(response.results[0].reason).toContain("samotność");
     expect(mocks.rpc).toHaveBeenCalledWith("match_innovations", {
       query_embedding: [0.1],
-      match_count: 5,
+      match_count: 15,
     });
     expect(mocks.reasons).toHaveBeenCalledTimes(1);
   });
@@ -116,8 +120,52 @@ describe("AI matching", () => {
       category: " seniorzy ",
       limit: 2,
     });
-    expect(response.results.map(({ score }) => score)).toEqual([0.9, 0.6]);
-    expect(mocks.rpc.mock.calls[0][1].match_count).toBe(6);
+    // Each keeps its similarity plus 0.015 for the shared word "seniorzy".
+    expect(response.results.map(({ score }) => score)).toEqual([0.92, 0.62]);
+    expect(mocks.rpc.mock.calls[0][1].match_count).toBe(15);
+  });
+  it("promotes a close runner-up whose category matches the problem's theme", async () => {
+    mocks.rpc.mockReturnValue({
+      abortSignal: () =>
+        Promise.resolve({
+          data: [
+            {
+              ...row(0.467),
+              id: "lunch",
+              title: "Obiad przy wspólnym stole",
+              category: "Samotność",
+              target_group: "Seniorzy mieszkający samotnie",
+              tags: ["seniorzy", "samotność", "wieś", "transport"],
+            },
+            {
+              ...row(0.454),
+              id: "barriers",
+              title: "Mapa barier w gminie",
+              category: "Dostępność",
+              target_group: "Osoby z niepełnosprawnościami",
+              tags: ["dostępność", "niepełnosprawność", "mapa"],
+            },
+            {
+              ...row(0.431),
+              id: "mobile",
+              title: "Mobilny punkt dostępności",
+              category: "Dostępność",
+              target_group: "Osoby z niepełnosprawnościami",
+              tags: ["niepełnosprawność", "dostępność", "urząd", "sprzęt"],
+            },
+          ],
+          error: null,
+        }),
+    });
+    mocks.reasons.mockResolvedValue({});
+    const response = await matchProblem({
+      problem:
+        "Osoby na wózkach nie mogą dostać się do urzędu i ośrodka kultury.",
+      limit: 3,
+    });
+    const ids = response.results.map(({ innovation }) => innovation.id);
+    expect(new Set(ids.slice(0, 2))).toEqual(new Set(["mobile", "barriers"]));
+    expect(ids[2]).toBe("lunch");
   });
   it.each([
     { data: [], error: null },
