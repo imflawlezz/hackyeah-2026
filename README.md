@@ -66,6 +66,57 @@ docs/pitch/                pitch materials
 
 Import shared code with the `@/` alias, for example `@/types`, `@/lib/mocks`, and `@/lib/validators`.
 
+## Database
+
+Supabase (Postgres, Frankfurt `eu-central-1`) with pgvector. Keys live in `.env.local` and the team password manager, never in git.
+
+To set up a fresh project, open the Supabase SQL Editor and run, in order:
+
+1. `supabase/migrations/0001_init.sql`
+2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+
+| Table         | Who can read                  | Who can write                           |
+| ------------- | ----------------------------- | --------------------------------------- |
+| `innovations` | everyone, including anonymous | admin                                   |
+| `problems`    | author, admin                 | signed-in users insert their own; admin |
+| `ideas`       | author, admin                 | signed-in users insert their own; admin |
+| `feedback`    | author, admin                 | signed-in users insert their own; admin |
+| `profiles`    | owner, admin                  | owner (not `role`); admin               |
+
+A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
+
+### Column mapping
+
+Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
+
+| Database                                      | `src/types`             | Note                                     |
+| --------------------------------------------- | ----------------------- | ---------------------------------------- |
+| `ideas.essence`                               | `Idea.summary`          | different name, same field               |
+| `innovations.summary`, `region`               | not in `Innovation` yet | nullable                                 |
+| `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only         |
+| `id`                                          | `id: string`            | uuid in the database, slugs in the mocks |
+
+### Matching
+
+`match_innovations(query_embedding vector(1536), match_count int default 5)` returns innovation rows plus `similarity` (cosine, 1 = closest), best first. From the app: `supabase.rpc("match_innovations", { query_embedding, match_count })`.
+
+The seed leaves `embedding` empty, and rows without an embedding are skipped, so the function returns nothing until you run `npm run embed:innovations` (needs `OPENAI_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY`). To check it on a fresh database without storing fake vectors, run this; it fills in throwaway vectors, queries, and rolls back:
+
+```sql
+begin;
+update innovations as i
+set embedding = (
+  select array_agg(sin(g * (1 + abs(hashtext(i.id::text)) % 997)))::vector(1536)
+  from generate_series(1, 1536) as g
+);
+select title, similarity
+from match_innovations(
+  (select embedding from innovations where id = '00000000-0000-4000-8000-000000000001'),
+  5
+);
+rollback;
+```
+
 ## Design system and accessibility
 
 The theme lives in `src/app/globals.css` as CSS variables mapped to Tailwind classes (`bg-primary`, `text-muted-foreground`, `bg-success`, `text-highlight`, `bg-navy`). Components use those classes only and never hardcode hex values.
