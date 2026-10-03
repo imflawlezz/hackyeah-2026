@@ -1,5 +1,7 @@
 # HubMI.pl
 
+![CI](https://github.com/imflawlezz/hackyeah-2026/actions/workflows/ci.yml/badge.svg)
+
 Prototype of the Małopolska Social Innovation Hub. The platform connects residents, local governments, experts, and the ROPS Kraków team: it matches social problems with existing innovations and will host a knowledge base, idea creator, innovation testing, messages, and an admin panel.
 
 Accessibility target: WCAG 2.1 AA. Interface copy is Polish. Code, file names, and URLs are English.
@@ -14,6 +16,10 @@ Accessibility target: WCAG 2.1 AA. Interface copy is Polish. Code, file names, a
 - Zod, React Hook Form, Recharts
 - ESLint (`jsx-a11y` recommended), Prettier, Vitest
 
+## Requirements
+
+Node.js 22. From the repo root, `nvm use` reads `.nvmrc`.
+
 ## Getting started
 
 ```bash
@@ -26,15 +32,16 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Fill in `.env.local` when you wire Supabase or the assistant. The app boots without those values: `hasSupabase` is false and the match API uses local mocks. `SUPABASE_SERVICE_ROLE_KEY` is server-only. Never expose it to the browser.
 
-| Script              | Purpose                    |
-| ------------------- | -------------------------- |
-| `npm run dev`       | Local development          |
-| `npm run build`     | Production build           |
-| `npm run start`     | Serve the production build |
-| `npm run lint`      | ESLint, including jsx-a11y |
-| `npm run typecheck` | Next.js route types, then `tsc --noEmit` |
-| `npm test`          | Vitest                     |
-| `npm run format`    | Prettier                   |
+| Script                 | Purpose                                   |
+| ---------------------- | ----------------------------------------- |
+| `npm run dev`          | Local development                         |
+| `npm run build`        | Production build                          |
+| `npm run start`        | Serve the production build                |
+| `npm run lint`         | ESLint, including jsx-a11y                |
+| `npm run typecheck`    | Next.js route types, then `tsc --noEmit`  |
+| `npm test`             | Vitest                                    |
+| `npm run format`       | Prettier, write changes                   |
+| `npm run format:check` | Prettier, fail when files need formatting |
 
 ## Folder map
 
@@ -58,6 +65,14 @@ docs/pitch/                pitch materials
 ```
 
 Import shared code with the `@/` alias, for example `@/types`, `@/lib/mocks`, and `@/lib/validators`.
+
+## Before you open a PR
+
+```bash
+npm run format && npm run lint && npm run typecheck && npm test && npm run build
+```
+
+The same commands run in GitHub Actions on every pull request to `main`.
 
 ## How to work
 
