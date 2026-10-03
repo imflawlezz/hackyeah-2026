@@ -74,27 +74,33 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+3. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 
-| Table         | Who can read                  | Who can write                           |
-| ------------- | ----------------------------- | --------------------------------------- |
-| `innovations` | everyone, including anonymous | admin                                   |
-| `problems`    | author, admin                 | signed-in users insert their own; admin |
-| `ideas`       | author, admin                 | signed-in users insert their own; admin |
-| `feedback`    | author, admin                 | signed-in users insert their own; admin |
-| `profiles`    | owner, admin                  | owner (not `role`); admin               |
+| Table              | Who can read                  | Who can write                                                                       |
+| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------- |
+| `innovations`      | everyone, including anonymous | admin                                                                               |
+| `problems`         | author, admin                 | signed-in users insert their own; admin                                             |
+| `ideas`            | author, admin                 | signed-in users insert their own; admin                                             |
+| `feedback`         | author, admin                 | signed-in users insert their own; admin                                             |
+| `innovation_tests` | everyone, including anonymous | admin                                                                               |
+| `test_signups`     | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
+| `profiles`         | owner, admin                  | owner (not `role`); admin                                                           |
 
 A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
+
+Feedback rows and sign-ups stay private, so public pages read numbers only, through two functions anyone may call: `innovation_feedback_summary(p_innovation_id)` (count, averages, rating distribution, recommend share) and `test_slots_taken(p_test_id)`. A `before insert` trigger on `test_signups` rejects a sign-up to a closed or full test (`TEST_CLOSED`, `TEST_FULL`), which the app turns into Polish messages.
 
 ### Column mapping
 
 Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
 
-| Database                                      | `src/types`             | Note                                     |
-| --------------------------------------------- | ----------------------- | ---------------------------------------- |
-| `ideas.essence`                               | `Idea.summary`          | different name, same field               |
-| `innovations.summary`, `region`               | not in `Innovation` yet | nullable                                 |
-| `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only         |
-| `id`                                          | `id: string`            | uuid in the database, slugs in the mocks |
+| Database                                                                               | `src/types`             | Note                                     |
+| -------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------- |
+| `ideas.essence`                                                                        | `Idea.summary`          | different name, same field               |
+| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, … | optional, added in `0004`                |
+| `test_signups.user_id`                                                                 | `TestSignup.userId`     | defaults to the signed-in user           |
+| `innovations.embedding`, `problems.embedding`                                          | not exposed             | `vector(1536)`, server-side only         |
+| `id`                                                                                   | `id: string`            | uuid in the database, slugs in the mocks |
 
 ### Matching
 
