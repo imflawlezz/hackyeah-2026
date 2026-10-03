@@ -190,7 +190,7 @@ export function MatchForm({
           aria-disabled={loading || undefined}
           className={cn(
             "h-auto min-h-12 w-full gap-2 px-6 py-3 text-lg font-semibold sm:w-auto [&_svg:not([class*='size-'])]:size-5",
-            loading && "cursor-progress opacity-80",
+            loading && "cursor-progress",
           )}
         >
           <SearchIcon aria-hidden="true" />

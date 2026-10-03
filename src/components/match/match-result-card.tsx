@@ -22,21 +22,24 @@ const MAX_TAGS = 3;
 
 const TIER_STYLES: Record<
   ScoreTier,
-  { icon: LucideIcon; className: string; filled: number }
+  { icon: LucideIcon; className: string; accent: string; filled: number }
 > = {
   high: {
     icon: CircleCheckBigIcon,
-    className: "border-primary/40 bg-primary/10 text-foreground",
+    className: "border-success bg-success/10",
+    accent: "text-success",
     filled: 3,
   },
   medium: {
     icon: CircleDotIcon,
-    className: "border-border bg-secondary text-secondary-foreground",
+    className: "border-primary bg-primary/10",
+    accent: "text-primary",
     filled: 2,
   },
   low: {
     icon: CircleDashedIcon,
-    className: "border-dashed border-border bg-background text-foreground",
+    className: "border-dashed border-warning bg-warning/10",
+    accent: "text-warning",
     filled: 1,
   },
 };
@@ -55,6 +58,7 @@ export function MatchResultCard({
   const {
     icon: TierIcon,
     className: tierClassName,
+    accent,
     filled,
   } = TIER_STYLES[tier];
   const titleId = `match-${innovation.id}-title`;
@@ -74,24 +78,27 @@ export function MatchResultCard({
         <p
           data-tier={tier}
           className={cn(
-            "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-semibold",
+            "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-semibold text-foreground",
             tierClassName,
           )}
         >
-          <TierIcon aria-hidden="true" className="size-4 shrink-0" />
+          <TierIcon
+            aria-hidden="true"
+            className={cn("size-4 shrink-0", accent)}
+          />
           <span>{scoreLabel(relevance)}</span>
           {showPercent && (
             <span className="font-normal tabular-nums">
               ({formatPercent(relevance)})
             </span>
           )}
-          <span aria-hidden="true" className="flex gap-0.5">
+          <span aria-hidden="true" className={cn("flex gap-0.5", accent)}>
             {[1, 2, 3].map((step) => (
               <span
                 key={step}
                 className={cn(
                   "h-3 w-1.5 rounded-full",
-                  step <= filled ? "bg-primary" : "bg-border",
+                  step <= filled ? "bg-current" : "bg-current opacity-25",
                 )}
               />
             ))}
