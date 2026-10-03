@@ -132,7 +132,10 @@ export function MessagesWorkspace({ id }: { id?: string }) {
         </div>
       )}
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-        <nav aria-label="Rozmowy" className={id ? "hidden lg:block" : ""}>
+        <nav
+          aria-label="Rozmowy"
+          className={id ? "hidden min-w-0 lg:block" : "min-w-0"}
+        >
           <ul className="divide-y border-y">
             {[...state.conversations]
               .sort((a, b) => b.lastMessageAt.localeCompare(a.lastMessageAt))
@@ -150,7 +153,7 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                         .map((p) => `${p.displayName} · ${roleLabels[p.role]}`)
                         .join(", ")}
                     </span>
-                    <span className="block truncate text-muted-foreground">
+                    <span className="block break-words text-muted-foreground">
                       {c.preview}
                     </span>
                     <time dateTime={c.lastMessageAt} className="text-sm">

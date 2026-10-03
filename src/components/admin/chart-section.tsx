@@ -85,7 +85,7 @@ export function ChartSection({
                           <th
                             key={index}
                             scope="row"
-                            className="px-3 py-2 text-left font-medium"
+                            className="px-3 py-2 text-left font-semibold"
                           >
                             {cell}
                           </th>

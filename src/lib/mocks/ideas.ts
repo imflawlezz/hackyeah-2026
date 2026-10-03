@@ -16,7 +16,7 @@ export const ideas: Idea[] = [
       solution:
         "Przy centrum usług społecznych stoi szafa ze sprzętem. Mieszkaniec zgłasza potrzebę, a wolontariusz przywozi sprzęt i odbiera go po dwóch tygodniach.",
       novelty:
-        "Wypożyczenie jest łączone z krótką wizytą sąsiedzką, nie tylko z magazynem sprzętu.",
+        "Wolontariusz nie zostawia sprzętu pod drzwiami. Zostaje na krótką sąsiedzką wizytę.",
       resources: "Szafa, kilka balkoników i osoba do dyżuru raz w tygodniu.",
       partners: "Centrum usług społecznych, sołtysi i lokalne koło gospodyń.",
       risks: "Sprzęt może nie wracać w terminie albo nie pasować wzrostem.",
@@ -112,7 +112,7 @@ export const ideas: Idea[] = [
       solution:
         "Dwa dni w tygodniu nauczyciel i mieszkaniec prowadzą świetlicę. Grupa kończy miesiąc małym efektem widocznym na osiedlu.",
       novelty:
-        "Świetlica nie jest tylko opieką. Każdy miesiąc ma jedno zadanie ustalone z radą osiedla.",
+        "Poza opieką każdy miesiąc ma jedno zadanie ustalone z radą osiedla.",
       resources: "Sala po lekcjach i dwie osoby prowadzące.",
       partners: "Szkoła podstawowa i rada osiedla.",
       risks: "Rodzice mogą uznać to za dodatkowe lekcje i nie zapisać dziecka.",

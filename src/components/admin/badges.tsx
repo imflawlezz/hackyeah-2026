@@ -9,7 +9,7 @@ import { UNMET_SCORE_THRESHOLD } from "@/lib/admin/trends";
 import { cn } from "@/lib/utils";
 
 const PILL =
-  "inline-flex w-fit max-w-full items-center gap-1.5 rounded-sm border px-2 py-0.5 text-sm font-medium sm:whitespace-nowrap";
+  "inline-flex w-fit max-w-full items-center gap-1.5 rounded-sm border px-2 py-0.5 text-sm font-semibold";
 
 const STATUS = {
   published: {

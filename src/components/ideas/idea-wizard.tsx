@@ -296,19 +296,19 @@ function Review({
       </h3>
       <dl className="flex flex-col gap-2">
         <div>
-          <dt className="font-medium">Tytuł</dt>
+          <dt className="font-semibold">Tytuł</dt>
           <dd>{values.title || "Nie podano."}</dd>
         </div>
         <div>
-          <dt className="font-medium">Dla kogo</dt>
+          <dt className="font-semibold">Dla kogo</dt>
           <dd>{values.targetGroup}</dd>
         </div>
         <div>
-          <dt className="font-medium">Istota</dt>
+          <dt className="font-semibold">Istota</dt>
           <dd>{values.summary}</dd>
         </div>
         <div>
-          <dt className="font-medium">Etap</dt>
+          <dt className="font-semibold">Etap</dt>
           <dd>{STAGE_LABEL[values.stage]}</dd>
         </div>
       </dl>

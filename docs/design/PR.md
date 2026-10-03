@@ -2,9 +2,9 @@
 
 Closes #23
 
-HubMI.pl now presents a calm civic service for Małopolska: a left-aligned asymmetric introduction, a concrete fixture-based example, numbered steps, regional challenges and audience descriptions. Match retains URL state, focus management, live regions and API contracts, with a wide form, practical writing tips and editorial results.
+The home page now opens with a left-aligned, asymmetric introduction and one example taken from the fixtures. Below it are numbered steps, the regional challenges and a section on who the service is for. Match keeps its URL state, focus management, live regions and API contracts. It gains a wide form, writing tips and restyled results.
 
-The [design and Polish copy guide](https://github.com/imflawlezz/hackyeah-2026/blob/feat/design-pass/docs/design/STYLE.md) defines the palette, Source Serif 4 / Source Sans 3 pairing, spacing, Heroicons, accessibility and review rules. Shared `withCopyStyle` rules now apply to match reasons, and generated results carry a plain review reminder. Placeholder pages clearly describe features still in preparation.
+The [design and Polish copy guide](https://github.com/imflawlezz/hackyeah-2026/blob/feat/design-pass/docs/design/STYLE.md) defines the palette, Source Serif 4 / Source Sans 3 pairing, spacing, Heroicons, accessibility and review rules. The shared `withCopyStyle` rules now apply to match reasons, and generated results carry a plain reminder to check them. Placeholder pages say which features are still in preparation.
 
 ## Validation
 

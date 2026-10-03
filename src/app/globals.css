@@ -182,12 +182,30 @@ html[data-font-size="largest"] {
     @apply bg-background text-foreground;
     line-height: 1.6;
   }
+  /* Source Serif 4 is loaded at 600 and 700 only; preflight resets headings
+     to the inherited 400, so set the lighter loaded weight explicitly. */
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     @apply font-heading;
+    font-weight: 600;
     line-height: 1.2;
     text-wrap: balance;
+    /* Long Polish words at A++ with WCAG 1.4.12 spacing must not overflow. */
+    overflow-wrap: break-word;
+  }
+  /* Source Sans 3 is loaded at 400 and 600; the browser's default bold (700)
+     would be synthesised. */
+  th,
+  strong,
+  b {
+    font-weight: 600;
+  }
+  /* Reading measure from STYLE.md (60–75 characters). Only caps the width. */
+  p,
+  blockquote {
+    max-width: 75ch;
   }
   h1,
   h2,

@@ -38,7 +38,7 @@ const STAGES: Record<AdminIdea["stage"], string> = {
 };
 
 const LINK =
-  "inline-flex min-h-11 items-center gap-1.5 rounded-sm font-medium text-primary underline underline-offset-4 hover:no-underline";
+  "inline-flex min-h-11 items-center gap-1.5 rounded-sm text-primary underline underline-offset-4 hover:no-underline";
 const ITEM = "flex flex-col gap-3 rounded-md border border-border p-4 sm:p-5";
 const META = "flex flex-wrap gap-x-4 gap-y-1 text-base text-muted-foreground";
 
@@ -147,13 +147,13 @@ export function Moderation({
                     <p>{idea.summary}</p>
                     <p className={META}>
                       <span>
-                        <span className="font-medium text-foreground">
+                        <span className="font-semibold text-foreground">
                           Dla kogo:
                         </span>{" "}
                         {idea.targetGroup}
                       </span>
                       <span>
-                        <span className="font-medium text-foreground">
+                        <span className="font-semibold text-foreground">
                           Etap:
                         </span>{" "}
                         {STAGES[idea.stage]}
@@ -308,13 +308,13 @@ export function Moderation({
                     <p>{draft.summary}</p>
                     <p className={META}>
                       <span>
-                        <span className="font-medium text-foreground">
+                        <span className="font-semibold text-foreground">
                           Kategoria:
                         </span>{" "}
                         {draft.category}
                       </span>
                       <span>
-                        <span className="font-medium text-foreground">
+                        <span className="font-semibold text-foreground">
                           Dla kogo:
                         </span>{" "}
                         {draft.targetGroup}

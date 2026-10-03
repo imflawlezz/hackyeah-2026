@@ -12,7 +12,7 @@ export function IdeaFlashcard({ idea }: { idea: Idea }) {
   const StatusIcon = STATUS_ICON[idea.status];
 
   return (
-    <article className="flex flex-col gap-3 border border-border bg-card p-4">
+    <article className="flex max-w-prose flex-col gap-3 py-6">
       <h3 className="text-xl text-heading">
         <Link
           href={`/ideas/${idea.id}`}
@@ -23,7 +23,7 @@ export function IdeaFlashcard({ idea }: { idea: Idea }) {
       </h3>
       <p>{idea.summary}</p>
       <p>
-        <span className="font-medium">Dla kogo: </span>
+        <span className="font-semibold">Dla kogo: </span>
         {idea.targetGroup}
       </p>
       <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm">

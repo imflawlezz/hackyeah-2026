@@ -25,7 +25,7 @@ export const innovations: Innovation[] = [
     id: "inn-youth-incubator",
     title: "Inkubator młodzieżowych inicjatyw",
     description:
-      "Krótki cykl warsztatów, w którym młodzież zamienia lokalny problem w mikroprojekt i sprawdza go z mentorem. Grupa kończy cykl publiczną prezentacją w domu kultury.",
+      "Na kilku warsztatach młodzież wybiera lokalny problem, robi z niego mikroprojekt i sprawdza go z mentorem. Na koniec grupa pokazuje wyniki publicznie w domu kultury.",
     category: "Młodzież",
     targetGroup: "Młodzież w wieku 15–25 lat",
     tags: ["młodzież", "partycypacja", "warsztaty", "gmina"],
@@ -35,7 +35,7 @@ export const innovations: Innovation[] = [
     id: "inn-one-night",
     title: "Nocleg interwencyjny „Jedna noc”",
     description:
-      "Sieć sprawdzonych miejsc noclegowych na jedną noc dla osób w kryzysie bezdomności. Rano mieszkaniec dostaje kontakt do pracownika socjalnego.",
+      "Osoba w kryzysie bezdomności dostaje nocleg na jedną noc w jednym ze sprawdzonych miejsc. Rano ma już kontakt do pracownika socjalnego.",
     category: "Bezdomność",
     targetGroup: "Osoby w kryzysie bezdomności",
     tags: ["bezdomność", "nocleg", "kryzys", "pomoc"],
@@ -55,7 +55,7 @@ export const innovations: Innovation[] = [
     id: "inn-crisis-circle",
     title: "Krąg po kryzysie psychicznym",
     description:
-      "Małe, moderowane grupy wsparcia po epizodzie kryzysu psychicznego, prowadzone razem z lokalnym ośrodkiem zdrowia. Spotkania są bezpłatne i nie wymagają skierowania.",
+      "Małe grupy wsparcia dla osób po epizodzie kryzysu psychicznego. Każda ma moderatora i działa razem z lokalnym ośrodkiem zdrowia. Udział jest bezpłatny, skierowanie nie jest potrzebne.",
     category: "Zdrowie psychiczne",
     targetGroup: "Osoby po kryzysie psychicznym",
     tags: ["zdrowie psychiczne", "wsparcie", "grupa", "samotność"],
@@ -65,7 +65,7 @@ export const innovations: Innovation[] = [
     id: "inn-telecare",
     title: "Teleopieka sąsiedzka",
     description:
-      "Codzienny krótki telefon do seniora mieszkającego samotnie. Brak odebrania uruchamia ustaloną ścieżkę sprawdzenia u sąsiada albo opiekuna.",
+      "Do seniora mieszkającego samotnie ktoś codziennie na chwilę dzwoni. Kiedy senior nie odbiera, rusza ustalona wcześniej ścieżka: sprawdzenie u sąsiada albo opiekuna.",
     category: "Samotność",
     targetGroup: "Samotni seniorzy",
     tags: ["seniorzy", "samotność", "telefon", "bezpieczeństwo"],
@@ -75,7 +75,7 @@ export const innovations: Innovation[] = [
     id: "inn-remote-work",
     title: "Praca chroniona zdalnie",
     description:
-      "Proste zlecenia zdalne, takie jak porządkowanie danych, dla osób z niepełnosprawnością. Asystent zatrudnienia w gminie pomaga ustalić zakres i tempo pracy.",
+      "Osoby z niepełnosprawnością dostają proste zlecenia zdalne, na przykład porządkowanie danych. Zakres i tempo pracy pomaga ustalić asystent zatrudnienia w gminie.",
     category: "Aktywizacja",
     targetGroup: "Osoby z niepełnosprawnością",
     tags: ["niepełnosprawność", "praca", "zdalnie", "aktywizacja"],
@@ -85,7 +85,7 @@ export const innovations: Innovation[] = [
     id: "inn-after-school",
     title: "Świetlica otwarta po lekcjach",
     description:
-      "Bezpłatna świetlica z posiłkiem i pomocą w lekcjach dla dzieci i młodzieży, których rodzice pracują zmianowo. Świetlica jest otwarta także w części ferii.",
+      "Dzieci i młodzież, których rodzice pracują zmianowo, mogą po lekcjach przyjść do bezpłatnej świetlicy. Dostają tam posiłek i pomoc w lekcjach. Świetlica działa też przez część ferii.",
     category: "Młodzież",
     targetGroup: "Dzieci i młodzież szkolna",
     tags: ["młodzież", "opieka", "świetlica", "edukacja"],

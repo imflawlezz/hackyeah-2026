@@ -50,7 +50,7 @@ export function IdeasBrowser({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <label htmlFor={selectId} className="font-medium">
+        <label htmlFor={selectId} className="font-semibold">
           Etap
         </label>
         <select
@@ -78,7 +78,7 @@ export function IdeasBrowser({
           Pomysły w Hubie
         </h2>
         {visiblePublic.length ? (
-          <ul className="flex flex-col gap-4">
+          <ul className="divide-y divide-border border-y border-border">
             {visiblePublic.map((idea) => (
               <li key={idea.id}>
                 <IdeaFlashcard idea={idea} />
@@ -95,7 +95,7 @@ export function IdeasBrowser({
           <h2 id="draft-ideas" className="text-2xl text-heading">
             Twoje szkice
           </h2>
-          <ul className="flex flex-col gap-4">
+          <ul className="divide-y divide-border border-y border-border">
             {visibleDrafts.map((idea) => (
               <li key={idea.id}>
                 <IdeaFlashcard idea={idea} />

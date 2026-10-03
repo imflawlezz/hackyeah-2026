@@ -1,4 +1,4 @@
-# HubMI.pl — konspekt prezentacji (10 slajdów)
+# HubMI.pl: konspekt prezentacji (10 slajdów)
 
 Stan prototypu: 3 października 2026. Materiał do przygotowania PDF po polsku zgodnie z [briefem, §4](../task/CHALLENGE.md) i [regulaminem, §4 ust. 9](../task/RULES.md). Regulamin wymaga zarówno PDF, jak i filmu MP4. Poniższe punkty są treścią slajdów; wskazówki opisują proponowane kadry.
 
@@ -68,7 +68,7 @@ Kadr: Vercel 80 PLN + Supabase 100 PLN + AI 3,47 PLN; osobno praca ludzi. Stawki
 
 ## 9. Zespół: odpowiedzialność za wdrożenie
 
-- Interfejs i dostępność; API, baza i AI; testy, treści i prezentacja — obszary odpowiedzialności zespołu.
+- Dzielimy pracę na trzy obszary: interfejs i dostępność; API, baza i AI; testy, treści i prezentacja.
 - Do pilotażu potrzebujemy opiekuna technicznego oraz redaktora i koordynatora po stronie ROPS.
 - Nazwa zespołu, identyfikator HackTribe i nazwiska: do uzupełnienia przez zespół przed eksportem.
 

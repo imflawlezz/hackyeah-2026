@@ -92,7 +92,7 @@ export function ProfileForm({
       className="flex max-w-3xl flex-col gap-10"
     >
       <fieldset className="flex flex-col gap-8">
-        <legend className="mb-6 font-heading text-xl font-semibold text-heading">
+        <legend className="mb-6 text-xl font-semibold text-heading">
           Twoja instytucja
         </legend>
 
@@ -198,7 +198,7 @@ export function ProfileForm({
       </fieldset>
 
       <fieldset className="flex flex-col gap-8">
-        <legend className="mb-6 font-heading text-xl font-semibold text-heading">
+        <legend className="mb-6 text-xl font-semibold text-heading">
           Potrzeba
         </legend>
 

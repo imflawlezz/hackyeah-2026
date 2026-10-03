@@ -84,7 +84,7 @@ export default async function InnovationTestPage({ params }: PageProps) {
         >
           {innovation.category}
         </Badge>
-        <h1 className="font-heading text-3xl leading-tight font-bold tracking-tight text-balance break-words sm:text-4xl">
+        <h1 className="font-heading text-3xl leading-tight font-bold text-balance break-words sm:text-4xl">
           {innovation.title}
         </h1>
         <p className="text-lg">

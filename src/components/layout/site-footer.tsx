@@ -15,7 +15,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-navy text-navy-foreground [--ring:var(--navy-foreground)] print:hidden">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
         <div className="md:col-span-1">
-          <p className="text-xl font-bold">HubMI.pl</p>
+          <p className="text-xl font-semibold">HubMI.pl</p>
           <p className="mt-2">
             Pomysły dla mieszkańców, organizacji społecznych i gmin Małopolski.
             Sprawdź, co może pomóc w Twojej okolicy.

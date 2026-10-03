@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Label } from "@/components/ui/label";
@@ -150,7 +149,6 @@ export function OpenTestsList({
                         ? "Zgłoś się"
                         : "Zobacz test"}
                     <span className="sr-only">: {test.innovationTitle}</span>
-                    <ArrowRightIcon aria-hidden="true" className="size-5" />
                   </Link>
                 </div>
               </li>

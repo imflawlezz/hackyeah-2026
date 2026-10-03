@@ -153,7 +153,7 @@ export function PlanDocument({
             >
               <span
                 aria-hidden="true"
-                className="font-heading text-2xl leading-none font-semibold text-muted-foreground tabular-nums"
+                className="text-2xl leading-none font-semibold text-muted-foreground tabular-nums"
               >
                 {index + 1}
               </span>
@@ -213,10 +213,10 @@ export function PlanDocument({
             </tbody>
             <tfoot>
               <tr>
-                <th scope="row" className={`${CELL} text-left font-bold`}>
+                <th scope="row" className={`${CELL} text-left font-semibold`}>
                   Razem
                 </th>
-                <td className={`${CELL} text-right font-bold tabular-nums`}>
+                <td className={`${CELL} text-right font-semibold tabular-nums`}>
                   {formatPlnRange(plan.totalMinPln, plan.totalMaxPln)}
                 </td>
                 <td className={CELL} />

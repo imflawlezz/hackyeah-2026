@@ -17,7 +17,7 @@ export function ResultsSummary({ summary }: { summary: FeedbackSummary }) {
     <div className="flex flex-col gap-6">
       <p className="text-lg">
         <span className="font-semibold">Średnia ocena:</span>{" "}
-        <span className="font-heading text-3xl font-bold text-heading tabular-nums">
+        <span className="text-3xl font-semibold text-heading tabular-nums">
           {formatDecimal(summary.avgRating)}
         </span>{" "}
         z 5 ({opinionsText(summary.count)})

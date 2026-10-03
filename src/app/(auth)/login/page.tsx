@@ -34,7 +34,7 @@ export default async function LoginPage({
   return (
     <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,28rem)_minmax(0,24rem)]">
       <div className="flex min-w-0 flex-col gap-6">
-        <h1 className="text-3xl font-bold tracking-tight">Konto w HubMI.pl</h1>
+        <h1 className="text-3xl font-bold">Konto w HubMI.pl</h1>
 
         {!hasSupabase ? (
           <p className="flex items-start gap-2 rounded-md border border-input bg-muted p-4">
@@ -61,7 +61,7 @@ export default async function LoginPage({
         {callbackFailed ? (
           <p
             role="alert"
-            className="rounded-md border border-destructive p-4 font-medium text-destructive"
+            className="rounded-md border border-destructive p-4 font-semibold text-destructive"
           >
             Link potwierdzający wygasł albo został już użyty. Zaloguj się lub
             załóż konto ponownie.

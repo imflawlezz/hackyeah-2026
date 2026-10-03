@@ -2,7 +2,7 @@
 
 Closes #26
 
-Private conversations with ROPS, experts and partners, a responsive list/thread view, keyboard composer, incoming-message announcements, notification bell and full notification page. Without a session, the feature uses three fictional conversations and two browser-local notifications, synchronized across tabs with BroadcastChannel.
+This adds private conversations with ROPS, experts and partners. It comes with a responsive list and thread view, a composer that works from the keyboard, announcements for incoming messages, a notification bell and a full notification page. Without a session, the feature uses three fictional conversations and two browser-local notifications, synchronized across tabs with BroadcastChannel.
 
 Run supabase/migrations/0005_messages_notifications.sql in the Supabase SQL Editor (project HubMI) before merging.
 
@@ -25,4 +25,4 @@ Apply the migration twice to verify idempotency, then use a resident, an admin a
 3. Set an idea to submitted, then reviewed. Confirm the admin receives idea_submitted and the author receives idea_reviewed. Repeating the same status should not duplicate notifications.
 4. Verify keyboard navigation, mobile reflow at 320 px, A++ and high contrast. Run Lighthouse on /messages and require accessibility >=95.
 
-The SQL migration and two-account Supabase flow have not been executed from this workspace. Browser screenshots, a recording and Lighthouse results could not be captured because the computer-use runtime returned no available browsers or apps.
+The SQL migration and two-account Supabase flow have not been executed from this workspace. Browser screenshots, a recording and Lighthouse results are still missing, because no browser was available in that workspace.
