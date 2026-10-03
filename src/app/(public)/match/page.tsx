@@ -1,3 +1,4 @@
+import { ShieldCheckIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import {
@@ -21,6 +22,17 @@ export default function MatchPage() {
         <p className="max-w-2xl text-lg">
           Napisz, czego brakuje w Twojej okolicy. Porównamy opis z bazą
           innowacji społecznych. Sprawdź propozycje i oceń, które mogą pomóc.
+        </p>
+        <p className="flex max-w-2xl items-start gap-2 text-base text-muted-foreground">
+          <ShieldCheckIcon
+            aria-hidden="true"
+            className="mt-0.5 size-5 shrink-0"
+          />
+          <span>
+            Nie wpisuj imion, adresów ani numerów telefonu. Opis problemu
+            zapisujemy bez danych osobowych, żeby ROPS widział, jakich rozwiązań
+            brakuje.
+          </span>
         </p>
       </header>
 

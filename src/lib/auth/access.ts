@@ -20,3 +20,21 @@ export function requiredAccess(pathname: string): Access {
   );
   return rule?.access ?? "public";
 }
+
+// Read-only admin pages that ADMIN_PREVIEW=true opens to everyone. Forms and
+// server actions still require an admin (see src/lib/auth/admin.ts).
+const ADMIN_PREVIEW_PATHS = [
+  "/admin",
+  "/admin/innovations",
+  "/admin/moderation",
+  "/admin/trends",
+];
+
+/** True for admin pages the proxy lets through when ADMIN_PREVIEW=true. */
+export function isAdminPreviewPath(pathname: string): boolean {
+  const path =
+    pathname.length > 1 && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname;
+  return ADMIN_PREVIEW_PATHS.includes(path);
+}

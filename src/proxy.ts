@@ -1,6 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { requiredAccess } from "@/lib/auth/access";
+import { isAdminPreviewPath, requiredAccess } from "@/lib/auth/access";
 import { loginPath } from "@/lib/auth/redirect";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -38,6 +38,16 @@ export async function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const access = requiredAccess(pathname);
   if (access === "public") return response;
+
+  // ADMIN_PREVIEW lets the jury see the read-only panel without an account.
+  // The admin layout decides the mode; server actions re-check admin rights.
+  if (
+    access === "admin" &&
+    process.env.ADMIN_PREVIEW === "true" &&
+    isAdminPreviewPath(pathname)
+  ) {
+    return response;
+  }
 
   // Redirects keep any refreshed session cookies.
   const redirectTo = (path: string) => {

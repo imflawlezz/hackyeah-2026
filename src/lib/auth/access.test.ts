@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { requiredAccess } from "@/lib/auth/access";
+import { isAdminPreviewPath, requiredAccess } from "@/lib/auth/access";
 
 it.each([
   ["/", "public"],
@@ -20,4 +20,18 @@ it.each([
   ["/administrator", "public"],
 ] as const)("%s requires %s", (pathname, access) => {
   expect(requiredAccess(pathname)).toBe(access);
+});
+
+it.each([
+  ["/admin", true],
+  ["/admin/", true],
+  ["/admin/innovations", true],
+  ["/admin/moderation", true],
+  ["/admin/trends", true],
+  ["/admin/innovations/new", false],
+  ["/admin/innovations/abc/edit", false],
+  ["/admin/trendsx", false],
+  ["/messages", false],
+] as const)("admin preview path %s → %s", (pathname, open) => {
+  expect(isAdminPreviewPath(pathname)).toBe(open);
 });

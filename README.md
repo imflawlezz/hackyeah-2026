@@ -81,18 +81,23 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 3. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
 4. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
 5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
+6. `supabase/migrations/0006_admin_moderation.sql` (innovation status, problem matching outcome, idea review; idempotent)
 
-| Table              | Who can read                                   | Who can write                                                                       |
-| ------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `innovations`      | everyone, including anonymous                  | admin                                                                               |
-| `problems`         | author, admin                                  | signed-in users insert their own; admin                                             |
-| `ideas`            | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                           |
-| `feedback`         | author, admin                                  | signed-in users insert their own; admin                                             |
-| `innovation_tests` | everyone, including anonymous                  | admin                                                                               |
-| `test_signups`     | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin |
-| `profiles`         | owner, admin                                   | owner (not `role`); admin                                                           |
-| `grant_calls`      | everyone, including anonymous                  | admin                                                                               |
-| `grant_drafts`     | author, admin                                  | author; admin                                                                       |
+| Table              | Who can read                                   | Who can write                                                                                 |
+| ------------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `innovations`      | everyone: `published` rows only; admin: all    | admin                                                                                         |
+| `problems`         | author, admin                                  | signed-in users insert their own; admin; the server (service role) after each `/match` search |
+| `ideas`            | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                                     |
+| `feedback`         | author, admin                                  | signed-in users insert their own; admin                                                       |
+| `innovation_tests` | everyone, including anonymous                  | admin                                                                                         |
+| `test_signups`     | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin           |
+| `profiles`         | owner, admin                                   | owner (not `role`); admin                                                                     |
+| `grant_calls`      | everyone, including anonymous                  | admin                                                                                         |
+| `grant_drafts`     | author, admin                                  | author; admin                                                                                 |
+
+After `0006`, `innovations.status` is `draft`, `published` (default) or `archived`. Drafts and archived rows are hidden from public pages and, because `match_innovations` runs with the caller's rights, from matching too.
+
+`0006` also adds `problems.best_score` (top raw cosine similarity, `null` for mock matches), `problems.source` (`ai` or `mock`), `problems.admin_note`, and `ideas.review_note`, `reviewed_at`, `reviewed_by`. `problem_trends(p_days, p_unmet_score)` returns problems per category and week with an `unmet_count`; RLS limits it to admins.
 
 A profile row is created automatically for every new auth user. The role and municipality come from the sign-up form, but the trigger accepts only `resident`, `jst` and `expert`; anything else, including `admin`, becomes `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
@@ -102,15 +107,18 @@ Feedback rows and sign-ups stay private, so public pages read numbers only, thro
 
 Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
 
-| Database                                                                               | `src/types`             | Note                                     |
-| -------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------- |
-| `ideas.essence`                                                                        | `Idea.summary`          | different name, same field               |
-| `ideas.canvas`                                                                         | `Idea.canvas`           | jsonb                                    |
-| `ideas.municipality`                                                                   | `Idea.municipality`     | optional                                 |
-| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, … | optional, added in `0004`                |
-| `test_signups.user_id`                                                                 | `TestSignup.userId`     | defaults to the signed-in user           |
-| `innovations.embedding`, `problems.embedding`                                          | not exposed             | `vector(1536)`, server-side only         |
-| `id`                                                                                   | `id: string`            | uuid in the database, slugs in the mocks |
+| Database                                                                               | `src/types`                    | Note                                                           |
+| -------------------------------------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------- |
+| `ideas.essence`                                                                        | `Idea.summary`                 | different name, same field                                     |
+| `ideas.canvas`                                                                         | `Idea.canvas`                  | jsonb                                                          |
+| `ideas.municipality`                                                                   | `Idea.municipality`            | optional                                                       |
+| `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, …        | optional, added in `0004`                                      |
+| `test_signups.user_id`                                                                 | `TestSignup.userId`            | defaults to the signed-in user                                 |
+| `innovations.summary`, `region`                                                        | `Innovation.summary`, `region` | optional; also in `AdminInnovation` (`src/lib/admin/types.ts`) |
+| `innovations.status`, `updated_at`                                                     | `AdminInnovation`              | from `0006`                                                    |
+| `problems.best_score`, `source`, `admin_note`                                          | `AdminProblem`                 | from `0006`; mappers in `src/lib/data/admin.ts`                |
+| `innovations.embedding`, `problems.embedding`                                          | not exposed                    | `vector(1536)`, server-side only                               |
+| `id`                                                                                   | `id: string`                   | uuid in the database, slugs in the mocks                       |
 
 ### Matching
 
