@@ -1,4 +1,7 @@
 "use client";
+import { VoiceFieldInput } from "@/components/voice/voice-field-input";
+import { appendTranscript } from "@/lib/voice/append";
+
 import Link from "next/link";
 import { useEffect, useRef, useState, startTransition } from "react";
 import { useMessages } from "@/lib/messages/use-messages";
@@ -272,6 +275,17 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                       e.currentTarget.form?.requestSubmit();
                     }
                   }}
+                />
+                <VoiceFieldInput
+                  key={conversation.id}
+                  getValue={() => body}
+                  onChange={(_value, text) =>
+                    setBody(
+                      (current) =>
+                        appendTranscript(current, text, 4000) ?? current,
+                    )
+                  }
+                  limit={4000}
                 />
                 <button
                   disabled={!body.trim()}

@@ -1,4 +1,5 @@
 "use client";
+import { VoiceFieldInput } from "@/components/voice/voice-field-input";
 
 import {
   useEffect,
@@ -382,6 +383,11 @@ function Field({
           className="min-h-28"
         />
       )}
+      <VoiceFieldInput
+        getValue={() => value}
+        onChange={onChange}
+        limit={field === "title" ? 160 : field === "municipality" ? 120 : 2000}
+      />
       {invalid ? (
         <p id={`${id}-error`} role="alert">
           {error.message}
