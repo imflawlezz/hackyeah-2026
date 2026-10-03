@@ -7,6 +7,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   // flatConfigs.recommended also registers jsx-a11y, which eslint-config-next already defines.
+  {
     rules: {
       ...jsxA11y.flatConfigs.recommended.rules,
       "jsx-a11y/label-has-associated-control": [
