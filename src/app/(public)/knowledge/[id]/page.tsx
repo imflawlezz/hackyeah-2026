@@ -127,7 +127,6 @@ export default async function InnovationPage({ params }: PageProps) {
       href: matchHref(innovation.category),
       label: "Masz podobny problem? Opisz go",
     },
-    // TODO(#25): the testing module.
     { href: `/test/${encodedId}`, label: "Chcę przetestować" },
     // TODO(#26): the messages module.
     {
