@@ -50,7 +50,7 @@ Fill in `.env.local` when you wire Supabase or the assistant. The app boots with
 src/app/(public)/          match, knowledge, ideas, test, messages, institutions, accessibility
 src/app/(auth)/login/      sign-in
 src/app/admin/             admin panel
-src/app/api/               match (AI with mock fallback), assistant (501), embed
+src/app/api/               match (AI with mock fallback), institutions (candidates, plan), assistant (501), embed
 src/components/ui/         shadcn/ui
 src/components/layout/     skip link, header, footer, accessibility toolbar
 src/lib/supabase/          browser, server and admin clients

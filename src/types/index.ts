@@ -157,3 +157,55 @@ export interface MatchResult {
   score: number;
   reason: string;
 }
+
+export type InstitutionType =
+  | "gmina"
+  | "powiat"
+  | "ops_cus"
+  | "pcpr"
+  | "dps_sds"
+  | "ngo"
+  | "school"
+  | "other";
+
+export type MunicipalityType = "wiejska" | "miejsko-wiejska" | "miejska";
+export type PopulationBand = "<5k" | "5-20k" | "20-100k" | ">100k";
+/** PLN per year available for the action. */
+export type BudgetBand = "<20k" | "20-100k" | "100-500k" | ">500k";
+
+export interface InstitutionProfile {
+  institutionType: InstitutionType;
+  municipalityType?: MunicipalityType;
+  populationBand: PopulationBand;
+  budgetBand: BudgetBand;
+  /** People from the team who can take part, 0 to 20. */
+  staffAvailable: number;
+  targetGroup: string;
+  need: string;
+  constraints?: string;
+  /** Months until the service should be running. */
+  timeline: 3 | 6 | 12;
+  innovationId?: string;
+}
+
+export interface ImplementationPlan {
+  innovationId: string;
+  title: string;
+  summary: string;
+  whyItFits: string;
+  adaptations: string[];
+  steps: { title: string; description: string; weeks: number; owner: string }[];
+  /** Rough ranges in PLN, never single quotes. */
+  costs: { item: string; minPln: number; maxPln: number; note?: string }[];
+  /** Sum of the cost rows, recomputed on the server. */
+  totalMinPln: number;
+  totalMaxPln: number;
+  people: { role: string; fte?: number; note?: string }[];
+  /** `type` is a kind of organisation, never a named real entity. */
+  partners: { type: string; role: string }[];
+  risks: { risk: string; mitigation: string }[];
+  kpis: { indicator: string; target: string }[];
+  fundingOptions: string[];
+  assumptions: string[];
+  source: "ai" | "template";
+}

@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`planToMarkdown > matches the snapshot 1`] = `
+"# Plan wdrożenia: Teleopieka sąsiedzka
+
+> Tekst przygotowany automatycznie. Sprawdź go przed użyciem.
+> Plan przygotowany według szablonu, bez AI.
+
+Innowacja: Teleopieka sąsiedzka (Samotność)
+
+- Typ instytucji: Gmina
+- Rodzaj gminy: Wiejska
+- Liczba mieszkańców: 5–20 tys.
+- Roczny budżet na to działanie: 20–100 tys. zł
+- Zespół: 2 osoby
+- Kogo ma objąć wsparcie: samotni seniorzy z przysiółków
+- Start: za 6 miesięcy
+
+## Podsumowanie
+
+Szkic wdrożenia rozwiązania „Teleopieka sąsiedzka” w 6 mies. Codzienny krótki telefon do seniora mieszkającego samotnie. Brak odebrania uruchamia ustaloną ścieżkę sprawdzenia u sąsiada albo opiekuna. Plan zaczyna się od diagnozy i małego pilotażu, a kończy decyzją, czy utrzymać działanie.
+
+## Dlaczego to pasuje
+
+Chcesz objąć wsparciem grupę „samotni seniorzy z przysiółków”. Rozwiązanie jest skierowane do: samotni seniorzy (kategoria: Samotność). Sprawdź w diagnozie, na ile te grupy się pokrywają.
+
+## Co trzeba dostosować
+
+- Dopasuj opis rozwiązania do grupy „samotni seniorzy z przysiółków”. W bibliotece jest ono opisane dla: samotni seniorzy.
+- W gminie wiejskiej zaplanuj dojazd uczestników albo prowadź działanie w kilku sołectwach.
+- Podziel zadania między 2 osoby z zespołu, tak żeby pilotaż nie zależał od jednej osoby.
+- Uwzględnij podane ograniczenia: Brak transportu publicznego między sołectwami.
+
+## Kroki wdrożenia
+
+1. **Diagnoza potrzeb** (3 tygodnie, odpowiada: koordynator w urzędzie gminy). Sprawdź, ile osób z grupy „samotni seniorzy z przysiółków” potrzebuje wsparcia i gdzie mieszkają. Porozmawiaj z kilkoma z nich o tym, co im przeszkadza.
+2. **Partnerzy i zespół** (3 tygodnie, odpowiada: koordynator w urzędzie gminy). Ustal, kto w zespole prowadzi działanie, i zaproś partnerów. Spiszcie, kto za co odpowiada i co wnosi.
+3. **Pilotaż** (15 tygodni, odpowiada: osoby prowadzące działanie). Uruchom „Teleopieka sąsiedzka” dla pierwszej, małej grupy. Zapisuj, co działa, a co trzeba zmienić.
+4. **Ocena** (3 tygodnie, odpowiada: koordynator w urzędzie gminy). Zbierz opinie uczestników i osób prowadzących. Porównaj wyniki z celami ustalonymi po diagnozie.
+5. **Decyzja o utrzymaniu** (2 tygodnie, odpowiada: kierownictwo instytucji). Przedstaw wyniki i koszty osobom, które decydują o budżecie. Ustalcie, czy działanie zostaje, w jakiej skali i z jakich środków.
+
+## Szacunkowe koszty
+
+| Pozycja | Szacunek | Uwagi |
+| --- | --- | --- |
+| Koordynacja i praca zespołu | 4500 zł – 22 500 zł | Czas osób z zespołu albo zlecenie. |
+| Przygotowanie i szkolenie osób prowadzących | 1000 zł – 5000 zł |  |
+| Materiały i sprzęt | 1500 zł – 7500 zł |  |
+| Lokal i dojazdy | 1500 zł – 7500 zł | Niższe, jeśli partner udostępni salę. |
+| Informowanie mieszkańców i zapisy | 500 zł – 2500 zł |  |
+| Ocena efektów pilotażu | 1000 zł – 5000 zł |  |
+| **Razem** | **10 000 zł – 50 000 zł** | |
+
+## Zespół i partnerzy
+
+Zespół:
+
+- Koordynator: koordynator w urzędzie gminy (0,25 etatu)
+- Osoby prowadzące działanie. Z zespołu: 2 osoby.
+- Osoba zbierająca opinie i wyniki. Może to być koordynator, jeśli pilotaż jest mały.
+
+Partnerzy (rodzaje organizacji):
+
+- organizacja pozarządowa działająca w gminie: Pomaga dotrzeć do uczestników i prowadzić działania.
+- biblioteka gminna lub dom kultury: Udostępnia salę i informuje mieszkańców.
+- sołtysi i koło gospodyń wiejskich: Wskazują osoby, które potrzebują wsparcia, i zachęcają do udziału.
+
+## Ryzyka i jak im zapobiec
+
+| Ryzyko | Jak mu zapobiec |
+| --- | --- |
+| Zgłosi się mniej uczestników, niż zakładasz. | Zapraszaj przez osoby, którym mieszkańcy ufają: sołtysa, pracownika socjalnego, lekarza rodzinnego. |
+| Osoba prowadząca odejdzie albo zachoruje. | Od początku prowadź działanie w dwie osoby i spisuj, jak to robicie. |
+| Koszty okażą się wyższe niż w szacunku. | Przed pilotażem zbierz wyceny i zostaw rezerwę. Po pierwszym miesiącu porównaj wydatki z planem. |
+| Po pilotażu zabraknie środków na dalsze działanie. | Już w trakcie pilotażu sprawdź aktualne nabory i wpisz działanie do planu budżetu na kolejny rok. |
+
+## Jak zmierzyć efekt
+
+- Liczba osób, które wzięły udział w pilotażu: Ustal po diagnozie potrzeb.
+- Udział uczestników, którzy zostali do końca pilotażu: Ustal przed startem i porównaj po pilotażu.
+- Ocena uczestników w krótkiej ankiecie po pilotażu: Większość ocen dobrych lub bardzo dobrych.
+- Koszt na jednego uczestnika: Policz po pilotażu i porównaj z szacunkiem.
+
+## Możliwe źródła finansowania
+
+- środki własne gminy
+- programy wojewódzkie i fundusze UE – do sprawdzenia w aktualnych naborach
+- wkład partnerów: sala, sprzęt, wolontariusze
+
+## Założenia
+
+- Budżet: 20–100 tys. zł rocznie, przeliczony na 6 mies. Daje to 10 000 zł – 50 000 zł.
+- Kwoty to szacunek według typowego podziału kosztów, nie oferta. Przed decyzją zbierz wyceny.
+- Zespół, który może się zaangażować: 2 osoby.
+- Plan korzysta tylko z opisu rozwiązania w bibliotece i z Twoich odpowiedzi. Nie uwzględnia lokalnych umów ani cen.
+- Cele liczbowe ustalisz dopiero po diagnozie potrzeb.
+"
+`;
