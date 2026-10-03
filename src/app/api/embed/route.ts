@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasOpenAI } from "@/lib/ai/models";
 import { backfillInnovations } from "@/lib/ai/backfill";
+import { getAdminAccess } from "@/lib/auth/admin";
 
 const embedRequestSchema = z
   .object({
@@ -19,16 +20,28 @@ export function GET() {
   );
 }
 
-export async function POST(request: Request) {
-  // TODO(#12): replace the secret with an admin-role check once auth lands.
+function hasValidSecret(request: Request): boolean {
   const secret = process.env.EMBED_SECRET;
   const provided = request.headers.get("x-embed-secret");
-  if (
-    !secret ||
-    !provided ||
-    Buffer.byteLength(secret) !== Buffer.byteLength(provided) ||
-    !timingSafeEqual(Buffer.from(secret), Buffer.from(provided))
-  ) {
+  return Boolean(
+    secret &&
+    provided &&
+    Buffer.byteLength(secret) === Buffer.byteLength(provided) &&
+    timingSafeEqual(Buffer.from(secret), Buffer.from(provided)),
+  );
+}
+
+async function hasAdminSession(): Promise<boolean> {
+  try {
+    return (await getAdminAccess()).mode === "admin";
+  } catch {
+    return false;
+  }
+}
+
+export async function POST(request: Request) {
+  // Scripts use the shared secret; signed-in admins use their session.
+  if (!hasValidSecret(request) && !(await hasAdminSession())) {
     return NextResponse.json({ error: "Brak uprawnień." }, { status: 401 });
   }
   try {

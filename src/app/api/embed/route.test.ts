@@ -3,9 +3,11 @@ import { afterEach, beforeEach, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   admin: vi.fn(),
   backfill: vi.fn(),
+  access: vi.fn(),
   configured: false,
 }));
 vi.mock("@/lib/supabase/admin", () => ({ createAdminClient: mocks.admin }));
+vi.mock("@/lib/auth/admin", () => ({ getAdminAccess: mocks.access }));
 vi.mock("@/lib/ai/models", () => ({
   get hasOpenAI() {
     return mocks.configured;
@@ -26,6 +28,7 @@ beforeEach(() => {
   mocks.configured = false;
   mocks.admin.mockReset().mockReturnValue(null);
   mocks.backfill.mockReset();
+  mocks.access.mockReset().mockResolvedValue({ mode: "denied", user: null });
 });
 afterEach(() => vi.unstubAllEnvs());
 
@@ -35,6 +38,19 @@ it("rejects absent, wrong and unconfigured secrets", async () => {
   vi.stubEnv("EMBED_SECRET", "");
   expect((await POST(request("test-only-secret"))).status).toBe(401);
   expect(mocks.admin).not.toHaveBeenCalled();
+});
+it("accepts an admin session without the secret, but not preview or demo", async () => {
+  mocks.configured = true;
+  mocks.admin.mockReturnValue({});
+  mocks.backfill.mockResolvedValue(22);
+  for (const mode of ["preview", "demo", "denied"]) {
+    mocks.access.mockResolvedValue({ mode, user: null });
+    expect((await POST(request())).status).toBe(401);
+  }
+  mocks.access.mockResolvedValue({ mode: "admin", user: { id: "admin" } });
+  const response = await POST(request());
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual({ count: 22 });
 });
 it("returns 503 when providers are not configured", async () => {
   expect((await POST(request("test-only-secret"))).status).toBe(503);
