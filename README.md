@@ -26,15 +26,15 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Fill in `.env.local` when you wire Supabase or the assistant. The app boots without those values: `hasSupabase` is false and the match API uses local mocks. `SUPABASE_SERVICE_ROLE_KEY` is server-only. Never expose it to the browser.
 
-| Script              | Purpose                    |
-| ------------------- | -------------------------- |
-| `npm run dev`       | Local development          |
-| `npm run build`     | Production build           |
-| `npm run start`     | Serve the production build |
-| `npm run lint`      | ESLint, including jsx-a11y |
+| Script              | Purpose                                  |
+| ------------------- | ---------------------------------------- |
+| `npm run dev`       | Local development                        |
+| `npm run build`     | Production build                         |
+| `npm run start`     | Serve the production build               |
+| `npm run lint`      | ESLint, including jsx-a11y               |
 | `npm run typecheck` | Next.js route types, then `tsc --noEmit` |
-| `npm test`          | Vitest                     |
-| `npm run format`    | Prettier                   |
+| `npm test`          | Vitest                                   |
+| `npm run format`    | Prettier                                 |
 
 ## Folder map
 
