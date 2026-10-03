@@ -44,14 +44,13 @@ export default function AccessibilityStatementPage() {
           Zespół prototypu HubMI.pl zobowiązuje się zapewnić dostępność serwisu
           HubMI.pl zgodnie z ustawą z dnia 4 kwietnia 2019 r. o dostępności
           cyfrowej stron internetowych i aplikacji mobilnych podmiotów
-          publicznych. Deklaracja dotyczy serwisu HubMI.pl – prototypu
+          publicznych. Deklaracja dotyczy serwisu HubMI.pl, prototypu
           Małopolskiego Hubu Innowacji Społecznych.
         </p>
         <p>
-          Serwis jest prototypem przygotowanym na HackYeah 2026. Obecnie
-          prowadzi go zespół prototypu, a docelowym operatorem jest Regionalny
-          Ośrodek Polityki Społecznej w Krakowie (ROPS Kraków). Wszystkie dane w
-          serwisie są przykładowe.
+          Serwis przygotowaliśmy na HackYeah 2026. Prowadzi go zespół prototypu.
+          Docelowym operatorem jest Regionalny Ośrodek Polityki Społecznej w
+          Krakowie (ROPS Kraków). Wszystkie dane w serwisie są przykładowe.
         </p>
         <ul className="list-disc space-y-1 pl-6">
           <li>
@@ -69,8 +68,8 @@ export default function AccessibilityStatementPage() {
         <p>
           Serwis jest <strong>częściowo zgodny</strong> z ustawą o dostępności
           cyfrowej stron internetowych i aplikacji mobilnych podmiotów
-          publicznych z powodu niezgodności lub wyłączeń wymienionych poniżej.
-          Punktem odniesienia są wytyczne WCAG 2.1 na poziomie AA.
+          publicznych. Niezgodności i wyłączenia opisujemy poniżej. Oceniamy
+          dostępność według WCAG 2.1 na poziomie AA.
         </p>
       </Section>
 
@@ -113,9 +112,10 @@ export default function AccessibilityStatementPage() {
           </li>
         </ul>
         <p>
-          Deklarację sporządzono na podstawie samooceny przeprowadzonej przez
-          zespół prototypu. Do oceny użyto narzędzi Lighthouse i axe oraz
-          czytnika ekranu NVDA, a także ręcznych testów obsługi samą klawiaturą.
+          Deklarację przygotował zespół prototypu na podstawie samooceny.
+          Dostępność sprawdzamy narzędziami Lighthouse i axe oraz testami
+          obsługi klawiaturą. Pełny przegląd z czytnikiem ekranu jest jeszcze
+          potrzebny.
         </p>
       </Section>
 
@@ -148,9 +148,8 @@ export default function AccessibilityStatementPage() {
 
       <Section id="contact" title="Informacje zwrotne i dane kontaktowe">
         <p>
-          Problemy z dostępnością serwisu można zgłaszać zespołowi prototypu
-          HubMI.pl. Tą samą drogą można składać wnioski o udostępnienie
-          informacji niedostępnej oraz żądania zapewnienia dostępności.
+          Problemy z dostępnością zgłoś zespołowi prototypu HubMI.pl. Możesz też
+          poprosić o udostępnienie informacji lub zapewnienie dostępności.
         </p>
         <p>
           E-mail:{" "}
@@ -158,10 +157,7 @@ export default function AccessibilityStatementPage() {
             {CONTACT_EMAIL}
           </a>
         </p>
-        <p>
-          To adres przykładowy – serwis jest prototypem i nie obsługuje jeszcze
-          zgłoszeń.
-        </p>
+        <p>To adres przykładowy. Prototyp nie obsługuje jeszcze zgłoszeń.</p>
       </Section>
 
       <Section id="procedure" title="Procedura wnioskowo-skargowa">

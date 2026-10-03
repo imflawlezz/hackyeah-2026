@@ -88,10 +88,10 @@ function buildReason(
 ): string {
   const parts: string[] = [];
   if (hits.length > 0) {
-    parts.push(`Dopasowanie po słowach: ${hits.join(", ")}.`);
+    parts.push(`Wspólne słowa z Twoim opisem: ${hits.join(", ")}.`);
   }
   if (categoryMatch) {
-    parts.push(`Dopasowanie po kategorii: ${category}.`);
+    parts.push(`Wybrana przez Ciebie kategoria: ${category}.`);
   }
   return parts.join(" ");
 }

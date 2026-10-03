@@ -3,14 +3,15 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Kreator pomysłów",
-  description: "Zgłoś pomysł na innowację społeczną w krótkiej fiszce.",
+  description:
+    "W tej części przygotujesz krótką fiszkę pomysłu. Opisz, komu ma pomóc i na czym polega. Ta funkcja jest w przygotowaniu.",
 };
 
 export default function IdeasPage() {
   return (
     <PlaceholderPage
       title="Kreator pomysłów"
-      description="Zgłoś pomysł na innowację społeczną w krótkiej fiszce."
+      description="W tej części przygotujesz krótką fiszkę pomysłu. Opisz, komu ma pomóc i na czym polega. Ta funkcja jest w przygotowaniu."
     />
   );
 }

@@ -4,14 +4,14 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 export const metadata: Metadata = {
   title: "Baza wiedzy",
   description:
-    "Przeglądaj wyzwania Małopolski, bibliotekę innowacji i materiały edukacyjne.",
+    "W tej części znajdziesz wyzwania Małopolski, przykłady innowacji i materiały do pracy z mieszkańcami. Ta funkcja jest w przygotowaniu.",
 };
 
 export default function KnowledgePage() {
   return (
     <PlaceholderPage
       title="Baza wiedzy"
-      description="Przeglądaj wyzwania Małopolski, bibliotekę innowacji i materiały edukacyjne."
+      description="W tej części znajdziesz wyzwania Małopolski, przykłady innowacji i materiały do pracy z mieszkańcami. Ta funkcja jest w przygotowaniu."
     />
   );
 }

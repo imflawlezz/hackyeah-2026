@@ -16,7 +16,7 @@ describe("mockMatch", () => {
     expect(results).toHaveLength(1);
     expect(results[0]?.innovation.id).toBe("inn-after-school");
     expect(results[0]?.score).toBeGreaterThan(0);
-    expect(results[0]?.reason).toContain("Dopasowanie");
+    expect(results[0]?.reason).toContain("Wspólne słowa");
   });
 
   it("returns no matches for an unrelated problem", () => {

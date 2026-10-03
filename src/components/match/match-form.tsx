@@ -1,7 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleAlertIcon, SearchIcon } from "lucide-react";
+import {
+  ExclamationCircleIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/20/solid";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -17,7 +20,10 @@ export const matchFormSchema = z.object({
   problem: z
     .string()
     .trim()
-    .min(PROBLEM_MIN_LENGTH, "Opisz problem – minimum 10 znaków.")
+    .min(
+      PROBLEM_MIN_LENGTH,
+      "Opis jest za krótki. Napisz co najmniej 10 znaków.",
+    )
     .max(PROBLEM_MAX_LENGTH, "Opis może mieć maksymalnie 2000 znaków."),
   category: z.string(),
 });
@@ -92,11 +98,11 @@ export function MatchForm({
       onSubmit={submit}
       noValidate
       aria-label="Wyszukiwanie innowacji"
-      className="flex flex-col gap-6"
+      className="flex min-w-0 flex-col gap-6"
     >
       <div className="flex flex-col gap-2">
         <Label htmlFor="problem" className="text-lg font-semibold">
-          Opisz problem społeczny
+          Opis problemu
         </Label>
         <p id="problem-hint" className="text-base text-muted-foreground">
           Napisz, kogo dotyczy problem, gdzie występuje i czego brakuje.
@@ -122,7 +128,10 @@ export function MatchForm({
               id="problem-error"
               className="flex items-center gap-1.5 font-medium text-destructive"
             >
-              <CircleAlertIcon aria-hidden="true" className="size-5 shrink-0" />
+              <ExclamationCircleIcon
+                aria-hidden="true"
+                className="size-5 shrink-0"
+              />
               {problemError}
             </p>
           ) : (
@@ -156,7 +165,7 @@ export function MatchForm({
               <button
                 type="button"
                 onClick={() => fillExample(example.description)}
-                className="min-h-11 rounded-full border border-border bg-background px-4 py-2 text-base text-foreground transition-colors outline-none hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                className="min-h-11 rounded-md border border-input bg-background px-4 py-2 text-base text-foreground transition-colors outline-none hover:bg-muted focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               >
                 <span className="sr-only">Wstaw przykład: </span>
                 {example.label}
@@ -172,7 +181,10 @@ export function MatchForm({
         </Label>
         <select
           id="category"
-          className={cn(FIELD_CLASSES, "min-h-12 px-3 text-lg")}
+          className={cn(
+            FIELD_CLASSES,
+            "min-h-12 max-w-full min-w-0 px-3 text-lg",
+          )}
           {...register("category")}
         >
           <option value="">Wszystkie kategorie</option>
@@ -189,12 +201,12 @@ export function MatchForm({
           type="submit"
           aria-disabled={loading || undefined}
           className={cn(
-            "h-auto min-h-12 w-full gap-2 px-6 py-3 text-lg font-semibold sm:w-auto [&_svg:not([class*='size-'])]:size-5",
+            "h-auto min-h-12 w-full gap-2 px-6 py-3 text-lg font-semibold whitespace-normal sm:w-auto [&_svg:not([class*='size-'])]:size-5",
             loading && "cursor-progress",
           )}
         >
-          <SearchIcon aria-hidden="true" />
-          {loading ? "Szukam…" : "Znajdź rozwiązania"}
+          <MagnifyingGlassIcon aria-hidden="true" className="size-5" />
+          {loading ? "Wyszukujemy rozwiązania…" : "Znajdź rozwiązania"}
         </Button>
       </div>
     </form>

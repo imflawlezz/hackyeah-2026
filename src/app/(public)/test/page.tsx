@@ -4,14 +4,14 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 export const metadata: Metadata = {
   title: "Testuj innowacje",
   description:
-    "Zgłoś się do testów i przekaż opinię o istniejących rozwiązaniach.",
+    "W tej części zgłosisz chęć udziału w testach i opiszesz swoje uwagi. Ta funkcja jest w przygotowaniu.",
 };
 
 export default function TestPage() {
   return (
     <PlaceholderPage
       title="Testuj innowacje"
-      description="Zgłoś się do testów i przekaż opinię o istniejących rozwiązaniach."
+      description="W tej części zgłosisz chęć udziału w testach i opiszesz swoje uwagi. Ta funkcja jest w przygotowaniu."
     />
   );
 }
