@@ -74,17 +74,20 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
-3. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
+3. `supabase/migrations/0003_ideas_canvas.sql` (idea canvas, demo grant call)
+4. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 
-| Table              | Who can read                  | Who can write                                                                       |
-| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------- |
-| `innovations`      | everyone, including anonymous | admin                                                                               |
-| `problems`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `ideas`            | author, admin                 | signed-in users insert their own; admin                                             |
-| `feedback`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `innovation_tests` | everyone, including anonymous | admin                                                                               |
-| `test_signups`     | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
-| `profiles`         | owner, admin                  | owner (not `role`); admin                                                           |
+| Table              | Who can read                                   | Who can write                                                                       |
+| ------------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `innovations`      | everyone, including anonymous                  | admin                                                                               |
+| `problems`         | author, admin                                  | signed-in users insert their own; admin                                             |
+| `ideas`            | author; anyone can read submitted and reviewed | signed-in users insert their own and update drafts; admin                           |
+| `feedback`         | author, admin                                  | signed-in users insert their own; admin                                             |
+| `innovation_tests` | everyone, including anonymous                  | admin                                                                               |
+| `test_signups`     | owner, admin                                   | signed-in users sign themselves up while the test is open and has free slots; admin |
+| `profiles`         | owner, admin                                   | owner (not `role`); admin                                                           |
+| `grant_calls`      | everyone, including anonymous                  | admin                                                                               |
+| `grant_drafts`     | author, admin                                  | author; admin                                                                       |
 
 A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
@@ -97,6 +100,8 @@ Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ 
 | Database                                                                               | `src/types`             | Note                                     |
 | -------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------- |
 | `ideas.essence`                                                                        | `Idea.summary`          | different name, same field               |
+| `ideas.canvas`                                                                         | `Idea.canvas`           | jsonb                                    |
+| `ideas.municipality`                                                                   | `Idea.municipality`     | optional                                 |
 | `feedback.ease_of_use`, `would_recommend`, `what_worked`, `what_to_improve`, `test_id` | `Feedback.easeOfUse`, … | optional, added in `0004`                |
 | `test_signups.user_id`                                                                 | `TestSignup.userId`     | defaults to the signed-in user           |
 | `innovations.embedding`, `problems.embedding`                                          | not exposed             | `vector(1536)`, server-side only         |
