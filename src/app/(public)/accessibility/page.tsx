@@ -13,6 +13,8 @@ const CONTACT_EMAIL = "kontakt@hubmi.example";
 const linkClassName =
   "rounded-sm text-primary underline underline-offset-4 hover:decoration-2";
 
+// Headings and their order follow "Warunki techniczne publikacji oraz
+// struktura dokumentu elektronicznego deklaracji dostępności" v2.0.
 function Section({
   id,
   title,
@@ -32,12 +34,31 @@ function Section({
   );
 }
 
+function Subsection({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section aria-labelledby={id} className="mt-5 space-y-4">
+      <h3 id={id} className="text-xl font-bold">
+        {title}
+      </h3>
+      {children}
+    </section>
+  );
+}
+
 export default function AccessibilityStatementPage() {
   return (
     <article className="max-w-[75ch]">
       <h1 className="text-3xl font-bold">Deklaracja dostępności</h1>
 
-      <Section id="intro" title="Wstęp">
+      <div className="mt-5 space-y-4">
         <p>
           Zespół prototypu HubMI.pl zobowiązuje się zapewnić dostępność serwisu
           HubMI.pl zgodnie z ustawą z dnia 4 kwietnia 2019 r. o dostępności
@@ -52,7 +73,7 @@ export default function AccessibilityStatementPage() {
         </p>
         <ul className="list-disc space-y-1 pl-6">
           <li>
-            Data publikacji serwisu:{" "}
+            Data publikacji strony internetowej:{" "}
             <time dateTime={PUBLISHED.iso}>{PUBLISHED.text}</time>
           </li>
           <li>
@@ -60,45 +81,57 @@ export default function AccessibilityStatementPage() {
             <time dateTime={UPDATED.iso}>{UPDATED.text}</time>
           </li>
         </ul>
-      </Section>
+      </div>
 
-      <Section id="status" title="Status pod względem zgodności z ustawą">
+      <Section id="status" title="Stan dostępności cyfrowej">
         <p>
-          Serwis jest <strong>częściowo zgodny</strong> z ustawą o dostępności
-          cyfrowej stron internetowych i aplikacji mobilnych podmiotów
-          publicznych. Niezgodności i wyłączenia opisujemy poniżej. Oceniamy
-          dostępność według WCAG 2.1 na poziomie AA.
+          Strona internetowa jest częściowo zgodna z załącznikiem do ustawy z
+          dnia 4 kwietnia 2019 r. o dostępności cyfrowej stron internetowych i
+          aplikacji mobilnych podmiotów publicznych.
+        </p>
+        <p>
+          Niezgodności i wyłączenia opisujemy poniżej. Oceniamy dostępność
+          według WCAG 2.1 na poziomie AA.
         </p>
       </Section>
 
-      <Section id="inaccessible" title="Treści niedostępne">
-        <ul className="list-disc space-y-2 pl-6">
-          <li>
-            Teksty tworzone przez sztuczną inteligencję (na przykład
-            uzasadnienia dopasowań i odpowiedzi asystenta) mogą być
-            nieprecyzyjne albo napisane zbyt trudnym językiem.
-          </li>
-          <li>
-            Filmy z serwisów zewnętrznych mogą nie mieć napisów ani
-            audiodeskrypcji.
-          </li>
-          <li>
-            Dokumenty do pobrania dodane przez użytkowników i instytucje mogą
-            nie być w pełni dostępne cyfrowo.
-          </li>
-          <li>
-            Wykresy i wizualizacje danych mogą nie mieć pełnego opisu
-            tekstowego.
-          </li>
-          <li>
-            Serwis jest prototypem, więc część funkcji jest jeszcze w budowie i
-            nie przeszła pełnych testów z użytkownikami technologii
-            wspomagających.
-          </li>
-        </ul>
+      <Section id="inaccessible" title="Niedostępne treści">
+        <Subsection id="non-compliance" title="Niezgodność z załącznikiem">
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              Teksty tworzone przez sztuczną inteligencję (na przykład
+              uzasadnienia dopasowań i odpowiedzi asystenta) mogą być
+              nieprecyzyjne albo napisane zbyt trudnym językiem.
+            </li>
+            <li>
+              Wykresy i wizualizacje danych mogą nie mieć pełnego opisu
+              tekstowego.
+            </li>
+            <li>
+              Serwis jest prototypem, więc część funkcji jest jeszcze w budowie
+              i nie przeszła pełnych testów z użytkownikami technologii
+              wspomagających.
+            </li>
+          </ul>
+        </Subsection>
+        <Subsection id="out-of-scope" title="Treści nieobjęte przepisami">
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              Filmy z serwisów zewnętrznych mogą nie mieć napisów ani
+              audiodeskrypcji.
+            </li>
+            <li>
+              Dokumenty do pobrania dodane przez użytkowników i instytucje mogą
+              nie być w pełni dostępne cyfrowo.
+            </li>
+          </ul>
+        </Subsection>
+        <Subsection id="disproportionate-burden" title="Nadmierne koszty">
+          <p>Nie powołujemy się na nadmierne koszty.</p>
+        </Subsection>
       </Section>
 
-      <Section id="preparation" title="Przygotowanie deklaracji">
+      <Section id="preparation" title="Przygotowanie deklaracji dostępności">
         <ul className="list-disc space-y-1 pl-6">
           <li>
             Data sporządzenia deklaracji:{" "}
@@ -117,31 +150,55 @@ export default function AccessibilityStatementPage() {
         </p>
       </Section>
 
-      <Section id="features" title="Ułatwienia na stronie">
-        <ul className="list-disc space-y-2 pl-6">
-          <li>
-            Odnośnik „Przejdź do treści” jest pierwszym elementem każdej strony
-            i przenosi fokus do głównej treści.
-          </li>
-          <li>
-            Przyciski A, A+ i A++ w nagłówku zmieniają rozmiar tekstu (100%,
-            115% i 130%).
-          </li>
-          <li>
-            Przycisk „Wysoki kontrast” włącza czarne tło, biały tekst oraz żółte
-            odnośniki i obramowanie fokusu.
-          </li>
-          <li>
-            Całą stronę można obsłużyć klawiaturą: klawisz Tab przenosi do
-            kolejnego elementu, Shift + Tab do poprzedniego, Enter uruchamia
-            odnośnik lub przycisk, a Esc zamyka menu i okna dialogowe.
-          </li>
-          <li>Element z fokusem ma zawsze wyraźne obramowanie.</li>
-          <li>
-            Wybrane ustawienia są zapamiętywane w przeglądarce. Serwis ogranicza
-            animacje, gdy w systemie włączono redukcję ruchu.
-          </li>
-        </ul>
+      <Section
+        id="features"
+        title="Udogodnienia, ograniczenia i inne informacje"
+      >
+        <Subsection
+          id="above-requirements"
+          title="Elementy w których zapewniono wyższy od wymaganego poziom dostępności cyfrowej"
+        >
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              Odnośnik „Przejdź do treści głównej” jest pierwszym elementem
+              każdej strony i przenosi fokus do głównej treści.
+            </li>
+            <li>
+              Przyciski A, A+ i A++ w nagłówku zmieniają rozmiar tekstu (100%,
+              115% i 130%).
+            </li>
+            <li>
+              Przycisk „Wysoki kontrast” włącza czarne tło, biały tekst oraz
+              żółte odnośniki i obramowanie fokusu.
+            </li>
+            <li>Element z fokusem ma zawsze wyraźne obramowanie.</li>
+            <li>
+              Wybrane ustawienia są zapamiętywane w przeglądarce. Serwis
+              ogranicza animacje, gdy w systemie włączono redukcję ruchu.
+            </li>
+          </ul>
+        </Subsection>
+        <Subsection
+          id="fix-plans"
+          title="Plany likwidacji błędów dostępności cyfrowej"
+        >
+          <p>
+            Przed uruchomieniem serwisu przeprowadzimy pełny przegląd z
+            czytnikiem ekranu i poprawimy znalezione błędy.
+          </p>
+        </Subsection>
+      </Section>
+
+      <Section id="shortcuts" title="Skróty klawiszowe">
+        <p>
+          Całą stronę można obsłużyć klawiaturą: klawisz Tab przenosi do
+          kolejnego elementu, Shift + Tab do poprzedniego, Enter uruchamia
+          odnośnik lub przycisk, a Esc zamyka menu i okna dialogowe.
+        </p>
+        <p>
+          W rozmowie Ctrl + Enter wysyła wiadomość. W asystencie pomysłów Enter
+          wysyła pytanie, a Shift + Enter dodaje nową linię.
+        </p>
       </Section>
 
       <Section id="contact" title="Informacje zwrotne i dane kontaktowe">
@@ -158,7 +215,10 @@ export default function AccessibilityStatementPage() {
         <p>To adres przykładowy. Prototyp nie obsługuje jeszcze zgłoszeń.</p>
       </Section>
 
-      <Section id="procedure" title="Procedura wnioskowo-skargowa">
+      <Section
+        id="procedure"
+        title="Obsługa wniosków i skarg związanych z dostępnością"
+      >
         <p>
           Każdy ma prawo wystąpić z żądaniem zapewnienia dostępności cyfrowej
           serwisu lub jego elementu. Można też zażądać udostępnienia informacji
@@ -192,11 +252,25 @@ export default function AccessibilityStatementPage() {
         </p>
       </Section>
 
-      <Section id="architecture" title="Dostępność architektoniczna">
-        <p>
-          Nie dotyczy. HubMI.pl jest prototypem serwisu internetowego i nie ma
-          siedziby, w której obsługuje się interesantów.
-        </p>
+      <Section id="other" title="Pozostałe informacje">
+        <Subsection id="mobile-apps" title="Aplikacje mobilne">
+          <p>Serwis nie ma aplikacji mobilnej.</p>
+        </Subsection>
+        <Subsection id="architecture" title="Dostępność architektoniczna">
+          <p>
+            Nie dotyczy. HubMI.pl jest prototypem serwisu internetowego i nie ma
+            siedziby, w której obsługuje się interesantów.
+          </p>
+        </Subsection>
+        <Subsection
+          id="communication"
+          title="Dostępność komunikacyjno-informacyjna"
+        >
+          <p>
+            Nie dotyczy. Prototyp nie prowadzi obsługi interesantów, w tym w
+            polskim języku migowym. Informacje uzupełni operator serwisu.
+          </p>
+        </Subsection>
       </Section>
     </article>
   );

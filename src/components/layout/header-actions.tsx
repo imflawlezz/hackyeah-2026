@@ -49,12 +49,12 @@ export function HeaderActions({
         <NotificationBell />
         <p className="text-sm text-muted-foreground">Wersja demonstracyjna</p>
         {link("/admin", "Panel administratora", "outline")}
-        {link("/login", "Zaloguj się", "default")}
+        {link("/login", "Zaloguj się", "outline")}
       </>
     );
   }
 
-  if (!user) return link("/login", "Zaloguj się", "default");
+  if (!user) return link("/login", "Zaloguj się", "outline");
 
   return (
     <>
@@ -64,7 +64,7 @@ export function HeaderActions({
         <span className="leading-tight font-semibold">{user.displayName}</span>
         <span
           data-slot="role-badge"
-          className="w-fit rounded-sm border border-input px-1.5 text-sm text-muted-foreground"
+          className="w-fit rounded-sm border border-input px-2 text-sm text-muted-foreground"
         >
           {ROLE_LABELS[user.role]}
         </span>
