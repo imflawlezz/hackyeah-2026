@@ -10,7 +10,7 @@ import { materials } from "@/lib/mocks";
 export const metadata: Metadata = {
   title: "Baza wiedzy",
   description:
-    "Przeglądaj wyzwania Małopolski, bibliotekę innowacji i materiały edukacyjne.",
+    "Sprawdź wyzwania Małopolski, przykłady innowacji i materiały do pracy z mieszkańcami.",
 };
 
 // TODO(#27): admin-only "Trendy potrzeb" lives in the admin panel, not here.

@@ -5,7 +5,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { cn } from "cn";
 
 import { Button } from "@/components/ui/button";
-import { XIcon } from "lucide-react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
@@ -31,7 +31,7 @@ function DialogOverlay({
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-foreground/20 duration-100 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className,
       )}
       {...props}
@@ -62,15 +62,16 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
+            aria-label="Zamknij okno"
             render={
               <Button
                 variant="ghost"
                 className="absolute top-2 right-2"
-                size="icon-sm"
+                size="icon"
               />
             }
           >
-            <XIcon />
+            <XMarkIcon aria-hidden="true" className="size-6" />
             <span className="sr-only">Zamknij</span>
           </DialogPrimitive.Close>
         )}

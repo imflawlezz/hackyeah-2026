@@ -6,7 +6,7 @@ import { hasSupabase } from "@/lib/supabase/server";
 export const metadata: Metadata = {
   title: "Testuj innowacje",
   description:
-    "Zgłoś się do testów i przekaż opinię o istniejących rozwiązaniach.",
+    "Sprawdź nowe rozwiązania, zgłoś chęć udziału w testach i przekaż swoją opinię.",
 };
 
 export default async function TestPage() {

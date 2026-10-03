@@ -149,7 +149,11 @@ Ratios are WCAG 2.x contrast against white unless noted, computed by `contrastRa
 
 Crimson is `highlight`, not `accent`: shadcn uses `accent` for hover backgrounds. Status is never conveyed by colour alone; pair it with an icon and text.
 
-Typography is Inter (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
+The screen design and Polish copy rules live in [docs/design/STYLE.md](docs/design/STYLE.md).
+
+`components.json` retains the shadcn CLI icon setting. After each `npx shadcn@latest add`, replace emitted lucide imports with `@heroicons/react`; the ESLint restriction catches missed imports.
+
+Typography pairs Source Serif 4 (600/700) for headings with Source Sans 3 (400/600) for body text, both self-hosted through `next/font/google` (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
 
 ### Font size and high contrast
 

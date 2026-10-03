@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -8,19 +8,27 @@ import { Toaster } from "@/components/ui/sonner";
 import { fontSizeInitScript } from "@/lib/a11y/preferences";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
+  weight: ["400", "600"],
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  weight: ["600", "700"],
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "HubMI.pl – strona główna",
+    default: "HubMI.pl. Innowacje dla Małopolski",
     template: "%s · HubMI.pl",
   },
   description:
-    "Małopolski Hub Innowacji Społecznych — platforma kojarzenia potrzeb z innowacjami.",
+    "Opisz potrzeby swojej okolicy i poznaj rozwiązania z bazy Małopolskiego Hubu Innowacji Społecznych.",
 };
 
 export const viewport: Viewport = {
@@ -35,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="pl"
-      className={`${inter.variable} h-full`}
+      className={`${sourceSans.variable} ${sourceSerif.variable} h-full`}
       suppressHydrationWarning
     >
       <head>

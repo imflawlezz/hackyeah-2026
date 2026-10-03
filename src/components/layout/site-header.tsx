@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuIcon } from "lucide-react";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { AccessibilityToolbar } from "@/components/layout/accessibility-toolbar";
 import { HeaderActions } from "@/components/layout/header-actions";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ import { isCurrentRoute } from "@/lib/navigation";
 
 const NAV_ITEMS = [
   { href: "/", label: "Strona główna" },
-  { href: "/match", label: "Dopasuj innowację" },
+  { href: "/match", label: "Znajdź rozwiązania" },
   { href: "/knowledge", label: "Baza wiedzy" },
   { href: "/ideas", label: "Kreator pomysłów" },
   { href: "/test", label: "Testuj innowacje" },
@@ -50,7 +50,7 @@ function NavList({
               isCurrentRoute(pathname, item.href) ? "page" : undefined
             }
             onClick={onNavigate}
-            className={`rounded-md font-medium text-primary underline-offset-4 hover:bg-accent hover:text-accent-foreground hover:underline aria-[current=page]:font-bold aria-[current=page]:text-accent-foreground aria-[current=page]:underline aria-[current=page]:decoration-2 ${linkClassName}`}
+            className={`rounded-sm font-medium text-primary underline-offset-8 hover:underline aria-[current=page]:font-bold aria-[current=page]:text-accent-foreground aria-[current=page]:underline aria-[current=page]:decoration-2 ${linkClassName}`}
           >
             {item.label}
           </Link>
@@ -74,7 +74,7 @@ export function SiteHeader() {
 
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4">
         <Link href="/" className="flex flex-col rounded-md">
-          <span className="text-2xl leading-tight font-bold text-heading">
+          <span className="font-heading text-2xl leading-tight font-bold text-heading">
             HubMI.pl
           </span>
           <span className="text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ export function SiteHeader() {
               />
             }
           >
-            <MenuIcon aria-hidden="true" />
+            <Bars3Icon aria-hidden="true" className="size-6" />
             Menu
           </SheetTrigger>
           <SheetContent
