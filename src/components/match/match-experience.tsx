@@ -51,9 +51,11 @@ function focusLost(): boolean {
 export function MatchExperience({
   initialValues = { problem: "", category: "" },
   autoRun = false,
+  signedIn = false,
 }: {
   initialValues?: MatchFormValues;
   autoRun?: boolean;
+  signedIn?: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -136,6 +138,7 @@ export function MatchExperience({
     <div className="flex flex-col gap-10">
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)]">
         <MatchForm
+          signedIn={signedIn}
           defaultValues={initialValues}
           loading={state.status === "loading"}
           onSearch={handleSearch}
@@ -171,7 +174,11 @@ export function MatchExperience({
 }
 
 /** Reads ?q= and ?category=. Must be rendered inside <Suspense>. */
-export function MatchExperienceFromUrl() {
+export function MatchExperienceFromUrl({
+  signedIn = false,
+}: {
+  signedIn?: boolean;
+}) {
   const searchParams = useSearchParams();
   const problem = searchParams.get("q") ?? "";
   const requestedCategory = searchParams.get("category") ?? "";
@@ -181,6 +188,7 @@ export function MatchExperienceFromUrl() {
 
   return (
     <MatchExperience
+      signedIn={signedIn}
       initialValues={{ problem, category }}
       autoRun={problem.trim().length > 0}
     />

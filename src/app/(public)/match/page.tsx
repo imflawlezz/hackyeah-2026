@@ -1,3 +1,4 @@
+import { getCurrentUser } from "@/lib/auth/session";
 import { ShieldCheckIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
     "Opisz potrzeby swojej okolicy i sprawdź propozycje z bazy innowacji społecznych.",
 };
 
-export default function MatchPage() {
+export default async function MatchPage() {
+  const signedIn = Boolean(await getCurrentUser());
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-2.5">
@@ -36,9 +38,9 @@ export default function MatchPage() {
         </p>
       </header>
 
-      {/* The fallback is the prerendered form; ?q= is read after hydration. */}
-      <Suspense fallback={<MatchExperience />}>
-        <MatchExperienceFromUrl />
+      {/* The fallback preserves the session-aware form; ?q= is read after hydration. */}
+      <Suspense fallback={<MatchExperience signedIn={signedIn} />}>
+        <MatchExperienceFromUrl signedIn={signedIn} />
       </Suspense>
     </div>
   );

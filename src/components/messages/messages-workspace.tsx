@@ -1,4 +1,7 @@
 "use client";
+import { VoiceFieldInput } from "@/components/voice/voice-field-input";
+import { appendTranscript } from "@/lib/voice/append";
+
 import Link from "next/link";
 import { useEffect, useRef, useState, startTransition } from "react";
 import {
@@ -314,6 +317,17 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                   }}
                 />
                 <FieldError id="message-body-error" message={replyError} />
+                <VoiceFieldInput
+                  key={conversation.id}
+                  getValue={() => body}
+                  onChange={(_value, text) =>
+                    setBody(
+                      (current) =>
+                        appendTranscript(current, text, 4000) ?? current,
+                    )
+                  }
+                  limit={4000}
+                />
                 <button
                   type="submit"
                   className="min-h-11 rounded-sm bg-primary px-6 py-2 text-primary-foreground hover:bg-primary-hover active:bg-navy"
