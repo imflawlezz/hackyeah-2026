@@ -1,5 +1,10 @@
 import { beforeEach, expect, it, vi } from "vitest";
-const mocks = vi.hoisted(() => ({ transcribe: vi.fn(), configured: true }));
+const mocks = vi.hoisted(() => ({
+  transcribe: vi.fn(),
+  configured: true,
+  user: vi.fn(),
+}));
+vi.mock("@/lib/auth/session", () => ({ getCurrentUser: mocks.user }));
 vi.mock("@/lib/ai/transcribe", () => ({ transcribeAudio: mocks.transcribe }));
 vi.mock("@/lib/ai/models", () => ({
   get hasOpenAI() {
@@ -31,6 +36,7 @@ function request(
 beforeEach(() => {
   mocks.transcribe.mockReset().mockResolvedValue("Szukam wsparcia.");
   mocks.configured = true;
+  mocks.user.mockReset().mockResolvedValue({ id: `user-${++ip}` });
 });
 it("returns the provider transcript unchanged", async () => {
   mocks.transcribe.mockResolvedValue("  słowa\n użytkownika  ");
@@ -111,12 +117,30 @@ it("hides provider failures", async () => {
   expect(response.status).toBe(503);
   expect(JSON.stringify(await response.json())).not.toContain("secret");
 });
-it("limits anonymous requests with Retry-After", async () => {
+it("limits signed-in users across IP addresses with Retry-After", async () => {
   const address = String(++ip);
-  for (let i = 0; i < 5; i++) await POST(request(undefined, address));
+  for (let i = 0; i < 5; i++) await POST(request(undefined, `${address}-${i}`));
   mocks.transcribe.mockClear();
   const response = await POST(request(undefined, address));
   expect(response.status).toBe(429);
   expect(response.headers.get("retry-after")).toBe("60");
   expect(mocks.transcribe).not.toHaveBeenCalled();
+});
+
+it("rejects anonymous requests before consuming uploads or calling the provider", async () => {
+  mocks.user.mockResolvedValue(null);
+  const req = request();
+  const response = await POST(req);
+  expect(response.status).toBe(401);
+  expect(await response.json()).toEqual({
+    error: "Zaloguj się, aby korzystać z wprowadzania głosowego.",
+  });
+  expect(req.bodyUsed).toBe(false);
+  expect(mocks.transcribe).not.toHaveBeenCalled();
+});
+it("keeps separate quotas for users sharing an IP", async () => {
+  const address = String(++ip);
+  for (let i = 0; i < 5; i++) await POST(request(undefined, address));
+  mocks.user.mockResolvedValue({ id: "other-" + ++ip });
+  expect((await POST(request(undefined, address))).status).toBe(200);
 });

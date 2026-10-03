@@ -1,6 +1,7 @@
 import { transcribeAudio } from "@/lib/ai/transcribe";
 import { hasOpenAI } from "@/lib/ai/models";
-import { clientIp, createRateLimiter } from "@/lib/rate-limit";
+import { createRateLimiter } from "@/lib/rate-limit";
+import { getCurrentUser } from "@/lib/auth/session";
 import { readAudio, UploadError } from "@/lib/voice/upload";
 
 export const runtime = "nodejs";
@@ -11,10 +12,16 @@ const failure =
   "Nie udało się rozpoznać mowy. Spróbuj ponownie lub wpisz tekst.";
 
 export async function POST(request: Request) {
+  const user = await getCurrentUser();
+  if (!user)
+    return Response.json(
+      { error: "Zaloguj się, aby korzystać z wprowadzania głosowego." },
+      { status: 401 },
+    );
   const origin = request.headers.get("origin");
   if (origin && origin !== new URL(request.url).origin)
     return Response.json({ error: failure }, { status: 400 });
-  if (!allow(clientIp(request)) || !globalAllow("all"))
+  if (!allow(user.id) || !globalAllow("all"))
     return Response.json(
       {
         error: "Zbyt wiele nagrań. Spróbuj ponownie za minutę lub wpisz tekst.",

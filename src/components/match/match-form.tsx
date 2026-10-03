@@ -51,11 +51,13 @@ const FIELD_CLASSES =
   "w-full rounded-lg border border-input bg-background text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20";
 
 export function MatchForm({
+  signedIn = false,
   defaultValues,
   loading,
   onSearch,
   onInvalid,
 }: {
+  signedIn?: boolean;
   defaultValues: MatchFormValues;
   loading: boolean;
   onSearch: (values: MatchFormValues) => void;
@@ -133,8 +135,16 @@ export function MatchForm({
             })
           }
           limit={PROBLEM_MAX_LENGTH}
-          disabled={loading}
+          disabled={loading || !signedIn}
         />
+        {!signedIn && (
+          <p className="text-sm text-muted-foreground">
+            <a href="/login?next=%2Fmatch" className="underline">
+              Zaloguj się
+            </a>
+            , aby korzystać z wprowadzania głosowego.
+          </p>
+        )}
         <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
           {problemError ? (
             <p

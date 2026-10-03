@@ -224,6 +224,7 @@ it("preserves edits made during transcription on /match without submitting", asy
   const search = vi.fn();
   render(
     <MatchForm
+      signedIn
       defaultValues={{ problem: "Istniejący opis", category: "" }}
       loading={false}
       onSearch={search}
@@ -281,4 +282,26 @@ it("preserves an overflowing field and exposes the entire transcript separately"
   expect(screen.getByLabelText("Rozpoznany tekst do skrócenia")).toHaveValue(
     "Dyktowane słowa",
   );
+});
+
+it("disables logged-out dictation while preserving typing", () => {
+  render(
+    <MatchForm
+      signedIn={false}
+      defaultValues={{ problem: "", category: "" }}
+      loading={false}
+      onSearch={vi.fn()}
+    />,
+  );
+  const button = screen.getByRole("button", { name: "Wprowadź głosowo" });
+  expect(button).toBeDisabled();
+  fireEvent.click(button);
+  expect(screen.getByRole("link", { name: "Zaloguj się" })).toHaveAttribute(
+    "href",
+    "/login?next=%2Fmatch",
+  );
+  const field = screen.getByLabelText("Opis problemu");
+  fireEvent.change(field, { target: { value: "Wpisany opis problemu" } });
+  expect(field).toHaveValue("Wpisany opis problemu");
+  expect(fetcher).not.toHaveBeenCalled();
 });
