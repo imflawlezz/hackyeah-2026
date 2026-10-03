@@ -7,6 +7,8 @@ import {
   SparklesIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
+import { ForbiddenNotice } from "@/components/auth/forbidden-notice";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +36,9 @@ const STEPS: { title: string; description: string; icon: LucideIcon }[] = [
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-16 py-4 sm:py-8">
+      <Suspense fallback={null}>
+        <ForbiddenNotice />
+      </Suspense>
       <section
         aria-labelledby="hero-heading"
         className="flex max-w-3xl flex-col items-start gap-6"

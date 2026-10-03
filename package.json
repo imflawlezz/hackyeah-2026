@@ -7,6 +7,7 @@
   },
   "scripts": {
     "embed:innovations": "tsx scripts/embed-innovations.ts",
+    "demo:users": "tsx scripts/create-demo-users.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^4.0.83",
     "@base-ui/react": "^1.8.0",
+    "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.9.1",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.2",
