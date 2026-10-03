@@ -1,5 +1,38 @@
 export type Role = "resident" | "jst" | "admin" | "expert";
 
+export type ConversationKind = "ask_rops" | "ask_expert" | "partnership";
+export interface Conversation {
+  id: string;
+  kind: ConversationKind;
+  subject: string;
+  createdBy: string;
+  innovationId?: string;
+  ideaId?: string;
+  createdAt: string;
+  lastMessageAt: string;
+  people: { id: string; displayName: string; role: Role }[];
+  lastReadAt?: string;
+  preview: string;
+  unread: boolean;
+}
+export interface Message {
+  id: string;
+  conversationId: string;
+  authorId: string;
+  body: string;
+  createdAt: string;
+}
+export interface Notification {
+  id: string;
+  userId: string;
+  type: "message" | "idea_submitted" | "idea_reviewed" | "system";
+  title: string;
+  body: string;
+  link: string;
+  readAt?: string;
+  createdAt: string;
+}
+
 export interface Profile {
   id: string;
   role: Role;

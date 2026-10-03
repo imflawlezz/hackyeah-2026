@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isCurrentRoute } from "@/lib/navigation";
+import { NotificationBell } from "@/components/notifications/notification-bell";
 
 const ACTION_ITEMS = [
   { href: "/admin", label: "Panel administratora", variant: "outline" },
@@ -13,15 +14,22 @@ const ACTION_ITEMS = [
 export function HeaderActions({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
-  return ACTION_ITEMS.map((item) => (
-    <Link
-      key={item.href}
-      href={item.href}
-      aria-current={isCurrentRoute(pathname, item.href) ? "page" : undefined}
-      onClick={onNavigate}
-      className="inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-primary underline underline-offset-4 hover:decoration-2 aria-[current=page]:font-semibold"
-    >
-      {item.label}
-    </Link>
-  ));
+  return (
+    <>
+      <NotificationBell />
+      {ACTION_ITEMS.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          aria-current={
+            isCurrentRoute(pathname, item.href) ? "page" : undefined
+          }
+          onClick={onNavigate}
+          className="inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-primary underline underline-offset-4 hover:decoration-2 aria-[current=page]:font-semibold"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </>
+  );
 }

@@ -75,16 +75,23 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
 3. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
+4. `supabase/migrations/0005_messages_notifications.sql` (private conversations, notifications and Realtime; idempotent)
 
-| Table              | Who can read                  | Who can write                                                                       |
-| ------------------ | ----------------------------- | ----------------------------------------------------------------------------------- |
-| `innovations`      | everyone, including anonymous | admin                                                                               |
-| `problems`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `ideas`            | author, admin                 | signed-in users insert their own; admin                                             |
-| `feedback`         | author, admin                 | signed-in users insert their own; admin                                             |
-| `innovation_tests` | everyone, including anonymous | admin                                                                               |
-| `test_signups`     | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
-| `profiles`         | owner, admin                  | owner (not `role`); admin                                                           |
+| Table                       | Who can read                  | Who can write                                                                       |
+| --------------------------- | ----------------------------- | ----------------------------------------------------------------------------------- |
+| `innovations`               | everyone, including anonymous | admin                                                                               |
+| `problems`                  | author, admin                 | signed-in users insert their own; admin                                             |
+| `ideas`                     | author, admin                 | signed-in users insert their own; admin                                             |
+| `feedback`                  | author, admin                 | signed-in users insert their own; admin                                             |
+| `innovation_tests`          | everyone, including anonymous | admin                                                                               |
+| `test_signups`              | owner, admin                  | signed-in users sign themselves up while the test is open and has free slots; admin |
+| `profiles`                  | owner, admin                  | owner (not `role`); admin                                                           |
+| `conversations`             | participants, admin           | start_conversation RPC; admin                                                       |
+| `conversation_participants` | participants, admin           | owner updates last_read_at; admin                                                   |
+| `messages`                  | participants, admin           | participants insert with their own author_id; admin                                 |
+| `notifications`             | owner, admin                  | owner updates read_at; database triggers create notifications                       |
+
+Messages use the signed-in user's RLS client and Postgres Changes, following the [Supabase Realtime guide](https://supabase.com/docs/guides/realtime/postgres-changes). With no signed-in user, three fictional conversations and two notifications are stored only in this browser and synchronized across tabs with BroadcastChannel. Demo identities are fictional. Partnership conversations remain private; there is no public partnership board.
 
 A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
