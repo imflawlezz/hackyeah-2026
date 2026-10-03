@@ -5,6 +5,16 @@ import type { Idea } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
+import { FieldError } from "@/components/testing/fields";
+
+const EMPTY_QUESTION = "Wpisz pytanie do asystenta.";
 
 type ChatMessage = {
   id: string;
@@ -32,6 +42,11 @@ export function AssistantPanel({
   const [streaming, setStreaming] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const [questionError, setQuestionError] = useState<string | undefined>();
+  const [attempts, setAttempts] = useState(0);
+  const [edited, setEdited] = useState(false);
+  const summaryErrors = errorItems([[questionId, questionError]]);
+  const summaryRef = useFocusErrorSummary(attempts, summaryErrors.length > 0);
   const abortRef = useRef<AbortController | null>(null);
   const streamedRef = useRef("");
 
@@ -115,6 +130,10 @@ export function AssistantPanel({
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
+    const message = draft.trim() ? undefined : EMPTY_QUESTION;
+    setQuestionError(message);
+    setAttempts((count) => count + 1);
+    if (message) return;
     void send();
   }
 
@@ -136,7 +155,7 @@ export function AssistantPanel({
         role="log"
         aria-live="polite"
         aria-relevant="additions"
-        className="flex max-h-80 flex-col gap-3 overflow-y-auto border border-border p-3"
+        className="flex max-h-80 flex-col gap-2.5 overflow-y-auto border border-border p-2.5"
       >
         {messages.length ? (
           messages.map((message) => (
@@ -179,13 +198,37 @@ export function AssistantPanel({
           </li>
         ))}
       </ul>
-      <form onSubmit={onSubmit} className="flex flex-col gap-3">
-        <Label htmlFor={questionId}>Twoje pytanie</Label>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        aria-label="Pytanie do asystenta"
+        className="flex flex-col gap-2.5"
+      >
+        {attempts > 0 && (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        )}
+        <RequiredFieldsNote />
+        <Label htmlFor={questionId}>
+          Twoje pytanie
+          <RequiredMark />
+        </Label>
         <Textarea
+          autoComplete="off"
           id={questionId}
           value={draft}
           maxLength={2000}
-          onChange={(event) => setDraft(event.target.value)}
+          aria-required="true"
+          aria-invalid={questionError ? true : undefined}
+          aria-describedby={questionError ? `${questionId}-error` : undefined}
+          onChange={(event) => {
+            setDraft(event.target.value);
+            setEdited(true);
+            if (questionError && event.target.value.trim())
+              setQuestionError(undefined);
+          }}
+          onBlur={() => {
+            if (edited && !draft.trim()) setQuestionError(EMPTY_QUESTION);
+          }}
           onKeyDown={(event) => {
             if (
               event.key === "Enter" &&
@@ -193,12 +236,13 @@ export function AssistantPanel({
               !event.nativeEvent.isComposing
             ) {
               event.preventDefault();
-              void send();
+              event.currentTarget.form?.requestSubmit();
             }
           }}
         />
+        <FieldError id={`${questionId}-error`} message={questionError} />
         <div className="flex flex-wrap gap-2">
-          <Button type="submit" disabled={pending}>
+          <Button type="submit" variant="outline" disabled={pending}>
             Wyślij
           </Button>
           {pending ? (

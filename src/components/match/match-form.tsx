@@ -1,15 +1,19 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  ExclamationCircleIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  useFocusErrorSummary,
+  type FormErrorItem,
+} from "@/components/forms/error-summary";
 import { cn } from "@/lib/utils";
 import { innovations, problems } from "@/lib/mocks";
 
@@ -66,15 +70,25 @@ export function MatchForm({
     setValue,
     setFocus,
     control,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitted, submitCount },
   } = useForm<MatchFormValues>({
     resolver: zodResolver(matchFormSchema),
     defaultValues,
+    mode: "onBlur",
+    // Focus goes to the error summary instead (Gov.pl forms).
+    shouldFocusError: false,
   });
 
   const problemLength = useWatch({ control, name: "problem" })?.length ?? 0;
   const problemError = errors.problem?.message;
   const overLimit = problemLength > PROBLEM_MAX_LENGTH;
+  const summaryErrors: FormErrorItem[] = problemError
+    ? [{ fieldId: "problem", message: problemError }]
+    : [];
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   const submit = handleSubmit(
     (values) => {
@@ -100,16 +114,23 @@ export function MatchForm({
       aria-label="Wyszukiwanie innowacji"
       className="flex min-w-0 flex-col gap-6"
     >
+      {submitCount > 0 && (
+        <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+      )}
+      <RequiredFieldsNote />
       <div className="flex flex-col gap-2">
         <Label htmlFor="problem" className="text-lg font-semibold">
           Opis problemu
+          <RequiredMark />
         </Label>
         <p id="problem-hint" className="text-base text-muted-foreground">
           Napisz, kogo dotyczy problem, gdzie występuje i czego brakuje.
         </p>
         <Textarea
+          autoComplete="off"
           id="problem"
           rows={6}
+          aria-required="true"
           aria-invalid={problemError ? true : undefined}
           aria-describedby={cn(
             "problem-hint",
@@ -118,7 +139,7 @@ export function MatchForm({
           )}
           className={cn(
             FIELD_CLASSES,
-            "field-sizing-fixed min-h-40 resize-y px-4 py-3 text-lg leading-relaxed md:text-lg",
+            "field-sizing-fixed min-h-40 resize-y px-4 py-2.5 text-lg leading-relaxed md:text-lg",
           )}
           {...register("problem")}
         />
@@ -126,7 +147,7 @@ export function MatchForm({
           {problemError ? (
             <p
               id="problem-error"
-              className="flex items-center gap-1.5 font-semibold text-destructive"
+              className="flex items-center gap-2 font-semibold text-destructive"
             >
               <ExclamationCircleIcon
                 aria-hidden="true"
@@ -154,7 +175,7 @@ export function MatchForm({
 
       <section
         aria-labelledby="examples-heading"
-        className="flex flex-col gap-3"
+        className="flex flex-col gap-2.5"
       >
         <h2 id="examples-heading" className="text-base font-semibold">
           Przykłady
@@ -177,13 +198,13 @@ export function MatchForm({
 
       <div className="flex flex-col gap-2 sm:max-w-sm">
         <Label htmlFor="category" className="text-lg font-semibold">
-          Kategoria (opcjonalnie)
+          Kategoria
         </Label>
         <select
           id="category"
           className={cn(
             FIELD_CLASSES,
-            "min-h-12 max-w-full min-w-0 px-3 text-lg",
+            "min-h-12 max-w-full min-w-0 px-2.5 text-lg",
           )}
           {...register("category")}
         >
@@ -201,11 +222,10 @@ export function MatchForm({
           type="submit"
           aria-disabled={loading || undefined}
           className={cn(
-            "h-auto min-h-12 w-full gap-2 px-6 py-3 text-lg font-semibold whitespace-normal sm:w-auto [&_svg:not([class*='size-'])]:size-5",
+            "h-auto min-h-12 w-full gap-2 px-6 py-2.5 text-lg font-semibold whitespace-normal sm:w-auto [&_svg:not([class*='size-'])]:size-5",
             loading && "cursor-progress",
           )}
         >
-          <MagnifyingGlassIcon aria-hidden="true" className="size-5" />
           {loading ? "Wyszukujemy rozwiązania…" : "Znajdź rozwiązania"}
         </Button>
       </div>

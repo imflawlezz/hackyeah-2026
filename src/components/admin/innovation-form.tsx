@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  ArchiveBoxIcon,
-  ExclamationCircleIcon,
-} from "@heroicons/react/20/solid";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,6 +23,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  useFocusErrorSummary,
+  type FormErrorItem,
+} from "@/components/forms/error-summary";
 import {
   INNOVATION_STATUSES,
   innovationFormSchema,
@@ -50,7 +54,7 @@ const FIELD_ORDER = [
 ] as const;
 const CONTROL = "text-base md:text-base";
 const SELECT =
-  "min-h-11 w-full rounded-lg border border-input bg-background px-3 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring aria-invalid:border-destructive";
+  "min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring aria-invalid:border-destructive";
 
 function describedBy(...ids: (string | false | undefined)[]) {
   return ids.filter(Boolean).join(" ") || undefined;
@@ -61,18 +65,21 @@ function Field({
   label,
   hint,
   error,
+  required = false,
   children,
 }: {
   id: string;
   label: string;
   hint?: string;
   error?: FieldError;
+  required?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div className="flex flex-col gap-2">
       <Label htmlFor={id} className="text-base font-semibold">
         {label}
+        {required && <RequiredMark />}
       </Label>
       {hint && (
         <p id={`${id}-hint`} className="text-base text-muted-foreground">
@@ -83,7 +90,7 @@ function Field({
       {error?.message && (
         <p
           id={`${id}-error`}
-          className="flex items-start gap-1.5 text-base font-semibold text-destructive"
+          className="flex items-start gap-2 text-base font-semibold text-destructive"
         >
           <ExclamationCircleIcon
             aria-hidden="true"
@@ -135,32 +142,39 @@ export function InnovationForm({
     handleSubmit,
     setValue,
     control,
-    formState: { errors, isSubmitted },
+    formState: { errors, isSubmitted, submitCount },
   } = useForm<InnovationFormValues>({
     resolver: zodResolver(innovationFormSchema),
     defaultValues: toFormValues(innovation),
+    mode: "onBlur",
+    shouldFocusError: false,
   });
   const tags = parseTags(useWatch({ control, name: "tags" }) ?? "");
 
-  const submit = handleSubmit(
-    (values) => {
-      if (pending) return;
-      run(
-        () => saveInnovationAction(innovation?.id ?? null, values),
-        (result) => {
-          if (result.ok) router.push("/admin/innovations");
-        },
-      );
-    },
-    (invalidFields) => {
-      // The category value lives in a select that react-hook-form does not register.
-      const first = FIELD_ORDER.find((name) => invalidFields[name]);
-      if (first === "category" && categoryChoice !== NEW_CATEGORY) {
-        requestAnimationFrame(() =>
-          document.getElementById("category-choice")?.focus(),
-        );
-      }
-    },
+  const submit = handleSubmit((values) => {
+    if (pending) return;
+    run(
+      () => saveInnovationAction(innovation?.id ?? null, values),
+      (result) => {
+        if (result.ok) router.push("/admin/innovations");
+      },
+    );
+  });
+
+  // The category value lives in a select that react-hook-form does not
+  // register, so its summary link targets whichever control is visible.
+  const summaryErrors: FormErrorItem[] = FIELD_ORDER.flatMap((name) => {
+    const message = errors[name]?.message;
+    if (!message) return [];
+    const fieldId =
+      name === "category" && categoryChoice !== NEW_CATEGORY
+        ? "category-choice"
+        : name;
+    return [{ fieldId, message }];
+  });
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
   );
 
   const invalid = (error?: FieldError) => (error ? true : undefined);
@@ -173,9 +187,15 @@ export function InnovationForm({
         className="flex max-w-3xl flex-col gap-6"
         aria-label={innovation ? "Edycja innowacji" : "Nowa innowacja"}
       >
-        <Field id="title" label="Tytuł" error={errors.title}>
+        {submitCount > 0 && (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        )}
+        <RequiredFieldsNote />
+        <Field id="title" label="Tytuł" required error={errors.title}>
           <Input
+            autoComplete="off"
             id="title"
+            aria-required="true"
             aria-invalid={invalid(errors.title)}
             aria-describedby={describedBy(errors.title && "title-error")}
             className={CONTROL}
@@ -186,11 +206,14 @@ export function InnovationForm({
         <Field
           id="summary"
           label="Podsumowanie"
+          required
           hint="Jedno lub dwa zdania widoczne na liście bazy wiedzy."
           error={errors.summary}
         >
           <Textarea
+            autoComplete="off"
             id="summary"
+            aria-required="true"
             rows={2}
             aria-invalid={invalid(errors.summary)}
             aria-describedby={describedBy(
@@ -205,11 +228,14 @@ export function InnovationForm({
         <Field
           id="description"
           label="Opis"
+          required
           hint="Na czym polega rozwiązanie, kto je prowadzi i czego potrzeba do wdrożenia."
           error={errors.description}
         >
           <Textarea
+            autoComplete="off"
             id="description"
+            aria-required="true"
             rows={8}
             aria-invalid={invalid(errors.description)}
             aria-describedby={describedBy(
@@ -225,12 +251,14 @@ export function InnovationForm({
           <Field
             id="category-choice"
             label="Kategoria"
+            required
             error={
               categoryChoice === NEW_CATEGORY ? undefined : errors.category
             }
           >
             <select
               id="category-choice"
+              aria-required="true"
               value={categoryChoice}
               aria-invalid={
                 categoryChoice !== NEW_CATEGORY
@@ -264,10 +292,13 @@ export function InnovationForm({
             <Field
               id="category"
               label="Nazwa nowej kategorii"
+              required
               error={errors.category}
             >
               <Input
+                autoComplete="off"
                 id="category"
+                aria-required="true"
                 aria-invalid={invalid(errors.category)}
                 aria-describedby={describedBy(
                   errors.category && "category-error",
@@ -280,9 +311,16 @@ export function InnovationForm({
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
-          <Field id="targetGroup" label="Dla kogo" error={errors.targetGroup}>
+          <Field
+            id="targetGroup"
+            label="Dla kogo"
+            required
+            error={errors.targetGroup}
+          >
             <Input
+              autoComplete="off"
               id="targetGroup"
+              aria-required="true"
               aria-invalid={invalid(errors.targetGroup)}
               aria-describedby={describedBy(
                 errors.targetGroup && "targetGroup-error",
@@ -293,11 +331,12 @@ export function InnovationForm({
           </Field>
           <Field
             id="region"
-            label="Region (opcjonalnie)"
+            label="Region"
             hint="Na przykład: powiat nowotarski."
             error={errors.region}
           >
             <Input
+              autoComplete="off"
               id="region"
               aria-invalid={invalid(errors.region)}
               aria-describedby={describedBy(
@@ -312,11 +351,12 @@ export function InnovationForm({
 
         <Field
           id="tags"
-          label="Tagi (opcjonalnie)"
+          label="Tagi"
           hint="Oddziel tagi przecinkami, na przykład: seniorzy, transport."
           error={errors.tags}
         >
           <Input
+            autoComplete="off"
             id="tags"
             aria-invalid={invalid(errors.tags)}
             aria-describedby={describedBy(
@@ -335,10 +375,7 @@ export function InnovationForm({
               {tags.length ? "Tagi:" : "Brak tagów."}
             </span>
             {tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-sm bg-muted px-2 py-0.5 text-sm"
-              >
+              <span key={tag} className="rounded-sm bg-muted px-2 py-1 text-sm">
                 #{tag}
               </span>
             ))}
@@ -347,11 +384,12 @@ export function InnovationForm({
 
         <Field
           id="videoUrl"
-          label="Film (opcjonalnie)"
+          label="Film"
           hint="Link https do YouTube albo Vimeo."
           error={errors.videoUrl}
         >
           <Input
+            autoComplete="off"
             id="videoUrl"
             type="url"
             inputMode="url"
@@ -367,11 +405,12 @@ export function InnovationForm({
 
         <Field
           id="imageUrl"
-          label="Zdjęcie (opcjonalnie)"
+          label="Zdjęcie"
           hint="Link https. Użyj zdjęcia, do którego masz prawa, na przykład na licencji CC BY, i podaj autora w opisie."
           error={errors.imageUrl}
         >
           <Input
+            autoComplete="off"
             id="imageUrl"
             type="url"
             inputMode="url"
@@ -388,11 +427,13 @@ export function InnovationForm({
         <Field
           id="status"
           label="Status"
+          required
           hint="Tylko opublikowane innowacje są widoczne w bazie wiedzy i w dopasowaniu."
           error={errors.status}
         >
           <select
             id="status"
+            aria-required="true"
             aria-describedby="status-hint"
             className={cn(SELECT, "sm:max-w-xs")}
             {...register("status")}
@@ -405,7 +446,7 @@ export function InnovationForm({
           </select>
         </Field>
 
-        <div className="flex flex-wrap items-center gap-3 border-t border-border pt-5">
+        <div className="flex flex-wrap items-center gap-2.5 border-t border-border pt-5">
           <Button
             type="submit"
             aria-disabled={pending || undefined}
@@ -429,7 +470,6 @@ export function InnovationForm({
               onClick={() => setArchiveOpen(true)}
               className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal sm:ml-auto"
             >
-              <ArchiveBoxIcon aria-hidden="true" className="size-5" />
               Archiwizuj
             </Button>
           )}
@@ -466,7 +506,6 @@ export function InnovationForm({
               </DialogClose>
               <Button
                 type="button"
-                variant="destructive"
                 className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
                 onClick={() =>
                   run(
