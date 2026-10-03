@@ -12,7 +12,7 @@ export function IdeaFlashcard({ idea }: { idea: Idea }) {
   const StatusIcon = STATUS_ICON[idea.status];
 
   return (
-    <article className="flex max-w-prose flex-col gap-3 py-6">
+    <article className="flex max-w-prose flex-col gap-2.5 py-6">
       <h3 className="text-xl text-heading">
         <Link
           href={`/ideas/${idea.id}`}

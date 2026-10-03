@@ -43,7 +43,7 @@ export function ResultsSummary({ summary }: { summary: FeedbackSummary }) {
                 >
                   {label}
                 </th>
-                <td className="w-px py-2 pr-3 text-right font-semibold tabular-nums">
+                <td className="w-px py-2 pr-2.5 text-right font-semibold tabular-nums">
                   {count}
                 </td>
                 <td aria-hidden="true" className="py-2">
@@ -62,7 +62,7 @@ export function ResultsSummary({ summary }: { summary: FeedbackSummary }) {
         </tbody>
       </table>
 
-      <dl className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-3 border-t border-border pt-4 text-base">
+      <dl className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-2.5 border-t border-border pt-4 text-base">
         {summary.recommendShare !== null && (
           <>
             <dt className="font-semibold">Poleca</dt>

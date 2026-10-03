@@ -20,7 +20,7 @@ export default async function IdeasPage() {
   return (
     <div className="flex flex-col gap-8">
       <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex max-w-2xl flex-col gap-3">
+        <div className="flex max-w-2xl flex-col gap-2.5">
           <h1 className="text-3xl text-heading">Kreator pomysłów</h1>
           <p>
             Opisz pomysł na jednej fiszce. Krótko: o co chodzi, dla kogo i na

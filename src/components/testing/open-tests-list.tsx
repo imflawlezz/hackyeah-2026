@@ -18,7 +18,7 @@ export const NO_OPEN_TESTS_TEXT =
   "Teraz nie ma otwartych testów. Zajrzyj tu za kilka dni.";
 
 const ROW_GRID =
-  "grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1fr)_10rem] md:items-center";
+  "grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-2.5 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1fr)_10rem] md:items-center";
 
 function testHref(test: OpenTest): string {
   return `/test/${encodeURIComponent(test.innovationId)}#test-${test.id}`;
@@ -60,7 +60,7 @@ export function OpenTestsList({
           id="tests-municipality"
           value={selected}
           onChange={(event) => setMunicipality(event.target.value)}
-          className="min-h-12 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="min-h-12 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <option value="">Wszystkie gminy</option>
           {municipalities.map((name) => (
@@ -137,8 +137,7 @@ export function OpenTestsList({
                     href={testHref(test)}
                     className={cn(
                       buttonVariants({
-                        variant:
-                          slotsLeft > 0 && !signedUp ? "default" : "outline",
+                        variant: "outline",
                       }),
                       "h-auto min-h-11 gap-2 px-4 py-2 text-base whitespace-normal",
                     )}

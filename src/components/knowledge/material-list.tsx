@@ -50,7 +50,7 @@ export function MaterialList({
     <div className="flex flex-col gap-4">
       <p className="max-w-2xl text-base text-muted-foreground">
         Raporty i opracowania Regionalnego Ośrodka Polityki Społecznej w
-        Krakowie. Odnośniki do rops.krakow.pl otwierają się w nowej karcie.
+        Krakowie. Odnośniki do rops.krakow.pl otwierają się w nowym oknie.
       </p>
       <ul className="border-t border-border">
         {materials.map((material) => {
@@ -59,7 +59,7 @@ export function MaterialList({
           return (
             <li
               key={material.id}
-              className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-3 border-b border-border py-6 sm:grid-cols-[8rem_minmax(0,1fr)]"
+              className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-2.5 border-b border-border py-6 sm:grid-cols-[8rem_minmax(0,1fr)]"
             >
               <p className="flex items-center gap-2 text-sm font-semibold sm:items-start">
                 <Icon aria-hidden="true" className="size-6 shrink-0" />
@@ -84,9 +84,12 @@ export function MaterialList({
                     <span>
                       {materialLinkText(material)}
                       {external && (
-                        <span className="sr-only">
-                          , otwiera się w nowej karcie
-                        </span>
+                        <>
+                          {" "}
+                          <span className="sr-only">
+                            (otwiera się w nowym oknie)
+                          </span>
+                        </>
                       )}
                     </span>
                   </a>

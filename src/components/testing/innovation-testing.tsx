@@ -45,8 +45,8 @@ export function InnovationTesting({
   }, [mode, serverSummary, demoScores, localFeedback, innovationId]);
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_21rem]">
-      <div className="flex max-w-3xl flex-col gap-12">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1fr)_21rem]">
+      <div className="flex max-w-3xl flex-col gap-10">
         <section
           aria-labelledby="tests-heading"
           className="flex flex-col gap-6"
@@ -75,7 +75,7 @@ export function InnovationTesting({
                   aria-labelledby={`test-${test.id}-title`}
                   className="flex scroll-mt-4 flex-col gap-6 border-t border-border pt-6"
                 >
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-2.5">
                     <h3
                       id={`test-${test.id}-title`}
                       className="font-heading text-xl leading-snug font-semibold break-words"

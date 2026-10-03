@@ -1,6 +1,6 @@
-import { ChevronRightIcon } from "@heroicons/react/16/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { InnovationTesting } from "@/components/testing/innovation-testing";
@@ -60,27 +60,15 @@ export default async function InnovationTestPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <nav aria-label="Ścieżka nawigacji">
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-          <li className="flex items-center gap-2">
-            <Link
-              href="/test"
-              className={cn(LINK_CLASSES, "inline-flex min-h-11 items-center")}
-            >
-              Testuj innowacje
-            </Link>
-            <ChevronRightIcon aria-hidden="true" className="size-4 shrink-0" />
-          </li>
-          <li aria-current="page" className="font-semibold">
-            {innovation.title}
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumbs
+        items={[{ href: "/test", label: "Testuj innowacje" }]}
+        current={innovation.title}
+      />
 
       <header className="flex max-w-3xl flex-col items-start gap-4">
         <Badge
           variant="outline"
-          className="h-auto rounded-md px-3 py-1 text-sm whitespace-normal"
+          className="h-auto rounded-md px-2.5 py-1 text-sm whitespace-normal"
         >
           {innovation.category}
         </Badge>

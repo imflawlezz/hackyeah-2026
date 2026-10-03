@@ -1,6 +1,5 @@
 "use client";
 
-import { DocumentTextIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { summarizeTrendsAction } from "@/app/admin/actions";
 import { useAdminAction } from "@/components/admin/use-admin-action";
@@ -26,7 +25,7 @@ export function TrendSummary({
   return (
     <section
       aria-labelledby="summary-heading"
-      className="flex flex-col gap-3 rounded-md border border-border p-4 sm:p-5"
+      className="flex flex-col gap-2.5 rounded-md border border-border p-4 sm:p-5"
     >
       <h2 id="summary-heading" className="text-xl font-semibold">
         Podsumowanie okresu
@@ -61,7 +60,6 @@ export function TrendSummary({
             );
           }}
         >
-          <DocumentTextIcon aria-hidden="true" className="size-5" />
           {pending ? "Przygotowuję podsumowanie…" : "Przygotuj podsumowanie"}
         </Button>
       </div>

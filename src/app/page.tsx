@@ -51,13 +51,13 @@ const audiences = [
 
 export default function HomePage() {
   return (
-    <div className="space-y-16 py-4 sm:py-8">
+    <div className="space-y-14 py-4 sm:py-8">
       <Suspense fallback={null}>
         <ForbiddenNotice />
       </Suspense>
       <section
         aria-labelledby="hero-heading"
-        className="grid items-start gap-12 lg:grid-cols-12"
+        className="grid items-start gap-10 lg:grid-cols-12"
       >
         <div className="space-y-6 lg:col-span-7">
           <p className="text-sm font-semibold text-muted-foreground">
@@ -76,7 +76,7 @@ export default function HomePage() {
               href="/match"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-auto min-h-12 gap-2 px-6 py-3 whitespace-normal",
+                "h-auto min-h-12 gap-2 px-6 py-2.5 whitespace-normal",
               )}
             >
               Opisz problem{" "}
@@ -99,7 +99,7 @@ export default function HomePage() {
           <h2 id="example-heading" className="mt-4 text-xl font-semibold">
             Dostępny urząd
           </h2>
-          <p className="mt-3 text-base">{exampleProblem.description}</p>
+          <p className="mt-2.5 text-base">{exampleProblem.description}</p>
           <div className="mt-6 border-t border-border pt-6">
             <p className="text-sm text-muted-foreground">
               Pomysł do sprawdzenia
@@ -107,11 +107,11 @@ export default function HomePage() {
             <h3 className="mt-2 text-xl font-semibold">
               {exampleInnovation.title}
             </h3>
-            <p className="mt-3 text-base">
+            <p className="mt-2.5 text-base">
               <span className="font-semibold">Dla kogo: </span>
               {exampleInnovation.targetGroup}
             </p>
-            <p className="mt-3 text-base">
+            <p className="mt-2.5 text-base">
               Zestaw z czytnikiem ekranu może pomóc mieszkańcom z
               niepełnosprawnością wzroku załatwić sprawę w urzędzie.
             </p>
@@ -120,7 +120,7 @@ export default function HomePage() {
       </section>
       <section
         aria-labelledby="how-heading"
-        className="border-t border-border pt-12"
+        className="border-t border-border pt-10"
       >
         <h2 id="how-heading" className="text-2xl font-semibold">
           Jak to działa
@@ -129,7 +129,7 @@ export default function HomePage() {
           {steps.map(([title, description], index) => (
             <li
               key={title}
-              className="grid gap-3 py-6 sm:grid-cols-[3rem_1fr_1fr] sm:gap-6"
+              className="grid gap-2.5 py-6 sm:grid-cols-[3rem_1fr_1fr] sm:gap-6"
             >
               <span
                 aria-hidden="true"
@@ -155,11 +155,11 @@ export default function HomePage() {
         <h2 id="challenges-heading" className="text-2xl font-semibold">
           Z czym możesz przyjść
         </h2>
-        <p className="mt-3 max-w-[65ch]">
+        <p className="mt-2.5 max-w-[65ch]">
           Nie musisz mieć gotowego pomysłu. Zacznij od tego, co utrudnia
           codzienne życie w Twojej okolicy.
         </p>
-        <ul className="mt-6 grid gap-x-12 sm:grid-cols-2">
+        <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
           {challenges.map(([label, category]) => (
             <li key={label} className="border-b border-border">
               <Link
@@ -168,7 +168,7 @@ export default function HomePage() {
                     ? `/match?category=${encodeURIComponent(category)}`
                     : "/match"
                 }
-                className="flex min-h-11 items-center justify-between gap-4 py-3 text-primary underline underline-offset-4"
+                className="flex min-h-11 items-center justify-between gap-4 py-2.5 text-primary underline underline-offset-4"
               >
                 {label}
               </Link>
@@ -184,7 +184,7 @@ export default function HomePage() {
           {audiences.map(([title, description]) => (
             <div
               key={title}
-              className="grid gap-3 py-6 sm:grid-cols-[2fr_3fr] sm:gap-12"
+              className="grid gap-2.5 py-6 sm:grid-cols-[2fr_3fr] sm:gap-10"
             >
               <dt className="text-xl font-semibold text-heading">{title}</dt>
               <dd className="max-w-[65ch]">{description}</dd>

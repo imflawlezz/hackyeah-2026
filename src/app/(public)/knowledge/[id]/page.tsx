@@ -1,6 +1,6 @@
-import { ChevronRightIcon } from "@heroicons/react/16/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -45,31 +45,13 @@ const LINK_CLASSES =
 
 function Breadcrumb({ title }: { title: string }) {
   return (
-    <nav aria-label="Ścieżka nawigacji">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-        <li className="flex items-center gap-2">
-          <Link
-            href="/knowledge"
-            className={cn(LINK_CLASSES, "inline-flex min-h-11 items-center")}
-          >
-            Baza wiedzy
-          </Link>
-          <ChevronRightIcon aria-hidden="true" className="size-4 shrink-0" />
-        </li>
-        <li className="flex items-center gap-2">
-          <Link
-            href={libraryHref()}
-            className={cn(LINK_CLASSES, "inline-flex min-h-11 items-center")}
-          >
-            Biblioteka innowacji
-          </Link>
-          <ChevronRightIcon aria-hidden="true" className="size-4 shrink-0" />
-        </li>
-        <li aria-current="page" className="font-semibold">
-          {title}
-        </li>
-      </ol>
-    </nav>
+    <Breadcrumbs
+      items={[
+        { href: "/knowledge", label: "Baza wiedzy" },
+        { href: libraryHref(), label: "Biblioteka innowacji" },
+      ]}
+      current={title}
+    />
   );
 }
 
@@ -78,7 +60,7 @@ function Video({ innovation }: { innovation: Innovation }) {
   const videoId = youtubeVideoId(innovation.videoUrl);
 
   return (
-    <section aria-labelledby="video-heading" className="flex flex-col gap-3">
+    <section aria-labelledby="video-heading" className="flex flex-col gap-2.5">
       <h2 id="video-heading" className="font-heading text-2xl font-semibold">
         Film
       </h2>
@@ -103,8 +85,8 @@ function Video({ innovation }: { innovation: Innovation }) {
           className={cn(LINK_CLASSES, "inline-flex min-h-11 items-center")}
         >
           <span>
-            Otwórz film na stronie źródłowej
-            <span className="sr-only">, otwiera się w nowej karcie</span>
+            Otwórz film na stronie źródłowej{" "}
+            <span className="sr-only">(otwiera się w nowym oknie)</span>
           </span>
         </a>
       </p>
@@ -145,12 +127,12 @@ export default async function InnovationPage({ params }: PageProps) {
     <div className="flex flex-col gap-6">
       <Breadcrumb title={innovation.title} />
 
-      <div className="grid grid-cols-[minmax(0,1fr)] gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1fr)_19rem]">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1fr)_19rem]">
         <article className="flex max-w-3xl flex-col gap-8">
           <header className="flex flex-col items-start gap-4">
             <Badge
               variant="outline"
-              className="h-auto rounded-md px-3 py-1 text-sm whitespace-normal"
+              className="h-auto rounded-md px-2.5 py-1 text-sm whitespace-normal"
             >
               {innovation.category}
             </Badge>
@@ -164,7 +146,7 @@ export default async function InnovationPage({ params }: PageProps) {
 
           <section
             aria-labelledby="description-heading"
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-2.5"
           >
             <h2
               id="description-heading"
@@ -193,7 +175,7 @@ export default async function InnovationPage({ params }: PageProps) {
               {innovation.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-md bg-muted px-2 py-0.5 text-sm text-foreground"
+                  className="rounded-md bg-muted px-2 py-1 text-sm text-foreground"
                 >
                   #{tag}
                 </li>
@@ -212,7 +194,7 @@ export default async function InnovationPage({ params }: PageProps) {
           >
             Co dalej
           </h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-2.5">
             {actions.map((action, index) => (
               <li key={action.href}>
                 <Link

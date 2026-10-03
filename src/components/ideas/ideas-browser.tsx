@@ -59,7 +59,7 @@ export function IdeasBrowser({
           onChange={(event) =>
             setStage(event.target.value as Idea["stage"] | "")
           }
-          className="h-11 max-w-xs border border-border bg-background px-3"
+          className="h-11 max-w-xs rounded-sm border border-input bg-background px-2.5 text-foreground"
         >
           <option value="">Wszystkie etapy</option>
           {STAGES.map((item) => (

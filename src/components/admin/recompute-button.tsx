@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowPathIcon } from "@heroicons/react/20/solid";
 import { recomputeEmbeddingsAction } from "@/app/admin/actions";
 import { useAdminAction } from "@/components/admin/use-admin-action";
 import { Button } from "@/components/ui/button";
@@ -19,10 +18,6 @@ export function RecomputeEmbeddingsButton({ missing }: { missing: number }) {
         }}
         className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
       >
-        <ArrowPathIcon
-          aria-hidden="true"
-          className={pending ? "size-5 motion-safe:animate-spin" : "size-5"}
-        />
         {pending ? "Przeliczam wektory…" : "Przelicz brakujące wektory"}
       </Button>
       <p className="text-sm text-muted-foreground">

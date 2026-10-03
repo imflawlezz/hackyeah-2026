@@ -1,6 +1,5 @@
 "use client";
 
-import { TableCellsIcon } from "@heroicons/react/20/solid";
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -33,7 +32,7 @@ export function ChartSection({
   return (
     <section
       aria-labelledby={`${id}-title`}
-      className="flex min-w-0 flex-col gap-3 border-t border-border pt-6"
+      className="flex min-w-0 flex-col gap-2.5 border-t border-border pt-6"
     >
       <h2 id={`${id}-title`} className="text-xl font-semibold">
         {title}
@@ -54,7 +53,6 @@ export function ChartSection({
               onClick={() => setShowTable((value) => !value)}
               className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
             >
-              <TableCellsIcon aria-hidden="true" className="size-5" />
               {showTable ? "Ukryj tabelę" : "Pokaż dane w tabeli"}
             </Button>
           </div>
@@ -70,7 +68,9 @@ export function ChartSection({
                       <th
                         key={column}
                         scope="col"
-                        className={index ? "px-3 py-2 text-right" : "px-3 py-2"}
+                        className={
+                          index ? "px-2.5 py-2 text-right" : "px-2.5 py-2"
+                        }
                       >
                         {column}
                       </th>
@@ -85,14 +85,14 @@ export function ChartSection({
                           <th
                             key={index}
                             scope="row"
-                            className="px-3 py-2 text-left font-semibold"
+                            className="px-2.5 py-2 text-left font-semibold"
                           >
                             {cell}
                           </th>
                         ) : (
                           <td
                             key={index}
-                            className="px-3 py-2 text-right tabular-nums"
+                            className="px-2.5 py-2 text-right tabular-nums"
                           >
                             {cell}
                           </td>

@@ -9,7 +9,7 @@ import { UNMET_SCORE_THRESHOLD } from "@/lib/admin/trends";
 import { cn } from "@/lib/utils";
 
 const PILL =
-  "inline-flex w-fit max-w-full items-center gap-1.5 rounded-sm border px-2 py-0.5 text-sm font-semibold";
+  "inline-flex w-fit max-w-full items-center gap-2 rounded-sm border px-2 py-1 text-sm font-semibold";
 
 const STATUS = {
   published: {
@@ -21,7 +21,7 @@ const STATUS = {
     label: "Szkic",
     icon: PencilSquareIcon,
     className:
-      "border-warning border-dashed text-foreground [&>svg]:text-warning",
+      "border-warning border-dashed bg-warning text-warning-foreground",
   },
   archived: {
     label: "Zarchiwizowana",
@@ -50,10 +50,7 @@ export function EmbeddingBadge({ ready }: { ready: boolean }) {
     </span>
   ) : (
     <span
-      className={cn(
-        PILL,
-        "border-warning text-foreground [&>svg]:text-warning",
-      )}
+      className={cn(PILL, "border-warning bg-warning text-warning-foreground")}
     >
       <ExclamationTriangleIcon aria-hidden="true" className="size-4 shrink-0" />
       Brak wektora
@@ -89,7 +86,7 @@ export function MatchQualityBadge({
       className={cn(
         PILL,
         weak
-          ? "border-warning text-foreground [&>svg]:text-warning"
+          ? "border-warning bg-warning text-warning-foreground"
           : "border-border text-foreground",
       )}
     >

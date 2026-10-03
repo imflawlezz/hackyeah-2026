@@ -32,7 +32,7 @@ export default async function LoginPage({
   const callbackFailed = first(params.error) === "callback";
 
   return (
-    <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,28rem)_minmax(0,24rem)]">
+    <div className="grid gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,28rem)_minmax(0,24rem)]">
       <div className="flex min-w-0 flex-col gap-6">
         <h1 className="text-3xl font-bold">Konto w HubMI.pl</h1>
 
@@ -77,7 +77,7 @@ export default async function LoginPage({
 
       <aside
         aria-labelledby="account-benefits"
-        className="flex flex-col gap-4 lg:border-l lg:border-border lg:pl-12"
+        className="flex flex-col gap-4 lg:border-l lg:border-border lg:pl-10"
       >
         <h2 id="account-benefits" className="text-xl font-bold">
           Do czego służy konto

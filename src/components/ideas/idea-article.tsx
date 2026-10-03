@@ -17,7 +17,7 @@ const CANVAS_FIELDS: {
 export function IdeaArticle({ idea }: { idea: Idea }) {
   return (
     <article className="flex flex-col gap-6">
-      <header className="flex flex-col gap-3">
+      <header className="flex flex-col gap-2.5">
         <h1 className="text-3xl text-heading">{idea.title}</h1>
         <p className="max-w-2xl text-lg">{idea.summary}</p>
         <p>

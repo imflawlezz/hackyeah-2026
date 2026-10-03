@@ -1,4 +1,3 @@
-import { PlusIcon } from "@heroicons/react/20/solid";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pageAccess } from "@/app/admin/access";
@@ -36,7 +35,6 @@ export default async function AdminInnovationsPage() {
                 "h-auto min-h-11 max-w-full py-2 text-base whitespace-normal",
               )}
             >
-              <PlusIcon aria-hidden="true" className="size-5" />
               Dodaj innowację
             </Link>
             <RecomputeEmbeddingsButton missing={missing} />

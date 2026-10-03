@@ -1,24 +1,17 @@
 "use client";
 
-import {
-  ChartBarIcon,
-  ClipboardDocumentCheckIcon,
-  RectangleStackIcon,
-  Squares2X2Icon,
-} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
-  { href: "/admin", label: "Przegląd", icon: Squares2X2Icon, exact: true },
-  { href: "/admin/innovations", label: "Innowacje", icon: RectangleStackIcon },
+  { href: "/admin", label: "Przegląd", exact: true },
+  { href: "/admin/innovations", label: "Innowacje" },
   {
     href: "/admin/moderation",
     label: "Moderacja",
-    icon: ClipboardDocumentCheckIcon,
   },
-  { href: "/admin/trends", label: "Trendy potrzeb", icon: ChartBarIcon },
+  { href: "/admin/trends", label: "Trendy potrzeb" },
 ] as const;
 
 function isCurrent(pathname: string, href: string, exact = false) {
@@ -39,20 +32,18 @@ export function AdminNav() {
             item.href,
             "exact" in item && item.exact,
           );
-          const Icon = item.icon;
           return (
             <li key={item.href}>
               <Link
                 href={item.href}
                 aria-current={current ? "page" : undefined}
                 className={cn(
-                  "flex min-h-11 items-center gap-2 rounded-md border px-3 py-2 text-base font-semibold transition-colors",
+                  "flex min-h-11 items-center gap-2 rounded-md border px-2.5 py-2 text-base font-semibold transition-colors",
                   current
                     ? "border-primary bg-accent text-accent-foreground"
                     : "border-transparent text-foreground hover:border-border hover:bg-muted",
                 )}
               >
-                <Icon aria-hidden="true" className="size-6 shrink-0" />
                 {item.label}
               </Link>
             </li>
