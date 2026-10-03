@@ -4,7 +4,7 @@ export const problems: Problem[] = [
   {
     id: "prob-rural-seniors",
     description:
-      "Samotni seniorzy w gminie wiejskiej nie dowożą się do przychodni i nie mają z kim porozmawiać w ciągu dnia.",
+      "Samotni seniorzy w gminie wiejskiej nie mają jak dojechać do przychodni i nie mają z kim porozmawiać w ciągu dnia.",
     category: "Samotność",
     status: "new",
     createdAt: "2026-09-12T09:30:00.000Z",
