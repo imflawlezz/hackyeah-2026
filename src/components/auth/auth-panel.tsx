@@ -7,10 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export type AuthMode = "signin" | "signup";
 
-// Tabs wrap instead of overflowing at 320 px with the largest font size.
-const triggerClassName =
-  "h-auto min-h-11 px-2 text-base whitespace-normal data-active:font-bold data-active:underline data-active:underline-offset-4";
-
 export function AuthPanel({
   initialMode,
   next,
@@ -35,13 +31,14 @@ export function AuthPanel({
     <Tabs
       value={mode}
       onValueChange={(value) => changeMode(value as AuthMode)}
-      className="min-w-0 gap-6"
+      className="min-w-0"
     >
-      <TabsList className="w-full items-stretch group-data-horizontal/tabs:h-auto">
-        <TabsTrigger value="signin" className={triggerClassName}>
+      {/* Two equal halves; the labels wrap at 320 px with the largest font. */}
+      <TabsList className="w-full items-stretch">
+        <TabsTrigger value="signin" className="flex-1 px-2">
           Zaloguj się
         </TabsTrigger>
-        <TabsTrigger value="signup" className={triggerClassName}>
+        <TabsTrigger value="signup" className="flex-1 px-2">
           Załóż konto
         </TabsTrigger>
       </TabsList>

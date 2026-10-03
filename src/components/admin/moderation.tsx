@@ -114,17 +114,15 @@ export function Moderation({
       <Tabs
         value={tab}
         onValueChange={(value) => setTab(value as ModerationTab)}
-        className="gap-5"
       >
-        <TabsList className="h-auto w-full flex-wrap justify-start gap-1 p-1 sm:w-fit">
+        <TabsList className="w-full sm:w-fit">
           {tabs.map((item) => (
-            <TabsTrigger
-              key={item.value}
-              value={item.value}
-              className="min-h-11 flex-none px-4 text-base"
-            >
-              {item.label}
-              <span className="rounded-sm bg-background px-1.5 text-sm tabular-nums">
+            <TabsTrigger key={item.value} value={item.value}>
+              {/* The space keeps the accessible name as "Problemy 15". */}
+              {item.label}{" "}
+              {/* The border keeps the count visible on the white active tab
+                  and on the gray strip alike. */}
+              <span className="inline-flex min-w-6 items-center justify-center rounded-sm border border-input bg-background px-1.5 text-sm leading-6 font-semibold text-foreground tabular-nums">
                 {counts[item.value]}
               </span>
             </TabsTrigger>
