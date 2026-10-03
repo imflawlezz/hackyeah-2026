@@ -45,7 +45,7 @@ function HorizontalBars({
       <BarChart
         data={data}
         layout="vertical"
-        margin={{ top: 4, right: 96, bottom: 4, left: 8 }}
+        margin={{ top: 4, right: 48, bottom: 4, left: 0 }}
         accessibilityLayer={false}
       >
         <CartesianGrid horizontal={false} stroke="var(--border)" />
@@ -53,7 +53,7 @@ function HorizontalBars({
         <YAxis
           type="category"
           dataKey={nameKey}
-          width={150}
+          width={124}
           tick={AXIS}
           tickLine={false}
           axisLine={false}

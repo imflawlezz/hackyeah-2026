@@ -33,7 +33,7 @@ export function ChartSection({
   return (
     <section
       aria-labelledby={`${id}-title`}
-      className="flex flex-col gap-3 border-t border-border pt-6"
+      className="flex min-w-0 flex-col gap-3 border-t border-border pt-6"
     >
       <h2 id={`${id}-title`} className="text-xl font-semibold">
         {title}
@@ -42,7 +42,7 @@ export function ChartSection({
       {note && <p className="text-base text-muted-foreground">{note}</p>}
       {table.rows.length > 0 && (
         <>
-          <div aria-hidden="true" className="w-full">
+          <div aria-hidden="true" className="w-full min-w-0 overflow-hidden">
             {children}
           </div>
           <div>

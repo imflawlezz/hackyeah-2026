@@ -86,7 +86,7 @@ export default async function AdminLayout({
         </p>
         <AdminNav />
       </aside>
-      <div className="flex min-w-0 flex-col gap-6 text-lg">
+      <div className="flex min-w-0 flex-col gap-6 text-lg break-words">
         {access.mode !== "admin" && <ModeNotice mode={access.mode} />}
         {children}
       </div>
