@@ -11,9 +11,11 @@ export interface Profile {
 export interface Innovation {
   id: string;
   title: string;
+  summary?: string;
   description: string;
   category: string;
   targetGroup: string;
+  region?: string;
   tags: string[];
   videoUrl?: string;
   imageUrl?: string;

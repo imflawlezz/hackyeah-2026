@@ -28,9 +28,11 @@ export const profileSchema = z.object({
 export const innovationSchema = z.object({
   id: z.string(),
   title: z.string(),
+  summary: z.string().optional(),
   description: z.string(),
   category: z.string(),
   targetGroup: z.string(),
+  region: z.string().optional(),
   tags: z.array(z.string()),
   videoUrl: z.string().optional(),
   imageUrl: z.string().optional(),
