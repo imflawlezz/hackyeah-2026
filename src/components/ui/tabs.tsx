@@ -61,7 +61,7 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
       className={cn(
         // Size comes from the content plus a 44 px minimum, the same for every
         // trigger, so active and inactive tabs share a height and a baseline.
-        "relative inline-flex min-h-11 max-w-full flex-auto cursor-pointer items-center justify-center gap-2 rounded-sm border border-transparent bg-transparent px-4 py-2 text-base font-medium text-muted-foreground shadow-none transition-colors group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:z-10 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
+        "relative inline-flex min-h-11 max-w-full flex-auto cursor-pointer items-center justify-center gap-2 rounded-sm border border-transparent bg-transparent px-4 py-2 text-base font-semibold text-muted-foreground shadow-none transition-colors group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:z-10 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
         // The selected tab: page background, stronger text and an indicator
         // bar, so it does not rely on colour alone and has no button shadow.
         "data-active:bg-background data-active:text-foreground group-data-[variant=line]/tabs-list:data-active:bg-transparent",
