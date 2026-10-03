@@ -42,13 +42,60 @@ export interface Idea {
   createdAt: string;
 }
 
+export type Rating = 1 | 2 | 3 | 4 | 5;
+
 export interface Feedback {
   id: string;
   innovationId: string;
   authorId?: string;
-  rating: 1 | 2 | 3 | 4 | 5;
+  rating: Rating;
   comment?: string;
+  testId?: string;
+  easeOfUse?: Rating;
+  wouldRecommend?: boolean;
+  whatWorked?: string;
+  whatToImprove?: string;
   createdAt: string;
+}
+
+export interface InnovationTest {
+  id: string;
+  innovationId: string;
+  title: string;
+  description: string;
+  municipality: string;
+  /** ISO date, YYYY-MM-DD. */
+  startsAt: string;
+  /** ISO date, YYYY-MM-DD. */
+  endsAt: string;
+  slots: number;
+  status: "open" | "closed";
+  createdAt: string;
+}
+
+export type Availability = "morning" | "afternoon" | "evening" | "weekend";
+
+export interface TestSignup {
+  id: string;
+  testId: string;
+  userId?: string;
+  motivation?: string;
+  availability?: Availability;
+  accessibilityNeeds?: string;
+  status: "pending" | "accepted" | "declined";
+  createdAt: string;
+}
+
+/** Public aggregates only; individual feedback is never part of it. */
+export interface FeedbackSummary {
+  count: number;
+  /** null when there is no feedback yet. */
+  avgRating: number | null;
+  /** How many opinions gave each rating. */
+  distribution: Record<Rating, number>;
+  avgEase: number | null;
+  /** Share of "yes" among those who answered, 0 to 1. */
+  recommendShare: number | null;
 }
 
 export interface MatchRequest {

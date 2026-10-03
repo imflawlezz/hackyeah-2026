@@ -3,3 +3,8 @@ export { innovations } from "@/lib/mocks/innovations";
 export { problems } from "@/lib/mocks/problems";
 export { materials } from "@/lib/mocks/materials";
 export type { Material, MaterialType } from "@/lib/mocks/materials";
+export {
+  feedbackEntries,
+  innovationTests,
+  testSlotsTaken,
+} from "@/lib/mocks/testing";
