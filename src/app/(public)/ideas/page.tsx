@@ -3,6 +3,7 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Kreator pomysłów",
+  description: "Zgłoś pomysł na innowację społeczną w krótkiej fiszce.",
 };
 
 export default function IdeasPage() {

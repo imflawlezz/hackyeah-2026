@@ -3,6 +3,7 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Wiadomości",
+  description: "Rozmawiaj z zespołem Hubu, mentorami i partnerami.",
 };
 
 export default function MessagesPage() {

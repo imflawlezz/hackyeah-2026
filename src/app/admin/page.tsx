@@ -3,6 +3,7 @@ import { PlaceholderPage } from "@/components/layout/placeholder-page";
 
 export const metadata: Metadata = {
   title: "Panel administratora",
+  description: "Weryfikuj zgłoszenia i aktualizuj zasoby wiedzy Hubu.",
 };
 
 export default function AdminPage() {
