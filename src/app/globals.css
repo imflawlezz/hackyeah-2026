@@ -211,3 +211,60 @@ html[data-font-size="largest"] {
     scroll-behavior: auto !important;
   }
 }
+
+/* Printing: black on white whatever the theme, with document-friendly breaks. */
+@media print {
+  :root,
+  [data-theme="high-contrast"] {
+    --background: #ffffff;
+    --foreground: #000000;
+    --card: #ffffff;
+    --card-foreground: #000000;
+    --heading: #000000;
+    --primary: #000000;
+    --muted: #ffffff;
+    --muted-foreground: #000000;
+    --border: #000000;
+  }
+
+  html,
+  html[data-font-size] {
+    font-size: 11pt;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .plan-document {
+    max-width: none;
+  }
+
+  /* The focused heading must not print its focus ring. */
+  :focus-visible {
+    outline: none;
+  }
+
+  .plan-document h2,
+  .plan-document h3,
+  .plan-document h4 {
+    break-after: avoid;
+  }
+
+  .plan-document table,
+  .plan-document tr,
+  .plan-document li {
+    break-inside: avoid;
+  }
+
+  .plan-document thead {
+    display: table-header-group;
+  }
+
+  /* On paper a link is only useful with its address. */
+  .plan-document a[data-print-href]::after {
+    content: " (" attr(data-print-href) ")";
+    font-weight: normal;
+  }
+}

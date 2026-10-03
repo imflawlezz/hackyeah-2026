@@ -9,6 +9,7 @@ import { pageAccess } from "@/app/admin/access";
 import { AdminNav } from "@/components/admin/admin-nav";
 import { buttonVariants } from "@/components/ui/button";
 import type { AdminMode } from "@/lib/auth/admin";
+import { requireRole } from "@/lib/auth/session";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -46,10 +47,12 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // TODO(#12): redirect to /login?next=/admin once the login flow exists.
   const access = await pageAccess();
 
   if (access.mode === "denied") {
+    // Same rule as #12: guests go to /login?next=/admin, other roles to
+    // /?error=forbidden. The notice below only renders if no redirect happens.
+    await requireRole("admin", "/admin");
     return (
       <section
         aria-labelledby="admin-denied-heading"

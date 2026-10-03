@@ -3,11 +3,15 @@ import { afterEach, beforeEach, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   admin: vi.fn(),
   backfill: vi.fn(),
-  access: vi.fn(),
   configured: false,
+  user: vi.fn(),
+}));
+vi.mock("@/lib/auth/session", () => ({
+  getCurrentUser: mocks.user,
+  isAdmin: (user: { profile?: { role?: string } | null } | null) =>
+    user?.profile?.role === "admin",
 }));
 vi.mock("@/lib/supabase/admin", () => ({ createAdminClient: mocks.admin }));
-vi.mock("@/lib/auth/admin", () => ({ getAdminAccess: mocks.access }));
 vi.mock("@/lib/ai/models", () => ({
   get hasOpenAI() {
     return mocks.configured;
@@ -28,7 +32,7 @@ beforeEach(() => {
   mocks.configured = false;
   mocks.admin.mockReset().mockReturnValue(null);
   mocks.backfill.mockReset();
-  mocks.access.mockReset().mockResolvedValue({ mode: "denied", user: null });
+  mocks.user.mockReset().mockResolvedValue(null);
 });
 afterEach(() => vi.unstubAllEnvs());
 
@@ -39,18 +43,39 @@ it("rejects absent, wrong and unconfigured secrets", async () => {
   expect((await POST(request("test-only-secret"))).status).toBe(401);
   expect(mocks.admin).not.toHaveBeenCalled();
 });
-it("accepts an admin session without the secret, but not preview or demo", async () => {
+it("accepts a signed-in admin session without the secret", async () => {
   mocks.configured = true;
-  mocks.admin.mockReturnValue({});
-  mocks.backfill.mockResolvedValue(22);
-  for (const mode of ["preview", "demo", "denied"]) {
-    mocks.access.mockResolvedValue({ mode, user: null });
-    expect((await POST(request())).status).toBe(401);
-  }
-  mocks.access.mockResolvedValue({ mode: "admin", user: { id: "admin" } });
-  const response = await POST(request());
+  const client = {};
+  mocks.admin.mockReturnValue(client);
+  mocks.backfill.mockResolvedValue(3);
+  mocks.user.mockResolvedValue({
+    id: "admin-id",
+    email: "admin@hubmi.example",
+    profile: { role: "admin" },
+  });
+  const response = await POST(request(undefined, { all: true }));
   expect(response.status).toBe(200);
-  expect(await response.json()).toEqual({ count: 22 });
+  expect(await response.json()).toEqual({ count: 3 });
+  expect(mocks.backfill).toHaveBeenCalledWith(client, { all: true });
+});
+it("rejects signed-in users who are not admins", async () => {
+  mocks.user.mockResolvedValue({
+    id: "resident-id",
+    email: "resident@hubmi.example",
+    profile: { role: "resident" },
+  });
+  expect((await POST(request())).status).toBe(401);
+  mocks.user.mockResolvedValue({
+    id: "no-profile",
+    email: "x@hubmi.example",
+    profile: null,
+  });
+  expect((await POST(request())).status).toBe(401);
+  expect(mocks.admin).not.toHaveBeenCalled();
+});
+it("does not read the session when the secret is valid", async () => {
+  await POST(request("test-only-secret"));
+  expect(mocks.user).not.toHaveBeenCalled();
 });
 it("returns 503 when providers are not configured", async () => {
   expect((await POST(request("test-only-secret"))).status).toBe(503);

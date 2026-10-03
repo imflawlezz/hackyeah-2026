@@ -26,7 +26,8 @@ async function isAdmin(user: CurrentUser): Promise<boolean> {
 
 export async function resolveAdminAccess(): Promise<AdminAccess> {
   if (!hasSupabase) return { mode: "demo", user: null };
-  const user = await getCurrentUser();
+  // A failed auth request counts as "not signed in", never as a crash.
+  const user = await getCurrentUser().catch(() => null);
   if (user && (await isAdmin(user))) return { mode: "admin", user };
   if (process.env.ADMIN_PREVIEW === "true") return { mode: "preview", user };
   return { mode: "denied", user };

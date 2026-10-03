@@ -86,3 +86,10 @@ describe("write and moderation permissions", () => {
     expect(canModerate("preview")).toBe(false);
   });
 });
+
+it("treats a failed auth request as a signed-out visitor", async () => {
+  mocks.user.mockRejectedValue(new Error("Auth unavailable"));
+  expect((await resolveAdminAccess()).mode).toBe("denied");
+  vi.stubEnv("ADMIN_PREVIEW", "true");
+  expect(await resolveAdminAccess()).toEqual({ mode: "preview", user: null });
+});

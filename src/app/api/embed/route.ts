@@ -4,7 +4,7 @@ import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasOpenAI } from "@/lib/ai/models";
 import { backfillInnovations } from "@/lib/ai/backfill";
-import { getAdminAccess } from "@/lib/auth/admin";
+import { getCurrentUser, isAdmin } from "@/lib/auth/session";
 
 const embedRequestSchema = z
   .object({
@@ -12,16 +12,6 @@ const embedRequestSchema = z
     all: z.boolean().optional(),
   })
   .strict();
-
-export function GET() {
-  return NextResponse.json(
-    {
-      error:
-        "Nie można przygotować bazy z tego adresu. Skontaktuj się z administratorem.",
-    },
-    { status: 405, headers: { Allow: "POST" } },
-  );
-}
 
 function hasValidSecret(request: Request): boolean {
   const secret = process.env.EMBED_SECRET;
@@ -34,17 +24,19 @@ function hasValidSecret(request: Request): boolean {
   );
 }
 
-async function hasAdminSession(): Promise<boolean> {
-  try {
-    return (await getAdminAccess()).mode === "admin";
-  } catch {
-    return false;
-  }
+export function GET() {
+  return NextResponse.json(
+    {
+      error:
+        "Nie można przygotować bazy z tego adresu. Skontaktuj się z administratorem.",
+    },
+    { status: 405, headers: { Allow: "POST" } },
+  );
 }
 
 export async function POST(request: Request) {
-  // Scripts use the shared secret; signed-in admins use their session.
-  if (!hasValidSecret(request) && !(await hasAdminSession())) {
+  // Either the shared secret (scripts, cron) or a signed-in admin session.
+  if (!hasValidSecret(request) && !isAdmin(await getCurrentUser())) {
     return NextResponse.json(
       {
         error:

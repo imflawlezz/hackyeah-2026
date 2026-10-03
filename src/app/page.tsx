@@ -1,5 +1,7 @@
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { Suspense } from "react";
+import { ForbiddenNotice } from "@/components/auth/forbidden-notice";
 import { buttonVariants } from "@/components/ui/button";
 import { innovations, problems } from "@/lib/mocks";
 import { cn } from "@/lib/utils";
@@ -51,6 +53,9 @@ const audiences = [
 export default function HomePage() {
   return (
     <div className="space-y-16 py-4 sm:py-8">
+      <Suspense fallback={null}>
+        <ForbiddenNotice />
+      </Suspense>
       <section
         aria-labelledby="hero-heading"
         className="grid items-start gap-12 lg:grid-cols-12"

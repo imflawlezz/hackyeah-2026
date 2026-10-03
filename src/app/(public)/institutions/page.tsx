@@ -1,17 +1,43 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/placeholder-page";
+import { InstitutionFlow } from "@/components/institutions/institution-flow";
+import { getInnovationById } from "@/lib/data/innovations";
 
 export const metadata: Metadata = {
   title: "Dla instytucji",
   description:
-    "W tej części sprawdzisz pomysły dla Twojej gminy, CUS lub OPS. Ta funkcja jest w przygotowaniu.",
+    "Opisz swoją gminę lub placówkę. Dobierzemy sprawdzone rozwiązanie i przygotujemy szkic planu wdrożenia.",
 };
 
-export default function InstitutionsPage() {
+type PageProps = {
+  searchParams: Promise<{ innovation?: string | string[] }>;
+};
+
+export default async function InstitutionsPage({ searchParams }: PageProps) {
+  const { innovation: param } = await searchParams;
+  const innovationId = (Array.isArray(param) ? param[0] : param)?.trim() ?? "";
+  // /knowledge/[id] links here with ?innovation=<id>.
+  const preselected = innovationId
+    ? await getInnovationById(innovationId)
+    : null;
+
   return (
-    <PlaceholderPage
-      title="Dla instytucji"
-      description="W tej części sprawdzisz pomysły dla Twojej gminy, CUS lub OPS. Ta funkcja jest w przygotowaniu."
-    />
+    <div className="flex flex-col gap-8">
+      <header className="flex max-w-3xl flex-col gap-3 print:hidden">
+        <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+          Dla instytucji
+        </h1>
+        <p className="text-lg">
+          Opisz swoją gminę lub placówkę. Dobierzemy sprawdzone rozwiązanie i
+          przygotujemy szkic planu wdrożenia do omówienia w zespole.
+        </p>
+      </header>
+
+      {/* The key resets the flow when the preselected innovation changes. */}
+      <InstitutionFlow
+        key={preselected?.id ?? "none"}
+        preselected={preselected}
+        preselectedMissing={Boolean(innovationId) && !preselected}
+      />
+    </div>
   );
 }
