@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { hasOpenAI } from "@/lib/ai/models";
 import { backfillInnovations } from "@/lib/ai/backfill";
+import { getCurrentUser, isAdmin } from "@/lib/auth/session";
 
 const embedRequestSchema = z
   .object({
@@ -11,6 +12,17 @@ const embedRequestSchema = z
     all: z.boolean().optional(),
   })
   .strict();
+
+function hasValidSecret(request: Request): boolean {
+  const secret = process.env.EMBED_SECRET;
+  const provided = request.headers.get("x-embed-secret");
+  return Boolean(
+    secret &&
+    provided &&
+    Buffer.byteLength(secret) === Buffer.byteLength(provided) &&
+    timingSafeEqual(Buffer.from(secret), Buffer.from(provided)),
+  );
+}
 
 export function GET() {
   return NextResponse.json(
@@ -23,15 +35,8 @@ export function GET() {
 }
 
 export async function POST(request: Request) {
-  // TODO(#12): replace the secret with an admin-role check once auth lands.
-  const secret = process.env.EMBED_SECRET;
-  const provided = request.headers.get("x-embed-secret");
-  if (
-    !secret ||
-    !provided ||
-    Buffer.byteLength(secret) !== Buffer.byteLength(provided) ||
-    !timingSafeEqual(Buffer.from(secret), Buffer.from(provided))
-  ) {
+  // Either the shared secret (scripts, cron) or a signed-in admin session.
+  if (!hasValidSecret(request) && !isAdmin(await getCurrentUser())) {
     return NextResponse.json(
       {
         error:

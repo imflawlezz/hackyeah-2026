@@ -5,7 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { AccessibilityToolbar } from "@/components/layout/accessibility-toolbar";
-import { HeaderActions } from "@/components/layout/header-actions";
+import {
+  HeaderActions,
+  type HeaderUser,
+} from "@/components/layout/header-actions";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -60,7 +63,13 @@ function NavList({
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  user,
+  demo,
+}: {
+  user: HeaderUser | null;
+  demo: boolean;
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -82,8 +91,11 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <div data-slot="header-actions" className="hidden gap-2 md:flex">
-          <HeaderActions />
+        <div
+          data-slot="header-actions"
+          className="hidden items-center gap-3 md:flex"
+        >
+          <HeaderActions user={user} demo={demo} />
         </div>
 
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -123,7 +135,7 @@ export function SiteHeader() {
               data-slot="header-actions"
               className="flex flex-col gap-2 border-t border-border p-4"
             >
-              <HeaderActions onNavigate={closeMenu} />
+              <HeaderActions user={user} demo={demo} onNavigate={closeMenu} />
             </div>
           </SheetContent>
         </Sheet>

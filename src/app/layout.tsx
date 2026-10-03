@@ -6,6 +6,8 @@ import { SkipLink } from "@/components/layout/skip-link";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { fontSizeInitScript } from "@/lib/a11y/preferences";
+import { getCurrentUser } from "@/lib/auth/session";
+import { hasSupabase } from "@/lib/supabase/server";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -35,11 +37,19 @@ export const viewport: Viewport = {
   themeColor: "#2462ad",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getCurrentUser();
+  const headerUser = user
+    ? {
+        displayName: user.profile?.displayName ?? user.email,
+        role: user.profile?.role ?? "resident",
+      }
+    : null;
+
   return (
     <html
       lang="pl"
@@ -52,7 +62,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col font-sans antialiased">
         <ThemeProvider>
           <SkipLink />
-          <SiteHeader />
+          <SiteHeader user={headerUser} demo={!hasSupabase} />
           <main
             id="main"
             tabIndex={-1}

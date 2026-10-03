@@ -7,6 +7,7 @@
   },
   "scripts": {
     "embed:innovations": "tsx scripts/embed-innovations.ts",
+    "demo:users": "tsx scripts/create-demo-users.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
