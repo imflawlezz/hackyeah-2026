@@ -1,15 +1,34 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/placeholder-page";
+import { Suspense } from "react";
+import {
+  MatchExperience,
+  MatchExperienceFromUrl,
+} from "@/components/match/match-experience";
 
 export const metadata: Metadata = {
   title: "Dopasuj innowację",
+  description:
+    "Opisz problem społeczny w swojej okolicy, a wskażemy sprawdzone innowacje społeczne, które mogą pomóc.",
 };
 
 export default function MatchPage() {
   return (
-    <PlaceholderPage
-      title="Dopasuj innowację"
-      description="Opisz problem społeczny, a system wskaże pasujące innowacje."
-    />
+    <div className="mx-auto flex max-w-4xl flex-col gap-8">
+      <header className="flex flex-col gap-3">
+        <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+          Dopasuj innowację
+        </h1>
+        <p className="max-w-2xl text-lg">
+          Opisz problem społeczny własnymi słowami. Wyszukamy sprawdzone
+          rozwiązania z bazy Małopolskiego Hubu Innowacji Społecznych i
+          wyjaśnimy, dlaczego pasują.
+        </p>
+      </header>
+
+      {/* The fallback is the prerendered form; ?q= is read after hydration. */}
+      <Suspense fallback={<MatchExperience />}>
+        <MatchExperienceFromUrl />
+      </Suspense>
+    </div>
   );
 }
