@@ -26,6 +26,7 @@ Controls use Button, Heroicons and theme tokens, visible text, polite live annou
 
 ## Validation on 2026-10-03
 
+- Node 22.23.3: `npm run format`, `format:check`, `lint`, `typecheck`, `test` (56 files, 519 tests) and `build` pass after syncing the latest main.
 - Automated Vitest coverage mocks recording APIs and provider calls: upload rejection before transcription, streamed body limits, rate limiting, configuration/provider failures and timeout, permission denial, unsupported formats, manual/automatic stop, cancellation in recording/transcription/permission stages, track/timer/request cleanup, duplicate operations, stale responses, empty transcription, field edits and overflow, live announcements and non-submitting controls. Each form has integration coverage.
 - Chrome 154.0.8037.58: native MediaRecorder with the browser's synthetic microphone, WebM/Opus uploads, keyboard start/stop, preservation of typing during processing, and no automatic submission. HTTP transcription was mocked; no paid provider call was made. [Machine-readable results](screenshots/voice-input/validation.json).
 - Playwright Firefox 155.0: native MediaRecorder with a synthetic microphone, WebM/Opus upload and insertion. Its recorded 13881-byte clip was separately accepted by the actual application upload validator. HTTP transcription was mocked. [Results](screenshots/voice-input/firefox-validation.json).
