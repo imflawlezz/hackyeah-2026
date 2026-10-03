@@ -74,14 +74,19 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 
 1. `supabase/migrations/0001_init.sql`
 2. `supabase/seed/seed.sql` (22 fictional demo innovations, 8 categories; safe to re-run)
+3. `supabase/migrations/0006_admin_moderation.sql` (innovation status, problem matching outcome, idea review; idempotent)
 
-| Table         | Who can read                  | Who can write                           |
-| ------------- | ----------------------------- | --------------------------------------- |
-| `innovations` | everyone, including anonymous | admin                                   |
-| `problems`    | author, admin                 | signed-in users insert their own; admin |
-| `ideas`       | author, admin                 | signed-in users insert their own; admin |
-| `feedback`    | author, admin                 | signed-in users insert their own; admin |
-| `profiles`    | owner, admin                  | owner (not `role`); admin               |
+| Table         | Who can read                                | Who can write                                                                                 |
+| ------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `innovations` | everyone: `published` rows only; admin: all | admin                                                                                         |
+| `problems`    | author, admin                               | signed-in users insert their own; admin; the server (service role) after each `/match` search |
+| `ideas`       | author, admin                               | signed-in users insert their own; admin                                                       |
+| `feedback`    | author, admin                               | signed-in users insert their own; admin                                                       |
+| `profiles`    | owner, admin                                | owner (not `role`); admin                                                                     |
+
+After `0006`, `innovations.status` is `draft`, `published` (default) or `archived`. Drafts and archived rows are hidden from public pages and, because `match_innovations` runs with the caller's rights, from matching too.
+
+`0006` also adds `problems.best_score` (top raw cosine similarity, `null` for mock matches), `problems.source` (`ai` or `mock`), `problems.admin_note`, and `ideas.review_note`, `reviewed_at`, `reviewed_by`. `problem_trends(p_days, p_unmet_score)` returns problems per category and week with an `unmet_count`; RLS limits it to admins.
 
 A profile row is created automatically for every new auth user with role `resident`. To make someone an admin, run `update profiles set role = 'admin' where id = '<user id>';` in the SQL Editor.
 
@@ -89,12 +94,14 @@ A profile row is created automatically for every new auth user with role `reside
 
 Columns are the snake_case form of the fields in `src/types` (`targetGroup` ↔ `target_group`, `createdAt` ↔ `created_at`, and so on). The exceptions:
 
-| Database                                      | `src/types`             | Note                                     |
-| --------------------------------------------- | ----------------------- | ---------------------------------------- |
-| `ideas.essence`                               | `Idea.summary`          | different name, same field               |
-| `innovations.summary`, `region`               | not in `Innovation` yet | nullable                                 |
-| `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only         |
-| `id`                                          | `id: string`            | uuid in the database, slugs in the mocks |
+| Database                                      | `src/types`             | Note                                                    |
+| --------------------------------------------- | ----------------------- | ------------------------------------------------------- |
+| `ideas.essence`                               | `Idea.summary`          | different name, same field                              |
+| `innovations.summary`, `region`               | not in `Innovation` yet | nullable; `AdminInnovation` in `src/lib/admin/types.ts` |
+| `innovations.status`, `updated_at`            | `AdminInnovation`       | from `0006`                                             |
+| `problems.best_score`, `source`, `admin_note` | `AdminProblem`          | from `0006`; mappers in `src/lib/data/admin.ts`         |
+| `innovations.embedding`, `problems.embedding` | not exposed             | `vector(1536)`, server-side only                        |
+| `id`                                          | `id: string`            | uuid in the database, slugs in the mocks                |
 
 ### Matching
 
