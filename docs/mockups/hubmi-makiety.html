@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <title>HubMI.pl – makiety UX/UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Palette and type follow docs/design/STYLE.md, so the board reads as part of the product. */
+      :root {
+        --ink: #1b1b1b;
+        --ink-soft: #656565;
+        --blue: #0052a5;
+        --navy: #00468d;
+        --line: #767676;
+        --hairline: #dadada;
+        --surface: #f1f1f1;
+      }
+      @page {
+        size: 1600px 900px;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--ink);
+        font-family: "Open Sans", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.5;
+      }
+      p,
+      h1,
+      h2,
+      ol,
+      figure {
+        margin: 0;
+      }
+      ol {
+        padding: 0;
+        list-style: none;
+      }
+      .page {
+        position: relative;
+        display: flex;
+        width: 1600px;
+        height: 900px;
+        margin: 0 auto 24px;
+        padding-bottom: 56px;
+        overflow: hidden;
+        background: #fff;
+        break-after: page;
+      }
+      @media print {
+        .page {
+          margin: 0;
+        }
+        body {
+          background: #fff;
+        }
+      }
+      footer {
+        position: absolute;
+        inset: auto 0 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        padding: 0 40px;
+        background: var(--navy);
+        color: #fff;
+        font-size: 15px;
+      }
+      .rail {
+        display: flex;
+        flex-direction: column;
+        width: 380px;
+        padding: 48px 32px 32px 40px;
+        border-right: 1px solid var(--hairline);
+      }
+      .flow {
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+      h2 {
+        margin-top: 4px;
+        font-size: 30px;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+      .screen {
+        margin-top: 12px;
+        padding-left: 12px;
+        border-left: 4px solid var(--blue);
+        font-size: 19px;
+        font-weight: 600;
+      }
+      .caption {
+        margin-top: 20px;
+      }
+      .notes {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--hairline);
+      }
+      .notes li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 16px;
+      }
+      .mark {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        transform: translate(-50%, -50%);
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        outline: 1px solid var(--navy);
+      }
+      .mark.static {
+        position: static;
+        flex: none;
+        transform: none;
+        margin-top: -1px;
+      }
+      .frames {
+        display: flex;
+        flex: 1;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        background: var(--surface);
+      }
+      .frame figcaption {
+        margin-top: 12px;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+      .shot {
+        position: relative;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .shot img {
+        display: block;
+      }
+      .missing {
+        display: grid;
+        place-items: center;
+        height: 100%;
+        padding: 24px;
+        color: var(--ink-soft);
+        text-align: center;
+      }
+      .cover {
+        background: #fff;
+      }
+      .cover-text {
+        display: flex;
+        flex-direction: column;
+        width: 720px;
+        padding: 64px 48px 32px 72px;
+      }
+      .brand {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--blue);
+      }
+      h1 {
+        margin-top: 8px;
+        font-size: 76px;
+        line-height: 1.05;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .lead {
+        margin-top: 20px;
+        max-width: 30em;
+        font-size: 21px;
+      }
+      .contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+        margin-top: 36px;
+        border-top: 2px solid var(--ink);
+      }
+      .contents li {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--hairline);
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .page-ref {
+        flex: none;
+        color: var(--ink-soft);
+        font-weight: 400;
+      }
+      .note {
+        margin-top: auto;
+        max-width: 38em;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+      .cover-shot {
+        position: absolute;
+        top: 96px;
+        left: 792px;
+        border: 1px solid var(--line);
+      }
+      .cover-shot img {
+        display: block;
+        width: 1040px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div class="cover-text">
+        <p class="brand">HubMI.pl</p>
+        <h1>Makiety UX/UI</h1>
+        <p class="lead">
+          Małopolski Hub Innowacji Społecznych. Dziesięć przepływów, każdy na
+          komputerze i na telefonie.
+        </p>
+        <ol class="contents">
+          <li><span>Strona główna</span><span class="page-ref">s. 2</span></li>
+          <li>
+            <span>Znajdź rozwiązania</span><span class="page-ref">s. 3</span>
+          </li>
+          <li><span>Baza wiedzy</span><span class="page-ref">s. 6</span></li>
+          <li>
+            <span>Kreator pomysłów z asystentem</span
+            ><span class="page-ref">s. 7</span>
+          </li>
+          <li>
+            <span>Pomysł z odpowiedzią ROPS</span
+            ><span class="page-ref">s. 8</span>
+          </li>
+          <li><span>Dla instytucji</span><span class="page-ref">s. 9</span></li>
+          <li>
+            <span>Testowanie innowacji</span><span class="page-ref">s. 11</span>
+          </li>
+          <li><span>Wiadomości</span><span class="page-ref">s. 12</span></li>
+          <li>
+            <span>Panel administratora ROPS</span
+            ><span class="page-ref">s. 13</span>
+          </li>
+          <li>
+            <span>Dostępność: wysoki kontrast i A++</span
+            ><span class="page-ref">s. 15</span>
+          </li>
+        </ol>
+        <p class="note">
+          Klatki pochodzą z działającej aplikacji (stan na 04.10.2026). Numery
+          na klatkach odpowiadają opisom decyzji projektowych po lewej stronie.
+          Dane na ekranach są fikcyjne.
+        </p>
+      </div>
+      <div class="cover-shot"><img src="frames/home-desktop.png" alt="" /></div>
+      <footer>
+        <span>Działająca wersja: hubml-hackyeah2026-ab.vercel.app</span
+        ><span>HackYeah 2026</span>
+      </footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 1 z 10</p>
+        <h2>Strona główna</h2>
+        <p class="screen">Wejście do serwisu</p>
+        <p class="caption">
+          Mieszkaniec od razu widzi, co może zrobić, i zaczyna od opisu
+          problemu.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Nagłówek mówi językiem mieszkańca: opisz, czego brakuje w Twojej
+              okolicy.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Jedno główne działanie na ekranie. Pozostałe ścieżki są w
+              menu.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Rozmiar tekstu i wysoki kontrast są pod ręką na każdej
+              stronie.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/home-desktop.png"
+              width="864"
+              height="540"
+              alt="Strona główna: Wejście do serwisu. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 152px">1</span
+            ><span class="mark" style="left: 77px; top: 190px">2</span
+            ><span class="mark" style="left: 686px; top: 46px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/home-mobile.png"
+              width="250"
+              height="540"
+              alt="Strona główna: Wejście do serwisu. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 99px">1</span
+            ><span class="mark" style="left: 14px; top: 159px">2</span
+            ><span class="mark" style="left: 225px; top: 48px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>2 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 2 z 10</p>
+        <h2>Znajdź rozwiązania</h2>
+        <p class="screen">Opis problemu</p>
+        <p class="caption">
+          Wyszukiwarka rozwiązań przyjmuje opis problemu zwykłymi słowami.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Jedno pole i przykłady. Mieszkaniec nie musi znać nazw
+              usług.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span>Opis można podyktować, jeśli pisanie jest trudne.</span>
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Przykład wypełnia pole jednym kliknięciem i pokazuje, jak
+              pisać.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/match-form-desktop.png"
+              width="864"
+              height="540"
+              alt="Znajdź rozwiązania: Opis problemu. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 149px">1</span
+            ><span class="mark" style="left: 77px; top: 281px">2</span
+            ><span class="mark" style="left: 77px; top: 362px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/match-form-mobile.png"
+              width="250"
+              height="540"
+              alt="Znajdź rozwiązania: Opis problemu. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 120px">1</span
+            ><span class="mark" style="left: 14px; top: 256px">2</span
+            ><span class="mark" style="left: 14px; top: 338px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>3 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 2 z 10</p>
+        <h2>Znajdź rozwiązania</h2>
+        <p class="screen">Dobre dopasowanie</p>
+        <p class="caption">
+          Wyniki pokazują, które rozwiązania pasują do opisu i dlaczego.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Nagłówek z liczbą wyników dostaje fokus, a czytnik ekranu
+              odczytuje go od razu.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Trafność ma etykietę, ikonę i procent. Nie polegamy na samym
+              kolorze.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Każdy wynik ma krótkie uzasadnienie, dlaczego pasuje do
+              opisu.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/match-results-desktop.png"
+              width="864"
+              height="540"
+              alt="Znajdź rozwiązania: Dobre dopasowanie. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 29px">1</span
+            ><span class="mark" style="left: 557px; top: 98px">2</span
+            ><span class="mark" style="left: 87px; top: 207px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/match-results-mobile.png"
+              width="250"
+              height="540"
+              alt="Znajdź rozwiązania: Dobre dopasowanie. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 13px">1</span
+            ><span class="mark" style="left: 14px; top: 133px">2</span
+            ><span class="mark" style="left: 25px; top: 242px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>4 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 2 z 10</p>
+        <h2>Znajdź rozwiązania</h2>
+        <p class="screen">Brak dobrego dopasowania</p>
+        <p class="caption">
+          Gdy baza nie ma odpowiedzi, serwis mówi to wprost i proponuje następny
+          krok.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Brak dopasowania to też odpowiedź. Nie pokazujemy przypadkowych
+              wyników jako trafnych.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Brak dopasowania → zgłoszenie nowego wyzwania. Opis problemu
+              przenosi się do wiadomości dla ROPS.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Luźno powiązane rozwiązania są osobno, bez procentu i bez
+              etykiety dopasowania.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/match-none-desktop.png"
+              width="864"
+              height="540"
+              alt="Znajdź rozwiązania: Brak dobrego dopasowania. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 117px; top: 29px">1</span
+            ><span class="mark" style="left: 117px; top: 98px">2</span
+            ><span class="mark" style="left: 77px; top: 224px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/match-none-mobile.png"
+              width="250"
+              height="540"
+              alt="Znajdź rozwiązania: Brak dobrego dopasowania. Telefon, 390 × 844."
+            /><span class="mark" style="left: 31px; top: 13px">1</span
+            ><span class="mark" style="left: 31px; top: 141px">2</span
+            ><span class="mark" style="left: 14px; top: 315px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>5 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 3 z 10</p>
+        <h2>Baza wiedzy</h2>
+        <p class="screen">Karta innowacji</p>
+        <p class="caption">
+          Karta innowacji z biblioteki opisuje rozwiązanie i prowadzi do
+          dalszych kroków.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span>Okruszki pokazują drogę powrotu do biblioteki.</span>
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Opis w stałym układzie: dla kogo jest rozwiązanie i jak
+              działa.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Z karty prowadzą następne kroki: test, pytanie do ROPS i plan
+              wdrożenia dla instytucji.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/knowledge-detail-desktop.png"
+              width="864"
+              height="540"
+              alt="Baza wiedzy: Karta innowacji. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 152px">1</span
+            ><span class="mark" style="left: 77px; top: 221px">2</span
+            ><span class="mark" style="left: 586px; top: 192px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/knowledge-detail-mobile.png"
+              width="250"
+              height="540"
+              alt="Baza wiedzy: Karta innowacji. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 127px">2</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>6 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 4 z 10</p>
+        <h2>Kreator pomysłów z asystentem</h2>
+        <p class="screen">Nowy pomysł</p>
+        <p class="caption">
+          Kreator prowadzi od problemu do gotowej kanwy innowacji. Asystent
+          pomaga na żądanie.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Dziewięć krótkich kroków zamiast jednego długiego
+              formularza.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span>Jedno pytanie na ekran, zadane prostym językiem.</span>
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Asystent podpowiada na żądanie. Jego tekst jest oznaczony jako
+              przygotowany automatycznie.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/idea-creator-desktop.png"
+              width="864"
+              height="540"
+              alt="Kreator pomysłów z asystentem: Nowy pomysł. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 231px">1</span
+            ><span class="mark" style="left: 77px; top: 294px">2</span
+            ><span class="mark" style="left: 548px; top: 241px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/idea-creator-mobile.png"
+              width="250"
+              height="540"
+              alt="Kreator pomysłów z asystentem: Nowy pomysł. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 229px">1</span
+            ><span class="mark" style="left: 14px; top: 293px">2</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>7 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 5 z 10</p>
+        <h2>Pomysł z odpowiedzią ROPS</h2>
+        <p class="screen">Strona pomysłu autora</p>
+        <p class="caption">
+          Autor widzi na stronie swojego pomysłu odpowiedź zespołu ROPS.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Odpowiedź ROPS jest na stronie pomysłu, z datą. Widzi ją tylko
+              autor.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Kanwa porządkuje pomysł w stałe pola, te same dla
+              wszystkich.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Z kanwy powstaje szkic wniosku grantowego do dalszej pracy.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <p class="missing">
+              Ta klatka powstaje po zalogowaniu na konto demonstracyjne.
+            </p>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <p class="missing">
+              Ta klatka powstaje po zalogowaniu na konto demonstracyjne.
+            </p>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>8 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 6 z 10</p>
+        <h2>Dla instytucji</h2>
+        <p class="screen">Krok 1: instytucja i potrzeba</p>
+        <p class="caption">
+          Pracownik gminy lub ośrodka opisuje instytucję i potrzebę w jednym
+          formularzu.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Krótkie pytania o instytucję: typ, liczba mieszkańców, budżet i
+              zespół.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Pola wyboru mają duże cele kliknięcia i widoczne
+              zaznaczenie.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Odpowiedzi zostają w karcie przeglądarki, więc powrót do
+              formularza nie kasuje pracy.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/institutions-form-desktop.png"
+              width="864"
+              height="540"
+              alt="Dla instytucji: Krok 1: instytucja i potrzeba. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 367px">1</span
+            ><span class="mark" style="left: 77px; top: 476px">2</span
+            ><span class="mark" style="left: 77px; top: 234px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/institutions-form-mobile.png"
+              width="250"
+              height="540"
+              alt="Dla instytucji: Krok 1: instytucja i potrzeba. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 307px">1</span
+            ><span class="mark" style="left: 14px; top: 484px">2</span
+            ><span class="mark" style="left: 14px; top: 176px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>9 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 6 z 10</p>
+        <h2>Dla instytucji</h2>
+        <p class="screen">Plan wdrożenia</p>
+        <p class="caption">
+          Po wyborze rozwiązania powstaje szkic planu wdrożenia do omówienia w
+          zespole.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Plan można wydrukować, pobrać albo skopiować do własnego
+              dokumentu.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Szkic jest oznaczony jako przygotowany automatycznie i wymaga
+              sprawdzenia.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Plan zaczyna się od danych instytucji. Dalej są kroki, koszty,
+              zespół i ryzyka.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/institutions-plan-desktop.png"
+              width="864"
+              height="540"
+              alt="Dla instytucji: Plan wdrożenia. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 201px">1</span
+            ><span class="mark" style="left: 89px; top: 324px">2</span
+            ><span class="mark" style="left: 77px; top: 372px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/institutions-plan-mobile.png"
+              width="250"
+              height="540"
+              alt="Dla instytucji: Plan wdrożenia. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 142px">1</span
+            ><span class="mark" style="left: 27px; top: 393px">2</span
+            ><span class="mark" style="left: 14px; top: 454px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>10 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 7 z 10</p>
+        <h2>Testowanie innowacji</h2>
+        <p class="screen">Otwarte testy i opinie</p>
+        <p class="caption">
+          Mieszkaniec zgłasza się do testu innowacji, a potem dzieli się opinią.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span>Każdy test ma miejsce, termin i liczbę wolnych miejsc.</span>
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Zgłoszenie pyta o dogodną porę i potrzebne udogodnienia.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Opinie testujących wracają jako podsumowanie: średnia i rozkład
+              ocen.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/testing-desktop.png"
+              width="864"
+              height="540"
+              alt="Testowanie innowacji: Otwarte testy i opinie. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 77px; top: 29px">1</span
+            ><span class="mark" style="left: 567px; top: 29px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/testing-mobile.png"
+              width="250"
+              height="540"
+              alt="Testowanie innowacji: Otwarte testy i opinie. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 13px">1</span
+            ><span class="mark" style="left: 14px; top: 500px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>11 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 8 z 10</p>
+        <h2>Wiadomości</h2>
+        <p class="screen">Rozmowy</p>
+        <p class="caption">
+          Mieszkaniec, ekspert i zespół ROPS rozmawiają w jednym miejscu.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Nowa rozmowa: pytanie do ROPS, do eksperta albo szukanie
+              partnera.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Lista rozmów i treść wątku są obok siebie. Na telefonie jedna pod
+              drugą.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span>Odpowiedź można wpisać albo podyktować.</span>
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/messages-desktop.png"
+              width="864"
+              height="540"
+              alt="Wiadomości: Rozmowy. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 666px; top: 152px">1</span
+            ><span class="mark" style="left: 314px; top: 240px">2</span
+            ><span class="mark" style="left: 314px; top: 424px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/messages-mobile.png"
+              width="250"
+              height="540"
+              alt="Wiadomości: Rozmowy. Telefon, 390 × 844."
+            /><span class="mark" style="left: 143px; top: 155px">1</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>12 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 9 z 10</p>
+        <h2>Panel administratora ROPS</h2>
+        <p class="screen">Moderacja</p>
+        <p class="caption">
+          Zespół ROPS przegląda pomysły, zgłoszone problemy i szkice innowacji.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Trzy kolejki pracy z licznikami. Aktywna zakładka ma też pasek,
+              nie tylko kolor.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Pomysł czeka na przegląd z pełnym opisem i linkiem do
+              strony.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span>Decyzja z notatką wraca do autora jako odpowiedź ROPS.</span>
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/admin-moderation-desktop.png"
+              width="864"
+              height="540"
+              alt="Panel administratora ROPS: Moderacja. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 226px; top: 285px">1</span
+            ><span class="mark" style="left: 226px; top: 332px">2</span
+            ><span class="mark" style="left: 238px; top: 476px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/admin-moderation-mobile.png"
+              width="250"
+              height="540"
+              alt="Panel administratora ROPS: Moderacja. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 389px">1</span
+            ><span class="mark" style="left: 14px; top: 470px">2</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>13 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 9 z 10</p>
+        <h2>Panel administratora ROPS</h2>
+        <p class="screen">Trendy potrzeb</p>
+        <p class="caption">
+          Zgłoszenia z wyszukiwarki pokazują, czego mieszkańcy szukają i czego w
+          bazie brakuje.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span>Okres analizy wybiera się jednym polem.</span>
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Podsumowanie okresu zbiera najważniejsze liczby zwykłym
+              językiem.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Zgłoszenia są zapisywane bez danych osobowych i liczone według
+              kategorii.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/admin-trends-desktop.png"
+              width="864"
+              height="540"
+              alt="Panel administratora ROPS: Trendy potrzeb. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 226px; top: 121px">1</span
+            ><span class="mark" style="left: 238px; top: 226px">2</span
+            ><span class="mark" style="left: 226px; top: 396px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/admin-trends-mobile.png"
+              width="250"
+              height="540"
+              alt="Panel administratora ROPS: Trendy potrzeb. Telefon, 390 × 844."
+            /><span class="mark" style="left: 14px; top: 111px">1</span
+            ><span class="mark" style="left: 25px; top: 216px">2</span
+            ><span class="mark" style="left: 14px; top: 468px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>14 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 10 z 10</p>
+        <h2>Dostępność: wysoki kontrast i A++</h2>
+        <p class="screen">Wysoki kontrast</p>
+        <p class="caption">
+          Wysoki kontrast włącza się jednym przyciskiem i działa na każdej
+          stronie.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Przełącznik jest w nagłówku. Wybór zostaje zapamiętany w
+              przeglądarce.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Ten sam układ strony, osobna paleta: żółty i biały na
+              czarnym.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">3</span
+            ><span
+              >Przyciski i linki zachowują wyraźną ramkę i widoczny fokus.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/a11y-high-contrast-desktop.png"
+              width="864"
+              height="540"
+              alt="Dostępność: wysoki kontrast i A++: Wysoki kontrast. Komputer, 1440 × 900."
+            /><span class="mark" style="left: 686px; top: 46px">1</span
+            ><span class="mark" style="left: 77px; top: 152px">2</span
+            ><span class="mark" style="left: 77px; top: 190px">3</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/a11y-high-contrast-mobile.png"
+              width="250"
+              height="540"
+              alt="Dostępność: wysoki kontrast i A++: Wysoki kontrast. Telefon, 390 × 844."
+            /><span class="mark" style="left: 225px; top: 48px">1</span
+            ><span class="mark" style="left: 14px; top: 99px">2</span
+            ><span class="mark" style="left: 14px; top: 159px">3</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>15 / 16</span></footer>
+    </section>
+    <section class="page">
+      <div class="rail">
+        <p class="flow">Przepływ 10 z 10</p>
+        <h2>Dostępność: wysoki kontrast i A++</h2>
+        <p class="screen">Największy tekst (A++)</p>
+        <p class="caption">
+          Przy największym rozmiarze tekstu układ się zawija i nie wymaga
+          przewijania w poziomie.
+        </p>
+        <ol class="notes">
+          <li>
+            <span class="mark static">1</span
+            ><span
+              >Nagłówek łamie się na kilka wierszy zamiast wychodzić poza
+              ekran.</span
+            >
+          </li>
+          <li>
+            <span class="mark static">2</span
+            ><span
+              >Przycisk rośnie razem z tekstem i zachowuje cel kliknięcia co
+              najmniej 44 px.</span
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <div class="shot" style="width: 864px; height: 540px">
+            <img
+              src="frames/a11y-largest-text-desktop.png"
+              width="864"
+              height="540"
+              alt="Dostępność: wysoki kontrast i A++: Największy tekst (A++). Komputer, 1440 × 900."
+            /><span class="mark" style="left: 45px; top: 29px">1</span
+            ><span class="mark" style="left: 45px; top: 119px">2</span>
+          </div>
+          <figcaption>Komputer, 1440 × 900</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="shot" style="width: 250px; height: 540px">
+            <img
+              src="frames/a11y-largest-text-mobile.png"
+              width="250"
+              height="540"
+              alt="Dostępność: wysoki kontrast i A++: Największy tekst (A++). Telefon, 390 × 844."
+            /><span class="mark" style="left: 16px; top: 31px">1</span
+            ><span class="mark" style="left: 16px; top: 247px">2</span>
+          </div>
+          <figcaption>Telefon, 390 × 844</figcaption>
+        </figure>
+      </div>
+      <footer><span>HubMI.pl – makiety UX/UI</span><span>16 / 16</span></footer>
+    </section>
+  </body>
+</html>

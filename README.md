@@ -291,6 +291,10 @@ Focus is a 3 px solid outline in `--ring` with a 2 px offset on every `:focus-vi
 - [ ] Lighthouse Accessibility is at least 95 and axe reports no serious or critical issues on every route, in both themes.
 - [ ] A screen reader (NVDA or VoiceOver) announces landmarks, the current page in the nav and the pressed state of the toolbar buttons.
 
+## Materials
+
+- **UX/UI mockups:** [docs/mockups/hubmi-makiety.pdf](docs/mockups/hubmi-makiety.pdf), ten flows on desktop and mobile with annotated design decisions. The frames are rendered from the running app; see [docs/mockups/README.md](docs/mockups/README.md) to regenerate them.
+
 ## Before you open a PR
 
 ```bash
