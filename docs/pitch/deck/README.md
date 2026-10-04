@@ -17,10 +17,10 @@ Wymagana przeglądarka Chrome. Dla Edge ustawić `$env:PITCH_BROWSER = 'msedge'`
 
 ## Zakres potwierdzeń
 
-Klatki pochodzą z #65; [pochodzenie makiet](../../mockups/README.md) rozróżnia produkcję i lokalny tryb demonstracyjny. Statystyka dostępności pochodzi z [audytu lokalnego](../../copy-audit.md), obejmującego 76 widoków; nie dowodzi pełnej zgodności z WCAG ani działania ścieżek zalogowanych na produkcji. Konfigurację regionów opisuje README projektu. Nie deklarujemy, że przetwarzanie przez OpenAI pozostaje w UE.
+Klatki odświeżono 4 października po #81; [pochodzenie makiet](../../mockups/README.md) opisuje, które pochodzą z produkcji, a które z lokalnej kompilacji. Statystyka dostępności pochodzi z [audytu lokalnego](../../copy-audit.md), obejmującego 76 widoków; nie dowodzi pełnej zgodności z WCAG ani działania ścieżek zalogowanych na produkcji. Konfigurację regionów opisuje README projektu. Nie deklarujemy, że przetwarzanie przez OpenAI pozostaje w UE.
 
-Odczyt produkcji 4 października potwierdził dostępność strony głównej, dopasowania, instytucji i testów. Kreator, wiadomości i trendy przekierowują do logowania. Ich implementację potwierdza bieżący kod `main`; działania po zalogowaniu nie zweryfikowano w tym zadaniu. Nie używamy prywatnych danych ani haseł do materiałów.
+Przy odświeżaniu klatek 4 października na produkcji otwarto po zalogowaniu kreator pomysłów z asystentem, pomysł z odpowiedzią ROPS, wiadomości, moderację i trendy. Logowanie jednym kliknięciem jest na stronie `/login`. Sprawdzono wyświetlanie tych widoków; nie wysyłano pomysłów, wiadomości ani decyzji moderacji. Baza wiedzy na produkcji pokazuje 23 innowacje. W materiałach nie ma haseł ani prywatnych danych.
 
-Koszt pozostaje oznaczony „DO UZUPEŁNIENIA” do aktualizacji #64. Stara suma nie obejmuje aktualnego zakresu AI. Zachowano ujawnienie z `ai-credits.md`; aktualizacja pełnej listy modeli i narzędzi należy do #64. Przed zgłoszeniem potrzebne są nazwa i identyfikator zespołu HackTribe. Film nagrywa zespół według scenariusza; to zadanie nie dostarcza MP4.
+Koszt na slajdzie 9 i zdanie o AI na slajdzie 10 pochodzą z [cost.md](../cost.md) i [ai-credits.md](../ai-credits.md); po zmianie tych plików trzeba je przenieść ręcznie. Slajd 10 podaje nazwę zespołu, 313Team. Identyfikatora HackTribe nie ma w repozytorium ani w prezentacji. Film nagrywa zespół według scenariusza; to zadanie nie dostarcza MP4.
 
 PDF ma logiczną kolejność: tytuł, punkty, obraz z opisem, informacja o wizualizacji i numer strony. Znaczniki PDF i wynik axe nie zastępują ręcznego sprawdzenia czytnikiem ekranu.
