@@ -409,7 +409,9 @@ describe("OpenTestsList", () => {
       />,
     );
     expect(
-      screen.getByRole("link", { name: /Zapisano.*Teleopieka sąsiedzka/ }),
+      screen.getByRole("link", {
+        name: "Zapisano. Zobacz test: Teleopieka sąsiedzka",
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Zgłoś się: Gminny asystent cyfrowy" }),

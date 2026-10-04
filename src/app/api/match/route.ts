@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       problem,
       limit: Math.max(1, Math.min(10, parsed.data.limit ?? 5)),
     },
-    { hideWeak: true },
+    { hideWeak: true, record: true },
   );
   return NextResponse.json(
     { results, noGoodMatch },

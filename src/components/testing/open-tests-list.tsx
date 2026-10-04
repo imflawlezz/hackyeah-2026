@@ -141,7 +141,7 @@ export function OpenTestsList({
                     )}
                   >
                     {signedUp
-                      ? "Zapisano: zobacz test"
+                      ? "Zapisano. Zobacz test"
                       : slotsLeft > 0
                         ? "Zgłoś się"
                         : "Zobacz test"}

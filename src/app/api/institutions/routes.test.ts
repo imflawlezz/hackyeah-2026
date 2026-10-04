@@ -232,6 +232,8 @@ describe("POST /api/institutions/candidates", () => {
     expect(problem).toContain("samotni seniorzy z przysiółków");
     expect(problem).toContain("Gmina, gmina wiejska");
     expect(problem).toContain("Brak transportu publicznego");
+    // An institution profile is not a resident's need, so it is not stored.
+    expect(mocks.match.mock.calls[0]![1]?.record).not.toBe(true);
   });
 
   it("passes the AI source through", async () => {
