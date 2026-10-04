@@ -1,4 +1,4 @@
-// @vitest-environment jsdom
+﻿// @vitest-environment jsdom
 import { act, cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, expect, it, vi } from "vitest";
@@ -36,9 +36,7 @@ it("shows a pending state and announces a returned error", async () => {
       }),
   );
   render(<DemoAccounts enabled />);
-  await userEvent.click(
-    screen.getByRole("button", { name: "Mieszkaniec", exact: true }),
-  );
+  await userEvent.click(screen.getByRole("button", { name: "Mieszkaniec" }));
   expect(
     screen.getByRole("button", { name: "Loguję… Mieszkaniec" }),
   ).toBeDisabled();
@@ -48,9 +46,7 @@ it("shows a pending state and announces a returned error", async () => {
   expect(screen.getByRole("alert")).toHaveTextContent(
     "Logowanie demonstracyjne jest wyłączone.",
   );
-  expect(
-    screen.getByRole("button", { name: "Mieszkaniec", exact: true }),
-  ).toBeEnabled();
+  expect(screen.getByRole("button", { name: "Mieszkaniec" })).toBeEnabled();
 });
 it("keeps the server password out of client props and rendered markup", () => {
   const source = readFileSync("src/components/auth/demo-accounts.tsx", "utf8");
