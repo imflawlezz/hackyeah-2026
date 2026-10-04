@@ -188,6 +188,21 @@ Sign-up confirmation links go to `${origin}/auth/callback?next=…`, where `orig
 
 A callback URL that is not on the list makes Supabase fall back to the Site URL, and the visitor lands on `/login?error=callback`.
 
+### E-mail confirmation
+
+**Demo setting: "Confirm email" is off** (Supabase → Authentication → Sign In / Providers → Email). `signUp` then returns a session straight away, sends no e-mail and the visitor lands signed in. To check the current value, open `<project url>/auth/v1/settings` with the anon key as the `apikey` header: `mailer_autoconfirm` is `true` when confirmation is off.
+
+It is off because the project uses Supabase's built-in mailer, which cannot serve real users: it sends about 2 e-mails per hour for the whole project and delivers only to members of the Supabase organisation. With confirmation on, sign-up fails for everyone else with `over_email_send_rate_limit` (429) or `email_address_not_authorized`. Supabase also rejects reserved test domains such as `example.com` with `email_address_invalid`, so test with an address on a domain you control.
+
+Before real users register, in this order:
+
+1. Configure custom SMTP in Supabase → Authentication → Emails → SMTP Settings (for example Resend or an ROPS mail server), with a sender address on a domain that has SPF and DKIM set up.
+2. Raise the e-mail limit in Authentication → Rate Limits; it stays at a low default after SMTP is added.
+3. Check the Site URL and Redirect URLs above: they must list the production origin and its `/auth/callback`.
+4. Turn "Confirm email" back on.
+
+The app supports both settings. With confirmation on, the sign-up form shows "Sprawdź skrzynkę i potwierdź adres e-mail" and the link signs the visitor in through `/auth/callback`. Sign-up error messages are mapped in `src/lib/auth/errors.ts`.
+
 | Role       | Label in the UI             | How you get it                 |
 | ---------- | --------------------------- | ------------------------------ |
 | `resident` | Mieszkaniec lub organizacja | sign-up (default)              |

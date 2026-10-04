@@ -4,8 +4,13 @@ import { appendTranscript } from "@/lib/voice/append";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, startTransition } from "react";
+import { useState, useSyncExternalStore, startTransition } from "react";
 import { startConversation } from "@/app/(public)/messages/actions";
+import {
+  CHALLENGE_SUBJECT,
+  clearChallengeDraft,
+  readChallengeDraft,
+} from "@/lib/match/challenge-draft";
 import { getMockStore } from "@/lib/messages/mock-store";
 import { startConversationSchema } from "@/lib/messages/schemas";
 import { DemoBanner } from "./messages-workspace";
@@ -51,6 +56,9 @@ function fieldMessage(
     : undefined;
 }
 
+// sessionStorage does not change while the form is open.
+const subscribeToNothing = () => () => {};
+
 export function NewMessageForm({
   demo,
   experts,
@@ -66,7 +74,21 @@ export function NewMessageForm({
   ideaId?: string;
   initialKind: ConversationKind;
 }) {
-  const [body, setBody] = useState("");
+  const fromMatch = subject === CHALLENGE_SUBJECT && !innovationId && !ideaId;
+  // "Zgłoś nowe wyzwanie" on /match leaves the problem description in
+  // sessionStorage, so it never travels in the URL. It fills the message until
+  // the visitor edits it.
+  const draft = useSyncExternalStore(
+    subscribeToNothing,
+    () => (fromMatch ? readChallengeDraft() : ""),
+    () => "",
+  );
+  const [typed, setTyped] = useState<string | null>(null);
+  const body = typed ?? draft;
+  const setBody = (next: string | ((current: string) => string)) =>
+    setTyped((current) =>
+      typeof next === "function" ? next(current ?? draft) : next,
+    );
   const [kind, setKind] = useState(initialKind);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -159,6 +181,7 @@ export function NewMessageForm({
               const id = demo
                 ? getMockStore().start(result.data)
                 : await startConversation(result.data);
+              if (fromMatch) clearChallengeDraft();
               router.push(`/messages/${id}`);
             } catch {
               setError(

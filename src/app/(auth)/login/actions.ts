@@ -3,7 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import type { AuthError } from "@supabase/supabase-js";
+import {
+  ACCOUNT_EXISTS_ERROR,
+  signInError,
+  signUpError,
+} from "@/lib/auth/errors";
 import { safeNext } from "@/lib/auth/redirect";
 import { sanitizeSignupRole } from "@/lib/auth/roles";
 import {
@@ -14,30 +18,6 @@ import {
 import { createClient } from "@/lib/supabase/server";
 
 const DEMO_ERROR = "Logowanie nie działa w wersji demonstracyjnej.";
-const RATE_LIMIT_ERROR =
-  "Za dużo prób. Odczekaj kilka minut i spróbuj ponownie.";
-
-function signInError(error: AuthError): string {
-  if (error.code === "email_not_confirmed") {
-    return "Potwierdź adres e-mail. Link wysłaliśmy na Twoją skrzynkę.";
-  }
-  if (error.status === 429) return RATE_LIMIT_ERROR;
-  if (error.code === "invalid_credentials" || error.status === 400) {
-    return "E-mail lub hasło są nieprawidłowe.";
-  }
-  return "Nie udało się zalogować. Spróbuj ponownie za chwilę.";
-}
-
-function signUpError(error: AuthError): string {
-  if (error.code === "user_already_exists" || error.code === "email_exists") {
-    return "Konto z tym adresem już istnieje. Zaloguj się.";
-  }
-  if (error.code === "weak_password") {
-    return "Hasło musi mieć co najmniej 8 znaków.";
-  }
-  if (error.status === 429) return RATE_LIMIT_ERROR;
-  return "Nie udało się założyć konta. Spróbuj ponownie za chwilę.";
-}
 
 export async function signIn(
   input: unknown,
@@ -104,10 +84,7 @@ export async function signUp(
   // With e-mail confirmation on, Supabase hides an existing account behind a
   // user object that has no identities.
   if (data.user && data.user.identities?.length === 0) {
-    return {
-      ok: false,
-      error: "Konto z tym adresem już istnieje. Zaloguj się.",
-    };
+    return { ok: false, error: ACCOUNT_EXISTS_ERROR };
   }
 
   revalidatePath("/", "layout");

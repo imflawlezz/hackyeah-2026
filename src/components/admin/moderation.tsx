@@ -175,7 +175,7 @@ export function Moderation({
                             confirmLabel: "Oznacz jako przejrzane",
                             noteLabel: "Wiadomość do autora",
                             noteHint:
-                              "Na przykład: co poprawić albo z kim się skontaktować.",
+                              "Autor zobaczy tę wiadomość na stronie swojego pomysłu.",
                             focusAfterConfirm: panelHeading,
                             onConfirm: (note) =>
                               act(() => reviewIdeaAction(idea.id, note)),

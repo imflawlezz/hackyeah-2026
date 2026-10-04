@@ -195,18 +195,19 @@ export async function reviewIdea(
   }
   const client = await createClient();
   if (!client) return { ok: false, message: NOT_SAVED };
-  const { data, error } = await client
-    .from("ideas")
-    .update({
-      status: "reviewed",
-      review_note: note || null,
-      reviewed_at: new Date().toISOString(),
-      reviewed_by: access.user?.id ?? null,
-    })
-    .eq("id", id)
-    .select("id");
+  const { data, error } = await client.rpc("review_idea", {
+    p_idea_id: id,
+    p_note: note || null,
+  });
+  if (error?.code === "PGRST202") {
+    return {
+      ok: false,
+      message:
+        "Baza nie ma jeszcze zmian z migracji 0007. Poproś administratora o zastosowanie migracji odpowiedzi ROPS.",
+    };
+  }
   if (error) return failure(error, NOT_SAVED);
-  if (!data?.length) return { ok: false, message: NOT_FOUND };
+  if (!data) return { ok: false, message: NOT_FOUND };
   return { ok: true, message };
 }
 
