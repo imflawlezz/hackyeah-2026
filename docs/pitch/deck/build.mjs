@@ -33,7 +33,7 @@ for (const [i, slide] of slides.entries()) {
   if (
     words(title) > 8 ||
     bullets.length > 3 ||
-    bullets.some((b) => words(b) > 12)
+    bullets.some((b) => words(b.replace(" :: ", " ")) > 12)
   )
     throw new Error(`Przekroczony limit tekstu: ${i + 1}`);
   const visual = lines.find((l) => l.startsWith("Wizual: ")).slice(8);
@@ -45,15 +45,14 @@ for (const [i, slide] of slides.entries()) {
     img = `<img src="data:image/png;base64,${bytes.toString("base64")}" alt="${escape(alt)}">`;
   }
   const disclosure = lines.find((l) => l.startsWith("Ujawnienie AI: "));
-  // Hasła: krótkie słowa kluczowe pod tytułem, rozdzielone " | ".
-  const tags = (lines.find((l) => l.startsWith("Hasła: ")) ?? "")
-    .slice(7)
-    .split(" | ")
-    .filter(Boolean);
-  if (tags.length > 5 || tags.some((t) => words(t) > 5))
-    throw new Error(`Za dużo haseł lub za długie hasło: ${i + 1}`);
+  // Punkt "Hasło :: opis" daje duże hasło z opisem pod spodem.
+  const cards = bullets.map((b) => b.split(" :: "));
+  const keyed = cards.every((c) => c.length === 2);
+  const list = keyed
+    ? `<dl class="keys">${cards.map(([k, d]) => `<div><dt>${escape(k)}</dt><dd>${escape(d)}</dd></div>`).join("")}</dl>`
+    : `<ul>${bullets.map((b) => `<li>${escape(b)}</li>`).join("")}</ul>`;
   sections.push(
-    `<section><header>HubMI.pl · HackYeah 2026 · prototyp</header><h1>${escape(title)}</h1>${tags.length ? `<ul class="tags" aria-label="Hasła">${tags.map((t) => `<li>${escape(t)}</li>`).join("")}</ul>` : ""}<div class="body ${img ? "with-image" : ""}"><ul>${bullets.map((b) => `<li>${escape(b)}</li>`).join("")}</ul>${img}</div><p class="visual">${escape(visual)}</p>${disclosure ? `<p class="disclosure">${escape(disclosure.slice(15))}</p>` : ""}<footer>${i + 1} / 10</footer></section>`,
+    `<section><header>HubMI.pl · HackYeah 2026 · prototyp</header><h1>${escape(title)}</h1><div class="body ${img ? "with-image" : ""}">${list}${img}</div><p class="visual">${escape(visual)}</p>${disclosure ? `<p class="disclosure">${escape(disclosure.slice(15))}</p>` : ""}<footer>${i + 1} / 10</footer></section>`,
   );
 }
 const font = await fs.readFile(path.join(dir, "open-sans-400.ttf"));
@@ -61,7 +60,7 @@ const boldFont = await fs.readFile(path.join(dir, "open-sans-700.ttf"));
 const html = `<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>HubMI.pl — prezentacja prototypu HackYeah 2026</title><style>
 @font-face{font-family:'Open Sans';src:url(data:font/ttf;base64,${font.toString("base64")}) format('truetype');font-weight:400}
 @font-face{font-family:'Open Sans';src:url(data:font/ttf;base64,${boldFont.toString("base64")}) format('truetype');font-weight:700}
-@page{size:1440px 900px;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b1b1b;background:white;font-family:'Open Sans',sans-serif}section{width:1440px;height:900px;padding:48px 64px;position:relative;break-after:page;border-top:12px solid #0052a5}section:last-child{break-after:auto}header{font-size:24px;color:#0052a5;font-weight:700}h1{font-size:50px;line-height:1.2;margin:24px 0 28px;max-width:1200px}ul{padding-left:36px;margin:0}li{font-size:32px;line-height:1.4;margin:0 0 22px}.tags{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-wrap:wrap;gap:12px}.tags li{font-size:24px;line-height:1.3;font-weight:700;color:#0052a5;border:2px solid #0052a5;border-radius:4px;padding:8px 16px;margin:0}.body{min-height:400px}.with-image{display:grid;grid-template-columns:1fr 590px;gap:36px}.with-image img{width:590px;max-height:400px;object-fit:contain;object-position:top;border:1px solid #ccc}.visual{font-size:24px;line-height:1.4;margin:24px 0 0}.disclosure{font-size:20px;line-height:1.4;border-top:2px solid #0052a5;padding-top:16px;margin-top:22px}footer{position:absolute;bottom:28px;right:64px;color:#0052a5;font-size:24px}
+@page{size:1440px 900px;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b1b1b;background:white;font-family:'Open Sans',sans-serif}section{width:1440px;height:900px;padding:48px 64px;position:relative;break-after:page;border-top:12px solid #0052a5}section:last-child{break-after:auto}header{font-size:24px;color:#0052a5;font-weight:700}h1{font-size:50px;line-height:1.2;margin:24px 0 28px;max-width:1200px}ul{padding-left:36px;margin:0}li{font-size:32px;line-height:1.4;margin:0 0 22px}.keys{display:grid;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:1fr;column-gap:40px;margin:16px 0 0}.keys div{display:contents}.keys dt{font-size:46px;line-height:1.15;font-weight:700;color:#0052a5;border-top:6px solid #0052a5;padding:20px 0}.keys dd{font-size:30px;line-height:1.4;margin:0}.body{min-height:400px}.with-image{display:grid;grid-template-columns:1fr 590px;gap:36px}.with-image img{width:590px;max-height:400px;object-fit:contain;object-position:top;border:1px solid #ccc}.visual{font-size:24px;line-height:1.4;margin:24px 0 0}.disclosure{font-size:20px;line-height:1.4;border-top:2px solid #0052a5;padding-top:16px;margin-top:22px}footer{position:absolute;bottom:28px;right:64px;color:#0052a5;font-size:24px}
 </style></head><body>${sections.join("")}</body></html>`;
 await fs.writeFile(path.join(dir, "hubmi-pitch.html"), html);
 const browser = await chromium.launch({
