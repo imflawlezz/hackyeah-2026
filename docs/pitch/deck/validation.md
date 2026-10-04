@@ -1,6 +1,6 @@
 # Kontrola eksportu — 4 października 2026
 
-- PDF: 10 stron, 366 632 bajty (około 0,37 MB).
+- PDF: 10 stron, 366 529 bajtów (około 0,37 MB).
 - Metadane: tytuł „HubMI.pl — prezentacja prototypu HackYeah 2026”, język `pl-PL`.
 - Odczyt PDF przez pdfjs-dist: rzeczywisty tekst na każdej stronie (315–775 znaków), polskie znaki zachowane, drzewo struktury obecne na wszystkich stronach.
 - Eksporter: dokładnie 10 slajdów; tytuły do 8 słów; do 3 punktów po najwyżej 12 słów. Tekst punktów: 32 px, czyli 24 pt w PDF. Open Sans osadzony lokalnie; biały papier, tekst `#1b1b1b`, akcent `#0052a5`.

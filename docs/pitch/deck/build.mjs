@@ -49,7 +49,7 @@ for (const [i, slide] of slides.entries()) {
   const cards = bullets.map((b) => b.split(" :: "));
   const keyed = cards.every((c) => c.length === 2);
   const list = keyed
-    ? `<dl class="keys">${cards.map(([k, d]) => `<div><dt>${escape(k)}</dt><dd>${escape(d)}</dd></div>`).join("")}</dl>`
+    ? `<dl class="keys${lines.includes("Układ: lista") ? " stacked" : ""}">${cards.map(([k, d]) => `<div><dt>${escape(k)}</dt><dd>${escape(d)}</dd></div>`).join("")}</dl>`
     : `<ul>${bullets.map((b) => `<li>${escape(b)}</li>`).join("")}</ul>`;
   sections.push(
     `<section><header>HubMI.pl · HackYeah 2026 · prototyp</header><h1>${escape(title)}</h1><div class="body ${img ? "with-image" : ""}">${list}${img}</div><p class="visual">${escape(visual)}</p>${disclosure ? `<p class="disclosure">${escape(disclosure.slice(15))}</p>` : ""}<footer>${i + 1} / 10</footer></section>`,
@@ -60,7 +60,7 @@ const boldFont = await fs.readFile(path.join(dir, "open-sans-700.ttf"));
 const html = `<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>HubMI.pl — prezentacja prototypu HackYeah 2026</title><style>
 @font-face{font-family:'Open Sans';src:url(data:font/ttf;base64,${font.toString("base64")}) format('truetype');font-weight:400}
 @font-face{font-family:'Open Sans';src:url(data:font/ttf;base64,${boldFont.toString("base64")}) format('truetype');font-weight:700}
-@page{size:1440px 900px;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b1b1b;background:white;font-family:'Open Sans',sans-serif}section{width:1440px;height:900px;padding:48px 64px;position:relative;break-after:page;border-top:12px solid #0052a5}section:last-child{break-after:auto}header{font-size:24px;color:#0052a5;font-weight:700}h1{font-size:50px;line-height:1.2;margin:24px 0 28px;max-width:1200px}ul{padding-left:36px;margin:0}li{font-size:32px;line-height:1.4;margin:0 0 22px}.keys{display:grid;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:1fr;column-gap:40px;margin:16px 0 0}.keys div{display:contents}.keys dt{font-size:46px;line-height:1.15;font-weight:700;color:#0052a5;border-top:6px solid #0052a5;padding:20px 0}.keys dd{font-size:30px;line-height:1.4;margin:0}.body{min-height:400px}.with-image{display:grid;grid-template-columns:1fr 590px;gap:36px}.with-image img{width:590px;max-height:400px;object-fit:contain;object-position:top;border:1px solid #ccc}.visual{font-size:24px;line-height:1.4;margin:24px 0 0}.disclosure{font-size:20px;line-height:1.4;border-top:2px solid #0052a5;padding-top:16px;margin-top:22px}footer{position:absolute;bottom:28px;right:64px;color:#0052a5;font-size:24px}
+@page{size:1440px 900px;margin:0}*{box-sizing:border-box}body{margin:0;color:#1b1b1b;background:white;font-family:'Open Sans',sans-serif}section{width:1440px;height:900px;padding:48px 64px;position:relative;break-after:page;border-top:12px solid #0052a5}section:last-child{break-after:auto}header{font-size:24px;color:#0052a5;font-weight:700}h1{font-size:50px;line-height:1.2;margin:24px 0 28px;max-width:1200px}ul{padding-left:36px;margin:0}li{font-size:32px;line-height:1.4;margin:0 0 22px}.keys{display:grid;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:1fr;column-gap:40px;margin:16px 0 0}.keys div{display:contents}.keys dt{font-size:46px;line-height:1.15;font-weight:700;color:#0052a5;border-top:6px solid #0052a5;padding:20px 0}.keys dd{font-size:30px;line-height:1.4;margin:0}.keys.stacked{display:block}.keys.stacked div{display:block;border-left:8px solid #0052a5;padding-left:28px;margin:0 0 28px}.keys.stacked dt{border-top:0;padding:0 0 8px;font-size:42px}.body{min-height:400px}.with-image{display:grid;grid-template-columns:1fr 590px;gap:36px}.with-image img{width:590px;max-height:400px;object-fit:contain;object-position:top;border:1px solid #ccc}.visual{font-size:24px;line-height:1.4;margin:24px 0 0}.disclosure{font-size:20px;line-height:1.4;border-top:2px solid #0052a5;padding-top:16px;margin-top:22px}footer{position:absolute;bottom:28px;right:64px;color:#0052a5;font-size:24px}
 </style></head><body>${sections.join("")}</body></html>`;
 await fs.writeFile(path.join(dir, "hubmi-pitch.html"), html);
 const browser = await chromium.launch({
@@ -116,8 +116,8 @@ try {
 }
 
 const criteria = [
+  "Wyzwanie 40%, materiały 10%",
   "Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10%",
-  "Wyzwanie 40%, interfejs 10%",
   "Wyzwanie 40%, wdrożenie 20%",
   "Wyzwanie 40%, dostępność 20%",
   "Wyzwanie 40%",

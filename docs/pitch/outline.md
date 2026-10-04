@@ -2,21 +2,23 @@
 
 Treść zgodna z [deck.md](deck/deck.md); eksport: [hubmi-pitch.pdf](deck/hubmi-pitch.pdf). Stan: 4 października 2026.
 
-## 1. HubMI.pl: cyfrowe serce Hubu Innowacji
+## 1. Zaczynamy od potrzeby mieszkańca
+
+Układ: lista
+
+- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
+- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
+- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
+
+Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
+
+## 2. HubMI.pl: cyfrowe serce Hubu Innowacji
 
 - Matchmaking z AI :: Mieszkaniec opisuje problem, AI dopasowuje innowacje z bazy wiedzy.
 - 7 modułów wyzwania :: Wszystkie moduły z briefu działają w jednym prototypie.
 - Cel: WCAG 2.1 AA :: Wysoki kontrast, tekst 18 px, klawiatura, wprowadzanie głosem.
 
-Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Usługi pilotażu: 334,32 PLN netto miesięcznie. Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
-
-## 2. Od potrzeby do działania w jednym miejscu
-
-- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
-- Wiedza :: Innowacje, pomysły i partnerzy są dziś rozproszeni.
-- Działanie :: HubMI.pl łączy je: baza wiedzy, kreator, testy, wdrożenie.
-
-Wizual: Baza demonstracyjna ma 23 fikcyjne innowacje, zamiast danych osobowych.
+Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Baza demonstracyjna: 23 fikcyjne innowacje. Usługi pilotażu: 334,32 PLN netto miesięcznie.
 
 ## 3. Jedna platforma, różne role
 
@@ -95,8 +97,8 @@ Tabela nie jest częścią prezentacji. Wagi: [brief, §8](../task/CHALLENGE.md)
 
 | Slajd | Kryteria                                                   |
 | ----- | ---------------------------------------------------------- |
-| 1     | Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10% |
-| 2     | Wyzwanie 40%, interfejs 10%                                |
+| 1     | Wyzwanie 40%, materiały 10%                                |
+| 2     | Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10% |
 | 3     | Wyzwanie 40%, wdrożenie 20%                                |
 | 4     | Wyzwanie 40%, dostępność 20%                               |
 | 5     | Wyzwanie 40%                                               |
