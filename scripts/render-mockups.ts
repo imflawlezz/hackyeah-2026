@@ -63,6 +63,8 @@ type Screen = {
   caption: string;
   role?: Role;
   prefs?: Prefs;
+  /** The screen is the login page itself, so ending there is not a failed sign-in. */
+  onLogin?: boolean;
   /** Navigates and brings the screen to the state to capture. */
   open: (page: Page, viewport: ViewportName) => Promise<void>;
   /** CSS selector of the element scrolled to the top of the frame; the page top when omitted. */
@@ -81,6 +83,7 @@ const FLOWS: Record<number, string> = {
   8: "Wiadomości",
   9: "Panel administratora ROPS",
   10: "Dostępność: wysoki kontrast i A++",
+  11: "Konta demonstracyjne",
 };
 
 const GOOD_QUERY =
@@ -276,9 +279,13 @@ const SCREENS: Screen[] = [
         await page
           .getByRole("button", { name: "Jak sprawdzić, czy to potrzebne?" })
           .click();
-        // The answer streams in; wait until it stops changing.
-        await page.waitForLoadState("networkidle").catch(() => {});
-        await page.waitForTimeout(6000);
+        // The suggestion buttons stay disabled while the answer streams in.
+        await page.waitForTimeout(1000);
+        await page
+          .locator('button:has-text("Co może pójść nie tak?"):not([disabled])')
+          .waitFor({ timeout: 45_000 })
+          .catch(() => {});
+        await page.waitForTimeout(500);
       }
     },
     annotations: [
@@ -532,6 +539,33 @@ const SCREENS: Screen[] = [
       },
     ],
   },
+  {
+    id: "login-demo",
+    flow: 11,
+    title: "Logowanie jednym kliknięciem",
+    caption:
+      "Cztery fikcyjne konta pozwalają sprawdzić każdą rolę bez rejestracji i bez hasła.",
+    onLogin: true,
+    open: async (page) => {
+      await goto(page, "/login");
+      await page.locator("#demo-accounts-heading").waitFor();
+    },
+    scrollTo: "#demo-accounts-heading",
+    annotations: [
+      {
+        text: "Sekcja mówi wprost, że dane są fikcyjne.",
+        target: "#demo-accounts-heading",
+      },
+      {
+        text: "Każda rola ma własny przycisk. Hasło zostaje na serwerze i nie trafia do przeglądarki.",
+        target: 'role=button[name="Administrator ROPS"]',
+      },
+      {
+        text: "Pod przyciskiem jest jedno zdanie o tym, co dana rola może zrobić.",
+        target: "#demo-admin-description",
+      },
+    ],
+  },
 ];
 
 type Mark = { n: number; x: number; y: number; below?: number };
@@ -589,7 +623,8 @@ async function signIn(page: Page, email: string, password: string) {
   await page.locator("#signin-email").fill(email);
   await page.locator("#signin-password").fill(password);
   await page.getByRole("button", { name: "Zaloguj się" }).click();
-  await page.getByRole("button", { name: "Wyloguj" }).waitFor({
+  // On phones "Wyloguj" sits in the closed menu, so wait for the redirect.
+  await page.waitForURL((url) => url.pathname !== "/login", {
     timeout: 20_000,
   });
 }
@@ -638,7 +673,7 @@ async function renderFrames(browser: Browser, baseURL: string, only: string[]) {
           await signIn(page, accounts[role], password);
         }
         await screen.open(page, name);
-        if (new URL(page.url()).pathname === "/login") {
+        if (!screen.onLogin && new URL(page.url()).pathname === "/login") {
           throw new Error(
             "this screen needs a signed-in account; set DEMO_USER_PASSWORD",
           );
