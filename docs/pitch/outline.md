@@ -16,7 +16,7 @@ Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROP
 
 - Matchmaking z AI :: Mieszkaniec opisuje problem, AI dopasowuje innowacje z bazy wiedzy.
 - 7 modułów wyzwania :: Wszystkie moduły z briefu działają w jednym prototypie.
-- Cel: WCAG 2.1 AA :: Wysoki kontrast, tekst 18 px, klawiatura, wprowadzanie głosem.
+- Cel: WCAG 2.1 AA :: Wysoki kontrast, tekst 18 px, klawiatura, wprowadzanie głosem.
 
 Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Baza demonstracyjna: 23 fikcyjne innowacje. Usługi pilotażu: 334,32 PLN netto miesięcznie.
 
