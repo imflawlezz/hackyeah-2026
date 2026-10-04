@@ -21,3 +21,9 @@ it("includes banned wording and factual accuracy rules", () => {
   }
   expect(POLISH_COPY_STYLE).toContain("Nie wymyślaj faktów, liczb ani nazw");
 });
+
+it("asks for plain text with only light formatting", () => {
+  expect(POLISH_COPY_STYLE).toContain(
+    "Pisz zwykłym tekstem. Możesz użyć krótkiej listy punktowanej i pogrubienia, bez nagłówków, tabel i linków.",
+  );
+});

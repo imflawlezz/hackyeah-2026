@@ -2,6 +2,7 @@
 
 import { FormEvent, useId, useRef, useState } from "react";
 import type { Idea } from "@/types";
+import { AiText } from "@/components/ai/ai-text";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -158,14 +159,19 @@ export function AssistantPanel({
         className="flex max-h-80 flex-col gap-2.5 overflow-y-auto border border-border p-2.5"
       >
         {messages.length ? (
-          messages.map((message) => (
-            <p key={message.id}>
-              <span className="font-semibold">
-                {message.role === "user" ? "Ty" : "Asystent"}:{" "}
-              </span>
-              {message.content}
-            </p>
-          ))
+          messages.map((message) =>
+            message.role === "user" ? (
+              <div key={message.id} className="whitespace-pre-line">
+                <span className="font-semibold">Ty: </span>
+                {message.content}
+              </div>
+            ) : (
+              <div key={message.id}>
+                <span className="font-semibold">Asystent: </span>
+                <AiText className="mt-1">{message.content}</AiText>
+              </div>
+            ),
+          )
         ) : (
           <p className="text-muted-foreground">
             Zadaj jedno pytanie o swój pomysł.
@@ -173,10 +179,10 @@ export function AssistantPanel({
         )}
       </div>
       {streaming ? (
-        <p aria-hidden="true">
+        <div aria-hidden="true">
           <span className="font-semibold">Asystent: </span>
-          {streaming}
-        </p>
+          <AiText className="mt-1">{streaming}</AiText>
+        </div>
       ) : null}
       {error ? (
         <p role="alert" className="text-sm">
