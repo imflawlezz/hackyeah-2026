@@ -1,6 +1,6 @@
 # Makiety UX/UI
 
-Plansza z makietami: **[hubmi-makiety.pdf](hubmi-makiety.pdf)** (16 stron, do otwarcia bez logowania). Ta sama plansza jako strona: [hubmi-makiety.html](hubmi-makiety.html).
+Plansza z makietami: **[hubmi-makiety.pdf](hubmi-makiety.pdf)** (17 stron, do otwarcia bez logowania). Ta sama plansza jako strona: [hubmi-makiety.html](hubmi-makiety.html).
 
 Makiety to klatki z działającej aplikacji, a nie osobne rysunki. Każda strona planszy pokazuje jeden ekran na komputerze (1440 × 900) i na telefonie (390 × 844), z krótkim opisem i ponumerowanymi decyzjami projektowymi. Numery na klatkach odpowiadają opisom po lewej stronie.
 
@@ -26,6 +26,7 @@ Dane na ekranach są fikcyjne. Konta demonstracyjne mają adresy w domenie `hubm
 | 14     | 9. Panel administratora ROPS         | Trendy potrzeb                | `admin-trends-*.png`       |
 | 15     | 10. Dostępność: wysoki kontrast, A++ | Wysoki kontrast               | `a11y-high-contrast-*.png` |
 | 16     | 10. Dostępność: wysoki kontrast, A++ | Największy tekst (A++)        | `a11y-largest-text-*.png`  |
+| 17     | 11. Konta demonstracyjne             | Logowanie jednym kliknięciem  | `login-demo-*.png`         |
 
 Każdy ekran ma dwie klatki: `-desktop.png` i `-mobile.png`. Plik `frames/frames.json` zapisuje, skąd i kiedy pochodzi każda klatka oraz gdzie stoją numery.
 
@@ -54,8 +55,10 @@ Teksty opisów i adnotacji są w tablicy `SCREENS` w `scripts/render-mockups.ts`
 
 ## Stan klatek w repozytorium
 
-- Ekrany dostępne bez logowania pochodzą z produkcji.
-- Ekrany wymagające logowania (kreator pomysłów, wiadomości, panel administratora) pochodzą z lokalnej wersji demonstracyjnej, dlatego w nagłówku widać „Wersja demonstracyjna”. Ich układ jest taki sam jak na produkcji.
-- Strona 8 (odpowiedź ROPS na pomysł) nie ma jeszcze klatek. Ten ekran widzi tylko zalogowany autor pomysłu, więc wymaga hasła konta demonstracyjnego i pomysłu z odpowiedzią ROPS na tym koncie.
+Wszystkie klatki powstały 4 października 2026 po scaleniu #81 (`7133548`), między 7:49 a 8:10.
 
-Po uruchomieniu polecenia z hasłem wszystkie klatki będą pochodzić z produkcji.
+- Ekrany wymagające logowania pochodzą z produkcji, z kont `resident@hubmi.example` i `admin@hubmi.example`. Widać na nich dane ze scenariusza demonstracyjnego (#80).
+- Pozostałe ekrany bez wyszukiwania (strona główna, karta innowacji, instytucje, testy, wysoki kontrast, logowanie) też pochodzą z produkcji.
+- Cztery ekrany z wyszukiwaniem (`match-form`, `match-results`, `match-none`, `a11y-largest-text`) pochodzą z lokalnej kompilacji tego samego commita, połączonej z tą samą bazą i OpenAI, ale bez `SUPABASE_SERVICE_ROLE_KEY`. Każde wyszukiwanie na produkcji zapisuje zgłoszenie do „Trendów potrzeb”, a bez tego klucza aplikacja niczego nie zapisuje. Dzięki temu trendy, które ogląda jury, zostały bez zmian (25 zgłoszeń z 90 dni).
+
+Źródło każdej klatki zapisuje `frames/frames.json`. Polecenie z sekcji wyżej, uruchomione bez opcji, renderuje wszystko z produkcji i dopisuje do trendów sześć zgłoszeń (trzy ekrany z wyszukiwaniem, po dwie klatki).

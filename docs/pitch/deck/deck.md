@@ -1,31 +1,32 @@
-# Potrzeby czekają na lokalne rozwiązania
-
-- Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
-- Wiedza, pomysły i partnerzy są rozproszeni.
-- Mieszkaniec potrzebuje prostej drogi od problemu do działania.
-
-Wizual: Schemat: potrzeba → wiedza → współpraca.
-
----
-
-# HubMI.pl łączy potrzeby z działaniem
-
-- HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu.
-- Działający prototyp dla Małopolskiego Hubu Innowacji Społecznych.
-- Baza demonstracyjna: 22 fikcyjne innowacje, zamiast danych osobowych.
-
-Wizual: Strona główna prototypu; makieta z produkcji.
-Obraz: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
-
----
-
 # Jedna platforma, różne role
 
-- Mieszkańcy: opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
-- Gminy i organizacje: szukają innowacji oraz planują wdrożenie.
-- ROPS i eksperci: oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
+- Mieszkańcy :: Opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
+- Gminy i organizacje :: Szukają innowacji oraz planują wdrożenie.
+- ROPS i eksperci :: Oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
 
 Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
+
+---
+
+# HubMI.pl: cyfrowe serce Hubu Innowacji
+
+- Matchmaking z AI :: Mieszkaniec opisuje problem, AI dopasowuje innowacje z bazy wiedzy.
+- 7 modułów wyzwania :: Wszystkie moduły z briefu działają w jednym prototypie.
+- Cel: WCAG 2.1 AA :: Wysoki kontrast, tekst 18 px, klawiatura, wprowadzanie głosem.
+
+Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Baza demonstracyjna: 23 fikcyjne innowacje. Usługi pilotażu: 334,32 PLN netto miesięcznie.
+
+---
+
+# Zaczynamy od potrzeby mieszkańca
+
+Układ: lista
+
+- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
+- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
+- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
+
+Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
 
 ---
 
@@ -46,7 +47,7 @@ Obraz: ../../mockups/frames/match-none-desktop.png | Brak dobrego dopasowania i 
 - Asystent AI pomaga; otwarty nabór umożliwia szkic wniosku grantowego.
 - Panel ROPS umożliwia ocenę i przekazanie uwagi autorowi.
 
-Wizual: Kreator z asystentem; makieta z lokalnego trybu demonstracyjnego.
+Wizual: Kreator z asystentem; klatka z produkcji, fikcyjne konto mieszkańca.
 Obraz: ../../mockups/frames/idea-creator-desktop.png | Kreator pomysłu z formularzem i asystentem AI.
 
 ---
@@ -57,7 +58,7 @@ Obraz: ../../mockups/frames/idea-creator-desktop.png | Kreator pomysłu z formul
 - Tester obsługuje zapisy, oceny i propozycje usprawnień.
 - Wiadomości i powiadomienia wspierają rozmowy z partnerami.
 
-Wizual: Plan wdrożenia dla instytucji; makieta prototypu.
+Wizual: Plan wdrożenia dla instytucji; klatka z produkcji.
 Obraz: ../../mockups/frames/institutions-plan-desktop.png | Plan wdrożenia innowacji dla instytucji.
 
 ---
@@ -68,7 +69,7 @@ Obraz: ../../mockups/frames/institutions-plan-desktop.png | Plan wdrożenia inno
 - Trendy potrzeb agregują zgłoszenia; AI przygotowuje podsumowanie.
 - Administrator aktualizuje katalog i zarządza publikacją innowacji.
 
-Wizual: Trendy potrzeb; makieta z lokalnego trybu demonstracyjnego.
+Wizual: Trendy potrzeb; klatka z produkcji, fikcyjne konto administratora.
 Obraz: ../../mockups/frames/admin-trends-desktop.png | Panel trendów potrzeb z kategoriami i podsumowaniem.
 
 ---
@@ -87,10 +88,10 @@ Obraz: ../../mockups/frames/a11y-high-contrast-desktop.png | Interfejs HubMI.pl 
 # Wdrożenie wymaga budżetu i opiekunów
 
 - Next.js, Vercel, Supabase i OpenAI; infrastruktura bez własnego GPU.
-- DO UZUPEŁNIENIA: miesięczny koszt pilotażu po aktualizacji #64.
+- Pilotaż województwa: 334,32 PLN netto miesięcznie, z rezerwą 20%.
 - Potrzebni: opiekun techniczny, redaktor katalogu i moderator zgłoszeń.
 
-Wizual: Stos technologiczny → koszty usług → godziny obsługi. Kosztorys z 3 października nie obejmuje obecnych modułów AI; nie jest aktualnym budżetem.
+Wizual: Usługi 278,60 PLN, w tym AI 12,89 PLN; rezerwa 55,72 PLN. Przy dziesięciokrotnym użyciu 482,14 PLN. Kwoty bez wynagrodzeń; kurs planistyczny 1 USD = 4,00 PLN.
 
 ---
 
@@ -98,8 +99,8 @@ Wizual: Stos technologiczny → koszty usług → godziny obsługi. Kosztorys z 
 
 - Plan: katalog ROPS, audyt bezpieczeństwa i dostępności, pilotaż.
 - Zmierzymy trafność dopasowań, czas obsługi i zrozumiałość.
-- Zespół: interfejs i dostępność, API i AI, testy i materiały.
+- Zespół 313Team: interfejs i dostępność, API i AI, testy i materiały.
 
-Wizual: Demo: https://hubml-hackyeah2026-ab.vercel.app · Repozytorium: https://github.com/imflawlezz/hackyeah-2026 · Makiety: https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf · DO UZUPEŁNIENIA: nazwa i identyfikator zespołu HackTribe.
+Linki: Demo: https://hubml-hackyeah2026-ab.vercel.app · Repozytorium: https://github.com/imflawlezz/hackyeah-2026 · Makiety: https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf · Konta demonstracyjne: jedno kliknięcie na stronie logowania.
 
-Ujawnienie AI: Wykorzystano modele OpenAI: text-embedding-3-small i gpt-4o-mini, Vercel AI SDK oraz Supabase/PostgreSQL z pgvector. Dokumentację prezentacyjną przygotowano z pomocą OpenAI Codex. Ocena przydatności proponowanych innowacji należy do człowieka.
+Ujawnienie AI: HubMI.pl wykorzystuje modele OpenAI text-embedding-3-small, gpt-4o-mini i gpt-4o-mini-transcribe oraz Vercel AI SDK; w budowie kodu i dokumentacji pomagały Cursor i jego agenci, Claude oraz OpenAI Codex, a ocena i zatwierdzenie propozycji AI należą do człowieka.
