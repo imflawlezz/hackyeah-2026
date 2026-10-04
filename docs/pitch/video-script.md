@@ -1,64 +1,59 @@
-# HubMI.pl: scenariusz filmu MP4 do 3 minut
+﻿# HubMI.pl: scenariusz filmu do trzech minut
 
-Plan montażu: **2 min 50 s**, ostatnie 10 s limitu pozostaje jako margines. Czytamy wyłącznie cytowane kwestie lektora. Tempo około 110 słów/min; pozostały czas przeznaczamy na demonstrację i plansze. Przed eksportem wykonać próbę z zegarkiem. Napisy po polsku, czytelne także bez dźwięku; eksport MP4, zalecane H.264/AAC, 1920 × 1080.
+Plan: **2:58**, spokojne tempo około 120 słów na minutę. Czytamy tylko cytowane kwestie. Nagranie i eksport MP4 wykonuje zespół; przed eksportem próba z zegarkiem. Polskie napisy, H.264/AAC, 1920 × 1080. Wszystkie problemy, konta i rozmowy są fikcyjne. Nie nagrywać haseł ani konfiguracji.
 
-## 00:00–00:20 Problem
+## 00:00–00:20 — Problem i rozwiązanie
 
-Obraz: slajd problemu, następnie nazwa HubMI.pl.
+Obraz: slajd 1, następnie strona główna produkcji.
 
-> Samotność, wykluczenie cyfrowe i trudny dostęp do usług wymagają lokalnych odpowiedzi. ROPS Kraków ma już blisko dwieście innowacji społecznych. Jak pomóc mieszkańcom i gminom odnaleźć tę, która pasuje do ich potrzeby? Po to zbudowaliśmy HubMI.pl.
+> Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi. Wiedza i partnerzy są rozproszeni. HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu. To prototyp przygotowany dla Małopolskiego Hubu Innowacji Społecznych, a nie działająca usługa ROPS.
 
-## 00:20–00:40 Rozwiązanie
+## 00:20–00:47 — Opis potrzeby i dopasowanie
 
-Obraz: schemat potrzeba → propozycja → współpraca. Docelowe kroki oznaczyć jako plan.
+Obraz: `/match`; wpisać „Seniorzy w naszej wsi są samotni i nie mają z kim porozmawiać”. Pokazać mikrofon, wyniki i uzasadnienie. Nie obiecywać konkretnej kolejności wyników.
 
-> Projektujemy cyfrowe serce Małopolskiego Hubu Innowacji Społecznych. Użytkownik opisuje problem własnymi słowami. System proponuje innowacje i wyjaśnia, dlaczego pasują. Docelowo w tym samym miejscu mieszkańcy, samorządy, organizacje i eksperci będą razem pracować nad wdrożeniem.
+> Mieszkaniec opisuje problem własnymi słowami, tekstem lub głosem. W naszym przykładzie seniorzy we wsi są samotni. AI wyszukuje powiązane innowacje i wyjaśnia propozycje. Baza demonstracyjna zawiera dwadzieścia dwie fikcyjne innowacje. Wynik podobieństwa pomaga porównać propozycje, ale nie gwarantuje ich skuteczności. Słabiej powiązane rozwiązania widzimy osobno.
 
-## 00:40–01:15 Rzeczywista demonstracja
+## 00:47–01:08 — Brak dopasowania i nowe wyzwanie
 
-Obraz: żądanie do API i rzeczywista odpowiedź. Powiększyć opis, tytuł, uzasadnienie i nagłówek źródła. Nie pokazywać kluczy ani danych osobowych. Strona `/match` jest obecnie szablonem, więc nagrywamy API, np. w kliencie HTTP.
+Obraz: ponowne wyszukiwanie „W centrum miasta brakuje miejsc parkingowych”; komunikat braku dopasowania i przycisk zgłoszenia wyzwania. Pokazać przejęty opis; nie wysyłać fikcyjnego zgłoszenia do produkcji.
 
-> Tutaj pokazujemy działające API dopasowania. Wpisujemy: potrzebuję wsparcia w opiece nad osobą starszą. Otrzymujemy propozycje z katalogu, wynik dopasowania i krótkie uzasadnienie. Nagłówek odpowiedzi wskazuje, czy wykorzystano AI, czy dane demonstracyjne. Te dane pokazują tylko, jak działa system. Nie są zweryfikowaną biblioteką ROPS. Wynik podobieństwa nie oznacza gwarancji skuteczności rozwiązania.
+> Teraz opisujemy inną potrzebę: w centrum miasta brakuje miejsc parkingowych. Gdy żaden wynik nie osiąga progu trafności, system mówi o tym wprost. Możemy przekazać opis jako nowe wyzwanie. Potrzeba nie znika tylko dlatego, że w katalogu zabrakło odpowiedzi. Autor zachowuje kontrolę nad zgłoszeniem.
 
-## 01:15–01:40 AI i moduły
+## 01:08–01:32 — Pomysł, asystent i odpowiedź
 
-Obraz: schemat AI i mapa modułów z oznaczeniem stanu realizacji.
+Obraz: `/ideas/new` po zalogowaniu na fikcyjne konto; fiszka, kanwa, asystent i szkic wniosku podczas otwartego naboru. Następnie istniejący pomysł z uwagą administratora. Jeśli konto jest niedostępne, makietę podpisać „lokalny tryb demonstracyjny”.
 
-> Model wektorowy OpenAI pomaga odnaleźć podobne opisy. Model językowy przygotowuje uzasadnienia po polsku. Gdy wyszukiwanie zawiedzie, włącza się tryb demonstracyjny. Mamy rdzeń dopasowania; zasobnik wiedzy, kreator, tester, komunikacja i panel administratora mają obecnie strony szablonowe. Asystent kreatora pozostaje kolejnym etapem rozwoju.
+> Kreator porządkuje pomysł w fiszce i Kanwie Innowacji Społecznych. Asystent AI pomaga rozwinąć opis. Podczas otwartego naboru powstaje szkic wniosku grantowego, który wymaga sprawdzenia przez autora. Panel dla ROPS umożliwia ocenę pomysłu i przekazanie autorowi uwagi. To wsparcie pracy człowieka, nie automatyczna decyzja o finansowaniu.
 
-## 01:40–02:00 Dostępność i skala
+## 01:32–01:53 — Instytucje, testy i komunikacja
 
-Obraz: klawisz Tab i odnośnik „Przejdź do treści”; następnie schemat infrastruktury.
+Obraz: `/institutions`, istniejący plan; `/test`, oceny; `/messages` i dzwonek powiadomień. Bez wysyłania wiadomości lub zapisów podczas nagrania.
 
-> Celujemy w WCAG dwa jeden na poziomie AA. Szkielet zawiera polski język dokumentu i przejście do treści. Przed pilotażem sprawdzimy klawiaturę, czytniki ekranu i kontrast. Aplikacja działa na Vercel i Supabase. Czy udźwignie cały region, sprawdzimy testami obciążeniowymi.
+> Gmina lub organizacja otrzymuje propozycje innowacji oraz plan wdrożenia z kosztami, ryzykami i miernikami. Tester umożliwia zapisy, oceny i propozycje usprawnień. Wiadomości i powiadomienia wspierają rozmowy z partnerami. Pokazujemy fikcyjne dane, aby skupić się na przebiegu współpracy.
 
-## 02:00–02:25 Koszty i utrzymanie
+## 01:53–02:12 — Panel i wiedza
 
-Obraz: kwoty usług oraz pracy ludzi, dopisek „netto, miesięcznie, szacunek pilotażu”.
+Obraz: `/admin`, `/admin/trends`, edycja innowacji; widoki lokalne podpisać zgodnie z pochodzeniem.
 
-> Przy tysiącu dopasowań miesięcznie szacujemy usługi z rezerwą na AI na około sto osiemdziesiąt cztery złote netto. Z obsługą techniczną i redakcją treści budżet wynosi około dwa tysiące sto osiemdziesiąt cztery złote. Założenia i źródła są w kosztorysie. Potrzebujemy opiekuna technicznego i koordynatora katalogu.
+> Administrator moderuje pomysły i aktualizuje katalog. Trendy potrzeb agregują zgłoszenia według kategorii i czasu. AI przygotowuje podsumowanie do oceny przez pracownika. Dzięki temu pojedyncze potrzeby stają się informacją pomocną przy planowaniu dalszych działań. Panel jest przeznaczony dla zespołu koordynującego Hub.
 
-## 02:25–02:45 Zespół i następne kroki
+## 02:12–02:34 — Dostępność i zaufanie
 
-Obraz: rzeczywiste nazwiska i role zespołu, identyfikator HackTribe; plan pilotażu.
+Obraz: klawiatura, wysoki kontrast, A+/A++; podpis „Audyt lokalny: 0 naruszeń axe / 76 widoków; nie certyfikat WCAG”.
 
-> Łączymy pracę nad interfejsem, API, AI i testami. Następny krok to katalog ROPS, gotowy formularz i pilotaż z mieszkańcami oraz gminami. Zmierzymy, jak trafne są propozycje i ile trwa znalezienie rozwiązania.
+> Polski interfejs nawiązuje do Gov.pl. Mamy wysoki kontrast, powiększenie tekstu i obsługę klawiaturą. Cel to WCAG dwa jeden AA. Lokalny audyt axe nie wykazał naruszeń w siedemdziesięciu sześciu widokach; pełna ocena wymaga także testów ręcznych. Baza i funkcje serwerowe są skonfigurowane w Unii Europejskiej.
 
-## 02:45–02:50 Plansza końcowa bez lektora
+## 02:34–02:50 — Wdrożenie i następne kroki
 
-Obraz: nazwa projektu, rzeczywisty adres demo i repozytorium oraz kredyty: „OpenAI: text-embedding-3-small, gpt-4o-mini; Vercel AI SDK; Supabase/PostgreSQL z pgvector. Dokumentacja: pomoc OpenAI Codex”. Pełny [wykaz narzędzi](ai-credits.md) dołączyć do zgłoszenia. Nie stosować fikcyjnego adresu demo.
+Obraz: slajdy 9–10; widoczny napis „DO UZUPEŁNIENIA: koszt pilotażu po #64”. Po scaleniu #64 zastąpić napis aktualną sumą i założeniami. Nazwa i identyfikator zespołu HackTribe do uzupełnienia.
 
-## Przygotowanie demonstracji
+> Przed pilotażem potrzebujemy zweryfikowanego katalogu, audytu bezpieczeństwa i dostępności oraz opiekunów technicznych i treści. Aktualizujemy kosztorys wszystkich modułów. Z mieszkańcami i gminami zmierzymy trafność propozycji, czas obsługi i zrozumiałość procesu.
 
-Uruchomić aplikację zgodnie z README. W kliencie HTTP wykonać `POST http://localhost:3000/api/match`, nagłówek `Content-Type: application/json`, treść:
+## 02:50–02:58 — Plansza końcowa bez lektora
 
-```json
-{
-  "problem": "Potrzebuję wsparcia w opiece nad osobą starszą",
-  "limit": 3
-}
-```
+Obraz: HubMI.pl; [demo](https://hubml-hackyeah2026-ab.vercel.app), [repozytorium](https://github.com/imflawlezz/hackyeah-2026), [makiety](https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf). Zachować pełny tekst z [wykazu AI](ai-credits.md), czytelnie na planszy:
 
-Pokazać rzeczywistą odpowiedź, bez obietnicy konkretnej kolejności wyników. Bez konfiguracji dostawców nagłówek `X-Match-Source` ma wartość `mock`; taki pokaz podpisujemy „tryb demonstracyjny”. Pokaz AI wymaga konfiguracji OpenAI i Supabase, migracji oraz wektorów katalogu; w nagraniu sprawdzić wartość `ai`. Jeśli generowanie uzasadnień zawiedzie, API może zwrócić dopasowania AI z uzasadnieniami szablonowymi. Sam nagłówek nie dowodzi więc użycia modelu językowego.
+Wykorzystano modele OpenAI: text-embedding-3-small i gpt-4o-mini, Vercel AI SDK oraz Supabase/PostgreSQL z pgvector. Dokumentację prezentacyjną przygotowano z pomocą OpenAI Codex. Ocena przydatności proponowanych innowacji należy do człowieka.
 
-Przed zgłoszeniem uzupełnić nazwiska, identyfikator zespołu, adres działającego demo i makiet. Ten plik jest scenariuszem; film MP4 i PDF z konspektu trzeba nagrać i wyeksportować osobno.
+Wykaz jest aktualizowany w #64. Po scaleniu przenieść nowe ujawnienie do planszy i PDF. Lokalizacja bazy nie jest deklaracją lokalizacji przetwarzania przez OpenAI. Widoki wymagające logowania nagrywać z fikcyjnych kont zespołu; makiety lokalne nie potwierdzają zalogowanych ścieżek produkcji.

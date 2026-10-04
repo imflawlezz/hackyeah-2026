@@ -1,8 +1,4 @@
-# HubMI.pl: źródło prezentacji, 10 slajdów
-
-Treść zgodna z [deck.md](deck/deck.md); eksport: [hubmi-pitch.pdf](deck/hubmi-pitch.pdf). Stan: 4 października 2026.
-
-## 1. Potrzeby czekają na lokalne rozwiązania
+# Potrzeby czekają na lokalne rozwiązania
 
 - Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
 - Wiedza, pomysły i partnerzy są rozproszeni.
@@ -10,16 +6,20 @@ Treść zgodna z [deck.md](deck/deck.md); eksport: [hubmi-pitch.pdf](deck/hubmi-
 
 Wizual: Schemat: potrzeba → wiedza → współpraca.
 
-## 2. HubMI.pl łączy potrzeby z działaniem
+---
+
+# HubMI.pl łączy potrzeby z działaniem
 
 - HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu.
 - Działający prototyp dla Małopolskiego Hubu Innowacji Społecznych.
 - Baza demonstracyjna: 22 fikcyjne innowacje, zamiast danych osobowych.
 
 Wizual: Strona główna prototypu; makieta z produkcji.
-Klatka makiety: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
+Obraz: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
 
-## 3. Jedna platforma, różne role
+---
+
+# Jedna platforma, różne role
 
 - Mieszkańcy: opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
 - Gminy i organizacje: szukają innowacji oraz planują wdrożenie.
@@ -27,52 +27,64 @@ Klatka makiety: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl
 
 Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
 
-## 4. Od opisu do rozwiązania lub wyzwania
+---
+
+# Od opisu do rozwiązania lub wyzwania
 
 - Opisz problem tekstem lub głosem; AI proponuje powiązane innowacje.
 - Próg trafności oddziela dopasowania od słabiej powiązanych wyników.
 - Brak dobrego dopasowania? Przekaż opis jako nowe wyzwanie.
 
 Wizual: Formularz → wyniki → nowe wyzwanie; przykład fikcyjnego problemu mieszkańca.
-Klatka makiety: ../../mockups/frames/match-none-desktop.png | Brak dobrego dopasowania i możliwość zgłoszenia wyzwania.
+Obraz: ../../mockups/frames/match-none-desktop.png | Brak dobrego dopasowania i możliwość zgłoszenia wyzwania.
 
-## 5. Pomysł otrzymuje wsparcie i odpowiedź
+---
+
+# Pomysł otrzymuje wsparcie i odpowiedź
 
 - Fiszka i Kanwa Innowacji Społecznych porządkują pomysł.
 - Asystent AI pomaga; otwarty nabór umożliwia szkic wniosku grantowego.
 - Panel ROPS umożliwia ocenę i przekazanie uwagi autorowi.
 
 Wizual: Kreator z asystentem; makieta z lokalnego trybu demonstracyjnego.
-Klatka makiety: ../../mockups/frames/idea-creator-desktop.png | Kreator pomysłu z formularzem i asystentem AI.
+Obraz: ../../mockups/frames/idea-creator-desktop.png | Kreator pomysłu z formularzem i asystentem AI.
 
-## 6. Instytucje wdrażają, mieszkańcy testują
+---
+
+# Instytucje wdrażają, mieszkańcy testują
 
 - Instytucja otrzymuje propozycje oraz plan: koszty, ryzyka, mierniki.
 - Tester obsługuje zapisy, oceny i propozycje usprawnień.
 - Wiadomości i powiadomienia wspierają rozmowy z partnerami.
 
 Wizual: Plan wdrożenia dla instytucji; makieta prototypu.
-Klatka makiety: ../../mockups/frames/institutions-plan-desktop.png | Plan wdrożenia innowacji dla instytucji.
+Obraz: ../../mockups/frames/institutions-plan-desktop.png | Plan wdrożenia innowacji dla instytucji.
 
-## 7. Panel ROPS porządkuje wiedzę
+---
+
+# Panel ROPS porządkuje wiedzę
 
 - Moderacja pomysłów i odpowiedzi dla autorów.
 - Trendy potrzeb agregują zgłoszenia; AI przygotowuje podsumowanie.
 - Administrator aktualizuje katalog i zarządza publikacją innowacji.
 
 Wizual: Trendy potrzeb; makieta z lokalnego trybu demonstracyjnego.
-Klatka makiety: ../../mockups/frames/admin-trends-desktop.png | Panel trendów potrzeb z kategoriami i podsumowaniem.
+Obraz: ../../mockups/frames/admin-trends-desktop.png | Panel trendów potrzeb z kategoriami i podsumowaniem.
 
-## 8. Dostępność i zaufanie od początku
+---
+
+# Dostępność i zaufanie od początku
 
 - Cel: WCAG 2.1 AA; klawiatura, wysoki kontrast, A+/A++.
 - Polski interfejs inspirowany Gov.pl; baza i funkcje serwerowe w UE.
 - AI wspiera człowieka; wynik wymaga oceny, dane demonstracyjne są fikcyjne.
 
 Wizual: Wysoki kontrast. Audyt lokalny: 0 naruszeń axe w 76 widokach; to nie certyfikat WCAG. Lokalizacja bazy i serwera nie przesądza lokalizacji przetwarzania AI.
-Klatka makiety: ../../mockups/frames/a11y-high-contrast-desktop.png | Interfejs HubMI.pl w wysokim kontraście.
+Obraz: ../../mockups/frames/a11y-high-contrast-desktop.png | Interfejs HubMI.pl w wysokim kontraście.
 
-## 9. Wdrożenie wymaga budżetu i opiekunów
+---
+
+# Wdrożenie wymaga budżetu i opiekunów
 
 - Next.js, Vercel, Supabase i OpenAI; infrastruktura bez własnego GPU.
 - DO UZUPEŁNIENIA: miesięczny koszt pilotażu po aktualizacji #64.
@@ -80,7 +92,9 @@ Klatka makiety: ../../mockups/frames/a11y-high-contrast-desktop.png | Interfejs 
 
 Wizual: Stos technologiczny → koszty usług → godziny obsługi. Kosztorys z 3 października nie obejmuje obecnych modułów AI; nie jest aktualnym budżetem.
 
-## 10. Zespół i droga do pilotażu
+---
+
+# Zespół i droga do pilotażu
 
 - Plan: katalog ROPS, audyt bezpieczeństwa i dostępności, pilotaż.
 - Zmierzymy trafność dopasowań, czas obsługi i zrozumiałość.
@@ -89,20 +103,3 @@ Wizual: Stos technologiczny → koszty usług → godziny obsługi. Kosztorys z 
 Wizual: Demo: https://hubml-hackyeah2026-ab.vercel.app · Repozytorium: https://github.com/imflawlezz/hackyeah-2026 · Makiety: https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf · DO UZUPEŁNIENIA: nazwa i identyfikator zespołu HackTribe.
 
 Ujawnienie AI: Wykorzystano modele OpenAI: text-embedding-3-small i gpt-4o-mini, Vercel AI SDK oraz Supabase/PostgreSQL z pgvector. Dokumentację prezentacyjną przygotowano z pomocą OpenAI Codex. Ocena przydatności proponowanych innowacji należy do człowieka.
-
-## Powiązanie z kryteriami oceny
-
-Tabela nie jest częścią prezentacji. Wagi: [brief, §8](../task/CHALLENGE.md).
-
-| Slajd | Kryteria                                   |
-| ----- | ------------------------------------------ |
-| 1     | Wyzwanie 40%, materiały 10%                |
-| 2     | Wyzwanie 40%, interfejs 10%, materiały 10% |
-| 3     | Wyzwanie 40%, wdrożenie 20%                |
-| 4     | Wyzwanie 40%, dostępność 20%               |
-| 5     | Wyzwanie 40%                               |
-| 6     | Wyzwanie 40%, wdrożenie 20%                |
-| 7     | Wyzwanie 40%, wdrożenie 20%                |
-| 8     | Dostępność 20%, interfejs 10%              |
-| 9     | Wdrożenie 20%                              |
-| 10    | Wdrożenie 20%, materiały 10%               |
