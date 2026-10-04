@@ -33,7 +33,7 @@ export default function HomePage() {
       >
         <div className="space-y-6 lg:col-span-7">
           <h1 id="hero-heading" className="text-3xl font-semibold">
-            Opisz, czego brakuje w Twojej okolicy.
+            Znajdź pomysły dla swojej okolicy
           </h1>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link

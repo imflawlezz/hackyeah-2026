@@ -142,8 +142,6 @@ export default async function InnovationPage({ params }: PageProps) {
             {showSummary && <p className="text-xl">{innovation.summary}</p>}
           </header>
 
-          <Video innovation={innovation} />
-
           <section
             aria-labelledby="description-heading"
             className="flex flex-col gap-2.5"
@@ -157,11 +155,11 @@ export default async function InnovationPage({ params }: PageProps) {
             <p className="text-lg">{innovation.description}</p>
           </section>
 
+          <Video innovation={innovation} />
+
           <dl className="grid gap-x-8 gap-y-4 border-y border-border py-6 sm:grid-cols-[10rem_minmax(0,1fr)]">
             <dt className="font-semibold">Dla kogo</dt>
             <dd>{innovation.targetGroup}</dd>
-            <dt className="font-semibold">Kategoria</dt>
-            <dd>{innovation.category}</dd>
             {innovation.region && (
               <>
                 <dt className="font-semibold">Region</dt>

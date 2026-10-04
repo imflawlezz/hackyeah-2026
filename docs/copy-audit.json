@@ -1,0 +1,1649 @@
+{
+  "date": "2026-10-04",
+  "runtime": "Node 22.23.3 / Next.js 16.3.8",
+  "browser": "Chrome 154, production build, local mock mode",
+  "before": [
+    {
+      "route": "/",
+      "width": 1280,
+      "words": 231
+    },
+    {
+      "route": "/match",
+      "width": 1280,
+      "words": 147
+    },
+    {
+      "route": "/knowledge",
+      "width": 1280,
+      "words": 512
+    },
+    {
+      "route": "/knowledge/inn-mobile-access",
+      "width": 1280,
+      "words": 64
+    },
+    {
+      "route": "/ideas",
+      "width": 1280,
+      "words": 209
+    },
+    {
+      "route": "/ideas/new",
+      "width": 1280,
+      "words": 128
+    },
+    {
+      "route": "/ideas/idea-mobility-library",
+      "width": 1280,
+      "words": 222
+    },
+    {
+      "route": "/test",
+      "width": 1280,
+      "words": 110
+    },
+    {
+      "route": "/test/inn-mobile-access",
+      "width": 1280,
+      "words": 161
+    },
+    {
+      "route": "/institutions",
+      "width": 1280,
+      "words": 170
+    },
+    {
+      "route": "/messages",
+      "width": 1280,
+      "words": 116
+    },
+    {
+      "route": "/notifications",
+      "width": 1280,
+      "words": 30
+    },
+    {
+      "route": "/accessibility",
+      "width": 1280,
+      "words": 613
+    },
+    {
+      "route": "/privacy",
+      "width": 1280,
+      "words": 177
+    },
+    {
+      "route": "/cookies",
+      "width": 1280,
+      "words": 160
+    },
+    {
+      "route": "/admin",
+      "width": 1280,
+      "words": 123
+    },
+    {
+      "route": "/admin/innovations",
+      "width": 1280,
+      "words": 281
+    },
+    {
+      "route": "/admin/moderation",
+      "width": 1280,
+      "words": 229
+    },
+    {
+      "route": "/admin/trends",
+      "width": 1280,
+      "words": 276
+    }
+  ],
+  "after": [
+    {
+      "route": "/",
+      "width": 1280,
+      "status": 200,
+      "title": "Znajdź pomysły dla swojej okolicy",
+      "words": 71,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Znajdź pomysły dla swojej okolicy"
+        },
+        {
+          "level": 2,
+          "text": "Dostępny urząd"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Z czym możesz przyjść"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/match",
+      "width": 1280,
+      "status": 200,
+      "title": "Znajdź rozwiązania",
+      "words": 71,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Znajdź rozwiązania"
+        },
+        {
+          "level": 2,
+          "text": "Przykłady"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/knowledge",
+      "width": 1280,
+      "status": 200,
+      "title": "Baza wiedzy",
+      "words": 496,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Baza wiedzy"
+        },
+        {
+          "level": 2,
+          "text": "Biblioteka innowacji"
+        },
+        {
+          "level": 3,
+          "text": "Bank czasu opiekunów"
+        },
+        {
+          "level": 3,
+          "text": "Gminny asystent cyfrowy"
+        },
+        {
+          "level": 3,
+          "text": "Inkubator młodzieżowych inicjatyw"
+        },
+        {
+          "level": 3,
+          "text": "Krąg po kryzysie psychicznym"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 3,
+          "text": "Nocleg interwencyjny „Jedna noc”"
+        },
+        {
+          "level": 3,
+          "text": "Praca chroniona zdalnie"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzka opieka wytchnieniowa"
+        },
+        {
+          "level": 3,
+          "text": "Świetlica otwarta po lekcjach"
+        },
+        {
+          "level": 3,
+          "text": "Teleopieka sąsiedzka"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/knowledge/inn-mobile-access",
+      "width": 1280,
+      "status": 200,
+      "title": "Mobilny punkt dostępności",
+      "words": 62,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Jak to działa"
+        },
+        {
+          "level": 2,
+          "text": "Co dalej"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas",
+      "width": 1280,
+      "status": 200,
+      "title": "Kreator pomysłów",
+      "words": 178,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Kreator pomysłów"
+        },
+        {
+          "level": 2,
+          "text": "Pomysły w Hubie"
+        },
+        {
+          "level": 3,
+          "text": "Świetlica zadaniowa po lekcjach"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt poradnictwa w powiecie tarnowskim"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzki bank czasu w Nowej Hucie"
+        },
+        {
+          "level": 3,
+          "text": "Kawiarnia dla opiekunów przy CUS"
+        },
+        {
+          "level": 3,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas/new",
+      "width": 1280,
+      "status": 200,
+      "title": "Dodaj pomysł",
+      "words": 128,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Dodaj pomysł"
+        },
+        {
+          "level": 2,
+          "text": "Jaki problem chcesz rozwiązać? *"
+        },
+        {
+          "level": 2,
+          "text": "Asystent"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas/idea-mobility-library",
+      "width": 1280,
+      "status": 200,
+      "title": "Wypożyczalnia sprzętu do poruszania się",
+      "words": 222,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        },
+        {
+          "level": 2,
+          "text": "Kanwa innowacji"
+        },
+        {
+          "level": 2,
+          "text": "Generator wniosków"
+        },
+        {
+          "level": 2,
+          "text": "Asystent"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/test",
+      "width": 1280,
+      "status": 200,
+      "title": "Testuj innowacje",
+      "words": 97,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Testuj innowacje"
+        },
+        {
+          "level": 2,
+          "text": "Gminny asystent cyfrowy"
+        },
+        {
+          "level": 2,
+          "text": "Teleopieka sąsiedzka"
+        },
+        {
+          "level": 2,
+          "text": "Bank czasu opiekunów"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/test/inn-mobile-access",
+      "width": 1280,
+      "status": 200,
+      "title": "Mobilny punkt dostępności",
+      "words": 161,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Otwarte testy"
+        },
+        {
+          "level": 2,
+          "text": "Twoja opinia"
+        },
+        {
+          "level": 2,
+          "text": "Wyniki"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/institutions",
+      "width": 1280,
+      "status": 200,
+      "title": "Dla instytucji",
+      "words": 153,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Dla instytucji"
+        },
+        {
+          "level": 2,
+          "text": "Opisz instytucję i potrzebę"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/messages",
+      "width": 1280,
+      "status": 200,
+      "title": "Wiadomości",
+      "words": 116,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Wiadomości"
+        },
+        {
+          "level": 2,
+          "text": "Opieka wytchnieniowa w powiecie wielickim"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/notifications",
+      "width": 1280,
+      "status": 200,
+      "title": "Powiadomienia",
+      "words": 30,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Powiadomienia"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/accessibility",
+      "width": 1280,
+      "status": 200,
+      "title": "Deklaracja dostępności",
+      "words": 411,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Deklaracja dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Stan dostępności cyfrowej"
+        },
+        {
+          "level": 2,
+          "text": "Niedostępne treści"
+        },
+        {
+          "level": 3,
+          "text": "Niezgodność z załącznikiem"
+        },
+        {
+          "level": 3,
+          "text": "Treści nieobjęte przepisami"
+        },
+        {
+          "level": 3,
+          "text": "Nadmierne koszty"
+        },
+        {
+          "level": 2,
+          "text": "Przygotowanie deklaracji dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Udogodnienia, ograniczenia i inne informacje"
+        },
+        {
+          "level": 3,
+          "text": "Ułatwienia"
+        },
+        {
+          "level": 3,
+          "text": "Plany likwidacji błędów dostępności cyfrowej"
+        },
+        {
+          "level": 2,
+          "text": "Skróty klawiszowe"
+        },
+        {
+          "level": 2,
+          "text": "Informacje zwrotne i dane kontaktowe"
+        },
+        {
+          "level": 2,
+          "text": "Obsługa wniosków i skarg związanych z dostępnością"
+        },
+        {
+          "level": 2,
+          "text": "Pozostałe informacje"
+        },
+        {
+          "level": 3,
+          "text": "Aplikacje mobilne"
+        },
+        {
+          "level": 3,
+          "text": "Dostępność architektoniczna"
+        },
+        {
+          "level": 3,
+          "text": "Dostępność komunikacyjno-informacyjna"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/privacy",
+      "width": 1280,
+      "status": 200,
+      "title": "Klauzula informacyjna RODO",
+      "words": 122,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Klauzula informacyjna RODO"
+        },
+        {
+          "level": 2,
+          "text": "Gdzie trafiają dane"
+        },
+        {
+          "level": 2,
+          "text": "Administrator danych"
+        },
+        {
+          "level": 2,
+          "text": "Twoje prawa"
+        },
+        {
+          "level": 2,
+          "text": "Kontakt projektu"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/cookies",
+      "width": 1280,
+      "status": 200,
+      "title": "Polityka cookies",
+      "words": 76,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Polityka cookies"
+        },
+        {
+          "level": 2,
+          "text": "Cookies logowania"
+        },
+        {
+          "level": 2,
+          "text": "Pamięć przeglądarki"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin",
+      "width": 1280,
+      "status": 200,
+      "title": "Przegląd",
+      "words": 111,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Przegląd"
+        },
+        {
+          "level": 2,
+          "text": "Liczby"
+        },
+        {
+          "level": 2,
+          "text": "Wymaga uwagi"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/innovations",
+      "width": 1280,
+      "status": 200,
+      "title": "Innowacje",
+      "words": 274,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Innowacje"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/moderation",
+      "width": 1280,
+      "status": 200,
+      "title": "Moderacja",
+      "words": 220,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Moderacja"
+        },
+        {
+          "level": 2,
+          "text": "Pomysły czekające na przegląd"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt poradnictwa w powiecie tarnowskim"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzki bank czasu w Nowej Hucie"
+        },
+        {
+          "level": 3,
+          "text": "Kawiarnia dla opiekunów przy CUS"
+        },
+        {
+          "level": 3,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/trends",
+      "width": 1280,
+      "status": 200,
+      "title": "Trendy potrzeb",
+      "words": 264,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Trendy potrzeb"
+        },
+        {
+          "level": 2,
+          "text": "Podsumowanie okresu"
+        },
+        {
+          "level": 2,
+          "text": "Zgłoszenia według kategorii"
+        },
+        {
+          "level": 2,
+          "text": "Zgłoszenia w kolejnych tygodniach"
+        },
+        {
+          "level": 2,
+          "text": "Potrzeby bez dobrego rozwiązania"
+        },
+        {
+          "level": 2,
+          "text": "Najczęstsze słowa w zgłoszeniach"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/match",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/knowledge",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/knowledge/inn-mobile-access",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas/new",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas/idea-mobility-library",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/test",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/test/inn-mobile-access",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/institutions",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/messages",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/notifications",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/accessibility",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/privacy",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/cookies",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/innovations",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/moderation",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/trends",
+      "width": 1280,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/",
+      "width": 360,
+      "status": 200,
+      "title": "Znajdź pomysły dla swojej okolicy",
+      "words": 71,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Znajdź pomysły dla swojej okolicy"
+        },
+        {
+          "level": 2,
+          "text": "Dostępny urząd"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Z czym możesz przyjść"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/match",
+      "width": 360,
+      "status": 200,
+      "title": "Znajdź rozwiązania",
+      "words": 71,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Znajdź rozwiązania"
+        },
+        {
+          "level": 2,
+          "text": "Przykłady"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/knowledge",
+      "width": 360,
+      "status": 200,
+      "title": "Baza wiedzy",
+      "words": 496,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Baza wiedzy"
+        },
+        {
+          "level": 2,
+          "text": "Biblioteka innowacji"
+        },
+        {
+          "level": 3,
+          "text": "Bank czasu opiekunów"
+        },
+        {
+          "level": 3,
+          "text": "Gminny asystent cyfrowy"
+        },
+        {
+          "level": 3,
+          "text": "Inkubator młodzieżowych inicjatyw"
+        },
+        {
+          "level": 3,
+          "text": "Krąg po kryzysie psychicznym"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 3,
+          "text": "Nocleg interwencyjny „Jedna noc”"
+        },
+        {
+          "level": 3,
+          "text": "Praca chroniona zdalnie"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzka opieka wytchnieniowa"
+        },
+        {
+          "level": 3,
+          "text": "Świetlica otwarta po lekcjach"
+        },
+        {
+          "level": 3,
+          "text": "Teleopieka sąsiedzka"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/knowledge/inn-mobile-access",
+      "width": 360,
+      "status": 200,
+      "title": "Mobilny punkt dostępności",
+      "words": 53,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Jak to działa"
+        },
+        {
+          "level": 2,
+          "text": "Co dalej"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas",
+      "width": 360,
+      "status": 200,
+      "title": "Kreator pomysłów",
+      "words": 178,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Kreator pomysłów"
+        },
+        {
+          "level": 2,
+          "text": "Pomysły w Hubie"
+        },
+        {
+          "level": 3,
+          "text": "Świetlica zadaniowa po lekcjach"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt poradnictwa w powiecie tarnowskim"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzki bank czasu w Nowej Hucie"
+        },
+        {
+          "level": 3,
+          "text": "Kawiarnia dla opiekunów przy CUS"
+        },
+        {
+          "level": 3,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas/new",
+      "width": 360,
+      "status": 200,
+      "title": "Dodaj pomysł",
+      "words": 86,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Dodaj pomysł"
+        },
+        {
+          "level": 2,
+          "text": "Jaki problem chcesz rozwiązać? *"
+        },
+        {
+          "level": 2,
+          "text": "Asystent"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/ideas/idea-mobility-library",
+      "width": 360,
+      "status": 200,
+      "title": "Wypożyczalnia sprzętu do poruszania się",
+      "words": 177,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        },
+        {
+          "level": 2,
+          "text": "Kanwa innowacji"
+        },
+        {
+          "level": 2,
+          "text": "Generator wniosków"
+        },
+        {
+          "level": 2,
+          "text": "Asystent"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/test",
+      "width": 360,
+      "status": 200,
+      "title": "Testuj innowacje",
+      "words": 93,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Testuj innowacje"
+        },
+        {
+          "level": 2,
+          "text": "Gminny asystent cyfrowy"
+        },
+        {
+          "level": 2,
+          "text": "Teleopieka sąsiedzka"
+        },
+        {
+          "level": 2,
+          "text": "Bank czasu opiekunów"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/test/inn-mobile-access",
+      "width": 360,
+      "status": 200,
+      "title": "Mobilny punkt dostępności",
+      "words": 154,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Mobilny punkt dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Otwarte testy"
+        },
+        {
+          "level": 2,
+          "text": "Twoja opinia"
+        },
+        {
+          "level": 2,
+          "text": "Wyniki"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/institutions",
+      "width": 360,
+      "status": 200,
+      "title": "Dla instytucji",
+      "words": 153,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Dla instytucji"
+        },
+        {
+          "level": 2,
+          "text": "Opisz instytucję i potrzebę"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/messages",
+      "width": 360,
+      "status": 200,
+      "title": "Wiadomości",
+      "words": 76,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Wiadomości"
+        },
+        {
+          "level": 2,
+          "text": "Opieka wytchnieniowa w powiecie wielickim"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/notifications",
+      "width": 360,
+      "status": 200,
+      "title": "Powiadomienia",
+      "words": 30,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Powiadomienia"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/accessibility",
+      "width": 360,
+      "status": 200,
+      "title": "Deklaracja dostępności",
+      "words": 411,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Deklaracja dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Stan dostępności cyfrowej"
+        },
+        {
+          "level": 2,
+          "text": "Niedostępne treści"
+        },
+        {
+          "level": 3,
+          "text": "Niezgodność z załącznikiem"
+        },
+        {
+          "level": 3,
+          "text": "Treści nieobjęte przepisami"
+        },
+        {
+          "level": 3,
+          "text": "Nadmierne koszty"
+        },
+        {
+          "level": 2,
+          "text": "Przygotowanie deklaracji dostępności"
+        },
+        {
+          "level": 2,
+          "text": "Udogodnienia, ograniczenia i inne informacje"
+        },
+        {
+          "level": 3,
+          "text": "Ułatwienia"
+        },
+        {
+          "level": 3,
+          "text": "Plany likwidacji błędów dostępności cyfrowej"
+        },
+        {
+          "level": 2,
+          "text": "Skróty klawiszowe"
+        },
+        {
+          "level": 2,
+          "text": "Informacje zwrotne i dane kontaktowe"
+        },
+        {
+          "level": 2,
+          "text": "Obsługa wniosków i skarg związanych z dostępnością"
+        },
+        {
+          "level": 2,
+          "text": "Pozostałe informacje"
+        },
+        {
+          "level": 3,
+          "text": "Aplikacje mobilne"
+        },
+        {
+          "level": 3,
+          "text": "Dostępność architektoniczna"
+        },
+        {
+          "level": 3,
+          "text": "Dostępność komunikacyjno-informacyjna"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/privacy",
+      "width": 360,
+      "status": 200,
+      "title": "Klauzula informacyjna RODO",
+      "words": 122,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Klauzula informacyjna RODO"
+        },
+        {
+          "level": 2,
+          "text": "Gdzie trafiają dane"
+        },
+        {
+          "level": 2,
+          "text": "Administrator danych"
+        },
+        {
+          "level": 2,
+          "text": "Twoje prawa"
+        },
+        {
+          "level": 2,
+          "text": "Kontakt projektu"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/cookies",
+      "width": 360,
+      "status": 200,
+      "title": "Polityka cookies",
+      "words": 76,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Polityka cookies"
+        },
+        {
+          "level": 2,
+          "text": "Cookies logowania"
+        },
+        {
+          "level": 2,
+          "text": "Pamięć przeglądarki"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "status": 200,
+      "title": "Przegląd",
+      "words": 111,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Przegląd"
+        },
+        {
+          "level": 2,
+          "text": "Liczby"
+        },
+        {
+          "level": 2,
+          "text": "Wymaga uwagi"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/innovations",
+      "width": 360,
+      "status": 200,
+      "title": "Innowacje",
+      "words": 268,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Innowacje"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/moderation",
+      "width": 360,
+      "status": 200,
+      "title": "Moderacja",
+      "words": 220,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Moderacja"
+        },
+        {
+          "level": 2,
+          "text": "Pomysły czekające na przegląd"
+        },
+        {
+          "level": 3,
+          "text": "Mobilny punkt poradnictwa w powiecie tarnowskim"
+        },
+        {
+          "level": 3,
+          "text": "Sąsiedzki bank czasu w Nowej Hucie"
+        },
+        {
+          "level": 3,
+          "text": "Kawiarnia dla opiekunów przy CUS"
+        },
+        {
+          "level": 3,
+          "text": "Wypożyczalnia sprzętu do poruszania się"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/admin/trends",
+      "width": 360,
+      "status": 200,
+      "title": "Trendy potrzeb",
+      "words": 248,
+      "h1": 1,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Trendy potrzeb"
+        },
+        {
+          "level": 2,
+          "text": "Podsumowanie okresu"
+        },
+        {
+          "level": 2,
+          "text": "Zgłoszenia według kategorii"
+        },
+        {
+          "level": 2,
+          "text": "Zgłoszenia w kolejnych tygodniach"
+        },
+        {
+          "level": 2,
+          "text": "Potrzeby bez dobrego rozwiązania"
+        },
+        {
+          "level": 2,
+          "text": "Najczęstsze słowa w zgłoszeniach"
+        }
+      ],
+      "overflow": false,
+      "axe": []
+    },
+    {
+      "route": "/",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/match",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/knowledge",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/knowledge/inn-mobile-access",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas/new",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/ideas/idea-mobility-library",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/test",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/test/inn-mobile-access",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/institutions",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/messages",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/notifications",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/accessibility",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/privacy",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/cookies",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/innovations",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/moderation",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    },
+    {
+      "route": "/admin/trends",
+      "width": 360,
+      "contrast": true,
+      "overflow": false,
+      "theme": "high-contrast",
+      "size": "largest",
+      "axe": []
+    }
+  ],
+  "keyboard": [
+    {
+      "check": "skip link first",
+      "pass": true
+    },
+    {
+      "check": "skip link moves focus to main",
+      "pass": true
+    },
+    {
+      "check": "A++ and contrast through keyboard",
+      "pass": true
+    },
+    {
+      "check": "match results focus",
+      "pass": true
+    },
+    {
+      "check": "match URL state",
+      "pass": true
+    },
+    {
+      "check": "test count remains live after filtering",
+      "pass": true
+    },
+    {
+      "check": "no horizontal scroll A++ and high contrast",
+      "pass": true
+    },
+    {
+      "check": "production font loaded",
+      "pass": true
+    }
+  ],
+  "baseMain": "fe62cab"
+}

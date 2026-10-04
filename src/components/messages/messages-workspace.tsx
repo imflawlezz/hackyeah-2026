@@ -23,7 +23,7 @@ import type { Message } from "@/types";
 export function DemoBanner() {
   return (
     <p className="border-l-4 border-primary bg-muted p-4">
-      Wersja demonstracyjna. Wiadomości są zapisywane tylko w tej przeglądarce.
+      Bez połączenia z Supabase wiadomości pozostają w tej przeglądarce.
     </p>
   );
 }
