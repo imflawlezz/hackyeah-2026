@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { AuthPanel } from "@/components/auth/auth-panel";
+import { DemoAccounts } from "@/components/auth/demo-accounts";
 import { safeNext } from "@/lib/auth/redirect";
 import { getCurrentUser } from "@/lib/auth/session";
 import { hasSupabase } from "@/lib/supabase/server";
@@ -34,6 +35,10 @@ export default async function LoginPage({
   return (
     <div className="flex max-w-xl min-w-0 flex-col gap-6">
       <h1 className="text-3xl font-bold">Konto w HubMI.pl</h1>
+
+      {process.env.DEMO_LOGIN_ENABLED === "true" ? (
+        <DemoAccounts enabled />
+      ) : null}
 
       {!hasSupabase ? (
         <p className="flex items-start gap-2 rounded-md border border-input bg-muted p-4">
