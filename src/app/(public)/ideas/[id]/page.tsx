@@ -7,7 +7,7 @@ import { IdeaWorkspace } from "@/components/ideas/idea-workspace";
 import { LocalIdeaPage } from "@/components/ideas/local-idea-page";
 import { getCurrentUser } from "@/lib/auth/session";
 import { getActiveGrantCall } from "@/lib/data/grant-calls";
-import { getIdea } from "@/lib/data/ideas";
+import { getAuthorIdeaReview, getIdea } from "@/lib/data/ideas";
 
 export const metadata: Metadata = {
   title: "Fiszka pomysłu",
@@ -31,6 +31,8 @@ export default async function IdeaDetailsPage({
     return <LocalIdeaPage id={id} call={call} signedIn={signedIn} />;
   }
 
+  const review = await getAuthorIdeaReview(idea, user);
+
   return (
     <IdeaWorkspace idea={idea} crumb={idea.title}>
       {idea.status === "draft" && user && idea.authorId === user.id ? (
@@ -43,7 +45,7 @@ export default async function IdeaDetailsPage({
           </Link>
         </p>
       ) : null}
-      <IdeaArticle idea={idea} />
+      <IdeaArticle idea={idea} review={review} />
       {call ? (
         <GrantDraftPanel call={call} idea={idea} signedIn={signedIn} />
       ) : null}

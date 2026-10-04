@@ -2,6 +2,24 @@ import type { Idea, IdeaCanvas } from "@/types";
 import { ideas as mockIdeas } from "@/lib/mocks";
 import { createClient, hasSupabase } from "@/lib/supabase/server";
 
+export type IdeaReview = { note: string; reviewed_at: string | null };
+
+/** Server-only author read, also protected by the session client's RLS. */
+export async function getAuthorIdeaReview(
+  idea: Idea,
+  user: { id: string } | null,
+): Promise<IdeaReview | null> {
+  if (!user || idea.authorId !== user.id) return null;
+  const client = await createClient();
+  if (!client) return null;
+  const { data, error } = await client
+    .from("idea_reviews")
+    .select("note, reviewed_at")
+    .eq("idea_id", idea.id)
+    .maybeSingle<IdeaReview>();
+  return !error && data?.note?.trim() ? data : null;
+}
+
 const CANVAS_KEYS = [
   "problem",
   "solution",

@@ -11,7 +11,7 @@ export const ADMIN_INNOVATION_COLUMNS =
 export const ADMIN_PROBLEM_COLUMNS =
   "id, description, category, status, best_score, source, admin_note, created_at";
 export const ADMIN_IDEA_COLUMNS =
-  "id, title, essence, target_group, stage, status, review_note, created_at";
+  "id, title, essence, target_group, stage, status, idea_reviews(note), created_at";
 
 export type AdminInnovationRow = {
   id: string;
@@ -47,7 +47,7 @@ export type AdminIdeaRow = {
   target_group: string;
   stage: AdminIdea["stage"];
   status: AdminIdea["status"];
-  review_note?: string | null;
+  idea_reviews?: { note: string | null } | null;
   created_at: string;
 };
 
@@ -110,7 +110,7 @@ export function toAdminIdea(row: AdminIdeaRow): AdminIdea {
     targetGroup: row.target_group,
     stage: row.stage,
     status: row.status,
-    reviewNote: row.review_note ?? null,
+    reviewNote: row.idea_reviews?.note ?? null,
     createdAt: row.created_at,
   };
 }
