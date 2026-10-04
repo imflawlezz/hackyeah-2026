@@ -32,6 +32,11 @@ export type MatchOptions = {
    * need the nearest innovations (assistant, institutions) keep every result.
    */
   hideWeak?: boolean;
+  /**
+   * Store the problem for admin trends. Only a problem submitted on `/match`
+   * counts as a need; assistant questions and institution profiles do not.
+   */
+  record?: boolean;
 };
 
 /** Adds the tier to each result. Results below the related tier are dropped, or kept as "related" when not hiding. */
@@ -132,7 +137,7 @@ export function normalizeMockScores(results: MatchResult[]): MatchResult[] {
 
 async function fallback(
   request: MatchRequest,
-  hideWeak: boolean,
+  { hideWeak, record }: Required<MatchOptions>,
   cause: string,
   embedding?: number[],
 ): Promise<MatchOutcome> {
@@ -144,13 +149,15 @@ async function fallback(
     normalizeMockScores(mockMatch(request)),
     hideWeak,
   );
-  await recordProblem({
-    request,
-    resultCount: matchCount(outcome.results),
-    bestScore: null,
-    source: "mock",
-    embedding,
-  });
+  if (record) {
+    await recordProblem({
+      request,
+      resultCount: matchCount(outcome.results),
+      bestScore: null,
+      source: "mock",
+      embedding,
+    });
+  }
   return { ...outcome, source: "mock" };
 }
 
@@ -176,10 +183,11 @@ async function withinDeadline<T>(
 
 export async function matchProblem(
   request: MatchRequest,
-  { hideWeak = false }: MatchOptions = {},
+  { hideWeak = false, record = false }: MatchOptions = {},
 ): Promise<MatchOutcome> {
+  const options = { hideWeak, record };
   if (!hasSupabase || !hasOpenAI)
-    return fallback(request, hideWeak, "configuration missing");
+    return fallback(request, options, "configuration missing");
   const signal = AbortSignal.timeout(7500);
   let embedding: number[] | undefined;
   try {
@@ -189,7 +197,7 @@ export async function matchProblem(
     );
     const client = await withinDeadline(createClient(), signal);
     if (!client)
-      return fallback(request, hideWeak, "Supabase unavailable", embedding);
+      return fallback(request, options, "Supabase unavailable", embedding);
     const limit = request.limit ?? 5;
     // Fetch a wider pool than shown, so the keyword rerank can promote a close
     // runner-up (similarities are often within a few hundredths of each other).
@@ -202,9 +210,9 @@ export async function matchProblem(
         .abortSignal(signal),
       signal,
     );
-    if (error) return fallback(request, hideWeak, "RPC failed", embedding);
+    if (error) return fallback(request, options, "RPC failed", embedding);
     if (!Array.isArray(data) || !data.length)
-      return fallback(request, hideWeak, "RPC returned no rows", embedding);
+      return fallback(request, options, "RPC returned no rows", embedding);
     const similarity = new Map<string, number>(
       data.map((row) => [String(row.id), Number(row.similarity)]),
     );
@@ -232,13 +240,15 @@ export async function matchProblem(
     const topSimilarity = Math.max(
       ...ranked.map(({ innovation }) => similarity.get(innovation.id) ?? 0),
     );
-    await recordProblem({
-      request,
-      resultCount: matchCount(results),
-      bestScore: Number.isFinite(topSimilarity) ? topSimilarity : null,
-      source: "ai",
-      embedding,
-    });
+    if (record) {
+      await recordProblem({
+        request,
+        resultCount: matchCount(results),
+        bestScore: Number.isFinite(topSimilarity) ? topSimilarity : null,
+        source: "ai",
+        embedding,
+      });
+    }
     // On /match a "related" result is shown without a "why it fits" text, so
     // only matches are explained there; other callers explain every result.
     const explained = results.filter(
@@ -274,7 +284,7 @@ export async function matchProblem(
   } catch {
     return fallback(
       request,
-      hideWeak,
+      options,
       signal.aborted ? "timeout" : "embedding or search failed",
       embedding,
     );

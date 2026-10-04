@@ -173,7 +173,7 @@ describe("relevance threshold", () => {
     rows(0.46, 0.31);
     const response = await matchProblem(
       { problem: "dziura w jezdni na drodze powiatowej" },
-      { hideWeak: true },
+      { hideWeak: true, record: true },
     );
     expect(response).toMatchObject({
       source: "ai",
@@ -192,7 +192,7 @@ describe("relevance threshold", () => {
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
     const response = await matchProblem(
       { problem: "samotni seniorzy na wsi", category: "Bezdomność" },
-      { hideWeak: true },
+      { hideWeak: true, record: true },
     );
     expect(response).toEqual({ source: "ai", results: [], noGoodMatch: true });
     expect(warn).not.toHaveBeenCalledWith("Match fallback", expect.anything());
@@ -331,10 +331,13 @@ describe("AI matching", () => {
 describe("problem persistence", () => {
   it("stores AI matches with the top raw similarity, scrubbed text and embedding", async () => {
     withAdminClient();
-    await matchProblem({
-      problem: "samotni seniorzy, kontakt: jan@hubmi.example",
-      category: "Seniorzy",
-    });
+    await matchProblem(
+      {
+        problem: "samotni seniorzy, kontakt: jan@hubmi.example",
+        category: "Seniorzy",
+      },
+      { record: true },
+    );
     expect(mocks.insert).toHaveBeenCalledTimes(1);
     expect(mocks.insert).toHaveBeenCalledWith({
       description: "samotni seniorzy, kontakt: [e-mail]",
@@ -350,7 +353,7 @@ describe("problem persistence", () => {
     mocks.rpc.mockReturnValue({
       abortSignal: () => Promise.resolve({ data: [], error: null }),
     });
-    await matchProblem({ problem: "xyzqwerty" });
+    await matchProblem({ problem: "xyzqwerty" }, { record: true });
     expect(mocks.insert).toHaveBeenCalledWith(
       expect.objectContaining({
         status: "new",
@@ -361,8 +364,17 @@ describe("problem persistence", () => {
       }),
     );
   });
+  it("does not store anything unless the caller asks for it", async () => {
+    withAdminClient();
+    await matchProblem({ problem: "samotni seniorzy na wsi" });
+    mocks.rpc.mockReturnValue({
+      abortSignal: () => Promise.resolve({ data: [], error: null }),
+    });
+    await matchProblem({ problem: "xyzqwerty" });
+    expect(mocks.insert).not.toHaveBeenCalled();
+  });
   it("skips the insert when the admin client is not configured", async () => {
-    await matchProblem({ problem: "samotni seniorzy" });
+    await matchProblem({ problem: "samotni seniorzy" }, { record: true });
     expect(mocks.adminClient).toHaveBeenCalled();
     expect(mocks.insert).not.toHaveBeenCalled();
   });
@@ -372,14 +384,18 @@ describe("problem persistence", () => {
     mocks.insert.mockReturnValue({
       abortSignal: () => Promise.resolve({ error: { message: "denied" } }),
     });
-    expect((await matchProblem({ problem: "seniorzy" })).source).toBe("ai");
+    expect(
+      (await matchProblem({ problem: "seniorzy" }, { record: true })).source,
+    ).toBe("ai");
     expect(warn).toHaveBeenCalledWith("Problem persistence failed", {
       problemLength: 8,
     });
 
     mocks.insert.mockReturnValue({ abortSignal: () => new Promise(() => {}) });
     const started = Date.now();
-    expect((await matchProblem({ problem: "seniorzy" })).source).toBe("ai");
+    expect(
+      (await matchProblem({ problem: "seniorzy" }, { record: true })).source,
+    ).toBe("ai");
     expect(Date.now() - started).toBeLessThan(1500);
   });
 });

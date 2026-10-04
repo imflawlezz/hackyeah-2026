@@ -249,5 +249,16 @@ values
     'powiat olkuski',
     array['aktywizacja', 'praca', 'naprawa', 'spółdzielnia socjalna'],
     '2025-03-17T08:00:00Z'
+  ),
+  (
+    '00000000-0000-4000-8000-000000000023',
+    'Transport na żądanie dla seniorów',
+    'Seniorzy z małych wsi zamawiają telefonicznie bezpłatny przejazd do lekarza, przychodni lub apteki.',
+    'Senior albo jego opiekun dzwoni dzień wcześniej do gminnej dyspozytorni i umawia przejazd na wizytę u lekarza, badania lub rehabilitację. Gminny bus albo kierowca-wolontariusz zabiera po drodze kilka osób z sąsiednich wsi i odwozi je do domu po wizycie. Przejazd jest bezpłatny dla osób po siedemdziesiątce i osób z niepełnosprawnością.',
+    'Dostępność',
+    'Seniorzy i osoby z niepełnosprawnością z małych miejscowości bez komunikacji publicznej',
+    'powiat limanowski',
+    array['transport', 'seniorzy', 'dojazd do lekarza', 'wykluczenie komunikacyjne', 'wieś'],
+    '2025-04-14T08:00:00Z'
   )
 on conflict (id) do nothing;

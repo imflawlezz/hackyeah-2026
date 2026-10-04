@@ -457,7 +457,7 @@ const SCREENS: Screen[] = [
       },
       {
         text: "Decyzja z notatką wraca do autora jako odpowiedź ROPS.",
-        target: 'role=button[name="Oznacz jako przejrzane"]',
+        target: 'role=button[name="Odpowiedz autorowi"]',
       },
     ],
   },

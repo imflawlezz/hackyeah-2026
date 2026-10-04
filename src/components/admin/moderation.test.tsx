@@ -175,12 +175,14 @@ describe("Moderation", () => {
       "true",
     );
     await user.click(
-      screen.getAllByRole("button", { name: "Oznacz jako przejrzane" })[0],
+      screen.getByRole("button", {
+        name: `Odpowiedz autorowi: ${ideas[0].title}`,
+      }),
     );
 
     const dialog = await screen.findByRole("dialog");
     expect(dialog).toHaveAccessibleName(
-      `Oznaczyć „${ideas[0].title}” jako przejrzany?`,
+      `Odpowiedz autorowi pomysłu „${ideas[0].title}”`,
     );
     expect(actions.reviewIdeaAction).not.toHaveBeenCalled();
     await user.type(
@@ -188,7 +190,9 @@ describe("Moderation", () => {
       "  Dziękujemy  ",
     );
     await user.click(
-      within(dialog).getByRole("button", { name: "Oznacz jako przejrzane" }),
+      within(dialog).getByRole("button", {
+        name: "Wyślij i oznacz jako przejrzane",
+      }),
     );
 
     await waitFor(() =>
@@ -213,7 +217,7 @@ describe("Moderation", () => {
     const user = userEvent.setup();
     renderModeration();
     await user.click(
-      screen.getAllByRole("button", { name: "Oznacz jako przejrzane" })[0],
+      screen.getAllByRole("button", { name: /^Odpowiedz autorowi/ })[0],
     );
     await user.click(await screen.findByRole("button", { name: "Anuluj" }));
     await waitFor(() =>

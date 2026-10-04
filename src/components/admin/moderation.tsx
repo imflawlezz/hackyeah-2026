@@ -186,10 +186,10 @@ export function Moderation({
                         onClick={() =>
                           !pending &&
                           setConfirm({
-                            title: `Oznaczyć „${idea.title}” jako przejrzany?`,
+                            title: `Odpowiedz autorowi pomysłu „${idea.title}”`,
                             description:
-                              "Status pomysłu zmieni się na „przejrzany”. Notatka zapisze się przy pomyśle.",
-                            confirmLabel: "Oznacz jako przejrzane",
+                              "Autor dostanie powiadomienie, a pomysł zmieni status na „przejrzany”.",
+                            confirmLabel: "Wyślij i oznacz jako przejrzane",
                             noteLabel: "Wiadomość do autora",
                             noteHint:
                               "Autor zobaczy tę wiadomość na stronie swojego pomysłu.",
@@ -199,7 +199,8 @@ export function Moderation({
                           })
                         }
                       >
-                        Oznacz jako przejrzane
+                        Odpowiedz autorowi
+                        <span className="sr-only">: {idea.title}</span>
                       </Button>
                       <Link
                         href={`/ideas/${encodeURIComponent(idea.id)}`}

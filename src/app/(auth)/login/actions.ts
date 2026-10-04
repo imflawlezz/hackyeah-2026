@@ -94,7 +94,9 @@ export async function signUp(
 export async function signOut(): Promise<void> {
   const supabase = await createClient();
   if (supabase) {
-    await supabase.auth.signOut();
+    // Local scope ends only this browser's session. The default (global) would
+    // also sign out everyone else using the same account, e.g. shared demo logins.
+    await supabase.auth.signOut({ scope: "local" });
     revalidatePath("/", "layout");
   }
   redirect("/");
