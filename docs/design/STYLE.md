@@ -44,9 +44,11 @@ Rules: text at least 4.5:1, controls and meaningful icons at least 3:1, never co
 
 **Open Sans only**, weights 400, 600 and 700, through `next/font/google` with `latin` and `latin-ext` so Polish letters render (`ąćęłńóśźż ĄĆĘŁŃÓŚŹŻ`). Headings and body use the same family; headings are bold.
 
-The base is 16 px on desktop and 14 px below 700 px. A+ and A++ scale it to 115% and 130%. On mobile, Tailwind's `--spacing` unit is compensated, so spacing and 44 px touch targets keep their pixel size while text is 14 px.
+The base is **18 px on all viewports** (`html { font-size: 112.5% }`). A+ and A++ scale it to 115% and 130%: about 20.7 px and 23.4 px.
 
-The scale is 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px, mapped onto Tailwind: `text-4xl` 40, `text-3xl` 32, `text-2xl` 28, `text-xl` 24, `text-lg` 20, `text-base` 16, `text-sm` 14, `text-xs` 12. Never below 12 px. Body line-height 1.5, headings 1.25.
+This deliberately departs from the Gov.pl rule (16 px on desktop, 14 px on mobile). Many residents who use the Hub are seniors, and most visitors never find the text-size controls, so the default itself has to be readable. Do not shrink the base on small screens: if a layout breaks at 360 px with A++, fix it in the component with wrapping or `min-w-0`.
+
+The scale keeps the Gov.pl proportions (40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px at a 16 px base). It is defined in `rem`, so at the 18 px base it renders as: `text-4xl` 45, `text-3xl` 36, `text-2xl` 31.5, `text-xl` 27, `text-lg` 22.5, `text-base` 18, `text-sm` 15.75, `text-xs` 13.5 px. Never below `text-xs`. Page titles are `text-3xl`; the main module pages step up to `text-4xl` from the `sm` breakpoint. Body line-height 1.5, headings 1.25.
 
 Left-aligned, never justified. Sentence case in headings and buttons. No all caps for emphasis (the footer heading "ADRES" is the Gov.pl exception). Paragraphs are capped at 75 characters in `globals.css`. Do not truncate text with an ellipsis: WCAG 1.4.12 text spacing must not hide content. Headings use `text-wrap: balance` and break long Polish words instead of overflowing.
 

@@ -53,7 +53,8 @@ Tailwind (v4 `@theme` or v3 `theme.extend.colors`):
 ## 2. Typography
 
 - Open Sans only (`next/font/google`, subsets `latin`, `latin-ext` for Polish letters). Weights 400, 600, 700.
-- Base 16px desktop, 14px mobile. Scale: 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12. Never below 12px.
+- Base **18px on all viewports** (senior audience), A+ ≈ 20.7px, A++ ≈ 23.4px. This is HubMI's deliberate departure from the Gov.pl 16px desktop / 14px mobile: many residents are seniors and most never find the text-size controls. Do not shrink the base on mobile.
+- Scale in rem, Gov.pl proportions (40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 at 16px), rendered at the 18px base as 45 / 36 / 31.5 / 27 / 22.5 / 18 / 15.75 / 13.5. Never below `text-xs`.
 - Line height: body 1.5, headings 1.25. Paragraph gap = 2× font size.
 - Left-aligned. Never justified. No ALL CAPS for emphasis. Sentence case in headings and buttons.
 - Must survive 200% browser zoom without horizontal scroll or clipped text.
