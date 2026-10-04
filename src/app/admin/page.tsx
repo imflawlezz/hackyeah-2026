@@ -83,10 +83,7 @@ export default async function AdminOverviewPage() {
 
   return (
     <>
-      <AdminPageHeader
-        title="Przegląd"
-        description="Stan bazy innowacji i zgłoszeń. Zacznij od listy spraw, które wymagają uwagi."
-      />
+      <AdminPageHeader title="Przegląd" />
       {notice && <Notice>{notice}</Notice>}
 
       <section aria-labelledby="kpi-heading" className="flex flex-col gap-2.5">

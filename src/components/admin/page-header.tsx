@@ -4,14 +4,14 @@ export function AdminPageHeader({
   children,
 }: {
   title: string;
-  description: string;
+  description?: string;
   children?: React.ReactNode;
 }) {
   return (
     <header className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
       <div className="flex max-w-2xl flex-col gap-2">
         <h1 className="text-2xl font-bold text-heading sm:text-3xl">{title}</h1>
-        <p className="text-lg">{description}</p>
+        {description ? <p className="text-lg">{description}</p> : null}
       </div>
       {children && <div className="flex flex-wrap gap-2">{children}</div>}
     </header>

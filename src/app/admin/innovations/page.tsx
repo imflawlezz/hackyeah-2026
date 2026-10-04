@@ -24,7 +24,7 @@ export default async function AdminInnovationsPage() {
     <>
       <AdminPageHeader
         title="Innowacje"
-        description="Dodawaj i poprawiaj innowacje z bazy wiedzy. Szkice i zarchiwizowane wpisy nie są widoczne publicznie."
+        description="Szkice i zarchiwizowane wpisy nie są widoczne publicznie."
       >
         {editable && (
           <>

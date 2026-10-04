@@ -37,10 +37,7 @@ export default async function TrendsPage({
 
   return (
     <>
-      <AdminPageHeader
-        title="Trendy potrzeb"
-        description="Zbiorcze dane o problemach wpisanych w wyszukiwarce rozwiązań. Widoczne tylko dla administratorów."
-      />
+      <AdminPageHeader title="Trendy potrzeb" />
       {notice && <Notice>{notice}</Notice>}
 
       <form

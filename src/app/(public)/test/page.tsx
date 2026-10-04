@@ -17,15 +17,9 @@ export default async function TestPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <header className="flex max-w-3xl flex-col gap-2.5">
-        <h1 className="font-heading text-3xl font-bold text-balance sm:text-4xl">
-          Testuj innowacje
-        </h1>
-        <p className="text-lg">
-          Sprawdź nowe rozwiązania, zanim trafią do kolejnych gmin. Twoja opinia
-          pomoże je poprawić.
-        </p>
-      </header>
+      <h1 className="font-heading text-3xl font-bold text-balance sm:text-4xl">
+        Testuj innowacje
+      </h1>
 
       <OpenTestsList
         tests={tests}

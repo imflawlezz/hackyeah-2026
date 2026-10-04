@@ -126,7 +126,7 @@ export function MatchForm({
           <RequiredMark />
         </Label>
         <p id="problem-hint" className="text-base text-muted-foreground">
-          Napisz, kogo dotyczy problem, gdzie występuje i czego brakuje.
+          Nie wpisuj imion, nazwisk ani adresów.
         </p>
         <Textarea
           autoComplete="off"
