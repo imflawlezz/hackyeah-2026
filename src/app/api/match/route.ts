@@ -43,10 +43,16 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const { results, source } = await matchProblem({
-    ...parsed.data,
-    problem,
-    limit: Math.max(1, Math.min(10, parsed.data.limit ?? 5)),
-  });
-  return NextResponse.json(results, { headers: { "X-Match-Source": source } });
+  const { results, noGoodMatch, source } = await matchProblem(
+    {
+      ...parsed.data,
+      problem,
+      limit: Math.max(1, Math.min(10, parsed.data.limit ?? 5)),
+    },
+    { hideWeak: true },
+  );
+  return NextResponse.json(
+    { results, noGoodMatch },
+    { headers: { "X-Match-Source": source } },
+  );
 }

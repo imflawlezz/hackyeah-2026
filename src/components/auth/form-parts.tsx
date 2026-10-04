@@ -13,7 +13,6 @@ import { RequiredMark } from "@/components/forms/error-summary";
 import { cn } from "@/lib/utils";
 
 export const labelClassName = "text-base leading-snug font-semibold";
-export const inputClassName = "text-base md:text-base";
 
 export function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -97,7 +96,7 @@ export function PasswordField({
           aria-describedby={
             cn(hint && `${id}-hint`, error && `${id}-error`) || undefined
           }
-          className={cn(inputClassName, "pr-10")}
+          className="pr-10"
           {...registration}
         />
         <button

@@ -15,6 +15,7 @@ import { GrantDraftPanel } from "@/components/ideas/grant-draft-panel";
 import { IdeaWorkspace } from "@/components/ideas/idea-workspace";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Label } from "@/components/ui/label";
 import {
   ErrorSummary,
@@ -389,18 +390,25 @@ function Field({
     return (
       <div className="flex flex-col gap-2">
         <Label htmlFor={id}>{labelText}</Label>
-        <select
+        <NativeSelect
           id={id}
           aria-required="true"
+          aria-invalid={invalid || undefined}
+          aria-describedby={describedBy}
           ref={(node) => inputRef(node)}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="h-11 rounded-sm border border-input bg-background px-2.5 text-foreground"
+          onBlur={onBlur}
         >
           <option value="idea">Pomysł</option>
           <option value="prototype">Prototyp</option>
           <option value="pilot">Pilotaż</option>
-        </select>
+        </NativeSelect>
+        {invalid && error ? (
+          <p id={`${id}-error`} role="alert">
+            {error.message}
+          </p>
+        ) : null}
       </div>
     );
   }

@@ -18,6 +18,7 @@ import {
 } from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Label } from "@/components/ui/label";
 import {
   BUDGET_BAND_OPTIONS,
@@ -36,9 +37,6 @@ import {
 } from "@/lib/institutions/form";
 import { cn } from "@/lib/utils";
 import type { InstitutionProfile } from "@/types";
-
-const SELECT_CLASSES =
-  "min-h-12 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive";
 
 const LABEL_CLASSES = "text-lg leading-snug font-semibold";
 
@@ -137,14 +135,13 @@ export function ProfileForm({
               Typ instytucji
               <RequiredMark />
             </Label>
-            <select
+            <NativeSelect
               id="institution-type"
               aria-required="true"
               aria-invalid={errors.institutionType ? true : undefined}
               aria-describedby={
                 errors.institutionType ? "institution-type-error" : undefined
               }
-              className={SELECT_CLASSES}
               {...register("institutionType")}
             >
               <option value="">Wybierz z listy</option>
@@ -153,7 +150,7 @@ export function ProfileForm({
                   {label}
                 </option>
               ))}
-            </select>
+            </NativeSelect>
             <FieldError
               id="institution-type-error"
               message={errors.institutionType?.message}
@@ -164,13 +161,12 @@ export function ProfileForm({
             <Label htmlFor="municipality-type" className={LABEL_CLASSES}>
               Rodzaj gminy
             </Label>
-            <select
+            <NativeSelect
               id="municipality-type"
               aria-invalid={errors.municipalityType ? true : undefined}
               aria-describedby={
                 errors.municipalityType ? "municipality-type-error" : undefined
               }
-              className={SELECT_CLASSES}
               {...register("municipalityType")}
             >
               <option value="">Nie dotyczy</option>
@@ -179,7 +175,7 @@ export function ProfileForm({
                   {label}
                 </option>
               ))}
-            </select>
+            </NativeSelect>
             <FieldError
               id="municipality-type-error"
               message={errors.municipalityType?.message}
@@ -228,7 +224,6 @@ export function ProfileForm({
               "staff-available-hint",
               errors.staffAvailable && "staff-available-error",
             )}
-            className="h-12 rounded-md bg-background text-base md:text-base"
             {...register("staffAvailable")}
           />
           <FieldError
@@ -261,7 +256,6 @@ export function ProfileForm({
               "target-group-hint",
               errors.targetGroup && "target-group-error",
             )}
-            className="h-12 rounded-md bg-background text-base md:text-base"
             {...register("targetGroup")}
           />
           <FieldError

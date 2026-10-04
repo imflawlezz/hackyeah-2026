@@ -69,7 +69,7 @@ Radius 4 px (`--radius`). 1 px solid borders. Flat surfaces: no shadows on conte
 ## Forms
 
 - The label is always above the field and linked with `htmlFor`/`id`. A placeholder is never a label.
-- Required fields end with ` *` (`RequiredMark`, `aria-hidden`) and carry `aria-required="true"` or `required`. Under the form title: `* Pola obowiązkowe` (`RequiredFieldsNote`). Optional fields get no marker; never write "(opcjonalnie)". Forms with no required fields show no note.
+- Required fields end with a red ` *` (`RequiredMark`, `aria-hidden`) and carry `aria-required="true"` or `required`. Under the form title: `* pole wymagane` (`RequiredFieldsNote`), with the asterisk in the error colour and the words in body text. Optional fields get no marker; never write "(opcjonalnie)". Forms with no required fields show no note.
 - Validate on blur (`mode: "onBlur"` in react-hook-form). The message sits under the field in `destructive` with an icon, is linked through `aria-describedby`, and the field gets `aria-invalid="true"`.
 - After a failed submit, `ErrorSummary` (`src/components/forms/error-summary.tsx`) appears at the top with `role="alert"`, receives focus, and lists every error as a link that focuses its field.
 - Correct `type`, `autocomplete` and `inputMode`: `autoComplete="off"` on non-account fields, `spellCheck={false}` on e-mail addresses.

@@ -12,6 +12,7 @@ import {
   useFocusErrorSummary,
 } from "@/components/forms/error-summary";
 import { FieldError } from "@/components/testing/fields";
+import { Textarea } from "@/components/ui/textarea";
 
 const EMPTY_REPLY_MESSAGE = "Wpisz treść wiadomości.";
 import { useMessages } from "@/lib/messages/use-messages";
@@ -290,10 +291,10 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                   Twoja wiadomość
                   <RequiredMark />
                 </label>
-                <textarea
+                <Textarea
                   autoComplete="off"
                   id="message-body"
-                  className="min-h-32 w-full rounded-sm border border-input p-2.5"
+                  className="field-sizing-fixed min-h-32"
                   aria-required="true"
                   aria-invalid={replyError ? true : undefined}
                   aria-describedby={

@@ -4,8 +4,13 @@ import { appendTranscript } from "@/lib/voice/append";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, startTransition } from "react";
+import { useState, useSyncExternalStore, startTransition } from "react";
 import { startConversation } from "@/app/(public)/messages/actions";
+import {
+  CHALLENGE_SUBJECT,
+  clearChallengeDraft,
+  readChallengeDraft,
+} from "@/lib/match/challenge-draft";
 import { getMockStore } from "@/lib/messages/mock-store";
 import { startConversationSchema } from "@/lib/messages/schemas";
 import { DemoBanner } from "./messages-workspace";
@@ -19,6 +24,10 @@ import {
 } from "@/components/forms/error-summary";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { FieldError } from "@/components/testing/fields";
+import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
+import { Radio } from "@/components/ui/radio";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 type FieldErrors = Partial<Record<"recipient" | "subject" | "body", string>>;
@@ -47,6 +56,9 @@ function fieldMessage(
     : undefined;
 }
 
+// sessionStorage does not change while the form is open.
+const subscribeToNothing = () => () => {};
+
 export function NewMessageForm({
   demo,
   experts,
@@ -62,7 +74,21 @@ export function NewMessageForm({
   ideaId?: string;
   initialKind: ConversationKind;
 }) {
-  const [body, setBody] = useState("");
+  const fromMatch = subject === CHALLENGE_SUBJECT && !innovationId && !ideaId;
+  // "Zgłoś nowe wyzwanie" on /match leaves the problem description in
+  // sessionStorage, so it never travels in the URL. It fills the message until
+  // the visitor edits it.
+  const draft = useSyncExternalStore(
+    subscribeToNothing,
+    () => (fromMatch ? readChallengeDraft() : ""),
+    () => "",
+  );
+  const [typed, setTyped] = useState<string | null>(null);
+  const body = typed ?? draft;
+  const setBody = (next: string | ((current: string) => string)) =>
+    setTyped((current) =>
+      typeof next === "function" ? next(current ?? draft) : next,
+    );
   const [kind, setKind] = useState(initialKind);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -155,6 +181,7 @@ export function NewMessageForm({
               const id = demo
                 ? getMockStore().start(result.data)
                 : await startConversation(result.data);
+              if (fromMatch) clearChallengeDraft();
               router.push(`/messages/${id}`);
             } catch {
               setError(
@@ -177,10 +204,10 @@ export function NewMessageForm({
           {(["ask_rops", "ask_expert", "partnership"] as const).map(
             (value, i) => (
               <label key={value} className="flex min-h-11 items-center gap-2.5">
-                <input
-                  type="radio"
+                <Radio
                   name="kind"
                   value={value}
+                  required
                   checked={kind === value}
                   onChange={() => setKind(value)}
                 />
@@ -194,18 +221,14 @@ export function NewMessageForm({
             <label htmlFor="new-recipient" className="font-semibold">
               Ekspert
             </label>
-            <select
-              id="new-recipient"
-              name="recipient"
-              className="min-h-11 w-full rounded-sm border border-input bg-background p-2 text-foreground"
-            >
+            <NativeSelect id="new-recipient" name="recipient">
               <option value="">Wszyscy eksperci</option>
               {experts.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.displayName}
                 </option>
               ))}
-            </select>
+            </NativeSelect>
           </div>
         )}
         {kind === "partnership" && (
@@ -215,20 +238,19 @@ export function NewMessageForm({
               <RequiredMark />
             </label>
             {demo ? (
-              <select
+              <NativeSelect
                 id="new-recipient"
                 name="recipient"
                 aria-required="true"
-                className="min-h-11 w-full rounded-sm border border-input bg-background p-2 text-foreground"
               >
                 <option value="demo-cus">CUS w Gminie Przykładowej</option>
-              </select>
+              </NativeSelect>
             ) : (
               <>
                 <span id="recipient-hint" className="block text-sm">
                   Wpisz identyfikator konta partnera przekazany przez tę osobę.
                 </span>
-                <input
+                <Input
                   id="new-recipient"
                   name="recipient"
                   type="text"
@@ -241,7 +263,6 @@ export function NewMessageForm({
                     fieldErrors.recipient && "new-recipient-error",
                   )}
                   onBlur={(e) => validateField("recipient", e.target.value)}
-                  className="min-h-11 w-full rounded-sm border border-input p-2"
                 />
                 <FieldError
                   id="new-recipient-error"
@@ -256,7 +277,7 @@ export function NewMessageForm({
             Temat
             <RequiredMark />
           </label>
-          <input
+          <Input
             id="new-subject"
             name="subject"
             type="text"
@@ -269,7 +290,6 @@ export function NewMessageForm({
               fieldErrors.subject ? "new-subject-error" : undefined
             }
             onBlur={(e) => validateField("subject", e.target.value)}
-            className="min-h-11 w-full rounded-sm border border-input p-2.5"
           />
           <FieldError id="new-subject-error" message={fieldErrors.subject} />
         </div>
@@ -278,7 +298,7 @@ export function NewMessageForm({
             Twoja wiadomość
             <RequiredMark />
           </label>
-          <textarea
+          <Textarea
             autoComplete="off"
             id="new-body"
             name="body"
@@ -289,7 +309,7 @@ export function NewMessageForm({
             aria-invalid={fieldErrors.body ? true : undefined}
             aria-describedby={fieldErrors.body ? "new-body-error" : undefined}
             onBlur={(e) => validateField("body", e.target.value)}
-            className="min-h-40 w-full rounded-sm border border-input p-2.5"
+            className="field-sizing-fixed min-h-40"
           />
           <FieldError id="new-body-error" message={fieldErrors.body} />
         </div>

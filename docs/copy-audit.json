@@ -105,7 +105,7 @@
       "width": 1280,
       "status": 200,
       "title": "Znajdź pomysły dla swojej okolicy",
-      "words": 86,
+      "words": 71,
       "h1": 1,
       "headings": [
         {
@@ -133,7 +133,7 @@
       "width": 1280,
       "status": 200,
       "title": "Znajdź rozwiązania",
-      "words": 119,
+      "words": 71,
       "h1": 1,
       "headings": [
         {
@@ -143,10 +143,6 @@
         {
           "level": 2,
           "text": "Przykłady"
-        },
-        {
-          "level": 2,
-          "text": "Jak dobrze opisać problem"
         }
       ],
       "overflow": false,
@@ -241,7 +237,7 @@
       "width": 1280,
       "status": 200,
       "title": "Kreator pomysłów",
-      "words": 183,
+      "words": 178,
       "h1": 1,
       "headings": [
         {
@@ -557,7 +553,7 @@
       "width": 1280,
       "status": 200,
       "title": "Polityka cookies",
-      "words": 70,
+      "words": 76,
       "h1": 1,
       "headings": [
         {
@@ -581,7 +577,7 @@
       "width": 1280,
       "status": 200,
       "title": "Przegląd",
-      "words": 115,
+      "words": 111,
       "h1": 1,
       "headings": [
         {
@@ -605,7 +601,7 @@
       "width": 1280,
       "status": 200,
       "title": "Innowacje",
-      "words": 273,
+      "words": 274,
       "h1": 1,
       "headings": [
         {
@@ -657,7 +653,7 @@
       "width": 1280,
       "status": 200,
       "title": "Trendy potrzeb",
-      "words": 269,
+      "words": 264,
       "h1": 1,
       "headings": [
         {
@@ -864,7 +860,7 @@
       "width": 360,
       "status": 200,
       "title": "Znajdź pomysły dla swojej okolicy",
-      "words": 86,
+      "words": 71,
       "h1": 1,
       "headings": [
         {
@@ -892,7 +888,7 @@
       "width": 360,
       "status": 200,
       "title": "Znajdź rozwiązania",
-      "words": 119,
+      "words": 71,
       "h1": 1,
       "headings": [
         {
@@ -902,10 +898,6 @@
         {
           "level": 2,
           "text": "Przykłady"
-        },
-        {
-          "level": 2,
-          "text": "Jak dobrze opisać problem"
         }
       ],
       "overflow": false,
@@ -1000,7 +992,7 @@
       "width": 360,
       "status": 200,
       "title": "Kreator pomysłów",
-      "words": 183,
+      "words": 178,
       "h1": 1,
       "headings": [
         {
@@ -1316,7 +1308,7 @@
       "width": 360,
       "status": 200,
       "title": "Polityka cookies",
-      "words": 70,
+      "words": 76,
       "h1": 1,
       "headings": [
         {
@@ -1340,7 +1332,7 @@
       "width": 360,
       "status": 200,
       "title": "Przegląd",
-      "words": 115,
+      "words": 111,
       "h1": 1,
       "headings": [
         {
@@ -1364,7 +1356,7 @@
       "width": 360,
       "status": 200,
       "title": "Innowacje",
-      "words": 267,
+      "words": 268,
       "h1": 1,
       "headings": [
         {
@@ -1416,7 +1408,7 @@
       "width": 360,
       "status": 200,
       "title": "Trendy potrzeb",
-      "words": 253,
+      "words": 248,
       "h1": 1,
       "headings": [
         {
@@ -1652,5 +1644,6 @@
       "check": "production font loaded",
       "pass": true
     }
-  ]
+  ],
+  "baseMain": "fe62cab"
 }

@@ -24,6 +24,7 @@ import {
   useFocusErrorSummary,
 } from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { addLocalSignup } from "@/lib/testing/local-store";
 import {
   AVAILABILITY_OPTIONS,
@@ -242,15 +243,13 @@ export function SignupForm({
 
       <div className="flex flex-col gap-1">
         <label className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base">
-          <input
+          <Checkbox
             id={fieldId("consent")}
-            type="checkbox"
             aria-required="true"
             aria-invalid={errors.consent ? true : undefined}
             aria-describedby={
               errors.consent ? fieldId("consent-error") : undefined
             }
-            className="size-5 shrink-0 accent-primary"
             {...register("consent")}
           />
           <span>

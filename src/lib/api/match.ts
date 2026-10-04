@@ -1,17 +1,30 @@
+import { z } from "zod";
+import type { MatchTier } from "@/lib/match/score";
 import { matchResultSchema } from "@/lib/validators";
 import type { MatchRequest, MatchResult } from "@/types";
 
 export type MatchSource = "ai" | "mock" | "unknown";
 
+/** A result with the relevance tier decided by the server. */
+export type TieredMatchResult = MatchResult & { tier: MatchTier };
+
 export interface MatchResponse {
-  results: MatchResult[];
+  /** Best first, so "match" results come before "related" ones. */
+  results: TieredMatchResult[];
+  /** True when no result is a "match"; the UI then invites a new challenge. */
+  noGoodMatch: boolean;
   source: MatchSource;
 }
 
 export const GENERIC_MATCH_ERROR =
   "Nie udało się pobrać propozycji. Spróbuj ponownie za chwilę.";
 
-const matchResultsSchema = matchResultSchema.array();
+const matchResponseSchema = z.object({
+  results: matchResultSchema
+    .extend({ tier: z.enum(["match", "related"]) })
+    .array(),
+  noGoodMatch: z.boolean(),
+});
 
 /** Error whose message is safe to show to the user (Polish, from the server or generic). */
 export class MatchApiError extends Error {
@@ -70,10 +83,10 @@ export async function fetchMatches(
     throw new MatchApiError(GENERIC_MATCH_ERROR, response.status);
   }
 
-  const parsed = matchResultsSchema.safeParse(body);
+  const parsed = matchResponseSchema.safeParse(body);
   if (!parsed.success) {
     throw new MatchApiError(GENERIC_MATCH_ERROR, response.status);
   }
 
-  return { results: parsed.data, source: readSource(response.headers) };
+  return { ...parsed.data, source: readSource(response.headers) };
 }

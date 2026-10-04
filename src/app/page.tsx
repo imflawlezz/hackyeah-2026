@@ -20,21 +20,19 @@ const challenges = [
   ["Współpraca instytucji", ""],
   ["Wyludnianie się miejscowości", ""],
 ];
+
 export default function HomePage() {
   return (
-    <div className="space-y-14 py-4 sm:py-8">
+    <div className="flex flex-col gap-8">
       <Suspense fallback={null}>
         <ForbiddenNotice />
       </Suspense>
       <section
         aria-labelledby="hero-heading"
-        className="grid items-start gap-10 lg:grid-cols-12"
+        className="grid items-start gap-8 lg:grid-cols-12"
       >
         <div className="space-y-6 lg:col-span-7">
-          <p className="text-sm font-semibold text-muted-foreground">
-            Małopolski Hub Innowacji Społecznych
-          </p>
-          <h1 id="hero-heading" className="text-3xl font-semibold sm:text-4xl">
+          <h1 id="hero-heading" className="text-3xl font-semibold">
             Znajdź pomysły dla swojej okolicy
           </h1>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -54,28 +52,17 @@ export default function HomePage() {
               Przeglądaj bazę innowacji
             </Link>
           </div>
-          <p className="max-w-[65ch] text-lg">
-            Sprawdź rozwiązania dla mieszkańców Małopolski.
-          </p>
         </div>
         <aside
           aria-labelledby="example-heading"
-          className="min-w-0 rounded-md border border-border bg-muted p-6 lg:col-span-5"
+          className="min-w-0 border border-border p-6 lg:col-span-5"
         >
-          <p className="text-sm font-semibold text-muted-foreground">
-            Przykład z bazy
-          </p>
-          <h2 id="example-heading" className="mt-4 text-xl font-semibold">
+          <h2 id="example-heading" className="text-xl font-semibold">
             Dostępny urząd
           </h2>
           <p className="mt-2.5 text-base">{exampleProblem.description}</p>
           <div className="mt-6 border-t border-border pt-6">
-            <p className="text-sm text-muted-foreground">
-              Pomysł do sprawdzenia
-            </p>
-            <h3 className="mt-2 text-xl font-semibold">
-              {exampleInnovation.title}
-            </h3>
+            <h3 className="text-xl font-semibold">{exampleInnovation.title}</h3>
             <p className="mt-2.5 text-base">
               <span className="font-semibold">Dla kogo: </span>
               {exampleInnovation.targetGroup}
@@ -89,12 +76,11 @@ export default function HomePage() {
       </section>
       <section
         aria-labelledby="challenges-heading"
-        className="rounded-md bg-muted p-6 sm:p-8"
+        className="border-t border-border pt-8"
       >
         <h2 id="challenges-heading" className="text-2xl font-semibold">
           Z czym możesz przyjść
         </h2>
-
         <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
           {challenges.map(([label, category]) => (
             <li key={label} className="border-b border-border">

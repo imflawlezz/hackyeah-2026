@@ -29,8 +29,9 @@ export default function CookiesPage() {
           wiadomości, zgłoszenia do testów i opinie.
         </p>
         <p>
-          Profil instytucji pozostaje w{" "}
-          <span translate="no">sessionStorage</span> do zamknięcia karty.
+          Profil instytucji i szkic problemu przekazywany do wiadomości
+          pozostają w <span translate="no">sessionStorage</span> do zamknięcia
+          karty.
         </p>
         <p>Usuń te dane w ustawieniach przeglądarki, czyszcząc dane strony.</p>
       </DocumentSection>

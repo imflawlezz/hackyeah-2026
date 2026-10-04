@@ -26,7 +26,13 @@ const eslintConfig = defineConfig([
         {
           labelComponents: ["Label"],
           labelAttributes: ["htmlFor"],
-          controlComponents: ["Input", "Textarea", "Select"],
+          controlComponents: [
+            "Input",
+            "Textarea",
+            "NativeSelect",
+            "Checkbox",
+            "Radio",
+          ],
           depth: 3,
         },
       ],

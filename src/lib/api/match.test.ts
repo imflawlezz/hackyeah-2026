@@ -30,15 +30,21 @@ describe("fetchMatches", () => {
   const request = { problem: "samotni seniorzy na wsi", category: "Samotność" };
 
   it("posts the request and returns validated results with the source", async () => {
-    const results = mockMatch(request);
+    const results = mockMatch(request).map((result, index) => ({
+      ...result,
+      tier: index === 0 ? ("match" as const) : ("related" as const),
+    }));
     const fetchMock = stubFetch(
-      jsonResponse(results, { headers: { "X-Match-Source": "mock" } }),
+      jsonResponse(
+        { results, noGoodMatch: false },
+        { headers: { "X-Match-Source": "mock" } },
+      ),
     );
     const controller = new AbortController();
 
     const response = await fetchMatches(request, controller.signal);
 
-    expect(response).toEqual({ results, source: "mock" });
+    expect(response).toEqual({ results, noGoodMatch: false, source: "mock" });
     expect(fetchMock).toHaveBeenCalledWith("/api/match", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,15 +54,16 @@ describe("fetchMatches", () => {
   });
 
   it("reads the ai source and defaults to unknown without the header", async () => {
-    stubFetch(jsonResponse([], { headers: { "X-Match-Source": "AI" } }));
+    const empty = { results: [], noGoodMatch: true };
+    stubFetch(jsonResponse(empty, { headers: { "X-Match-Source": "AI" } }));
     await expect(fetchMatches(request)).resolves.toEqual({
-      results: [],
+      ...empty,
       source: "ai",
     });
 
-    stubFetch(jsonResponse([]));
+    stubFetch(jsonResponse(empty));
     await expect(fetchMatches(request)).resolves.toEqual({
-      results: [],
+      ...empty,
       source: "unknown",
     });
   });
@@ -88,14 +95,35 @@ describe("fetchMatches", () => {
   });
 
   it("rejects a payload that does not match the MatchResult contract", async () => {
-    stubFetch(jsonResponse([{ innovation: { id: "x" }, score: "high" }]));
+    stubFetch(
+      jsonResponse({
+        results: [{ innovation: { id: "x" }, score: "high" }],
+        noGoodMatch: false,
+      }),
+    );
 
     await expect(fetchMatches(request)).rejects.toThrow(GENERIC_MATCH_ERROR);
   });
 
-  it("rejects a non-array payload", async () => {
-    stubFetch(jsonResponse({ results: [] }));
+  it("rejects a result without a tier or with an unknown one", async () => {
+    const [result] = mockMatch(request);
+    stubFetch(jsonResponse({ results: [result], noGoodMatch: false }));
+    await expect(fetchMatches(request)).rejects.toThrow(GENERIC_MATCH_ERROR);
 
+    stubFetch(
+      jsonResponse({
+        results: [{ ...result, tier: "weak" }],
+        noGoodMatch: false,
+      }),
+    );
+    await expect(fetchMatches(request)).rejects.toThrow(GENERIC_MATCH_ERROR);
+  });
+
+  it("rejects a payload without noGoodMatch and the old bare array", async () => {
+    stubFetch(jsonResponse({ results: [] }));
+    await expect(fetchMatches(request)).rejects.toThrow(GENERIC_MATCH_ERROR);
+
+    stubFetch(jsonResponse([]));
     await expect(fetchMatches(request)).rejects.toThrow(GENERIC_MATCH_ERROR);
   });
 });

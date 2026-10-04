@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Label } from "@/components/ui/label";
 import { distinctSorted, filterInnovations } from "@/lib/knowledge/filter";
 import { foundCountText } from "@/lib/knowledge/plural";
@@ -19,9 +21,6 @@ export const EMPTY_TEXT =
 const SEARCH_DEBOUNCE_MS = 250;
 const MAX_TAGS = 3;
 const EXCERPT_LENGTH = 200;
-
-const FIELD_CLASSES =
-  "w-full rounded-md border border-input bg-background text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
 
 function excerpt(innovation: Innovation): string {
   if (innovation.summary) return innovation.summary;
@@ -114,7 +113,6 @@ export function InnovationLibrary({
             onChange={(event) => setText(event.target.value)}
             aria-describedby="library-search-hint"
             autoComplete="off"
-            className="h-12 rounded-md bg-background text-base md:text-base"
           />
           <p id="library-search-hint" className="text-sm text-muted-foreground">
             Szukamy w tytułach, opisach i tagach.
@@ -128,15 +126,13 @@ export function InnovationLibrary({
               key={category}
               className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base"
             >
-              <input
-                type="checkbox"
+              <Checkbox
                 name="category"
                 value={category}
                 checked={filters.categories.includes(category)}
                 onChange={(event) =>
                   toggleCategory(category, event.target.checked)
                 }
-                className="size-5 shrink-0 accent-primary"
               />
               {category}
             </label>
@@ -147,7 +143,7 @@ export function InnovationLibrary({
           <Label htmlFor="library-group" className="text-base font-semibold">
             Grupa docelowa
           </Label>
-          <select
+          <NativeSelect
             id="library-group"
             value={groups.includes(filters.group) ? filters.group : ""}
             onChange={(event) => {
@@ -158,7 +154,6 @@ export function InnovationLibrary({
               });
               setEmittedQ(text.trim());
             }}
-            className={cn(FIELD_CLASSES, "min-h-12 px-2.5 text-base")}
           >
             <option value="">Wszystkie grupy</option>
             {groups.map((group) => (
@@ -166,7 +161,7 @@ export function InnovationLibrary({
                 {group}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         </div>
 
         <div>
@@ -174,7 +169,7 @@ export function InnovationLibrary({
             type="button"
             variant="outline"
             onClick={clearFilters}
-            className="h-auto min-h-11 px-4 py-2 text-base"
+            className="h-auto min-h-11 px-4 py-2"
           >
             Wyczyść filtry
           </Button>

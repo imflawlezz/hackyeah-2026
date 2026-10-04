@@ -3,6 +3,25 @@ import type { MatchSource } from "@/lib/api/match";
 
 export type ScoreTier = "high" | "medium" | "low";
 
+/**
+ * Server-side relevance of one result, decided on the API score (similarity
+ * plus the rerank boost for AI results, saturating keyword points for mock
+ * ones), rounded to two decimals. Calibration: docs/matching.md.
+ * - at or above MATCH_THRESHOLD the result is a "match";
+ * - from RELATED_THRESHOLD up to MATCH_THRESHOLD it is "related";
+ * - below RELATED_THRESHOLD it is not shown.
+ */
+export const MATCH_THRESHOLD = 0.5;
+export const RELATED_THRESHOLD = 0.4;
+
+export type MatchTier = "match" | "related";
+
+export function matchTier(score: number): MatchTier | null {
+  if (!Number.isFinite(score)) return null;
+  if (score >= MATCH_THRESHOLD) return "match";
+  return score >= RELATED_THRESHOLD ? "related" : null;
+}
+
 const HIGH_THRESHOLD = 0.75;
 const MEDIUM_THRESHOLD = 0.5;
 
@@ -14,8 +33,9 @@ export const AI_SIMILARITY_FLOOR = 0.2;
 export const AI_SIMILARITY_CEILING = 0.7;
 /**
  * The best AI match shows as 100% once its calibrated score reaches this
- * value (raw similarity ≥ 0.5). A weaker best match is scaled less, so an
- * unrelated query still reads as a partial match.
+ * value (score ≥ 0.5, which is MATCH_THRESHOLD). Only results in the "match"
+ * tier get a percentage, so the best match reads as strong and the others
+ * are shown relative to it.
  */
 export const AI_TOP_REFERENCE = 0.6;
 

@@ -21,6 +21,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -52,9 +53,6 @@ const FIELD_ORDER = [
   "imageUrl",
   "status",
 ] as const;
-const CONTROL = "text-base md:text-base";
-const SELECT =
-  "min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring aria-invalid:border-destructive";
 
 function describedBy(...ids: (string | false | undefined)[]) {
   return ids.filter(Boolean).join(" ") || undefined;
@@ -198,7 +196,6 @@ export function InnovationForm({
             aria-required="true"
             aria-invalid={invalid(errors.title)}
             aria-describedby={describedBy(errors.title && "title-error")}
-            className={CONTROL}
             {...register("title")}
           />
         </Field>
@@ -220,7 +217,7 @@ export function InnovationForm({
               "summary-hint",
               errors.summary && "summary-error",
             )}
-            className={cn(CONTROL, "field-sizing-fixed")}
+            className="field-sizing-fixed"
             {...register("summary")}
           />
         </Field>
@@ -242,7 +239,7 @@ export function InnovationForm({
               "description-hint",
               errors.description && "description-error",
             )}
-            className={cn(CONTROL, "field-sizing-fixed")}
+            className="field-sizing-fixed"
             {...register("description")}
           />
         </Field>
@@ -256,7 +253,7 @@ export function InnovationForm({
               categoryChoice === NEW_CATEGORY ? undefined : errors.category
             }
           >
-            <select
+            <NativeSelect
               id="category-choice"
               aria-required="true"
               value={categoryChoice}
@@ -277,7 +274,6 @@ export function InnovationForm({
                   shouldValidate: isSubmitted,
                 });
               }}
-              className={SELECT}
             >
               <option value="">Wybierz kategorię</option>
               {categories.map((category) => (
@@ -286,7 +282,7 @@ export function InnovationForm({
                 </option>
               ))}
               <option value={NEW_CATEGORY}>Nowa kategoria…</option>
-            </select>
+            </NativeSelect>
           </Field>
           {categoryChoice === NEW_CATEGORY && (
             <Field
@@ -303,7 +299,6 @@ export function InnovationForm({
                 aria-describedby={describedBy(
                   errors.category && "category-error",
                 )}
-                className={CONTROL}
                 {...register("category")}
               />
             </Field>
@@ -325,7 +320,6 @@ export function InnovationForm({
               aria-describedby={describedBy(
                 errors.targetGroup && "targetGroup-error",
               )}
-              className={CONTROL}
               {...register("targetGroup")}
             />
           </Field>
@@ -343,7 +337,6 @@ export function InnovationForm({
                 "region-hint",
                 errors.region && "region-error",
               )}
-              className={CONTROL}
               {...register("region")}
             />
           </Field>
@@ -364,7 +357,6 @@ export function InnovationForm({
               "tags-preview",
               errors.tags && "tags-error",
             )}
-            className={CONTROL}
             {...register("tags")}
           />
           <div
@@ -398,7 +390,6 @@ export function InnovationForm({
               "videoUrl-hint",
               errors.videoUrl && "videoUrl-error",
             )}
-            className={CONTROL}
             {...register("videoUrl")}
           />
         </Field>
@@ -419,7 +410,6 @@ export function InnovationForm({
               "imageUrl-hint",
               errors.imageUrl && "imageUrl-error",
             )}
-            className={CONTROL}
             {...register("imageUrl")}
           />
         </Field>
@@ -431,11 +421,11 @@ export function InnovationForm({
           hint="Tylko opublikowane innowacje są widoczne w bazie wiedzy i w dopasowaniu."
           error={errors.status}
         >
-          <select
+          <NativeSelect
             id="status"
             aria-required="true"
             aria-describedby="status-hint"
-            className={cn(SELECT, "sm:max-w-xs")}
+            className="sm:max-w-xs"
             {...register("status")}
           >
             {INNOVATION_STATUSES.map((status) => (
@@ -443,14 +433,14 @@ export function InnovationForm({
                 {status.label}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         </Field>
 
         <div className="flex flex-wrap items-center gap-2.5 border-t border-border pt-5">
           <Button
             type="submit"
             aria-disabled={pending || undefined}
-            className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+            className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
           >
             {pending ? "Zapisuję…" : "Zapisz"}
           </Button>
@@ -458,7 +448,7 @@ export function InnovationForm({
             href="/admin/innovations"
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "h-auto min-h-11 max-w-full py-2 text-base whitespace-normal",
+              "h-auto min-h-11 max-w-full py-2 whitespace-normal",
             )}
           >
             Anuluj
@@ -468,7 +458,7 @@ export function InnovationForm({
               type="button"
               variant="ghost"
               onClick={() => setArchiveOpen(true)}
-              className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal sm:ml-auto"
+              className="h-auto min-h-11 max-w-full py-2 whitespace-normal sm:ml-auto"
             >
               Archiwizuj
             </Button>
@@ -498,7 +488,7 @@ export function InnovationForm({
                 render={
                   <Button
                     variant="outline"
-                    className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                    className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                   />
                 }
               >
@@ -506,7 +496,7 @@ export function InnovationForm({
               </DialogClose>
               <Button
                 type="button"
-                className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                 onClick={() =>
                   run(
                     () => setInnovationStatusAction(innovation.id, "archived"),
