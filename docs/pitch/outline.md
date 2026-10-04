@@ -75,10 +75,10 @@ Klatka makiety: ../../mockups/frames/a11y-high-contrast-desktop.png | Interfejs 
 ## 9. Wdrożenie wymaga budżetu i opiekunów
 
 - Next.js, Vercel, Supabase i OpenAI; infrastruktura bez własnego GPU.
-- DO UZUPEŁNIENIA: miesięczny koszt pilotażu po aktualizacji #64.
+- Pilotaż jednego województwa: 334,32 PLN netto miesięcznie, 36 h opieki.
 - Potrzebni: opiekun techniczny, redaktor katalogu i moderator zgłoszeń.
 
-Wizual: Stos technologiczny → koszty usług → godziny obsługi. Kosztorys z 3 października nie obejmuje obecnych modułów AI; nie jest aktualnym budżetem.
+Wizual: Stos technologiczny → koszty usług → godziny obsługi.
 
 ## 10. Zespół i droga do pilotażu
 

@@ -11,6 +11,6 @@
 
 Publiczne strony produkcji odpowiadają; chronione widoki przekierowują do logowania. Funkcji po zalogowaniu nie testowano. Makiety chronionych ekranów pochodzą z lokalnej demonstracji zgodnie z opisem #65. Wynik axe to wcześniejszy audyt lokalny z `docs/copy-audit.md`, a nie nowy test produkcji.
 
-Koszt pilotażu pozostaje widocznym zadaniem do uzupełnienia po #64. Nazwa i identyfikator HackTribe także wymagają uzupełnienia przez zespół. Nie dostarczono MP4: zadanie obejmuje scenariusz do nagrania przez zespół. Nie przeprowadzono certyfikacji PDF/UA ani ręcznego testu PDF czytnikiem ekranu.
+Nazwa i identyfikator HackTribe wymagają uzupełnienia przez zespół. Nie dostarczono MP4: zadanie obejmuje scenariusz do nagrania przez zespół. Nie przeprowadzono certyfikacji PDF/UA ani ręcznego testu PDF czytnikiem ekranu.
 
 Źródła czcionki: [Open Sans w Google Fonts](https://fonts.google.com/specimen/Open+Sans), [licencja SIL OFL](https://github.com/google/fonts/blob/main/ofl/opensans/OFL.txt). Dwie odmiany TrueType (400, 700) pobrano z Google Fonts i dołączono z licencją do odtwarzalnego eksportu.
