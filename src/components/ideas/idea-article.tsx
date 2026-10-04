@@ -23,6 +23,9 @@ export function IdeaArticle({
   idea: Idea;
   review?: IdeaReview | null;
 }) {
+  const visibleCanvasFields = CANVAS_FIELDS.filter((field) =>
+    idea.canvas?.[field.key]?.trim(),
+  );
   return (
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-2.5">
@@ -73,21 +76,26 @@ export function IdeaArticle({
           </Link>
         </section>
       ) : null}
-      <section aria-labelledby="canvas-heading" className="flex flex-col gap-4">
-        <h2 id="canvas-heading" className="text-2xl text-heading">
-          Kanwa innowacji
-        </h2>
-        <dl className="flex flex-col gap-4">
-          {CANVAS_FIELDS.map((field) => (
-            <div key={field.key} className="border-t border-border pt-4">
-              <dt className="font-semibold">{field.label}</dt>
-              <dd className="mt-1 max-w-2xl">
-                {idea.canvas?.[field.key]?.trim() || "Nie podano."}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+      {visibleCanvasFields.length ? (
+        <section
+          aria-labelledby="canvas-heading"
+          className="flex flex-col gap-4"
+        >
+          <h2 id="canvas-heading" className="text-2xl text-heading">
+            Kanwa innowacji
+          </h2>
+          <dl className="flex flex-col gap-4">
+            {visibleCanvasFields.map((field) => (
+              <div key={field.key} className="border-t border-border pt-4">
+                <dt className="font-semibold">{field.label}</dt>
+                <dd className="mt-1 max-w-2xl">
+                  {idea.canvas?.[field.key]?.trim()}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      ) : null}
     </article>
   );
 }

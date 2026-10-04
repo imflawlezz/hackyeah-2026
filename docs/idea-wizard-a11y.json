@@ -1,0 +1,110 @@
+[
+  {
+    "theme": "default",
+    "font": "default",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "default",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "default",
+    "step": 3,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "large",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "large",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "large",
+    "step": 3,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "largest",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "largest",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "default",
+    "font": "largest",
+    "step": 3,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "default",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "default",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "default",
+    "step": 3,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "large",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "large",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "large",
+    "step": 3,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "largest",
+    "step": 1,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "largest",
+    "step": 2,
+    "violations": []
+  },
+  {
+    "theme": "high-contrast",
+    "font": "largest",
+    "step": 3,
+    "violations": []
+  }
+]

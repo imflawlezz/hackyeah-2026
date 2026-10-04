@@ -1,5 +1,7 @@
 # HubMI.pl
 
+The idea wizard has three steps: **Pomysł**, **Wdrożenie** (optional, with a skip button), and **Podsumowanie**. Only the title, problem, target group, summary and stage are required; municipality remains optional. Empty canvas sections are hidden, and the grant draft works with the basic idea card. Older local drafts retain their answers and open no later than the summary.
+
 ![CI](https://github.com/imflawlezz/hackyeah-2026/actions/workflows/ci.yml/badge.svg)
 
 Prototype of the Małopolska Social Innovation Hub. The platform connects residents, local governments, experts, and the ROPS Kraków team.

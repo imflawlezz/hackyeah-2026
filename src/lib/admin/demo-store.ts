@@ -57,6 +57,7 @@ function seed(): DemoStore {
       DRAFT,
     ],
     ideas: mockIdeas.map((idea): AdminIdea => ({
+      canvas: idea.canvas,
       id: idea.id,
       title: idea.title,
       summary: idea.summary,

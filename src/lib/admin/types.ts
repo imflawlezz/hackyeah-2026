@@ -32,6 +32,7 @@ export interface AdminProblem {
 }
 
 export interface AdminIdea {
+  canvas?: Idea["canvas"];
   id: string;
   title: string;
   summary: string;
