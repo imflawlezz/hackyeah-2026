@@ -232,6 +232,10 @@ A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/au
 
 ### Demo accounts
 
+For one-click jury access, the owner sets `DEMO_LOGIN_ENABLED=true` and the existing `DEMO_USER_PASSWORD` in Vercel → Production and redeploys. `/login` then shows four role buttons leading to `/ideas/new`, `/institutions`, `/messages` and `/admin/moderation`. The password stays on the server and is never passed to client props or HTML. Missing configuration or failed authentication returns a generic error.
+
+Enable this only during the judging period. While enabled, the admin demo account is public: anyone can moderate the demo data. Set `DEMO_LOGIN_ENABLED=false` afterwards and redeploy; the block disappears and the action refuses new demo logins. Existing sessions remain signed in, so revoke demo sessions in Supabase when ending public access. This flag is separate from the read-only `ADMIN_PREVIEW` setting.
+
 `npm run demo:users` creates four fictional accounts with confirmed e-mails and sets their roles, including `admin`, through the service role. It needs `SUPABASE_SERVICE_ROLE_KEY` and `DEMO_USER_PASSWORD` (at least 8 characters) in `.env.local`. The password is shared in the team password manager, never in git. Existing accounts are skipped, so the script is safe to re-run.
 
 | E-mail                   | Role       |
