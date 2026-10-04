@@ -30,32 +30,24 @@ export const EMPTY_IDEA_DRAFT: IdeaDraftValues = {
   municipality: "",
 };
 
+export const IMPLEMENTATION_FIELDS = [
+  "solution",
+  "novelty",
+  "resources",
+  "partners",
+  "risks",
+  "successMeasures",
+] as const;
 export const IDEA_STEPS: {
   title: string;
   fields: (keyof IdeaDraftValues)[];
   review?: boolean;
+  optional?: boolean;
 }[] = [
-  { title: "Jaki problem chcesz rozwiązać?", fields: ["problem"] },
-  { title: "Kogo dotyczy?", fields: ["targetGroup"] },
-  {
-    title: "Na czym polega Twój pomysł? (2–3 zdania)",
-    fields: ["summary"],
-  },
-  { title: "Jak to będzie działać w praktyce?", fields: ["solution"] },
-  { title: "Co jest w tym nowego?", fields: ["novelty"] },
-  {
-    title: "Czego potrzebujesz i z kim chcesz współpracować?",
-    fields: ["resources", "partners"],
-  },
-  { title: "Co może pójść nie tak?", fields: ["risks"] },
-  { title: "Po czym poznasz, że działa?", fields: ["successMeasures"] },
-  {
-    title: "Nazwij pomysł i sprawdź fiszkę",
-    fields: ["title", "stage", "municipality"],
-    review: true,
-  },
+  { title: "Pomysł", fields: ["title", "problem", "targetGroup", "summary"] },
+  { title: "Wdrożenie", fields: [...IMPLEMENTATION_FIELDS], optional: true },
+  { title: "Podsumowanie", fields: ["municipality", "stage"], review: true },
 ];
-
 const FIELD_LABELS: Record<keyof IdeaDraftValues, string> = {
   problem: "Jaki problem chcesz rozwiązać?",
   targetGroup: "Kogo dotyczy?",
@@ -96,8 +88,9 @@ export function validateIdeaStep(
   if (!current) return null;
   for (const field of current.fields) {
     if (field === "stage" || field === "municipality") continue;
-    const min = MIN_LENGTH[field] ?? 1;
+    const min = current.optional ? 3 : (MIN_LENGTH[field] ?? 1);
     const value = String(values[field] ?? "").trim();
+    if (current.optional && !value) continue;
     if (value.length < min) {
       return {
         field,
@@ -121,15 +114,11 @@ export function draftToIdea(
     stage: values.stage,
     status,
     municipality: values.municipality.trim() || undefined,
-    canvas: {
-      problem: values.problem.trim(),
-      solution: values.solution.trim(),
-      novelty: values.novelty.trim(),
-      resources: values.resources.trim(),
-      partners: values.partners.trim(),
-      risks: values.risks.trim(),
-      successMeasures: values.successMeasures.trim(),
-    },
+    canvas: Object.fromEntries(
+      (["problem", ...IMPLEMENTATION_FIELDS] as const)
+        .map((field) => [field, values[field].trim()])
+        .filter(([, value]) => value),
+    ),
     createdAt: new Date().toISOString(),
   };
 }

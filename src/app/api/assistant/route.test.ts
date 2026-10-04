@@ -32,6 +32,23 @@ beforeEach(async () => {
 });
 
 describe("/api/assistant", () => {
+  it("accepts an idea with an empty canvas", async () => {
+    const response = await POST(
+      request({
+        messages: [{ role: "user", content: "Jak rozwinąć pomysł?" }],
+        context: {
+          idea: {
+            title: "Pomoc sąsiedzka",
+            summary: "Wspieramy seniorów.",
+            targetGroup: "Seniorzy",
+            canvas: {},
+          },
+        },
+      }),
+    );
+    expect(response.status).toBe(200);
+    expect(await response.text()).toBeTruthy();
+  });
   it("streams a fallback reply without a key", async () => {
     const response = await POST(
       request({

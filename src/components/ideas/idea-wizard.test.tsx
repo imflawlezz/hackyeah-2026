@@ -1,5 +1,4 @@
-// @vitest-environment jsdom
-
+﻿// @vitest-environment jsdom
 import {
   cleanup,
   render,
@@ -9,118 +8,118 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { IdeaWizard } from "@/components/ideas/idea-wizard";
-import { grantCalls } from "@/lib/mocks";
+import { IdeaWizard } from "./idea-wizard";
+import {
+  EMPTY_IDEA_DRAFT,
+  fieldLabel,
+  IMPLEMENTATION_FIELDS,
+} from "@/lib/ideas/draft";
 import { LOCAL_DRAFT_KEY, LOCAL_IDEAS_KEY } from "@/lib/ideas/storage";
-
+import { grantCalls } from "@/lib/mocks";
 const saveIdea = vi.hoisted(() =>
   vi.fn(async (input: unknown) => {
     void input;
     return { ok: true as const, storage: "browser" as const };
   }),
 );
-
-vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: vi.fn() }),
-}));
-
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
 vi.mock("@/app/(public)/ideas/actions", () => ({
   saveIdea,
   saveGrantDraft: vi.fn(),
 }));
-
-const answers = [
-  "Seniorzy w gminie Gdów nie mają jak pożyczyć balkonika.",
-  "Seniorzy i ich opiekunowie",
-  "Świetlica prowadzi wypożyczalnię sprzętu na dwa tygodnie.",
-  "Mieszkaniec zgłasza się do CUS, a wolontariusz przywozi sprzęt.",
-  "Wypożyczenie jest bezpłatne i łączone z wizytą sąsiedzką.",
-  "Potrzebny jest magazyn w centrum usług społecznych.",
-  "Centrum usług społecznych i sołtysi.",
-  "Sprzęt może nie wracać w terminie.",
-  "Po roku co najmniej dwadzieścia wypożyczeń.",
-];
-
+const values = {
+  ...EMPTY_IDEA_DRAFT,
+  title: "Wypożyczalnia sprzętu",
+  problem: "Seniorzy nie mają sprzętu do rehabilitacji.",
+  targetGroup: "Seniorzy i opiekunowie",
+  summary: "Świetlica pożycza balkoniki na dwa tygodnie.",
+};
 beforeEach(() => {
   window.localStorage.clear();
   saveIdea.mockClear();
 });
-
-afterEach(() => {
-  cleanup();
-});
-
+afterEach(cleanup);
+async function fillIdea(user: ReturnType<typeof userEvent.setup>) {
+  for (const field of ["title", "problem", "targetGroup", "summary"] as const) {
+    await user.click(
+      screen.getByLabelText(fieldLabel(field), { exact: false }),
+    );
+    await user.paste(values[field]);
+  }
+  await user.click(screen.getByRole("button", { name: "Dalej" }));
+}
 describe("IdeaWizard", () => {
-  it("announces a validation error and moves focus with the step", async () => {
+  it("focuses the error summary and headings on step changes", async () => {
     const user = userEvent.setup();
     render(<IdeaWizard call={null} signedIn={false} />);
-
     await user.click(screen.getByRole("button", { name: "Dalej" }));
-    const [summary, alert] = await screen.findAllByRole("alert");
+    const summary = (await screen.findAllByRole("alert"))[0];
     await waitFor(() => expect(summary).toHaveFocus());
     expect(within(summary).getByRole("link")).toHaveAttribute(
       "href",
-      "#idea-problem",
+      "#idea-title",
     );
-    expect(alert).toHaveTextContent("Jaki problem chcesz rozwiązać?");
-    expect(
-      screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
-    ).toHaveAttribute("aria-describedby", "idea-problem-error");
-
-    await user.type(
-      screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
-      answers[0],
+    await fillIdea(user);
+    expect(screen.getByRole("heading", { name: "Wdrożenie" })).toHaveFocus();
+    expect(screen.getByLabelText(fieldLabel("solution"))).not.toHaveAttribute(
+      "aria-required",
     );
-    await user.click(screen.getByRole("button", { name: "Dalej" }));
-
-    const heading = await screen.findByRole("heading", {
-      name: "Kogo dotyczy?",
-    });
-    await waitFor(() => expect(heading).toHaveFocus());
-
     await user.click(screen.getByRole("button", { name: "Wstecz" }));
-    expect(
-      await screen.findByRole("heading", {
-        name: "Jaki problem chcesz rozwiązać?",
-      }),
-    ).toHaveFocus();
+    expect(screen.getByRole("heading", { name: "Pomysł" })).toHaveFocus();
   });
-
-  it("starts a new idea at step 1, empty, ignoring an old autosave", () => {
+  it("opens an old step 8 draft at summary and preserves its answers", () => {
     window.localStorage.setItem(
       LOCAL_DRAFT_KEY,
-      JSON.stringify({ step: 8, values: { problem: "Stary szkic." } }),
+      JSON.stringify({ step: 8, values }),
     );
     render(<IdeaWizard call={null} signedIn={false} />);
-
-    expect(screen.getByText("Krok 1 z 9")).toBeInTheDocument();
-    expect(
-      screen.getByRole("textbox", { name: "Jaki problem chcesz rozwiązać?" }),
-    ).toHaveValue("");
-    expect(window.localStorage.getItem(LOCAL_DRAFT_KEY)).toBeNull();
+    expect(screen.getByText("Krok 3 z 3")).toBeInTheDocument();
+    expect(screen.getByText(values.problem)).toBeInTheDocument();
   });
-
-  it("submits an edited draft as an update of the same row", async () => {
+  it("starts an empty new idea at step 1", () => {
+    render(<IdeaWizard call={null} signedIn={false} />);
+    expect(screen.getByText("Krok 1 z 3")).toBeInTheDocument();
+    expect(
+      screen.getByLabelText(fieldLabel("title"), { exact: false }),
+    ).toHaveValue("");
+  });
+  it("submits successfully with implementation skipped", async () => {
     const user = userEvent.setup();
-    saveIdea.mockResolvedValueOnce({
-      ok: true,
-      storage: "database",
-      id: "11111111-1111-4111-8111-111111111111",
-    } as never);
-    const values = {
-      problem: answers[0],
-      targetGroup: answers[1],
-      summary: answers[2],
-      solution: answers[3],
-      novelty: answers[4],
-      resources: answers[5],
-      partners: answers[6],
-      risks: answers[7],
-      successMeasures: answers[8],
-      title: "Wypożyczalnia sprzętu",
-      stage: "idea" as const,
-      municipality: "Gdów",
-    };
+    render(<IdeaWizard call={grantCalls[0]} signedIn={false} />);
+    await fillIdea(user);
+    await user.click(screen.getByRole("button", { name: "Pomiń ten krok" }));
+    expect(
+      screen.getByRole("heading", { name: "Podsumowanie", level: 2 }),
+    ).toHaveFocus();
+    expect(screen.getByText(/Uzupełnij krok „Wdrożenie”/)).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Wyślij do Hubu" }));
+    await waitFor(() => expect(saveIdea).toHaveBeenCalledTimes(1));
+    expect(saveIdea.mock.calls[0][0]).toMatchObject({
+      status: "submitted",
+      canvas: { problem: values.problem },
+    });
+    const saved = JSON.parse(window.localStorage.getItem(LOCAL_IDEAS_KEY)!)[0];
+    expect(saved.canvas).toEqual({ problem: values.problem });
+  });
+  it("saves every filled implementation field", async () => {
+    const user = userEvent.setup();
+    render(<IdeaWizard call={null} signedIn={false} />);
+    await fillIdea(user);
+    for (const field of IMPLEMENTATION_FIELDS) {
+      await user.click(screen.getByLabelText(fieldLabel(field)));
+      await user.paste("Plan działań");
+    }
+    await user.click(screen.getByRole("button", { name: "Dalej" }));
+    await user.click(screen.getByRole("button", { name: "Zapisz szkic" }));
+    await waitFor(() => expect(saveIdea).toHaveBeenCalledTimes(1));
+    expect(saveIdea.mock.calls[0][0]).toMatchObject({
+      canvas: Object.fromEntries(
+        IMPLEMENTATION_FIELDS.map((field) => [field, "Plan działań"]),
+      ),
+    });
+  });
+  it("updates an existing draft instead of inserting a new row", async () => {
+    const user = userEvent.setup();
     render(
       <IdeaWizard
         call={null}
@@ -128,69 +127,10 @@ describe("IdeaWizard", () => {
         initialDraft={{ id: "11111111-1111-4111-8111-111111111111", values }}
       />,
     );
-
-    expect(screen.getByText("Krok 9 z 9")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Wyślij do Hubu" }));
-
-    await waitFor(() => expect(saveIdea).toHaveBeenCalledTimes(1));
-    expect(saveIdea.mock.calls[0]![0]).toMatchObject({
+    expect(saveIdea.mock.calls[0][0]).toMatchObject({
       id: "11111111-1111-4111-8111-111111111111",
       status: "submitted",
-      title: "Wypożyczalnia sprzętu",
     });
   });
-
-  it("walks all nine steps and keeps the idea in the browser", async () => {
-    const user = userEvent.setup();
-    render(<IdeaWizard call={grantCalls[0]} signedIn={false} />);
-
-    const single = [
-      "Jaki problem chcesz rozwiązać?",
-      "Kogo dotyczy?",
-      "Na czym polega Twój pomysł? (2–3 zdania)",
-      "Jak to będzie działać w praktyce?",
-      "Co jest w tym nowego?",
-    ];
-    for (const [index, name] of single.entries()) {
-      await user.type(screen.getByRole("textbox", { name }), answers[index]);
-      await user.click(screen.getByRole("button", { name: "Dalej" }));
-    }
-
-    await user.type(
-      screen.getByLabelText("Czego potrzebujesz?", { exact: false }),
-      answers[5],
-    );
-    await user.type(
-      screen.getByLabelText("Z kim chcesz współpracować?", { exact: false }),
-      answers[6],
-    );
-    await user.click(screen.getByRole("button", { name: "Dalej" }));
-    await user.type(
-      screen.getByRole("textbox", { name: "Co może pójść nie tak?" }),
-      answers[7],
-    );
-    await user.click(screen.getByRole("button", { name: "Dalej" }));
-    await user.type(
-      screen.getByRole("textbox", { name: "Po czym poznasz, że działa?" }),
-      answers[8],
-    );
-    await user.click(screen.getByRole("button", { name: "Dalej" }));
-
-    await user.type(
-      screen.getByLabelText("Tytuł pomysłu", { exact: false }),
-      "Wypożyczalnia sprzętu",
-    );
-    expect(
-      screen.getByRole("button", { name: "Przygotuj szkic wniosku" }),
-    ).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Zapisz szkic" }));
-
-    await waitFor(() => {
-      const stored = window.localStorage.getItem(LOCAL_IDEAS_KEY);
-      expect(stored).toContain("Wypożyczalnia sprzętu");
-    });
-    expect(screen.getByRole("status")).toHaveTextContent("tej przeglądarce");
-    // Nine steps of typed input take about 5 s on a CI runner, right at the
-    // default limit.
-  }, 20_000);
 });

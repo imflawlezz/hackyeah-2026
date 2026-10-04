@@ -1,4 +1,5 @@
 import type { InnovationInput } from "@/lib/admin/innovation-schema";
+import { toIdea } from "@/lib/data/ideas";
 import type {
   AdminIdea,
   AdminInnovation,
@@ -11,7 +12,7 @@ export const ADMIN_INNOVATION_COLUMNS =
 export const ADMIN_PROBLEM_COLUMNS =
   "id, description, category, status, best_score, source, admin_note, created_at";
 export const ADMIN_IDEA_COLUMNS =
-  "id, title, essence, target_group, stage, status, idea_reviews(note), created_at";
+  "id, title, essence, target_group, stage, status, canvas, idea_reviews(note), created_at";
 
 export type AdminInnovationRow = {
   id: string;
@@ -41,6 +42,7 @@ export type AdminProblemRow = {
 };
 
 export type AdminIdeaRow = {
+  canvas?: unknown;
   id: string;
   title: string;
   essence: string;
@@ -104,6 +106,7 @@ export function toAdminProblem(row: AdminProblemRow): AdminProblem {
 /** ideas.essence ↔ Idea.summary */
 export function toAdminIdea(row: AdminIdeaRow): AdminIdea {
   return {
+    canvas: toIdea(row).canvas,
     id: row.id,
     title: row.title,
     summary: row.essence,

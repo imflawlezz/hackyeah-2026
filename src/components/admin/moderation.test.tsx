@@ -75,6 +75,21 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("Moderation", () => {
+  it("shows only nonempty canvas fields in the idea view", () => {
+    render(
+      <Moderation
+        ideas={[
+          { ...ideas[0], canvas: { solution: "Plan sąsiedzki", risks: "  " } },
+        ]}
+        problems={[]}
+        drafts={[]}
+      />,
+    );
+    expect(screen.getByText("Plan sąsiedzki")).toBeInTheDocument();
+    expect(
+      screen.queryByText("Co może pójść nie tak?"),
+    ).not.toBeInTheDocument();
+  });
   it("shows each tab with its label and count, and marks the selected one", async () => {
     const user = userEvent.setup();
     renderModeration("problems");

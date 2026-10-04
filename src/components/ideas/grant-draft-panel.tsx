@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { IMPLEMENTATION_FIELDS } from "@/lib/ideas/draft";
 import { useId, useState } from "react";
 import { toast } from "sonner";
 import type { GrantCall, GrantDraftSection } from "@/types";
@@ -24,10 +26,12 @@ export function GrantDraftPanel({
   call,
   idea,
   signedIn,
+  onEditImplementation,
 }: {
   call: GrantCall;
   idea: GrantIdeaInput & { id?: string };
   signedIn: boolean;
+  onEditImplementation?: () => void;
 }) {
   const baseId = useId();
   const [sections, setSections] = useState<GrantDraftSection[] | null>(null);
@@ -122,6 +126,31 @@ export function GrantDraftPanel({
       <h2 id={`${baseId}-title`} className="text-2xl text-heading">
         Generator wniosków
       </h2>
+      {!IMPLEMENTATION_FIELDS.some((field) => idea.canvas?.[field]?.trim()) ? (
+        <p>
+          Uzupełnij krok „Wdrożenie”, aby wniosek był pełniejszy.{" "}
+          {onEditImplementation ? (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onEditImplementation}
+            >
+              Uzupełnij wdrożenie
+            </Button>
+          ) : (
+            <Link
+              className="underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-ring"
+              href={
+                idea.id
+                  ? "/ideas/new?draft=" + encodeURIComponent(idea.id)
+                  : "/ideas/new"
+              }
+            >
+              Edytuj pomysł
+            </Link>
+          )}
+        </p>
+      ) : null}
       <p className="max-w-2xl">{call.title}</p>
       <p className="text-sm">
         Nabór od {formatDate(call.startsAt)} do {formatDate(call.endsAt)}.{" "}

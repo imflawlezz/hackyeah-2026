@@ -5,6 +5,10 @@ import { getCurrentUser } from "@/lib/auth/session";
 import { fromIdea } from "@/lib/data/ideas";
 import { createClient, hasSupabase } from "@/lib/supabase/server";
 
+const optionalCanvasField = z.preprocess(
+  (value) => (typeof value === "string" && !value.trim() ? undefined : value),
+  z.string().trim().min(3).max(2000).optional(),
+);
 const saveIdeaSchema = z.object({
   id: z.string().max(80).optional(),
   title: z.string().trim().min(3).max(160),
@@ -13,15 +17,21 @@ const saveIdeaSchema = z.object({
   stage: z.enum(["idea", "prototype", "pilot"]),
   status: z.enum(["draft", "submitted"]),
   municipality: z.string().trim().max(120).optional(),
-  canvas: z.object({
-    problem: z.string().trim().min(10).max(2000),
-    solution: z.string().trim().min(10).max(2000),
-    novelty: z.string().trim().min(10).max(2000),
-    resources: z.string().trim().min(3).max(2000),
-    partners: z.string().trim().min(3).max(2000),
-    risks: z.string().trim().min(3).max(2000),
-    successMeasures: z.string().trim().min(3).max(2000),
-  }),
+  canvas: z
+    .object({
+      problem: z.preprocess(
+        (value) =>
+          typeof value === "string" && !value.trim() ? undefined : value,
+        z.string().trim().min(10).max(2000).optional(),
+      ),
+      solution: optionalCanvasField,
+      novelty: optionalCanvasField,
+      resources: optionalCanvasField,
+      partners: optionalCanvasField,
+      risks: optionalCanvasField,
+      successMeasures: optionalCanvasField,
+    })
+    .default({}),
 });
 
 const saveGrantDraftSchema = z.object({
@@ -60,7 +70,12 @@ export async function saveIdea(
   const supabase = await createClient();
   if (!supabase) return { ok: true, storage: "browser" };
 
-  const payload = fromIdea(parsed.data);
+  const payload = fromIdea({
+    ...parsed.data,
+    canvas: Object.fromEntries(
+      Object.entries(parsed.data.canvas).filter(([, value]) => value),
+    ),
+  });
   const existingId =
     parsed.data.id && UUID.test(parsed.data.id) ? parsed.data.id : null;
 

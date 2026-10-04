@@ -46,6 +46,18 @@ beforeEach(async () => {
 });
 
 describe("POST /api/ideas/grant-draft", () => {
+  it("generates a grant draft from an empty canvas", async () => {
+    const response = await POST(
+      request({ callId: DEMO_GRANT_CALL_ID, idea: { ...idea, canvas: {} } }),
+    );
+    expect(response.status).toBe(200);
+    const payload = await response.json();
+    expect(
+      payload.sections.find(
+        (section: { key: string }) => section.key === "rozwiązanie",
+      ).body,
+    ).toContain(idea.summary);
+  });
   it("returns one template section per required section without a key", async () => {
     const response = await POST(request({ callId: DEMO_GRANT_CALL_ID, idea }));
     expect(response.status).toBe(200);

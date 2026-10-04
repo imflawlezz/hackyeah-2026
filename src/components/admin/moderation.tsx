@@ -2,6 +2,7 @@
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { fieldLabel, IMPLEMENTATION_FIELDS } from "@/lib/ideas/draft";
 import { useRouter, useSearchParams } from "next/navigation";
 import { startTransition, useOptimistic, useState } from "react";
 import {
@@ -157,6 +158,24 @@ export function Moderation({
                       {idea.title}
                     </h3>
                     <p>{idea.summary}</p>
+                    {(["problem", ...IMPLEMENTATION_FIELDS] as const).some(
+                      (field) => idea.canvas?.[field]?.trim(),
+                    ) ? (
+                      <dl className="flex flex-col gap-2.5">
+                        {(["problem", ...IMPLEMENTATION_FIELDS] as const)
+                          .filter((field) => idea.canvas?.[field]?.trim())
+                          .map((field) => (
+                            <div key={field}>
+                              <dt className="font-semibold">
+                                {fieldLabel(field)}
+                              </dt>
+                              <dd className="[overflow-wrap:anywhere] whitespace-pre-wrap">
+                                {idea.canvas?.[field]}
+                              </dd>
+                            </div>
+                          ))}
+                      </dl>
+                    ) : null}
                     <p className={META}>
                       <span>
                         <span className="font-semibold text-foreground">

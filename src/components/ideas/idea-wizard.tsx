@@ -52,9 +52,11 @@ export type WizardDraft = { id: string; values: IdeaDraftValues };
 
 const LAST_STEP = IDEA_STEPS.length - 1;
 
-/** validateIdeaStep checks every field except these two; stage always has a value. */
+/** Implementation fields and municipality are optional; stage has a default. */
 function isRequiredIdeaField(field: keyof IdeaDraftValues): boolean {
-  return field !== "municipality";
+  return ["title", "problem", "targetGroup", "summary", "stage"].includes(
+    field,
+  );
 }
 
 export function IdeaWizard({
@@ -93,9 +95,44 @@ export function IdeaWizard({
   const editing = initialDraft ?? localDraft;
   // A new idea starts empty at step 1; an edited draft opens at the summary,
   // where it can be checked and sent.
+  const legacyRaw = useSyncExternalStore(
+    subscribe,
+    () => {
+      try {
+        return window.localStorage.getItem(LOCAL_DRAFT_KEY) ?? "";
+      } catch {
+        return "";
+      }
+    },
+    () => "",
+  );
+  let legacy: { step: number; values: IdeaDraftValues } | undefined;
+  try {
+    const parsed = legacyRaw ? JSON.parse(legacyRaw) : null;
+    if (
+      parsed &&
+      Number.isInteger(parsed.step) &&
+      parsed.values &&
+      typeof parsed.values === "object"
+    ) {
+      const restored = { ...EMPTY_IDEA_DRAFT };
+      for (const field of Object.keys(restored) as (keyof IdeaDraftValues)[]) {
+        if (field !== "stage" && typeof parsed.values[field] === "string")
+          restored[field] = parsed.values[field];
+      }
+      if (["idea", "prototype", "pilot"].includes(parsed.values.stage))
+        restored.stage = parsed.values.stage;
+      legacy = {
+        step: Math.max(0, Math.min(parsed.step, LAST_STEP)),
+        values: restored,
+      };
+    }
+  } catch {
+    /* Ignore malformed legacy drafts. */
+  }
   const stored = editing
     ? { step: LAST_STEP, values: editing.values }
-    : { step: 0, values: EMPTY_IDEA_DRAFT };
+    : (legacy ?? { step: 0, values: EMPTY_IDEA_DRAFT });
   const [edits, setEdits] = useState<{
     step: number;
     values: IdeaDraftValues;
@@ -120,16 +157,6 @@ export function IdeaWizard({
   const [newId, setNewId] = useState<string>();
   // Saving or sending an edited draft always updates that row, never inserts.
   const savedId = newId ?? editing?.id;
-
-  useEffect(() => {
-    // Older versions autosaved a half-filled form here and reopened it at the
-    // last step on every visit; that copy is no longer used.
-    try {
-      window.localStorage.removeItem(LOCAL_DRAFT_KEY);
-    } catch {
-      /* Storage may be blocked; nothing to clean up then. */
-    }
-  }, []);
 
   useEffect(() => {
     if (skipFocus.current) {
@@ -190,9 +217,15 @@ export function IdeaWizard({
   }
 
   async function finish(status: Idea["status"]) {
-    const issue = validateIdeaStep(step, values);
+    const invalidStep = [0, LAST_STEP].find((index) =>
+      validateIdeaStep(index, values),
+    );
+    const issue =
+      invalidStep === undefined ? null : validateIdeaStep(invalidStep, values);
     if (issue) {
+      changeStep(invalidStep!);
       setError(issue);
+      setStepAttempts((count) => count + 1);
       fieldRefs.current.get(issue.field)?.focus();
       return;
     }
@@ -237,8 +270,10 @@ export function IdeaWizard({
                   : "border border-border px-2 py-1"
               }
             >
-              <span className="sr-only">{item.title}</span>
-              <span aria-hidden="true">{index + 1}</span>
+              <span>
+                {index + 1}. {item.title}
+                {item.optional ? " (opcjonalnie)" : ""}
+              </span>
             </li>
           ))}
         </ol>
@@ -254,7 +289,14 @@ export function IdeaWizard({
             <RequiredMark />
           ) : null}
         </h2>
-        {current.review ? null : <RequiredFieldsNote />}
+        {current.optional ? (
+          <p>
+            Masz już plan wdrożenia? Uzupełnij. Jeśli nie, możesz pominąć ten
+            krok.
+          </p>
+        ) : (
+          <RequiredFieldsNote />
+        )}
         {stepAttempts > 0 && error ? (
           <ErrorSummary ref={summaryRef} errors={summaryErrors} />
         ) : null}
@@ -287,6 +329,18 @@ export function IdeaWizard({
               Wstecz
             </Button>
           ) : null}
+          {current.optional ? (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                setError(null);
+                changeStep(LAST_STEP);
+              }}
+            >
+              Pomiń ten krok
+            </Button>
+          ) : null}
           {step < IDEA_STEPS.length - 1 ? (
             <Button type="button" onClick={goNext}>
               Dalej
@@ -312,7 +366,12 @@ export function IdeaWizard({
           )}
         </div>
         {current.review && call ? (
-          <GrantDraftPanel call={call} idea={preview} signedIn={signedIn} />
+          <GrantDraftPanel
+            call={call}
+            idea={preview}
+            signedIn={signedIn}
+            onEditImplementation={() => changeStep(1)}
+          />
         ) : null}
       </div>
     </IdeaWorkspace>
@@ -335,22 +394,16 @@ function Review({
         Podsumowanie
       </h3>
       <dl className="flex flex-col gap-2">
-        <div>
-          <dt className="font-semibold">Tytuł</dt>
-          <dd>{values.title || "Nie podano."}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold">Dla kogo</dt>
-          <dd>{values.targetGroup}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold">Istota</dt>
-          <dd>{values.summary}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold">Etap</dt>
-          <dd>{STAGE_LABEL[values.stage]}</dd>
-        </div>
+        {(Object.keys(values) as (keyof IdeaDraftValues)[])
+          .filter((field) => values[field].trim())
+          .map((field) => (
+            <div key={field}>
+              <dt className="font-semibold">{fieldLabel(field)}</dt>
+              <dd className="[overflow-wrap:anywhere] whitespace-pre-wrap">
+                {field === "stage" ? STAGE_LABEL[values.stage] : values[field]}
+              </dd>
+            </div>
+          ))}
       </dl>
       {browserOnly ? <p role="status">{BROWSER_NOTICE}</p> : null}
     </section>

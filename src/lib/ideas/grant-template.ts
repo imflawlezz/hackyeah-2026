@@ -12,7 +12,8 @@ const FIELD_TEXT: Record<string, (idea: GrantIdeaInput) => string | undefined> =
   {
     problem: (idea) => idea.canvas?.problem || idea.summary,
     rozwiązanie: (idea) =>
-      [idea.canvas?.solution, idea.canvas?.novelty].filter(Boolean).join(" "),
+      [idea.canvas?.solution, idea.canvas?.novelty].filter(Boolean).join(" ") ||
+      [idea.title, idea.summary].filter(Boolean).join(". "),
     odbiorcy: (idea) => idea.targetGroup,
     harmonogram: () => undefined,
     budżet: () => undefined,

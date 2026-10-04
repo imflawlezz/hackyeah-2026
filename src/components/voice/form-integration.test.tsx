@@ -5,6 +5,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from "@testing-library/react";
 import { afterEach, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
@@ -51,10 +52,12 @@ it("appends through the idea field callback without saving or advancing", () => 
   });
   fireEvent.change(field, { target: { value: "Ręcznie wpisany problem" } });
   fireEvent.click(
-    screen.getByRole("button", { name: "Wstaw transkrypcję testową" }),
+    within(field.parentElement!).getByRole("button", {
+      name: "Wstaw transkrypcję testową",
+    }),
   );
   expect(field).toHaveValue("Ręcznie wpisany problem\nDyktowany tekst");
-  expect(screen.getByText("Krok 1 z 9")).toBeInTheDocument();
+  expect(screen.getByText("Krok 1 z 3")).toBeInTheDocument();
   expect(mocks.save).not.toHaveBeenCalled();
 });
 it("appends to the controlled new message body without sending", () => {
