@@ -100,12 +100,14 @@ To set up a fresh project, open the Supabase SQL Editor and run, in order:
 5. `supabase/migrations/0004_innovation_testing.sql` (innovation tester; idempotent, seeds 3 fictional tests)
 6. `supabase/migrations/0005_messages_notifications.sql` (conversations, messages, notifications, triggers, Realtime publication)
 7. `supabase/migrations/0006_admin_moderation.sql` (innovation status, problem scores, idea review fields, `problem_trends`)
+8. `supabase/migrations/0007_idea_reviews.sql` (private ROPS responses to idea authors)
+9. `supabase/migrations/0008_revoke_trigger_rpc.sql` (trigger functions are no longer callable as RPC; safe to re-run)
 
 Then, from the repo root with `.env.local` filled in:
 
-8. `npm run embed:innovations` embeds innovations that have no vector yet (needs `OPENAI_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY`). Add `-- --all` to re-embed every row, which is required whenever `innovationEmbeddingText` in `src/lib/ai/embeddings.ts` changes.
-9. `npm run demo:users` creates the four demo accounts (see [Demo accounts](#demo-accounts)).
-10. In the Supabase dashboard, set the auth URLs (see [Auth URL configuration](#auth-url-configuration)).
+10. `npm run embed:innovations` embeds innovations that have no vector yet (needs `OPENAI_API_KEY` and `SUPABASE_SERVICE_ROLE_KEY`). Add `-- --all` to re-embed every row, which is required whenever `innovationEmbeddingText` in `src/lib/ai/embeddings.ts` changes.
+11. `npm run demo:users` creates the four demo accounts (see [Demo accounts](#demo-accounts)).
+12. In the Supabase dashboard, set the auth URLs (see [Auth URL configuration](#auth-url-configuration)).
 
 | Table                       | Who can read                                   | Who can write                                                                                 |
 | --------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -240,6 +242,56 @@ A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/au
 | `jst@hubmi.example`      | `jst`      |
 | `expert@hubmi.example`   | `expert`   |
 | `admin@hubmi.example`    | `admin`    |
+
+## Security
+
+### Response headers
+
+`next.config.ts` sends these on every route (built in `src/lib/security/headers.ts`, asserted in `headers.test.ts`). `X-Powered-By` is off; Vercel adds `Strict-Transport-Security`.
+
+| Header                    | Value                                          | Why                                                   |
+| ------------------------- | ---------------------------------------------- | ----------------------------------------------------- |
+| `X-Content-Type-Options`  | `nosniff`                                      | no MIME sniffing                                      |
+| `Referrer-Policy`         | `strict-origin-when-cross-origin`              | other sites see the origin only, never the path       |
+| `X-Frame-Options`         | `DENY`                                         | the site cannot be framed (with `frame-ancestors`)    |
+| `Permissions-Policy`      | `camera=(), geolocation=(), microphone=(self)` | only voice input uses a device, and only on this site |
+| `Content-Security-Policy` | see below                                      | limits where code, frames and requests may come from  |
+
+The content security policy:
+
+- `default-src 'self'`; `object-src 'none'`; `base-uri 'self'`; `form-action 'self'`; `frame-ancestors 'none'`.
+- `script-src 'self' 'unsafe-inline'` and `style-src 'self' 'unsafe-inline'`. Inline scripts are the font-size and theme init scripts and the Next.js bootstrap data.
+- `connect-src 'self'` plus the Supabase project (`https://<ref>.supabase.co` and `wss://<ref>.supabase.co` for Realtime), taken from `NEXT_PUBLIC_SUPABASE_URL` at build time. OpenAI is called only from the server, so it is not listed.
+- `img-src 'self' data: blob: https:`; `font-src 'self'` (Open Sans is self-hosted); `media-src 'self' blob:`.
+- `frame-src 'self' https://www.youtube-nocookie.com`, the only embed (the film on an innovation page). A new embed provider must be added in `headers.ts`.
+- `next dev` also gets `'unsafe-eval'` and `ws:` for hot reload. Vercel preview deployments also allow `vercel.live` for the comments toolbar. Production gets neither.
+
+### Data access
+
+- **Row level security is on for every table**; the table in [Database](#database) lists who can read and write. The proxy and the layouts check roles first, but RLS is the boundary.
+- **The service role key is server-only.** It is used where RLS cannot express the need: storing the anonymised `problems` row after a `/match` search, admin panel reads and writes (after the server has checked the admin role), the embedding backfill and the demo-account script.
+- **`SECURITY DEFINER` functions** run with the owner's rights, so each one sets an empty `search_path` and limits its own output:
+
+| Function                                                      | Callable by         | Why it is a definer                                                      |
+| ------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------ |
+| `is_admin()`                                                  | anon, authenticated | RLS policies ask for the caller's role without recursing into `profiles` |
+| `innovation_feedback_summary(uuid)`, `test_slots_taken(uuid)` | anon, authenticated | public pages show counts and averages; the rows stay private             |
+| `is_conversation_participant(uuid)`                           | authenticated       | RLS on messages asks whether the caller takes part                       |
+| `conversation_people(uuid)`, `list_experts()`                 | authenticated       | names of the other participants and of experts, not whole profiles       |
+| `start_conversation(...)`                                     | authenticated       | creates the conversation and both participants in one step               |
+| `notify_message()`, `notify_idea_status()`                    | nobody (triggers)   | insert notifications for other users; `0008` revokes them from RPC       |
+| `handle_new_user()`, `guard_test_signup()`                    | nobody (triggers)   | create the profile row; count sign-ups the user cannot see               |
+
+- **Input from visitors** is validated with zod on the server. Problem descriptions are scrubbed of e-mail addresses and phone numbers before they are stored, and logs record lengths, never texts.
+- **Rate limits** protect the AI routes (`/api/match`, `/api/assistant`, `/api/transcribe`, institution and grant-draft routes) per IP address.
+
+### Before production
+
+- [ ] **Custom SMTP** and e-mail confirmation back on (see [E-mail confirmation](#e-mail-confirmation)).
+- [ ] **Leaked password protection** in Supabase → Authentication → Sign In / Providers → Email → Password security. It needs the Pro plan; the demo project is on the free plan, so it is off. Set the minimum password length to 8 there as well, to match the sign-up form.
+- [ ] **Nonce-based CSP** instead of `'unsafe-inline'` for scripts. It needs a nonce generated per request in `src/proxy.ts`, which makes every page dynamic.
+- [ ] **Rate limits in a shared store** (for example Upstash Redis or a Postgres table). Today they live in the memory of each serverless instance, so the real limit is per instance and resets on a cold start.
+- [ ] Run `0008_revoke_trigger_rpc.sql` and check the Supabase security advisor again.
 
 ## Design system and accessibility
 
