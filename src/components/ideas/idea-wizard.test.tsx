@@ -190,5 +190,7 @@ describe("IdeaWizard", () => {
       expect(stored).toContain("Wypożyczalnia sprzętu");
     });
     expect(screen.getByRole("status")).toHaveTextContent("tej przeglądarce");
-  });
+    // Nine steps of typed input take about 5 s on a CI runner, right at the
+    // default limit.
+  }, 20_000);
 });
