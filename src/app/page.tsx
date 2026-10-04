@@ -11,20 +11,6 @@ const exampleProblem = problems.find(
 const exampleInnovation = innovations.find(
   (innovation) => innovation.id === "inn-mobile-access",
 )!;
-const steps = [
-  [
-    "Opisz problem",
-    "Napisz, kogo dotyczy problem, gdzie występuje i czego brakuje.",
-  ],
-  [
-    "Porównujemy opis z bazą innowacji",
-    "Szukamy rozwiązań związanych z Twoim opisem i wybraną kategorią.",
-  ],
-  [
-    "Sprawdź, co pasuje, i napisz do Hubu",
-    "Przeczytaj uzasadnienia. Zastanów się, co można wykorzystać w Twojej gminie.",
-  ],
-];
 const challenges = [
   ["Starzenie się społeczeństwa", "Opieka"],
   ["Zdrowie psychiczne", "Zdrowie psychiczne"],
@@ -34,43 +20,21 @@ const challenges = [
   ["Współpraca instytucji", ""],
   ["Wyludnianie się miejscowości", ""],
 ];
-const audiences = [
-  [
-    "Mieszkańcy i organizacje społeczne",
-    "Opisz potrzebę sąsiadów lub poszukaj rozwiązania dla osób, którym pomagasz.",
-  ],
-  [
-    "Gminy i samorządy",
-    "Sprawdź, które pomysły mogą wesprzeć pracę Twojej gminy, CUS lub OPS.",
-  ],
-  [
-    "Eksperci i zespół ROPS",
-    "Porównaj potrzeby mieszkańców z przykładami działań i pomóż dobrać kolejne kroki.",
-  ],
-];
 
 export default function HomePage() {
   return (
-    <div className="space-y-14 py-4 sm:py-8">
+    <div className="flex flex-col gap-8">
       <Suspense fallback={null}>
         <ForbiddenNotice />
       </Suspense>
       <section
         aria-labelledby="hero-heading"
-        className="grid items-start gap-10 lg:grid-cols-12"
+        className="grid items-start gap-8 lg:grid-cols-12"
       >
         <div className="space-y-6 lg:col-span-7">
-          <p className="text-sm font-semibold text-muted-foreground">
-            Małopolski Hub Innowacji Społecznych · ROPS Kraków
-          </p>
-          <h1 id="hero-heading" className="text-3xl font-semibold sm:text-4xl">
-            Opisz, czego brakuje w Twojej okolicy. Poznaj pomysły dla swojej
-            gminy.
+          <h1 id="hero-heading" className="text-3xl font-semibold">
+            Opisz, czego brakuje w Twojej okolicy.
           </h1>
-          <p className="max-w-[65ch] text-lg">
-            Samotność, opieka nad bliskimi, dostęp do usług. Znajdź przykłady
-            działań, które odpowiadają na potrzeby mieszkańców Małopolski.
-          </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <Link
               href="/match"
@@ -91,22 +55,14 @@ export default function HomePage() {
         </div>
         <aside
           aria-labelledby="example-heading"
-          className="min-w-0 rounded-md border border-border bg-muted p-6 lg:col-span-5"
+          className="min-w-0 border border-border p-6 lg:col-span-5"
         >
-          <p className="text-sm font-semibold text-muted-foreground">
-            Przykład z bazy prototypu
-          </p>
-          <h2 id="example-heading" className="mt-4 text-xl font-semibold">
+          <h2 id="example-heading" className="text-xl font-semibold">
             Dostępny urząd
           </h2>
           <p className="mt-2.5 text-base">{exampleProblem.description}</p>
           <div className="mt-6 border-t border-border pt-6">
-            <p className="text-sm text-muted-foreground">
-              Pomysł do sprawdzenia
-            </p>
-            <h3 className="mt-2 text-xl font-semibold">
-              {exampleInnovation.title}
-            </h3>
+            <h3 className="text-xl font-semibold">{exampleInnovation.title}</h3>
             <p className="mt-2.5 text-base">
               <span className="font-semibold">Dla kogo: </span>
               {exampleInnovation.targetGroup}
@@ -119,46 +75,12 @@ export default function HomePage() {
         </aside>
       </section>
       <section
-        aria-labelledby="how-heading"
-        className="border-t border-border pt-10"
-      >
-        <h2 id="how-heading" className="text-2xl font-semibold">
-          Jak to działa
-        </h2>
-        <ol className="mt-6 divide-y divide-border">
-          {steps.map(([title, description], index) => (
-            <li
-              key={title}
-              className="grid gap-2.5 py-6 sm:grid-cols-[3rem_1fr_1fr] sm:gap-6"
-            >
-              <span
-                aria-hidden="true"
-                className="text-2xl font-semibold text-heading tabular-nums"
-              >
-                0{index + 1}
-              </span>
-              <h3 className="text-xl font-semibold">
-                <span className="sr-only">Krok {index + 1}. </span>
-                {title}
-              </h3>
-              <p className="max-w-[65ch] text-base text-muted-foreground">
-                {description}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section
         aria-labelledby="challenges-heading"
-        className="rounded-md bg-muted p-6 sm:p-8"
+        className="border-t border-border pt-8"
       >
         <h2 id="challenges-heading" className="text-2xl font-semibold">
           Z czym możesz przyjść
         </h2>
-        <p className="mt-2.5 max-w-[65ch]">
-          Nie musisz mieć gotowego pomysłu. Zacznij od tego, co utrudnia
-          codzienne życie w Twojej okolicy.
-        </p>
         <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
           {challenges.map(([label, category]) => (
             <li key={label} className="border-b border-border">
@@ -176,25 +98,6 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
-      <section aria-labelledby="audiences-heading">
-        <h2 id="audiences-heading" className="text-2xl font-semibold">
-          Dla kogo
-        </h2>
-        <dl className="mt-6 divide-y divide-border">
-          {audiences.map(([title, description]) => (
-            <div
-              key={title}
-              className="grid gap-2.5 py-6 sm:grid-cols-[2fr_3fr] sm:gap-10"
-            >
-              <dt className="text-xl font-semibold text-heading">{title}</dt>
-              <dd className="max-w-[65ch]">{description}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-      <p className="border-t border-border pt-6 text-sm text-muted-foreground">
-        Prototyp przygotowany na HackYeah 2026. Dane w bazie są przykładowe.
-      </p>
     </div>
   );
 }

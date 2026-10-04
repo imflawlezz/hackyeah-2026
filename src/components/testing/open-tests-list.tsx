@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Label } from "@/components/ui/label";
+import { NativeSelect } from "@/components/ui/native-select";
 import { buttonVariants } from "@/components/ui/button";
 import type { OpenTest } from "@/lib/data/testing";
 import { distinctSorted } from "@/lib/knowledge/filter";
@@ -56,11 +57,10 @@ export function OpenTestsList({
         <Label htmlFor="tests-municipality" className="text-base font-semibold">
           Gmina
         </Label>
-        <select
+        <NativeSelect
           id="tests-municipality"
           value={selected}
           onChange={(event) => setMunicipality(event.target.value)}
-          className="min-h-12 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <option value="">Wszystkie gminy</option>
           {municipalities.map((name) => (
@@ -68,7 +68,7 @@ export function OpenTestsList({
               {name}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       </div>
 
       <p

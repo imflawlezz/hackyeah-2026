@@ -51,7 +51,7 @@ export function ChartSection({
               aria-expanded={showTable}
               aria-controls={`${id}-table`}
               onClick={() => setShowTable((value) => !value)}
-              className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+              className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
             >
               {showTable ? "Ukryj tabelę" : "Pokaż dane w tabeli"}
             </Button>

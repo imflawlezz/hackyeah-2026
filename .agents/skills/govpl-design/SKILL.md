@@ -75,7 +75,7 @@ Steps: 4 / 8 / 10 / 16 / 20 / 24 / 28 / 32 / 40 / 56 / 72 px. Default vertical g
 ## 5. Forms
 
 - Label always ABOVE the field, linked with `htmlFor`/`id`. Placeholder is never a label.
-- Required fields end with ` *`. Under the form title: `* Pola obowiązkowe`. Optional fields get no marker.
+- Required fields end with a red ` *` (`text-destructive`, `aria-hidden`). The control itself has `required` or `aria-required="true"`; do not add a second visually hidden "wymagane". Under the form title: `* pole wymagane`. Optional fields get no marker.
 - Validate on blur; message under the field in `#a7162d` with an icon, linked via `aria-describedby`, field gets `aria-invalid="true"`.
 - After submit / server check: error summary box at the top (`role="alert"`, focus moved to it) listing errors as links to fields.
 - Use input masks where helpful (postal code `00-000`, phone). Related short fields side by side (nr domu / nr lokalu).

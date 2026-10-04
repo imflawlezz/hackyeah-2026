@@ -107,6 +107,41 @@ describe("high-contrast only text pairs", () => {
   });
 });
 
+describe.each([
+  [":root", 4.5],
+  ['[data-theme="high-contrast"]', 7],
+] as const)("form controls in %s", (selector, textMinimum) => {
+  const theme = tokens(selector);
+
+  it("placeholder meets the text minimum", () => {
+    expect(
+      contrastRatio(theme["muted-foreground"], theme.background),
+    ).toBeGreaterThanOrEqual(textMinimum);
+  });
+
+  it("field border, focus ring and error colour meet their minima", () => {
+    expect(contrastRatio(theme.input, theme.background)).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(contrastRatio(theme.ring, theme.background)).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(
+      contrastRatio(theme.destructive, theme.background),
+    ).toBeGreaterThanOrEqual(textMinimum);
+  });
+});
+
+describe("placeholder is lighter than entered text", () => {
+  const theme = tokens(":root");
+
+  it("uses muted text on white", () => {
+    expect(
+      contrastRatio(theme["muted-foreground"], theme.background),
+    ).toBeLessThan(contrastRatio(theme.foreground, theme.background));
+  });
+});
+
 describe("default theme follows Design System Gov.pl", () => {
   const theme = tokens(":root");
 

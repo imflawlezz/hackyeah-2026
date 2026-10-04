@@ -1,5 +1,6 @@
 "use client";
 
+import { EyeIcon } from "@heroicons/react/20/solid";
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -88,9 +89,10 @@ export function AccessibilityToolbar() {
         variant="outline"
         aria-pressed={highContrast}
         onClick={() => setTheme(highContrast ? "default" : "high-contrast")}
-        className={toggleClassName}
+        className={`${toggleClassName} max-sm:min-w-11 max-sm:px-2`}
       >
-        Wysoki kontrast
+        <EyeIcon aria-hidden="true" className="size-5 sm:hidden" />
+        <span className="max-sm:sr-only">Wysoki kontrast</span>
       </Button>
     </div>
   );

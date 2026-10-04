@@ -258,7 +258,7 @@ export function MatchResults({
               type="button"
               variant="outline"
               onClick={onRetry}
-              className="h-auto min-h-11 gap-2 px-4 py-2 text-base [&_svg:not([class*='size-'])]:size-5"
+              className="h-auto min-h-11 gap-2 px-4 py-2 [&_svg:not([class*='size-'])]:size-5"
             >
               <ArrowPathIcon aria-hidden="true" className="size-5" />
               Spróbuj ponownie

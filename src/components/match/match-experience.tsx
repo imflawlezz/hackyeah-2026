@@ -150,31 +150,13 @@ export function MatchExperience({
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)]">
-        <MatchForm
-          signedIn={signedIn}
-          defaultValues={initialValues}
-          loading={state.status === "loading"}
-          onSearch={handleSearch}
-          onInvalid={handleInvalid}
-        />
-        <aside
-          aria-labelledby="writing-tips-heading"
-          className="rounded-md border border-border bg-muted p-6"
-        >
-          <h2 id="writing-tips-heading" className="text-xl font-semibold">
-            Jak dobrze opisać problem
-          </h2>
-          <ul className="mt-4 list-disc space-y-2.5 pl-5 text-base">
-            <li>
-              Napisz, kto potrzebuje wsparcia, na przykład seniorzy lub
-              opiekunowie.
-            </li>
-            <li>Wskaż miejsce, na przykład gminę, osiedle lub świetlicę.</li>
-            <li>Podaj konkretną trudność i to, czego dziś brakuje.</li>
-          </ul>
-        </aside>
-      </div>
+      <MatchForm
+        signedIn={signedIn}
+        defaultValues={initialValues}
+        loading={state.status === "loading"}
+        onSearch={handleSearch}
+        onInvalid={handleInvalid}
+      />
       <MatchResults
         state={state}
         headingRef={headingRef}

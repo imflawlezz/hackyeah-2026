@@ -10,7 +10,6 @@ import {
   FieldError,
   FormAlert,
   PasswordField,
-  inputClassName,
   labelClassName,
 } from "@/components/auth/form-parts";
 import {
@@ -102,7 +101,6 @@ export function SignInForm({
             aria-required="true"
             aria-invalid={errors.email ? true : undefined}
             aria-describedby={errors.email ? "signin-email-error" : undefined}
-            className={inputClassName}
             {...register("email")}
           />
           <FieldError id="signin-email-error" message={errors.email?.message} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useSyncExternalStore, useState } from "react";
+import { NativeSelect } from "@/components/ui/native-select";
 import type { Idea } from "@/types";
 import { IdeaFlashcard } from "@/components/ideas/idea-flashcard";
 import { STAGE_LABEL } from "@/lib/ideas/labels";
@@ -53,13 +54,13 @@ export function IdeasBrowser({
         <label htmlFor={selectId} className="font-semibold">
           Etap
         </label>
-        <select
+        <NativeSelect
           id={selectId}
           value={stage}
           onChange={(event) =>
             setStage(event.target.value as Idea["stage"] | "")
           }
-          className="h-11 max-w-xs rounded-sm border border-input bg-background px-2.5 text-foreground"
+          className="max-w-xs"
         >
           <option value="">Wszystkie etapy</option>
           {STAGES.map((item) => (
@@ -67,7 +68,7 @@ export function IdeasBrowser({
               {STAGE_LABEL[item]}
             </option>
           ))}
-        </select>
+        </NativeSelect>
         <p aria-live="polite">
           Widoczne fiszki: {visiblePublic.length + visibleDrafts.length}.
         </p>
@@ -104,10 +105,6 @@ export function IdeasBrowser({
           </ul>
         </section>
       ) : null}
-
-      <p id="szablon-kanwy" className="text-sm text-muted-foreground">
-        Plik PDF z kanwą dodamy po uzgodnieniu wzoru z ROPS.
-      </p>
     </div>
   );
 }

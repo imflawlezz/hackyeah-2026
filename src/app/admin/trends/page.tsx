@@ -5,6 +5,7 @@ import { TrendCharts } from "@/components/admin/trend-charts";
 import { TrendSummary } from "@/components/admin/trend-summary";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { NativeSelect } from "@/components/ui/native-select";
 import { canWrite } from "@/lib/auth/admin";
 import { getTrendProblems } from "@/lib/admin/repository";
 import {
@@ -36,10 +37,7 @@ export default async function TrendsPage({
 
   return (
     <>
-      <AdminPageHeader
-        title="Trendy potrzeb"
-        description="Zbiorcze dane o problemach wpisanych w wyszukiwarce rozwiązań. Widoczne tylko dla administratorów."
-      />
+      <AdminPageHeader title="Trendy potrzeb" />
       {notice && <Notice>{notice}</Notice>}
 
       <form
@@ -51,23 +49,23 @@ export default async function TrendsPage({
           <Label htmlFor="period" className="text-base font-semibold">
             Okres
           </Label>
-          <select
+          <NativeSelect
             id="period"
             name="period"
             defaultValue={period}
-            className="min-h-11 rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring"
+            className="max-w-xs"
           >
             {TREND_PERIODS.map(({ value, label }) => (
               <option key={value} value={value}>
                 {label}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         </div>
         <Button
           type="submit"
           variant="outline"
-          className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+          className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
         >
           Pokaż
         </Button>
