@@ -1,25 +1,32 @@
-# Potrzeby czekają na lokalne rozwiązania
+# HubMI.pl: cyfrowe serce Hubu Innowacji
 
-- Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
-- Wiedza, pomysły i partnerzy są rozproszeni.
-- Mieszkaniec potrzebuje prostej drogi od problemu do działania.
+Hasła: Matchmaking społeczny z AI | 7 modułów wyzwania | Cel: WCAG 2.1 AA | Działające demo | 334 PLN netto miesięcznie
 
-Wizual: Schemat: potrzeba → wiedza → współpraca.
+- Mieszkaniec opisuje problem, AI dopasowuje innowacje z bazy wiedzy.
+- Wszystkie siedem modułów wyzwania działa w jednym prototypie.
+- Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie.
 
----
-
-# HubMI.pl łączy potrzeby z działaniem
-
-- HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu.
-- Działający prototyp dla Małopolskiego Hubu Innowacji Społecznych.
-- Baza demonstracyjna: 23 fikcyjne innowacje, zamiast danych osobowych.
-
-Wizual: Strona główna prototypu; klatka z produkcji z 4 października.
+Wizual: Strona główna; klatka z produkcji z 4 października. Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
 Obraz: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
 
 ---
 
+# Od potrzeby do działania w jednym miejscu
+
+Hasła: Matchmaking | Zasobnik wiedzy | Kreator pomysłów | Tester innowacji | Middleman innowacji
+
+- Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
+- Wiedza, pomysły i partnerzy są rozproszeni.
+- HubMI.pl łączy je z komunikacją i panelem administratora ROPS.
+
+Wizual: Wyniki dopasowania dla fikcyjnego problemu; baza demonstracyjna ma 23 fikcyjne innowacje.
+Obraz: ../../mockups/frames/match-results-desktop.png | Wyniki dopasowania: trzy innowacje z uzasadnieniem i oceną trafności.
+
+---
+
 # Jedna platforma, różne role
+
+Hasła: Tekst lub głos | Tekst 18 px | A+ i A++ | Wysoki kontrast
 
 - Mieszkańcy: opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
 - Gminy i organizacje: szukają innowacji oraz planują wdrożenie.

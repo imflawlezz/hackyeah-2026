@@ -2,24 +2,31 @@
 
 Treść zgodna z [deck.md](deck/deck.md); eksport: [hubmi-pitch.pdf](deck/hubmi-pitch.pdf). Stan: 4 października 2026.
 
-## 1. Potrzeby czekają na lokalne rozwiązania
+## 1. HubMI.pl: cyfrowe serce Hubu Innowacji
+
+Hasła: Matchmaking społeczny z AI | 7 modułów wyzwania | Cel: WCAG 2.1 AA | Działające demo | 334 PLN netto miesięcznie
+
+- Mieszkaniec opisuje problem, AI dopasowuje innowacje z bazy wiedzy.
+- Wszystkie siedem modułów wyzwania działa w jednym prototypie.
+- Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie.
+
+Wizual: Strona główna; klatka z produkcji z 4 października. Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
+Klatka makiety: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
+
+## 2. Od potrzeby do działania w jednym miejscu
+
+Hasła: Matchmaking | Zasobnik wiedzy | Kreator pomysłów | Tester innowacji | Middleman innowacji
 
 - Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
 - Wiedza, pomysły i partnerzy są rozproszeni.
-- Mieszkaniec potrzebuje prostej drogi od problemu do działania.
+- HubMI.pl łączy je z komunikacją i panelem administratora ROPS.
 
-Wizual: Schemat: potrzeba → wiedza → współpraca.
-
-## 2. HubMI.pl łączy potrzeby z działaniem
-
-- HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu.
-- Działający prototyp dla Małopolskiego Hubu Innowacji Społecznych.
-- Baza demonstracyjna: 23 fikcyjne innowacje, zamiast danych osobowych.
-
-Wizual: Strona główna prototypu; klatka z produkcji z 4 października.
-Klatka makiety: ../../mockups/frames/home-desktop.png | Strona główna HubMI.pl z wejściami do modułów.
+Wizual: Wyniki dopasowania dla fikcyjnego problemu; baza demonstracyjna ma 23 fikcyjne innowacje.
+Klatka makiety: ../../mockups/frames/match-results-desktop.png | Wyniki dopasowania: trzy innowacje z uzasadnieniem i oceną trafności.
 
 ## 3. Jedna platforma, różne role
+
+Hasła: Tekst lub głos | Tekst 18 px | A+ i A++ | Wysoki kontrast
 
 - Mieszkańcy: opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
 - Gminy i organizacje: szukają innowacji oraz planują wdrożenie.
@@ -94,15 +101,15 @@ Ujawnienie AI: HubMI.pl wykorzystuje modele OpenAI text-embedding-3-small, gpt-4
 
 Tabela nie jest częścią prezentacji. Wagi: [brief, §8](../task/CHALLENGE.md).
 
-| Slajd | Kryteria                                   |
-| ----- | ------------------------------------------ |
-| 1     | Wyzwanie 40%, materiały 10%                |
-| 2     | Wyzwanie 40%, interfejs 10%, materiały 10% |
-| 3     | Wyzwanie 40%, wdrożenie 20%                |
-| 4     | Wyzwanie 40%, dostępność 20%               |
-| 5     | Wyzwanie 40%                               |
-| 6     | Wyzwanie 40%, wdrożenie 20%                |
-| 7     | Wyzwanie 40%, wdrożenie 20%                |
-| 8     | Dostępność 20%, interfejs 10%              |
-| 9     | Wdrożenie 20%                              |
-| 10    | Wdrożenie 20%, materiały 10%               |
+| Slajd | Kryteria                                                   |
+| ----- | ---------------------------------------------------------- |
+| 1     | Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10% |
+| 2     | Wyzwanie 40%, interfejs 10%                                |
+| 3     | Wyzwanie 40%, wdrożenie 20%                                |
+| 4     | Wyzwanie 40%, dostępność 20%                               |
+| 5     | Wyzwanie 40%                                               |
+| 6     | Wyzwanie 40%, wdrożenie 20%                                |
+| 7     | Wyzwanie 40%, wdrożenie 20%                                |
+| 8     | Dostępność 20%, interfejs 10%                              |
+| 9     | Wdrożenie 20%                                              |
+| 10    | Wdrożenie 20%, materiały 10%                               |

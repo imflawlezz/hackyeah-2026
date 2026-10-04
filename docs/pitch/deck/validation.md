@@ -1,10 +1,10 @@
 # Kontrola eksportu — 4 października 2026
 
-- PDF: 10 stron, 431 032 bajty (około 0,43 MB).
+- PDF: 10 stron, 492 522 bajty (około 0,49 MB).
 - Metadane: tytuł „HubMI.pl — prezentacja prototypu HackYeah 2026”, język `pl-PL`.
 - Odczyt PDF przez pdfjs-dist: rzeczywisty tekst na każdej stronie (315–775 znaków), polskie znaki zachowane, drzewo struktury obecne na wszystkich stronach.
 - Eksporter: dokładnie 10 slajdów; tytuły do 8 słów; do 3 punktów po najwyżej 12 słów. Tekst punktów: 32 px, czyli 24 pt w PDF. Open Sans osadzony lokalnie; biały papier, tekst `#1b1b1b`, akcent `#0052a5`.
-- Brak przepełnienia wszystkich 10 slajdów; sprawdzono podglądy slajdów 7, 9 i 10. Tekst ujawnienia AI zachowany w PDF.
+- Brak przepełnienia wszystkich 10 slajdów; sprawdzono podglądy slajdów 1, 2, 3, 7, 9 i 10. Tekst ujawnienia AI zachowany w PDF.
 - Scenariusz: 329 słów narracji, plan 2:58 z ostatnią planszą bez lektora. Czas wymaga potwierdzenia próbą nagrania zespołu.
 - Prettier: wszystkie zmienione pliki Markdown i skrypt eksportu przechodzą kontrolę. `git diff --check` bez błędów.
 - Poza `scripts/render-mockups.ts` (nowy ekran logowania, logowanie na telefonie) nie zmieniano kodu aplikacji, `package.json`, blokady zależności, kosztorysu ani wykazu AI. Narzędzia eksportu i kontroli zainstalowano tymczasowo poza aplikacją.
