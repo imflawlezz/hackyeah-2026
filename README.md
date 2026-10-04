@@ -243,6 +243,15 @@ A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/au
 | `expert@hubmi.example`   | `expert`   |
 | `admin@hubmi.example`    | `admin`    |
 
+### Demo data
+
+Reset the jury database in the SQL editor as the database owner. `npm run demo:users` has to have created the four accounts first. Then run the scripts in this order:
+
+1. `supabase/seed/demo-cleanup.sql` removes the QA rows by exact title or exact text, and restores seven innovation descriptions from `supabase/seed/seed.sql`.
+2. `supabase/seed/demo-scenario.sql` inserts the fictional scenario: two ideas waiting in Moderacja, one reviewed idea with a response, 25 problems spread over six weeks, and one conversation between the municipality and the expert.
+
+Each script is a single transaction and is safe to run again. Problem rows leave `embedding` empty, because trends read the text, category, status, score and date, and no screen reads an embedding already stored on a problem. After the description updates, run `npm run embed:innovations` so matching uses the restored text. Do not run either script on production until it has been reviewed.
+
 ## Security
 
 ### Response headers
