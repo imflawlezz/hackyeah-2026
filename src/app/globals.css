@@ -10,7 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-open-sans), system-ui, sans-serif;
   --font-heading: var(--font-open-sans), system-ui, sans-serif;
-  /* Gov.pl type scale 12 / 14 / 16 / 20 / 24 / 28 / 32 / 40 px at the 16 px base. */
+  /* Gov.pl type scale 12 / 14 / 16 / 20 / 24 / 28 / 32 / 40 px, in rem, so it
+     scales with the 18 px root: 13.5 / 15.75 / 18 / 22.5 / 27 / 31.5 / 36 / 45 px. */
   --text-xs: 0.75rem;
   --text-xs--line-height: 1.5;
   --text-sm: 0.875rem;
@@ -181,35 +182,20 @@
   --sidebar-ring: #ffff00;
 }
 
-/* Gov.pl base: 16px on desktop, 14px below 700px. The accessibility toolbar
-   scales it by 115% (A+) and 130% (A++) via data-font-size. */
+/* Base 18px on every viewport. Many residents who use the Hub are seniors,
+   so the default is larger than the Gov.pl 16px (desktop) and 14px (mobile).
+   The accessibility toolbar scales it by 115% (A+, 20.7px) and 130% (A++,
+   23.4px) via data-font-size. */
 html {
-  font-size: 100%;
+  font-size: 112.5%;
 }
 
 html[data-font-size="large"] {
-  font-size: 115%;
+  font-size: 129.375%;
 }
 
 html[data-font-size="largest"] {
-  font-size: 130%;
-}
-
-@media (max-width: 699.98px) {
-  html {
-    font-size: 87.5%;
-    /* Text shrinks to 14px, but spacing and 44px touch targets keep their
-       pixel size: Tailwind sizes are multiples of --spacing. */
-    --spacing: calc(0.25rem / 0.875);
-  }
-
-  html[data-font-size="large"] {
-    font-size: 100.625%;
-  }
-
-  html[data-font-size="largest"] {
-    font-size: 113.75%;
-  }
+  font-size: 146.25%;
 }
 
 /* Unlayered on purpose so it wins over the `outline-none` utilities that

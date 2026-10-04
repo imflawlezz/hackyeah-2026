@@ -267,13 +267,13 @@ Status is never conveyed by colour alone; pair it with an icon and text. Warning
 
 `components.json` retains the shadcn CLI icon setting. After each `npx shadcn@latest add`, replace emitted lucide imports with `@heroicons/react`; the ESLint restriction catches missed imports.
 
-Typography uses Open Sans only (400, 600, 700), self-hosted through `next/font/google` (`latin` and `latin-ext`). The base is 16 px on desktop and 14 px below 700 px, with the Gov.pl scale 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px mapped onto Tailwind's `text-4xl` … `text-xs`. Body line-height is 1.5 and headings 1.25. On mobile, Tailwind's `--spacing` is compensated so spacing and 44 px targets keep their pixel size.
+Typography uses Open Sans only (400, 600, 700), self-hosted through `next/font/google` (`latin` and `latin-ext`). The base is **18 px on all viewports**, because many residents who use the Hub are seniors. This deliberately departs from the Gov.pl rule of 16 px on desktop and 14 px on mobile. The Gov.pl scale 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px is mapped onto Tailwind's `text-4xl` … `text-xs` in `rem`, so at the 18 px base it renders as 45 / 36 / 31.5 / 27 / 22.5 / 18 / 15.75 / 13.5 px. Body line-height is 1.5 and headings 1.25.
 
 ### Font size and high contrast
 
 Both settings sit in the "Ustawienia dostępności" toolbar at the top of the header and persist in `localStorage`.
 
-- **Font size.** `A` / `A+` / `A++` set `data-font-size` on `<html>` to `default`, `large` or `largest`, which scales the root font size to 100%, 115% or 130% of the base (16 px desktop, 14 px mobile). Spacing and control heights are in `rem`, so they scale too. An inline script in `<head>` applies the stored value before first paint (key `hubmi-font-size`); `parseFontSize` in `src/lib/a11y/preferences.ts` falls back to `default` for unknown values.
+- **Font size.** `A` / `A+` / `A++` set `data-font-size` on `<html>` to `default`, `large` or `largest`, which scales the root font size to 100%, 115% or 130% of the 18 px base: 18 px, about 20.7 px (A+) and about 23.4 px (A++), the same on phones and desktops. Spacing and control heights are in `rem`, so they scale too. An inline script in `<head>` applies the stored value before first paint (key `hubmi-font-size`); `parseFontSize` in `src/lib/a11y/preferences.ts` falls back to `default` for unknown values.
 - **High contrast.** `next-themes` sets `data-theme` on `<html>` to `default` or `high-contrast` (key `hubmi-theme`) and applies it before first paint. The `[data-theme="high-contrast"]` block swaps the variables to a black background, white text, yellow (`#ffff00`) links and focus ring, and white borders, and sets `color-scheme: dark`. Gov.pl has no high-contrast palette; this one is ours.
 
 Focus is a 3 px solid outline in `--ring` with a 2 px offset on every `:focus-visible` element. With "reduce motion" enabled in the OS, animations, transitions and smooth scrolling are turned off.
