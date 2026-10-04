@@ -13,7 +13,7 @@ $env:PITCH_TOOLS = $pitchTools
 node docs/pitch/deck/build.mjs
 ```
 
-Wymagana przeglądarka Chrome. Dla Edge ustawić `$env:PITCH_BROWSER = 'msedge'`. Skrypt generuje także konspekt, podgląd HTML i cztery obrazy kontrolne. Obrazy kontrolne i HTML nie są materiałami zgłoszeniowymi; można wygenerować je ponownie. Na slajdach 1–3 każdy punkt ma postać `Hasło :: opis`: hasło jest duże, a opis stoi pod nim. Wiersz `Układ: lista` (slajd 1) ustawia hasła jedno pod drugim zamiast w kolumnach. Pozostałe slajdy mają zwykłe punkty. Wiersze `Wizual:` są notatkami do konspektu i nie trafiają na slajdy; na slajdzie 10 pod punktami zostają tylko `Linki:` i ujawnienie AI. Zmiany treści wprowadzać w `deck.md`, potem odtworzyć PDF i konspekt. Eksport sprawdza limity tytułów, punktów, stron, wielkość pliku, obecność czcionki i przepełnienie slajdów.
+Wymagana przeglądarka Chrome. Dla Edge ustawić `$env:PITCH_BROWSER = 'msedge'`. Skrypt generuje także konspekt, podgląd HTML i cztery obrazy kontrolne. Obrazy kontrolne i HTML nie są materiałami zgłoszeniowymi; można wygenerować je ponownie. Na slajdach 1–3 każdy punkt ma postać `Hasło :: opis`: hasło jest duże, a opis stoi pod nim. Wiersz `Układ: lista` (slajd 3) ustawia hasła jedno pod drugim zamiast w kolumnach. Pozostałe slajdy mają zwykłe punkty. Wiersze `Wizual:` są notatkami do konspektu i nie trafiają na slajdy; na slajdzie 10 pod punktami zostają tylko `Linki:` i ujawnienie AI. Zmiany treści wprowadzać w `deck.md`, potem odtworzyć PDF i konspekt. Eksport sprawdza limity tytułów, punktów, stron, wielkość pliku, obecność czcionki i przepełnienie slajdów.
 
 ## Zakres potwierdzeń
 

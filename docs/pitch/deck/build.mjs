@@ -117,9 +117,9 @@ try {
 }
 
 const criteria = [
-  "Wyzwanie 40%, materiały 10%",
-  "Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10%",
   "Wyzwanie 40%, wdrożenie 20%",
+  "Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10%",
+  "Wyzwanie 40%, materiały 10%",
   "Wyzwanie 40%, dostępność 20%",
   "Wyzwanie 40%",
   "Wyzwanie 40%, wdrożenie 20%",

@@ -2,15 +2,13 @@
 
 Treść zgodna z [deck.md](deck/deck.md); eksport: [hubmi-pitch.pdf](deck/hubmi-pitch.pdf). Stan: 4 października 2026.
 
-## 1. Zaczynamy od potrzeby mieszkańca
+## 1. Jedna platforma, różne role
 
-Układ: lista
+- Mieszkańcy :: Opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
+- Gminy i organizacje :: Szukają innowacji oraz planują wdrożenie.
+- ROPS i eksperci :: Oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
 
-- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
-- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
-- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
-
-Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
+Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
 
 ## 2. HubMI.pl: cyfrowe serce Hubu Innowacji
 
@@ -20,13 +18,15 @@ Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROP
 
 Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Baza demonstracyjna: 23 fikcyjne innowacje. Usługi pilotażu: 334,32 PLN netto miesięcznie.
 
-## 3. Jedna platforma, różne role
+## 3. Zaczynamy od potrzeby mieszkańca
 
-- Mieszkańcy :: Opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
-- Gminy i organizacje :: Szukają innowacji oraz planują wdrożenie.
-- ROPS i eksperci :: Oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
+Układ: lista
 
-Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
+- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
+- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
+- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
+
+Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
 
 ## 4. Od opisu do rozwiązania lub wyzwania
 
@@ -97,9 +97,9 @@ Tabela nie jest częścią prezentacji. Wagi: [brief, §8](../task/CHALLENGE.md)
 
 | Slajd | Kryteria                                                   |
 | ----- | ---------------------------------------------------------- |
-| 1     | Wyzwanie 40%, materiały 10%                                |
+| 1     | Wyzwanie 40%, wdrożenie 20%                                |
 | 2     | Wyzwanie 40%, wdrożenie 20%, dostępność 20%, materiały 10% |
-| 3     | Wyzwanie 40%, wdrożenie 20%                                |
+| 3     | Wyzwanie 40%, materiały 10%                                |
 | 4     | Wyzwanie 40%, dostępność 20%                               |
 | 5     | Wyzwanie 40%                                               |
 | 6     | Wyzwanie 40%, wdrożenie 20%                                |

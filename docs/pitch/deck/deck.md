@@ -1,12 +1,10 @@
-# Zaczynamy od potrzeby mieszkańca
+# Jedna platforma, różne role
 
-Układ: lista
+- Mieszkańcy :: Opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
+- Gminy i organizacje :: Szukają innowacji oraz planują wdrożenie.
+- ROPS i eksperci :: Oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
 
-- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
-- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
-- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
-
-Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
+Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
 
 ---
 
@@ -20,13 +18,15 @@ Wizual: Demo bez rejestracji: cztery fikcyjne konta, jedno kliknięcie. Baza dem
 
 ---
 
-# Jedna platforma, różne role
+# Zaczynamy od potrzeby mieszkańca
 
-- Mieszkańcy :: Opisują potrzeby, rozwijają pomysły, uczestniczą w testach.
-- Gminy i organizacje :: Szukają innowacji oraz planują wdrożenie.
-- ROPS i eksperci :: Oceniają zgłoszenia, porządkują wiedzę, wspierają autorów.
+Układ: lista
 
-Wizual: Trzy role wokół wspólnego katalogu; prototyp dla ROPS, nie usługa ROPS.
+- Potrzeba :: Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi.
+- Rozproszona wiedza :: Innowacje, pomysły i partnerzy istnieją, ale są rozproszeni.
+- HubMI.pl :: Jedno miejsce prowadzi mieszkańca od problemu do działania.
+
+Wizual: Prototyp dla Małopolskiego Hubu Innowacji Społecznych, nie usługa ROPS.
 
 ---
 
