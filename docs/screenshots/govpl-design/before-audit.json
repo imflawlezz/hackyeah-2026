@@ -1,2976 +1,2456 @@
 {
- "home@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "home@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "home@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "home@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "optionalMarkers": 1,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "match@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "optionalMarkers": 1,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "optionalMarkers": 1,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "optionalMarkers": 1,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge-detail@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas-new@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Dalej\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Dalej\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Asystent\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Asystent\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Zgłoś się : Gminny asystent cyfrowy\"",
-   "a \"Zgłoś się : Teleopieka sąsiedzka\"",
-   "a \"Zgłoś się : Bank czasu opiekunów\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Zgłoś się : Gminny asystent cyfrowy\"",
-   "a \"Zgłoś się : Teleopieka sąsiedzka\"",
-   "a \"Zgłoś się : Bank czasu opiekunów\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zgłoś się : Gminny asystent cyfrowy\"",
-   "a \"Zgłoś się : Teleopieka sąsiedzka\"",
-   "a \"Zgłoś się : Bank czasu opiekunów\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zgłoś się : Gminny asystent cyfrowy\"",
-   "a \"Zgłoś się : Teleopieka sąsiedzka\"",
-   "a \"Zgłoś się : Bank czasu opiekunów\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test-detail@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\"",
-   "button \"Wyślij opinię\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 7,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 2,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\"",
-   "button \"Wyślij opinię\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 7,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 2,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\"",
-   "button \"Wyślij opinię\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 7,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 2,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\"",
-   "button \"Wyślij opinię\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 7,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 2,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": "Ścieżka nawigacji",
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "notifications@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "notifications@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "notifications@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "notifications@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "institutions@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 2,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 2,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 2,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 2,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "accessibility@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "accessibility@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "accessibility@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "accessibility@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4.05,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "privacy@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": [
-   "serious color-contrast (7)"
-  ]
- },
- "privacy@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": []
- },
- "privacy@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": [
-   "serious color-contrast (7)"
-  ]
- },
- "privacy@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": []
- },
- "cookies@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": [
-   "serious color-contrast (7)"
-  ]
- },
- "cookies@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": []
- },
- "cookies@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": [
-   "serious color-contrast (7)"
-  ]
- },
- "cookies@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 404,
-  "axe": []
- },
- "admin@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 5.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 5.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 5.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 5.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "a \"Dodaj innowację\"",
-   "button \"Przelicz brakujące wektory\"",
-   "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
-   "a \"Edytuj : Mobilny punkt dostępności\"",
-   "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
-   "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "a \"Dodaj innowację\"",
-   "button \"Przelicz brakujące wektory\"",
-   "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
-   "a \"Edytuj : Mobilny punkt dostępności\"",
-   "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
-   "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "a \"Dodaj innowację\"",
-   "button \"Przelicz brakujące wektory\"",
-   "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
-   "a \"Edytuj : Mobilny punkt dostępności\"",
-   "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
-   "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "a \"Dodaj innowację\"",
-   "button \"Przelicz brakujące wektory\"",
-   "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
-   "a \"Edytuj : Mobilny punkt dostępności\"",
-   "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
-   "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Archiwizuj\""
-  ],
-  "optionalMarkers": 4,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Archiwizuj\""
-  ],
-  "optionalMarkers": 4,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Archiwizuj\""
-  ],
-  "optionalMarkers": 4,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Archiwizuj\""
-  ],
-  "optionalMarkers": 4,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Oznacz jako przejrzane\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@1280/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Przygotuj podsumowanie\"",
-   "button \"Pokaż dane w tabeli\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@1280/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\"",
-   "a \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"2\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Przygotuj podsumowanie\"",
-   "button \"Pokaż dane w tabeli\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@360/default": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Przygotuj podsumowanie\"",
-   "button \"Pokaż dane w tabeli\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@360/high-contrast": {
-  "rootPx": "18px",
-  "bodyPx": "18px",
-  "families": [
-   "Source Sans 3",
-   "Source Serif 4"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści\""
-  ],
-  "iconsInControls": [
-   "button \"Wysoki kontrast\"",
-   "button \"Menu\"",
-   "a \"Przegląd\"",
-   "a \"Innowacje\"",
-   "a \"Moderacja\"",
-   "a \"Trendy potrzeb\"",
-   "button \"Przygotuj podsumowanie\"",
-   "button \"Pokaż dane w tabeli\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Baza wiedzy",
-   "Znajdź rozwiązania",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": false,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 6.75,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- }
+  "home@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Opisz problem\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "home@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Opisz problem\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "home@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "home@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "optionalMarkers": 1,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "match@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "optionalMarkers": 1,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Znajdź rozwiązania\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "optionalMarkers": 1,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Znajdź rozwiązania\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "optionalMarkers": 1,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge-detail@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Dodaj pomysł\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Dodaj pomysł\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas-new@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Dalej\"",
+      "button \"Wyślij\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Dalej\"",
+      "button \"Wyślij\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Dalej\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Asystent\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Dalej\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Asystent\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Zgłoś się : Gminny asystent cyfrowy\"",
+      "a \"Zgłoś się : Teleopieka sąsiedzka\"",
+      "a \"Zgłoś się : Bank czasu opiekunów\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Zgłoś się : Gminny asystent cyfrowy\"",
+      "a \"Zgłoś się : Teleopieka sąsiedzka\"",
+      "a \"Zgłoś się : Bank czasu opiekunów\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zgłoś się : Gminny asystent cyfrowy\"",
+      "a \"Zgłoś się : Teleopieka sąsiedzka\"",
+      "a \"Zgłoś się : Bank czasu opiekunów\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zgłoś się : Gminny asystent cyfrowy\"",
+      "a \"Zgłoś się : Teleopieka sąsiedzka\"",
+      "a \"Zgłoś się : Bank czasu opiekunów\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test-detail@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\"",
+      "button \"Wyślij opinię\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 7,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 2,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\"",
+      "button \"Wyślij opinię\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 7,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 2,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\"",
+      "button \"Wyślij opinię\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 7,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 2,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\"",
+      "button \"Wyślij opinię\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 7,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 2,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": "Ścieżka nawigacji",
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Wyślij\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Wyślij\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "notifications@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "notifications@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "notifications@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "notifications@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "institutions@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 2,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 2,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Dobierz rozwiązania\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 2,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Dobierz rozwiązania\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 2,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zaloguj się\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "button \"Pokaż hasło\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zaloguj się\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "button \"Pokaż hasło\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Pokaż hasło\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "button \"Pokaż hasło\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "accessibility@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "accessibility@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "accessibility@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "accessibility@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4.05,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "privacy@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": ["serious color-contrast (7)"]
+  },
+  "privacy@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": []
+  },
+  "privacy@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": ["serious color-contrast (7)"]
+  },
+  "privacy@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": []
+  },
+  "cookies@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": ["serious color-contrast (7)"]
+  },
+  "cookies@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": []
+  },
+  "cookies@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": ["serious color-contrast (7)"]
+  },
+  "cookies@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": ["button \"Wysoki kontrast\"", "button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 404,
+    "axe": []
+  },
+  "admin@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 5.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 5.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 5.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 5.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Dodaj innowację\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "a \"Dodaj innowację\"",
+      "button \"Przelicz brakujące wektory\"",
+      "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
+      "a \"Edytuj : Mobilny punkt dostępności\"",
+      "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
+      "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "a \"Dodaj innowację\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "a \"Dodaj innowację\"",
+      "button \"Przelicz brakujące wektory\"",
+      "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
+      "a \"Edytuj : Mobilny punkt dostępności\"",
+      "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
+      "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Dodaj innowację\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "a \"Dodaj innowację\"",
+      "button \"Przelicz brakujące wektory\"",
+      "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
+      "a \"Edytuj : Mobilny punkt dostępności\"",
+      "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
+      "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Dodaj innowację\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "a \"Dodaj innowację\"",
+      "button \"Przelicz brakujące wektory\"",
+      "a \"Edytuj : Sąsiedzka opieka wytchnieniowa\"",
+      "a \"Edytuj : Mobilny punkt dostępności\"",
+      "a \"Edytuj : Inkubator młodzieżowych inicjat\"",
+      "a \"Edytuj : Nocleg interwencyjny „Jedna noc\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zapisz\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Archiwizuj\""
+    ],
+    "optionalMarkers": 4,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Zapisz\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Archiwizuj\""
+    ],
+    "optionalMarkers": 4,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Zapisz\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Archiwizuj\""
+    ],
+    "optionalMarkers": 4,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "button \"Zapisz\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Archiwizuj\""
+    ],
+    "optionalMarkers": 4,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "a \"Zaloguj się\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": [
+      "a \"Przejdź do treści\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Oznacz jako przejrzane\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@1280/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Przygotuj podsumowanie\"",
+      "button \"Pokaż dane w tabeli\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@1280/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\"", "a \"Zaloguj się\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"2\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Przygotuj podsumowanie\"",
+      "button \"Pokaż dane w tabeli\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@360/default": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Przygotuj podsumowanie\"",
+      "button \"Pokaż dane w tabeli\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@360/high-contrast": {
+    "rootPx": "18px",
+    "bodyPx": "18px",
+    "families": ["Source Sans 3", "Source Serif 4"],
+    "primaries": ["a \"Przejdź do treści\""],
+    "iconsInControls": [
+      "button \"Wysoki kontrast\"",
+      "button \"Menu\"",
+      "a \"Przegląd\"",
+      "a \"Innowacje\"",
+      "a \"Moderacja\"",
+      "a \"Trendy potrzeb\"",
+      "button \"Przygotuj podsumowanie\"",
+      "button \"Pokaż dane w tabeli\""
+    ],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Baza wiedzy",
+      "Znajdź rozwiązania",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": false,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 6.75,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  }
 }

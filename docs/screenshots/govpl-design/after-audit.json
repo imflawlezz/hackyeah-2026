@@ -1,3010 +1,2530 @@
 {
- "home@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "home@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "home@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "home@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Opisz problem\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "match@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "match@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Znajdź rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "knowledge-detail@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "knowledge-detail@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Masz podobny problem? Opisz go\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj pomysł\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "ideas-new@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\"",
-   "button \"Asystent\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "ideas-new@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dalej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\"",
-   "button \"Asystent\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "test-detail@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 2,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 2,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 2,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "test-detail@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zgłoś się : Codzienny telefon do seniora\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 2,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": "Ścieżka okruszków",
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Wyślij\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "messages@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 1,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "notifications@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "notifications@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "notifications@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "notifications@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "institutions@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 4,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 4,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 4,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "institutions@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Dobierz rozwiązania\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 4,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"2\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 2,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"2\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 2,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 2,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "login@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zaloguj się\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\"",
-   "button \"Pokaż hasło\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 2,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "accessibility@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "accessibility@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "accessibility@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.1,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "accessibility@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.1,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "privacy@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "privacy@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "privacy@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.1,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "privacy@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.1,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "cookies@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "cookies@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "cookies@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "cookies@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 0,
-  "overflow": 0,
-  "h1": 1,
-  "status": 304,
-  "axe": []
- },
- "admin@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.2,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.2,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.8,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 2.8,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-innovations@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "a \"Dodaj innowację\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 6,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 6,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 6,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-edit@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\"",
-   "button \"Zapisz\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": true,
-  "requiredStars": 6,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-moderation@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 0,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@1280/default": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@1280/high-contrast": {
-  "rootPx": "16px",
-  "bodyPx": "16px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"2\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 4,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@360/default": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- },
- "admin-trends@360/high-contrast": {
-  "rootPx": "14px",
-  "bodyPx": "14px",
-  "families": [
-   "Open Sans"
-  ],
-  "primaries": [
-   "a \"Przejdź do treści głównej\""
-  ],
-  "iconsInControls": [
-   "button \"Menu\""
-  ],
-  "optionalMarkers": 0,
-  "requiredLegend": false,
-  "requiredStars": 0,
-  "forms": 1,
-  "skipLink": "Przejdź do treści głównej",
-  "footerLinks": [
-   "Deklaracja dostępności",
-   "Klauzula informacyjna RODO",
-   "Polityka cookies",
-   "Znajdź rozwiązania",
-   "Baza wiedzy",
-   "Kreator pomysłów",
-   "Testuj innowacje",
-   "Dla instytucji",
-   "kontakt@hubmi.example"
-  ],
-  "footerHasAddress": true,
-  "breadcrumbLabel": null,
-  "newWindow": [],
-  "radiusMax": 3.5,
-  "overflow": 0,
-  "h1": 1,
-  "status": 200,
-  "axe": []
- }
+  "home@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "home@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "home@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "home@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Opisz problem\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "match@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "match@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Znajdź rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "knowledge-detail@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "knowledge-detail@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "a \"Masz podobny problem? Opisz go\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj pomysł\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "ideas-new@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Dalej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Dalej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Dalej\""],
+    "iconsInControls": ["button \"Menu\"", "button \"Asystent\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "ideas-new@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Dalej\""],
+    "iconsInControls": ["button \"Menu\"", "button \"Asystent\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "test-detail@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 2,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 2,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 2,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "test-detail@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Zgłoś się : Codzienny telefon do seniora\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 2,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": "Ścieżka okruszków",
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Wyślij\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Wyślij\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "messages@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 1,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "notifications@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "notifications@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "notifications@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "notifications@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "institutions@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 4,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 4,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 4,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "institutions@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": [
+      "a \"Przejdź do treści głównej\"",
+      "button \"Dobierz rozwiązania\""
+    ],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 4,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zaloguj się\""],
+    "iconsInControls": ["button \"2\"", "button \"Pokaż hasło\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 2,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zaloguj się\""],
+    "iconsInControls": ["button \"2\"", "button \"Pokaż hasło\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 2,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zaloguj się\""],
+    "iconsInControls": ["button \"Menu\"", "button \"Pokaż hasło\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 2,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "login@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zaloguj się\""],
+    "iconsInControls": ["button \"Menu\"", "button \"Pokaż hasło\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 2,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "accessibility@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "accessibility@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "accessibility@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.1,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "accessibility@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.1,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "privacy@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "privacy@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "privacy@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.1,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "privacy@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.1,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "cookies@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "cookies@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "cookies@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "cookies@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 0,
+    "overflow": 0,
+    "h1": 1,
+    "status": 304,
+    "axe": []
+  },
+  "admin@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.2,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.2,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.8,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 2.8,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj innowację\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj innowację\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj innowację\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-innovations@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "a \"Dodaj innowację\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zapisz\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 6,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zapisz\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 6,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zapisz\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 6,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-edit@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\"", "button \"Zapisz\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": true,
+    "requiredStars": 6,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-moderation@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 0,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@1280/default": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@1280/high-contrast": {
+    "rootPx": "16px",
+    "bodyPx": "16px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"2\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 4,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@360/default": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  },
+  "admin-trends@360/high-contrast": {
+    "rootPx": "14px",
+    "bodyPx": "14px",
+    "families": ["Open Sans"],
+    "primaries": ["a \"Przejdź do treści głównej\""],
+    "iconsInControls": ["button \"Menu\""],
+    "optionalMarkers": 0,
+    "requiredLegend": false,
+    "requiredStars": 0,
+    "forms": 1,
+    "skipLink": "Przejdź do treści głównej",
+    "footerLinks": [
+      "Deklaracja dostępności",
+      "Klauzula informacyjna RODO",
+      "Polityka cookies",
+      "Znajdź rozwiązania",
+      "Baza wiedzy",
+      "Kreator pomysłów",
+      "Testuj innowacje",
+      "Dla instytucji",
+      "kontakt@hubmi.example"
+    ],
+    "footerHasAddress": true,
+    "breadcrumbLabel": null,
+    "newWindow": [],
+    "radiusMax": 3.5,
+    "overflow": 0,
+    "h1": 1,
+    "status": 200,
+    "axe": []
+  }
 }
