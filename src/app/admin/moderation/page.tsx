@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageAccess } from "@/app/admin/access";
-import { Moderation, type ModerationTab } from "@/components/admin/moderation";
+import { Moderation } from "@/components/admin/moderation";
 import { AdminPageHeader, Notice } from "@/components/admin/page-header";
 import { canModerate } from "@/lib/auth/admin";
 import { getModerationQueue } from "@/lib/admin/repository";
@@ -8,13 +8,7 @@ import { toExcerpt } from "@/lib/admin/scrub";
 
 export const metadata: Metadata = { title: "Moderacja" };
 
-function parseTab(value: unknown): ModerationTab {
-  return value === "problems" || value === "drafts" ? value : "ideas";
-}
-
-export default async function ModerationPage({
-  searchParams,
-}: PageProps<"/admin/moderation">) {
+export default async function ModerationPage() {
   const access = await pageAccess();
   if (access.mode === "denied") return null;
 
@@ -36,10 +30,8 @@ export default async function ModerationPage({
     );
   }
 
-  const [{ data, notice }, { tab }] = await Promise.all([
-    getModerationQueue(access),
-    searchParams,
-  ]);
+  // The tab lives in ?tab= and Moderation reads it from the URL itself.
+  const { data, notice } = await getModerationQueue(access);
 
   return (
     <>
@@ -52,7 +44,6 @@ export default async function ModerationPage({
           excerpt: toExcerpt(problem.description, 600),
         }))}
         drafts={data.drafts}
-        initialTab={parseTab(tab)}
       />
     </>
   );

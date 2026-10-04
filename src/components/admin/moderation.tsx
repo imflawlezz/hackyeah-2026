@@ -2,7 +2,8 @@
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { startTransition, useOptimistic, useState } from "react";
 import {
   closeProblemAction,
   reviewIdeaAction,
@@ -24,6 +25,10 @@ import type {
 } from "@/lib/admin/types";
 
 export type ModerationTab = "ideas" | "problems" | "drafts";
+
+function parseTab(value: unknown): ModerationTab {
+  return value === "problems" || value === "drafts" ? value : "ideas";
+}
 
 const STAGES: Record<AdminIdea["stage"], string> = {
   idea: "Pomysł",
@@ -71,14 +76,20 @@ export function Moderation({
   ideas,
   problems,
   drafts,
-  initialTab,
 }: {
   ideas: AdminIdea[];
   problems: (AdminProblem & { excerpt: string })[];
   drafts: AdminInnovation[];
-  initialTab: ModerationTab;
 }) {
-  const [tab, setTab] = useState<ModerationTab>(initialTab);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  // The URL is the state: the sidebar link to the bare /admin/moderation is a
+  // soft navigation that keeps this component mounted, so local state would
+  // keep the old tab. router.replace waits for the server; the optimistic
+  // value switches the tab at once and gives way to the URL on commit.
+  const [tab, setOptimisticTab] = useOptimistic(
+    parseTab(searchParams.get("tab")),
+  );
   const [confirm, setConfirm] = useState<ConfirmRequest | null>(null);
   const { pending, message, run } = useAdminAction();
 
@@ -108,7 +119,13 @@ export function Moderation({
     <>
       <Tabs
         value={tab}
-        onValueChange={(value) => setTab(value as ModerationTab)}
+        onValueChange={(value) => {
+          const next = parseTab(value);
+          startTransition(() => {
+            setOptimisticTab(next);
+            router.replace(`/admin/moderation?tab=${next}`, { scroll: false });
+          });
+        }}
       >
         <TabsList className="w-full sm:w-fit">
           {tabs.map((item) => (
