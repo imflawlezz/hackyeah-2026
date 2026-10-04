@@ -19,7 +19,12 @@ vi.mock("@/lib/supabase/server", () => ({
   hasSupabase: true,
   createClient: mocks.client,
 }));
-import { matchProblem, normalizeMockScores, normalizeScore } from "./service";
+import {
+  classifyResults,
+  matchProblem,
+  normalizeMockScores,
+  normalizeScore,
+} from "./service";
 
 function row(similarity = 0.876) {
   return {
@@ -83,6 +88,133 @@ describe("score normalization", () => {
     expect([-1, 0.876, 2, NaN, Infinity].map(normalizeScore)).toEqual([
       0, 0.88, 1, 0, 0,
     ]);
+  });
+});
+
+describe("classification", () => {
+  const scored = (...scores: number[]) =>
+    scores.map((score, index) => ({
+      score,
+      innovation: { ...innovations[0], id: `i${index}` },
+      reason: "",
+    }));
+
+  it("tiers results at the boundaries and hides the rest", () => {
+    const { results, noGoodMatch } = classifyResults(
+      scored(0.62, 0.5, 0.49, 0.4, 0.39),
+      true,
+    );
+    expect(results.map(({ score, tier }) => [score, tier])).toEqual([
+      [0.62, "match"],
+      [0.5, "match"],
+      [0.49, "related"],
+      [0.4, "related"],
+    ]);
+    expect(noGoodMatch).toBe(false);
+  });
+
+  it("reports no good match when nothing reaches the match tier", () => {
+    expect(classifyResults(scored(0.49, 0.41), true)).toMatchObject({
+      noGoodMatch: true,
+      results: [{ tier: "related" }, { tier: "related" }],
+    });
+    expect(classifyResults(scored(0.39, 0.1), true)).toEqual({
+      results: [],
+      noGoodMatch: true,
+    });
+    expect(classifyResults([], true)).toEqual({
+      results: [],
+      noGoodMatch: true,
+    });
+  });
+
+  it("keeps weak results as related for callers that do not hide them", () => {
+    const { results, noGoodMatch } = classifyResults(scored(0.55, 0.2), false);
+    expect(results.map(({ tier }) => tier)).toEqual(["match", "related"]);
+    expect(noGoodMatch).toBe(false);
+  });
+});
+
+describe("relevance threshold", () => {
+  function rows(...similarities: number[]) {
+    mocks.rpc.mockReturnValue({
+      abortSignal: () =>
+        Promise.resolve({
+          data: similarities.map((similarity, index) => ({
+            ...row(similarity),
+            id: `r${index}`,
+            title: `Rozwiązanie ${index}`,
+            target_group: "Dorośli",
+          })),
+          error: null,
+        }),
+    });
+  }
+
+  it("returns matches first, then related results, and explains only matches", async () => {
+    rows(0.61, 0.45, 0.3);
+    const response = await matchProblem(
+      { problem: "dziura w jezdni na drodze powiatowej", limit: 5 },
+      { hideWeak: true },
+    );
+    expect(response.source).toBe("ai");
+    expect(response.noGoodMatch).toBe(false);
+    expect(response.results.map(({ score, tier }) => [score, tier])).toEqual([
+      [0.61, "match"],
+      [0.45, "related"],
+    ]);
+    expect(mocks.reasons.mock.calls[0][1]).toHaveLength(1);
+    expect(response.results[0].reason).not.toBe("");
+    expect(response.results[1].reason).toBe("");
+  });
+
+  it("reports no good match for weak results without calling the model", async () => {
+    withAdminClient();
+    rows(0.46, 0.31);
+    const response = await matchProblem(
+      { problem: "dziura w jezdni na drodze powiatowej" },
+      { hideWeak: true },
+    );
+    expect(response).toMatchObject({
+      source: "ai",
+      noGoodMatch: true,
+      results: [{ score: 0.46, tier: "related", reason: "" }],
+    });
+    expect(mocks.reasons).not.toHaveBeenCalled();
+    // Stored as unmet for the admin trends, with the raw top similarity.
+    expect(mocks.insert).toHaveBeenCalledWith(
+      expect.objectContaining({ status: "new", best_score: 0.46 }),
+    );
+  });
+
+  it("does not fall back to keyword results when the category filter leaves nothing", async () => {
+    withAdminClient();
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const response = await matchProblem(
+      { problem: "samotni seniorzy na wsi", category: "Bezdomność" },
+      { hideWeak: true },
+    );
+    expect(response).toEqual({ source: "ai", results: [], noGoodMatch: true });
+    expect(warn).not.toHaveBeenCalledWith("Match fallback", expect.anything());
+    expect(mocks.reasons).not.toHaveBeenCalled();
+    expect(mocks.insert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "new",
+        best_score: null,
+        source: "ai",
+      }),
+    );
+  });
+
+  it("keeps every result for callers that do not hide weak ones", async () => {
+    rows(0.3, 0.25);
+    const response = await matchProblem({ problem: "dziura w jezdni" });
+    expect(response.results.map(({ tier }) => tier)).toEqual([
+      "related",
+      "related",
+    ]);
+    expect(response.noGoodMatch).toBe(true);
+    expect(mocks.reasons.mock.calls[0][1]).toHaveLength(2);
   });
 });
 

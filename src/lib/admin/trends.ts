@@ -1,13 +1,18 @@
 import { topKeywords, type KeywordCount } from "@/lib/admin/keywords";
 import type { AdminProblem, TrendPeriod } from "@/lib/admin/types";
+import { CATEGORY_BOOST } from "@/lib/match/rerank";
+import { MATCH_THRESHOLD } from "@/lib/match/score";
 
 /**
  * A problem counts as "without a good solution" when it is still `new` (no
- * match was found) or its best cosine similarity is below this value. With
- * text-embedding-3-small, related Polish texts usually score 0.45–0.7 and
- * loosely related ones fall below 0.45. Mock matches store no score.
+ * result reached the match tier) or its best cosine similarity is below this
+ * value. `best_score` stores the raw similarity, while MATCH_THRESHOLD applies
+ * to the reranked score, so the category boost that a real match receives is
+ * taken off: 0.50 − 0.06 = 0.44 (see docs/matching.md). Mock matches store no
+ * score.
  */
-export const UNMET_SCORE_THRESHOLD = 0.45;
+export const UNMET_SCORE_THRESHOLD =
+  Math.round((MATCH_THRESHOLD - CATEGORY_BOOST) * 100) / 100;
 
 export const NO_CATEGORY = "Bez kategorii";
 

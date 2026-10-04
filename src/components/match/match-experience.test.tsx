@@ -10,7 +10,9 @@ import {
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MatchExperience } from "@/components/match/match-experience";
+import { CHALLENGE_DRAFT_KEY } from "@/lib/match/challenge-draft";
 import { mockMatch, problems } from "@/lib/mocks";
+import type { MatchResult } from "@/types";
 
 const replace = vi.fn();
 
@@ -32,8 +34,38 @@ function respondWith(body: unknown, init: ResponseInit = {}) {
   return fetchMock;
 }
 
+/** The API body: every result in the given tier ("match" unless stated). */
+function body(
+  results: MatchResult[],
+  tiers: ("match" | "related")[] = [],
+  noGoodMatch = !results.some(
+    (_, index) => (tiers[index] ?? "match") === "match",
+  ),
+) {
+  return {
+    results: results.map((result, index) => ({
+      ...result,
+      tier: tiers[index] ?? "match",
+    })),
+    noGoodMatch,
+  };
+}
+
+async function search(problem: string) {
+  const user = userEvent.setup();
+  await user.type(
+    screen.getByRole("textbox", { name: "Opis problemu" }),
+    problem,
+  );
+  await user.click(screen.getByRole("button", { name: "Znajdź rozwiązania" }));
+}
+
+const NO_MATCH_TITLE =
+  "Nie mamy jeszcze rozwiązania, które pasuje do Twojego opisu";
+
 beforeEach(() => {
   replace.mockClear();
+  window.sessionStorage.clear();
 });
 
 afterEach(() => {
@@ -88,39 +120,38 @@ describe("MatchExperience", () => {
     );
   });
 
-  it("shows a typical best AI similarity as a strong match", async () => {
-    const user = userEvent.setup();
+  it("shows the best AI match as strong and the others relative to it", async () => {
     const problem = "Samotni seniorzy na wsi nie mają z kim porozmawiać";
     const [first, second] = mockMatch({ problem, limit: 2 });
     respondWith(
-      [
-        { ...first!, score: 0.45 },
-        { ...second!, score: 0.25 },
-      ],
+      body([
+        { ...first!, score: 0.62 },
+        { ...second!, score: 0.5 },
+      ]),
       { headers: { "X-Match-Source": "ai" } },
     );
     render(<MatchExperience />);
 
-    await user.type(
-      screen.getByRole("textbox", { name: "Opis problemu" }),
-      problem,
-    );
-    await user.click(
-      screen.getByRole("button", { name: "Znajdź rozwiązania" }),
-    );
+    await search(problem);
 
     await screen.findByRole("heading", { level: 2, name: /^Znaleźliśmy/ });
     expect(screen.getByText("Bardzo dobre dopasowanie")).toBeInTheDocument();
-    expect(screen.getByText("(83%)")).toBeInTheDocument();
-    expect(screen.getByText("Częściowe dopasowanie")).toBeInTheDocument();
-    expect(screen.getByText("(17%)")).toBeInTheDocument();
+    expect(screen.getByText("(100%)")).toBeInTheDocument();
+    expect(screen.getByText("Dobre dopasowanie")).toBeInTheDocument();
+    expect(screen.getByText("(71%)")).toBeInTheDocument();
+    expect(screen.queryByText("Częściowe dopasowanie")).toBeNull();
+    expect(screen.queryByRole("heading", { name: NO_MATCH_TITLE })).toBeNull();
+    expect(
+      screen.queryByRole("heading", { name: "Mniej powiązane rozwiązania" }),
+    ).toBeNull();
+    expect(window.sessionStorage.getItem(CHALLENGE_DRAFT_KEY)).toBeNull();
   });
 
   it("renders results, focuses the heading and syncs the URL", async () => {
     const user = userEvent.setup();
     const problem = "Młodzież po lekcjach nie ma gdzie spędzać czasu";
     const results = mockMatch({ problem });
-    const fetchMock = respondWith(results, {
+    const fetchMock = respondWith(body(results), {
       headers: { "X-Match-Source": "mock" },
     });
     render(<MatchExperience />);
@@ -165,7 +196,7 @@ describe("MatchExperience", () => {
   it("hides previous results when the problem becomes too short", async () => {
     const user = userEvent.setup();
     const problem = "Młodzież po lekcjach nie ma gdzie spędzać czasu";
-    const fetchMock = respondWith(mockMatch({ problem }));
+    const fetchMock = respondWith(body(mockMatch({ problem })));
     render(<MatchExperience />);
 
     const field = screen.getByRole("textbox", { name: "Opis problemu" });
@@ -190,25 +221,153 @@ describe("MatchExperience", () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("shows the empty state", async () => {
-    const user = userEvent.setup();
-    respondWith([], { headers: { "X-Match-Source": "ai" } });
+  it("invites a new challenge when nothing fits, without the problem in the URL", async () => {
+    const problem = "Na drodze powiatowej jest dziura w jezdni";
+    respondWith(body([]), { headers: { "X-Match-Source": "ai" } });
     render(<MatchExperience />);
 
-    await user.type(
-      screen.getByRole("textbox", { name: "Opis problemu" }),
-      "xyzqwerty xyzqwerty",
-    );
-    await user.click(
-      screen.getByRole("button", { name: "Znajdź rozwiązania" }),
-    );
+    await search(problem);
 
     const heading = await screen.findByRole("heading", {
-      name: "Nie znaleźliśmy rozwiązań dla tego opisu.",
+      level: 2,
+      name: NO_MATCH_TITLE,
     });
     await waitFor(() => expect(heading).toHaveFocus());
     expect(screen.getByRole("status")).toHaveTextContent(
-      "Nie znaleźliśmy rozwiązań dla tego opisu. Opisz problem innymi słowami albo wybierz inną kategorię.",
+      `${NO_MATCH_TITLE}. Możesz zgłosić nowe wyzwanie.`,
+    );
+    expect(
+      screen.getByText(
+        "To ważna informacja dla ROPS. Zgłoś problem jako nowe wyzwanie. Zespół Hubu sprawdzi, czy można znaleźć lub wypracować rozwiązanie.",
+      ),
+    ).toBeInTheDocument();
+
+    const action = screen.getByRole("link", { name: "Zgłoś nowe wyzwanie" });
+    expect(action).toHaveAttribute(
+      "href",
+      "/messages/new?kind=ask_rops&subject=Nowe%20wyzwanie",
+    );
+    // The description goes through sessionStorage only.
+    expect(window.sessionStorage.getItem(CHALLENGE_DRAFT_KEY)).toBe(problem);
+    for (const link of screen.getAllByRole("link")) {
+      expect(decodeURIComponent(link.getAttribute("href") ?? "")).not.toContain(
+        "dziura",
+      );
+    }
+    expect(
+      screen.getByRole("link", { name: "Zaproponuj własny pomysł" }),
+    ).toHaveAttribute("href", "/ideas/new");
+    expect(
+      screen.getByRole("link", { name: "Zobacz wyzwania regionu" }),
+    ).toHaveAttribute("href", "/knowledge?tab=challenges");
+
+    expect(screen.queryByRole("article")).toBeNull();
+    expect(
+      screen.queryByRole("heading", { name: "Mniej powiązane rozwiązania" }),
+    ).toBeNull();
+    expect(screen.queryByRole("heading", { name: /^Znaleźliśmy/ })).toBeNull();
+  });
+
+  it("shows weak results only as less related, without a label or percentage", async () => {
+    const problem = "Na dworcu kolejowym nie ma podjazdu dla wózków";
+    const results = mockMatch({ problem: "samotni seniorzy", limit: 2 }).map(
+      (result, index) => ({ ...result, score: 0.46 - index * 0.02 }),
+    );
+    respondWith(body(results, ["related", "related"]), {
+      headers: { "X-Match-Source": "ai" },
+    });
+    render(<MatchExperience />);
+
+    await search(problem);
+
+    const heading = await screen.findByRole("heading", {
+      level: 2,
+      name: NO_MATCH_TITLE,
+    });
+    await waitFor(() => expect(heading).toHaveFocus());
+    const related = screen.getByRole("region", {
+      name: "Mniej powiązane rozwiązania",
+    });
+    // The invitation comes first, the weak results after it.
+    expect(
+      heading.compareDocumentPosition(related) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(
+      within(related).getByText(
+        "Mogą dotyczyć podobnego tematu, ale nie odpowiadają wprost na Twój problem.",
+      ),
+    ).toBeInTheDocument();
+    expect(within(related).getAllByRole("article")).toHaveLength(2);
+    expect(screen.getAllByRole("article")).toHaveLength(2);
+    expect(screen.queryByText(/dopasowanie/)).toBeNull();
+    expect(screen.queryByText(/\d+%/)).toBeNull();
+    expect(screen.queryByText("Dlaczego to pasuje")).toBeNull();
+    expect(screen.queryByRole("heading", { name: /^Znaleźliśmy/ })).toBeNull();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      `${NO_MATCH_TITLE}. Możesz zgłosić nowe wyzwanie. Niżej są mniej powiązane rozwiązania: 2.`,
+    );
+    expect(window.sessionStorage.getItem(CHALLENGE_DRAFT_KEY)).toBe(problem);
+  });
+
+  it("shows matches first and the less related results in their own section", async () => {
+    const problem = "Samotni seniorzy na wsi nie mają z kim porozmawiać";
+    const [first, second, third] = mockMatch({ problem, limit: 3 });
+    respondWith(
+      body(
+        [
+          { ...first!, score: 0.62 },
+          { ...second!, score: 0.45 },
+          { ...third!, score: 0.41 },
+        ],
+        ["match", "related", "related"],
+      ),
+      { headers: { "X-Match-Source": "ai" } },
+    );
+    render(<MatchExperience />);
+
+    await search(problem);
+
+    const heading = await screen.findByRole("heading", {
+      level: 2,
+      name: "Znaleźliśmy 1 pasującą innowację",
+    });
+    await waitFor(() => expect(heading).toHaveFocus());
+    const related = screen.getByRole("region", {
+      name: "Mniej powiązane rozwiązania",
+    });
+    expect(
+      heading.compareDocumentPosition(related) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(within(related).getAllByRole("article")).toHaveLength(2);
+    expect(
+      within(related).queryByRole("article", { name: first!.innovation.title }),
+    ).toBeNull();
+    expect(
+      screen.getByRole("article", { name: first!.innovation.title }),
+    ).toHaveTextContent(/Bardzo dobre dopasowanie\s*\(100%\)/);
+    expect(within(related).queryByText(/dopasowanie/)).toBeNull();
+    expect(within(related).queryByText(/\d+%/)).toBeNull();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Znaleźliśmy 1 pasującą innowację. Niżej są mniej powiązane rozwiązania: 2.",
+    );
+    expect(screen.queryByRole("heading", { name: NO_MATCH_TITLE })).toBeNull();
+    expect(window.sessionStorage.getItem(CHALLENGE_DRAFT_KEY)).toBeNull();
+  });
+
+  it("keeps the chosen category with the description for the new challenge", async () => {
+    respondWith(body([]), { headers: { "X-Match-Source": "ai" } });
+    render(
+      <MatchExperience
+        initialValues={{ problem: "samotni seniorzy", category: "Bezdomność" }}
+        autoRun
+      />,
+    );
+
+    await screen.findByRole("heading", { name: NO_MATCH_TITLE });
+    expect(window.sessionStorage.getItem(CHALLENGE_DRAFT_KEY)).toBe(
+      "samotni seniorzy\n\nKategoria: Bezdomność",
     );
   });
 
@@ -259,7 +418,9 @@ describe("MatchExperience", () => {
   });
 
   it("prefills and runs the search automatically from the URL", async () => {
-    const fetchMock = respondWith(mockMatch({ problem: "samotni seniorzy" }));
+    const fetchMock = respondWith(
+      body(mockMatch({ problem: "samotni seniorzy" })),
+    );
     render(
       <MatchExperience
         initialValues={{ problem: "samotni seniorzy", category: "Samotność" }}

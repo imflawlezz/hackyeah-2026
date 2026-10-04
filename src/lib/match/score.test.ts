@@ -3,6 +3,9 @@ import { innovations } from "@/lib/mocks";
 import {
   calibrateSimilarity,
   formatPercent,
+  MATCH_THRESHOLD,
+  matchTier,
+  RELATED_THRESHOLD,
   scoreLabel,
   scoreTier,
   toRelevance,
@@ -63,6 +66,24 @@ describe("toRelevance", () => {
 
   it("clamps negative scores to zero", () => {
     expect(toRelevance(withScores(3, -1))).toEqual([1, 0]);
+  });
+});
+
+describe("matchTier", () => {
+  it("classifies on the two thresholds, inclusive at each boundary", () => {
+    expect(MATCH_THRESHOLD).toBe(0.5);
+    expect(RELATED_THRESHOLD).toBe(0.4);
+    expect(matchTier(MATCH_THRESHOLD)).toBe("match");
+    expect(matchTier(0.72)).toBe("match");
+    expect(matchTier(0.49)).toBe("related");
+    expect(matchTier(RELATED_THRESHOLD)).toBe("related");
+    expect(matchTier(0.39)).toBeNull();
+    expect(matchTier(0)).toBeNull();
+  });
+
+  it("hides scores that are not numbers", () => {
+    expect(matchTier(Number.NaN)).toBeNull();
+    expect(matchTier(Number.POSITIVE_INFINITY)).toBeNull();
   });
 });
 
