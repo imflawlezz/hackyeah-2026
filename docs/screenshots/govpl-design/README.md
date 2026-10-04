@@ -31,3 +31,19 @@ Captured on 4 October 2026 with Chrome headless against production builds in dem
 | Moderation, HC, 360          | ![](before-admin-moderation-360-high-contrast.png)  | ![](after-admin-moderation-360-high-contrast.png)  |
 
 Images are palette-compressed PNGs. Tools: puppeteer-core with installed Chrome, axe-core and Lighthouse, installed temporarily outside the committed dependencies.
+
+## Lighthouse, 320 px, A++ and 200% zoom
+
+`lighthouse-zoom-audit.json` holds a second run on the final build: 23 routes (the 20 above plus `/ideas/[id]`, `/messages/new` and `/admin/innovations/new`) in both themes, 46 rows.
+
+| Check                                                    | Result on all 46 rows |
+| -------------------------------------------------------- | --------------------- |
+| axe, WCAG 2.1 A and AA rules                             | 0 violations          |
+| Lighthouse accessibility                                 | 100                   |
+| Horizontal scroll at 320 px                              | none                  |
+| Horizontal scroll at 320 px with A++                     | none                  |
+| Horizontal scroll at 1280 px with A++                    | none                  |
+| Horizontal scroll at 200% zoom (640 CSS px, 2x pixels)   | none                  |
+| Text cut off by `overflow: hidden` or outside the window | none found            |
+
+The 200% zoom row emulates a 1280 px window zoomed to 200%. The clipped-text check is a script heuristic, not a visual review. Signed-in views with a real Supabase session were not measured; the demo build opens every route without an account.
