@@ -4,6 +4,16 @@ import { appendTranscript } from "@/lib/voice/append";
 
 import Link from "next/link";
 import { useEffect, useRef, useState, startTransition } from "react";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
+import { FieldError } from "@/components/testing/fields";
+
+const EMPTY_REPLY_MESSAGE = "Wpisz treść wiadomości.";
 import { useMessages } from "@/lib/messages/use-messages";
 import { getMockStore } from "@/lib/messages/mock-store";
 import { relativeTime, roleLabels } from "@/lib/messages/format";
@@ -22,6 +32,13 @@ export function MessagesWorkspace({ id }: { id?: string }) {
     state.conversations.find((c) => c.id === id) ??
     (!id ? state.conversations[0] : undefined);
   const [body, setBody] = useState("");
+  const [replyError, setReplyError] = useState<string | undefined>();
+  const [replySubmits, setReplySubmits] = useState(0);
+  const replySummary = errorItems([["message-body", replyError]]);
+  const replySummaryRef = useFocusErrorSummary(
+    replySubmits,
+    replySummary.length > 0,
+  );
   const [announcement, setAnnouncement] = useState("");
   const [pending, setPending] = useState<Message[]>([]);
   const [failed, setFailed] = useState<string[]>([]);
@@ -252,23 +269,46 @@ export function MessagesWorkspace({ id }: { id?: string }) {
               </div>
               <form
                 className="mt-6 space-y-4"
+                noValidate
+                aria-label="Odpowiedź"
                 onSubmit={(e) => {
                   e.preventDefault();
+                  const message = body.trim() ? undefined : EMPTY_REPLY_MESSAGE;
+                  setReplyError(message);
+                  setReplySubmits((count) => count + 1);
+                  if (message) return;
                   startTransition(() => {
                     void send();
                   });
                 }}
               >
+                {replySubmits > 0 && (
+                  <ErrorSummary ref={replySummaryRef} errors={replySummary} />
+                )}
+                <RequiredFieldsNote />
                 <label htmlFor="message-body" className="block font-semibold">
                   Twoja wiadomość
+                  <RequiredMark />
                 </label>
                 <textarea
+                  autoComplete="off"
                   id="message-body"
-                  className="min-h-32 w-full rounded-sm border border-input p-3"
-                  required
+                  className="min-h-32 w-full rounded-sm border border-input p-2.5"
+                  aria-required="true"
+                  aria-invalid={replyError ? true : undefined}
+                  aria-describedby={
+                    replyError ? "message-body-error" : undefined
+                  }
                   maxLength={4000}
                   value={body}
-                  onChange={(e) => setBody(e.target.value)}
+                  onChange={(e) => {
+                    setBody(e.target.value);
+                    if (replyError && e.target.value.trim())
+                      setReplyError(undefined);
+                  }}
+                  onBlur={() =>
+                    setReplyError(body.trim() ? undefined : EMPTY_REPLY_MESSAGE)
+                  }
                   onKeyDown={(e) => {
                     if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
                       e.preventDefault();
@@ -276,6 +316,7 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                     }
                   }}
                 />
+                <FieldError id="message-body-error" message={replyError} />
                 <VoiceFieldInput
                   key={conversation.id}
                   getValue={() => body}
@@ -288,8 +329,8 @@ export function MessagesWorkspace({ id }: { id?: string }) {
                   limit={4000}
                 />
                 <button
-                  disabled={!body.trim()}
-                  className="min-h-11 rounded-sm bg-primary px-6 py-2 text-primary-foreground disabled:opacity-50"
+                  type="submit"
+                  className="min-h-11 rounded-sm bg-primary px-6 py-2 text-primary-foreground hover:bg-primary-hover active:bg-navy"
                 >
                   Wyślij
                 </button>

@@ -26,7 +26,7 @@ export function NotificationList() {
 
   if (status === "signed-out") {
     return (
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <p>Zaloguj się, aby zobaczyć swoje powiadomienia.</p>
         <Link
           href={loginPath("/notifications")}

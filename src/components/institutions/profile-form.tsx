@@ -5,9 +5,17 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   ChoiceGroup,
+  choiceId,
   FieldError,
   TextField,
 } from "@/components/testing/fields";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,7 +38,7 @@ import { cn } from "@/lib/utils";
 import type { InstitutionProfile } from "@/types";
 
 const SELECT_CLASSES =
-  "min-h-12 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive";
+  "min-h-12 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive";
 
 const LABEL_CLASSES = "text-lg leading-snug font-semibold";
 
@@ -49,11 +57,34 @@ export function ProfileForm({
     reset,
     subscribe,
     control,
-    formState: { errors },
+    formState: { errors, submitCount },
   } = useForm<ProfileFormInput, unknown, ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: PROFILE_FORM_DEFAULTS,
+    mode: "onBlur",
+    shouldFocusError: false,
   });
+  const summaryErrors = errorItems([
+    ["institution-type", errors.institutionType?.message],
+    ["municipality-type", errors.municipalityType?.message],
+    [
+      choiceId("populationBand", POPULATION_BAND_OPTIONS[0].value),
+      errors.populationBand?.message,
+    ],
+    [
+      choiceId("budgetBand", BUDGET_BAND_OPTIONS[0].value),
+      errors.budgetBand?.message,
+    ],
+    ["staff-available", errors.staffAvailable?.message],
+    ["target-group", errors.targetGroup?.message],
+    ["need", errors.need?.message],
+    ["constraints", errors.constraints?.message],
+    [choiceId("timeline", TIMELINE_OPTIONS[0].value), errors.timeline?.message],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   // Answers survive a reload and a trip to another page in this tab.
   useEffect(() => {
@@ -91,6 +122,10 @@ export function ProfileForm({
       aria-label="Opis instytucji"
       className="flex max-w-3xl flex-col gap-10"
     >
+      {submitCount > 0 && (
+        <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+      )}
+      <RequiredFieldsNote />
       <fieldset className="flex flex-col gap-8">
         <legend className="mb-6 text-xl font-semibold text-heading">
           Twoja instytucja
@@ -100,9 +135,11 @@ export function ProfileForm({
           <div className="flex flex-col gap-2">
             <Label htmlFor="institution-type" className={LABEL_CLASSES}>
               Typ instytucji
+              <RequiredMark />
             </Label>
             <select
               id="institution-type"
+              aria-required="true"
               aria-invalid={errors.institutionType ? true : undefined}
               aria-describedby={
                 errors.institutionType ? "institution-type-error" : undefined
@@ -125,7 +162,7 @@ export function ProfileForm({
 
           <div className="flex flex-col gap-2">
             <Label htmlFor="municipality-type" className={LABEL_CLASSES}>
-              Rodzaj gminy (opcjonalnie)
+              Rodzaj gminy
             </Label>
             <select
               id="municipality-type"
@@ -157,6 +194,7 @@ export function ProfileForm({
             options={POPULATION_BAND_OPTIONS}
             registration={register("populationBand")}
             error={errors.populationBand?.message}
+            required
           />
           <ChoiceGroup
             legend="Roczny budżet na to działanie"
@@ -164,12 +202,14 @@ export function ProfileForm({
             options={BUDGET_BAND_OPTIONS}
             registration={register("budgetBand")}
             error={errors.budgetBand?.message}
+            required
           />
         </div>
 
         <div className="flex flex-col gap-2 sm:max-w-xs">
           <Label htmlFor="staff-available" className={LABEL_CLASSES}>
             Ile osób z zespołu może się zaangażować?
+            <RequiredMark />
           </Label>
           <p
             id="staff-available-hint"
@@ -180,6 +220,7 @@ export function ProfileForm({
           <Input
             id="staff-available"
             type="text"
+            aria-required="true"
             inputMode="numeric"
             autoComplete="off"
             aria-invalid={errors.staffAvailable ? true : undefined}
@@ -205,6 +246,7 @@ export function ProfileForm({
         <div className="flex flex-col gap-2">
           <Label htmlFor="target-group" className={LABEL_CLASSES}>
             Kogo ma objąć wsparcie?
+            <RequiredMark />
           </Label>
           <p id="target-group-hint" className="text-base text-muted-foreground">
             Na przykład: samotni seniorzy z przysiółków.
@@ -212,6 +254,7 @@ export function ProfileForm({
           <Input
             id="target-group"
             type="text"
+            aria-required="true"
             autoComplete="off"
             aria-invalid={errors.targetGroup ? true : undefined}
             aria-describedby={cn(
@@ -236,12 +279,13 @@ export function ProfileForm({
           registration={register("need")}
           error={errors.need?.message}
           rows={5}
+          required
           maxLength={NEED_MAX_LENGTH}
         />
 
         <TextField
           id="constraints"
-          label="Ograniczenia (np. brak lokalu, transport) (opcjonalnie)"
+          label="Ograniczenia (np. brak lokalu, transport)"
           control={control}
           name="constraints"
           registration={register("constraints")}
@@ -254,6 +298,7 @@ export function ProfileForm({
           options={TIMELINE_OPTIONS}
           registration={register("timeline")}
           error={errors.timeline?.message}
+          required
         />
       </fieldset>
 
@@ -261,7 +306,7 @@ export function ProfileForm({
         <Button
           type="submit"
           aria-disabled={busy || undefined}
-          className="h-auto min-h-12 px-6 py-3 text-lg font-semibold whitespace-normal"
+          className="h-auto min-h-12 px-6 py-2.5 text-lg font-semibold whitespace-normal"
         >
           {submitLabel}
         </Button>

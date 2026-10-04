@@ -29,7 +29,7 @@ const [
   ASSUMPTIONS,
 ] = PLAN_SECTIONS;
 
-const CELL = "border border-border px-3 py-2 align-top";
+const CELL = "border border-border px-2.5 py-2 align-top";
 // Data tables may scroll sideways on narrow screens; the wrapper is focusable
 // so keyboard users can scroll it too.
 const TABLE_SCROLL = "max-w-full overflow-x-auto rounded-sm";
@@ -45,7 +45,7 @@ function Section({
   return (
     <section
       aria-labelledby={section.id}
-      className="flex min-w-0 scroll-mt-4 flex-col gap-3"
+      className="flex min-w-0 scroll-mt-4 flex-col gap-2.5"
     >
       <h3 id={section.id} className="text-2xl font-semibold">
         {section.title}
@@ -289,7 +289,7 @@ export function PlanDocument({
           {plan.kpis.map((kpi, index) => (
             <div
               key={`${index}-${kpi.indicator}`}
-              className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-1 border-t border-border py-3 last:border-b sm:grid-cols-2"
+              className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-1 border-t border-border py-2.5 last:border-b sm:grid-cols-2"
             >
               <dt className="font-semibold">{kpi.indicator}</dt>
               <dd>{kpi.target}</dd>

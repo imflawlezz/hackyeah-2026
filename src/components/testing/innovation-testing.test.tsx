@@ -1,6 +1,12 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen, within } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  within,
+  waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { InnovationTesting } from "@/components/testing/innovation-testing";
@@ -117,7 +123,11 @@ describe("rating radio group", () => {
 
     await user.click(screen.getByRole("button", { name: "Wyślij opinię" }));
 
-    const error = await screen.findByRole("alert");
+    const [summary, error] = await screen.findAllByRole("alert");
+    await waitFor(() => expect(summary).toHaveFocus());
+    expect(
+      within(summary).getByRole("link", { name: "Wybierz ocenę od 1 do 5." }),
+    ).toHaveAttribute("href", "#rating-1");
     expect(error).toHaveTextContent("Wybierz ocenę od 1 do 5.");
     const group = screen.getByRole("group", {
       name: "Jak oceniasz to rozwiązanie?",
@@ -168,7 +178,7 @@ describe("demo mode", () => {
     await user.click(screen.getByRole("radio", { name: "5 – bardzo proste" }));
     await user.click(screen.getByRole("radio", { name: "Tak" }));
     await user.type(
-      screen.getByLabelText("Co zadziałało? (opcjonalnie)"),
+      screen.getByLabelText("Co zadziałało?"),
       "Stała pora rozmowy.",
     );
     await user.click(screen.getByRole("button", { name: "Wyślij opinię" }));

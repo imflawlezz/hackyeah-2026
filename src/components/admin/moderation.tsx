@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  ArchiveBoxIcon,
-  ArrowTopRightOnSquareIcon,
-  CheckIcon,
-  PencilSquareIcon,
-  XMarkIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -38,12 +32,13 @@ const STAGES: Record<AdminIdea["stage"], string> = {
 };
 
 const LINK =
-  "inline-flex min-h-11 items-center gap-1.5 rounded-sm text-primary underline underline-offset-4 hover:no-underline";
-const ITEM = "flex flex-col gap-3 rounded-md border border-border p-4 sm:p-5";
+  "inline-flex min-h-11 items-center gap-2 rounded-sm text-primary underline underline-offset-4 hover:no-underline";
+const ITEM = "flex flex-col gap-2.5 rounded-md border border-border p-4 sm:p-5";
 const META = "flex flex-wrap gap-x-4 gap-y-1 text-base text-muted-foreground";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pl-PL", {
+    timeZone: "Europe/Warsaw",
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -122,7 +117,7 @@ export function Moderation({
               {item.label}{" "}
               {/* The border keeps the count visible on the white active tab
                   and on the gray strip alike. */}
-              <span className="inline-flex min-w-6 items-center justify-center rounded-sm border border-input bg-background px-1.5 text-sm leading-6 font-semibold text-foreground tabular-nums">
+              <span className="inline-flex min-w-6 items-center justify-center rounded-sm border border-input bg-background px-2 text-sm leading-6 font-semibold text-foreground tabular-nums">
                 {counts[item.value]}
               </span>
             </TabsTrigger>
@@ -134,7 +129,7 @@ export function Moderation({
             Pomysły czekające na przegląd
           </PanelHeading>
           {ideas.length ? (
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2.5">
               {ideas.map((idea) => (
                 <li key={idea.id}>
                   <article aria-labelledby={`idea-${idea.id}`} className={ITEM}>
@@ -165,9 +160,10 @@ export function Moderation({
                         </time>
                       </span>
                     </p>
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
                       <Button
                         type="button"
+                        variant="outline"
                         className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
@@ -177,7 +173,7 @@ export function Moderation({
                             description:
                               "Status pomysłu zmieni się na „przejrzany”. Notatka zapisze się przy pomyśle.",
                             confirmLabel: "Oznacz jako przejrzane",
-                            noteLabel: "Wiadomość do autora (opcjonalnie)",
+                            noteLabel: "Wiadomość do autora",
                             noteHint:
                               "Na przykład: co poprawić albo z kim się skontaktować.",
                             focusAfterConfirm: panelHeading,
@@ -186,7 +182,6 @@ export function Moderation({
                           })
                         }
                       >
-                        <CheckIcon aria-hidden="true" className="size-5" />
                         Oznacz jako przejrzane
                       </Button>
                       <Link
@@ -211,7 +206,7 @@ export function Moderation({
             Nowe zgłoszenia problemów
           </PanelHeading>
           {problems.length ? (
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2.5">
               {problems.map((problem, index) => (
                 <li key={problem.id}>
                   <article
@@ -237,7 +232,7 @@ export function Moderation({
                     <blockquote className="border-l-4 border-border pl-4">
                       {problem.excerpt}
                     </blockquote>
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
                       <Button
                         type="button"
                         variant="outline"
@@ -250,7 +245,7 @@ export function Moderation({
                             description:
                               "Zgłoszenie zniknie z tej listy, ale zostanie w statystykach trendów.",
                             confirmLabel: "Zamknij zgłoszenie",
-                            noteLabel: "Notatka dla zespołu (opcjonalnie)",
+                            noteLabel: "Notatka dla zespołu",
                             noteHint: "Widzą ją tylko administratorzy.",
                             focusAfterConfirm: panelHeading,
                             onConfirm: (note) =>
@@ -258,7 +253,6 @@ export function Moderation({
                           })
                         }
                       >
-                        <XMarkIcon aria-hidden="true" className="size-5" />
                         Zamknij
                       </Button>
                       <a
@@ -271,10 +265,9 @@ export function Moderation({
                         <ArrowTopRightOnSquareIcon
                           aria-hidden="true"
                           className="size-5"
-                        />
+                        />{" "}
                         <span className="sr-only">
-                          {" "}
-                          (otwiera się w nowej karcie)
+                          (otwiera się w nowym oknie)
                         </span>
                       </a>
                     </div>
@@ -292,7 +285,7 @@ export function Moderation({
             Szkice innowacji
           </PanelHeading>
           {drafts.length ? (
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2.5">
               {drafts.map((draft) => (
                 <li key={draft.id}>
                   <article
@@ -320,9 +313,10 @@ export function Moderation({
                         {draft.targetGroup}
                       </span>
                     </p>
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
                       <Button
                         type="button"
+                        variant="outline"
                         className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
@@ -343,7 +337,6 @@ export function Moderation({
                           })
                         }
                       >
-                        <CheckIcon aria-hidden="true" className="size-5" />
                         Opublikuj
                       </Button>
                       <Button
@@ -358,7 +351,6 @@ export function Moderation({
                             description:
                               "Szkic zniknie z tej listy. Możesz go przywrócić w edycji innowacji.",
                             confirmLabel: "Zarchiwizuj",
-                            destructive: true,
                             focusAfterConfirm: panelHeading,
                             onConfirm: () =>
                               act(() =>
@@ -367,17 +359,12 @@ export function Moderation({
                           })
                         }
                       >
-                        <ArchiveBoxIcon aria-hidden="true" className="size-5" />
                         Archiwizuj
                       </Button>
                       <Link
                         href={`/admin/innovations/${encodeURIComponent(draft.id)}/edit`}
                         className={LINK}
                       >
-                        <PencilSquareIcon
-                          aria-hidden="true"
-                          className="size-5"
-                        />
                         Edytuj<span className="sr-only">: {draft.title}</span>
                       </Link>
                     </div>

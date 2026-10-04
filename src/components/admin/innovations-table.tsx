@@ -1,6 +1,5 @@
 "use client";
 
-import { PencilSquareIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useDeferredValue, useId, useState } from "react";
 import { EmbeddingBadge, StatusBadge } from "@/components/admin/badges";
@@ -11,11 +10,11 @@ import type { AdminInnovation } from "@/lib/admin/types";
 import { cn } from "@/lib/utils";
 
 const FIELD =
-  "min-h-11 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring";
+  "min-h-11 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring";
 
 // Below sm the table stacks into labelled rows instead of scrolling sideways.
 const CELL =
-  "flex flex-wrap items-baseline gap-x-2 px-3 py-1 align-top @min-[50rem]:table-cell @min-[50rem]:py-3 @max-[50rem]:before:min-w-28 @max-[50rem]:before:text-sm @max-[50rem]:before:font-semibold @max-[50rem]:before:text-muted-foreground @max-[50rem]:before:content-[attr(data-label)]";
+  "flex flex-wrap items-baseline gap-x-2 px-2.5 py-1 align-top @min-[50rem]:table-cell @min-[50rem]:py-2.5 @max-[50rem]:before:min-w-28 @max-[50rem]:before:text-sm @max-[50rem]:before:font-semibold @max-[50rem]:before:text-muted-foreground @max-[50rem]:before:content-[attr(data-label)]";
 
 function normalize(text: string) {
   return text.toLocaleLowerCase("pl");
@@ -23,6 +22,7 @@ function normalize(text: string) {
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pl-PL", {
+    timeZone: "Europe/Warsaw",
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -130,23 +130,23 @@ export function InnovationsTable({
         <caption className="sr-only">Innowacje w bazie wiedzy</caption>
         <thead className="hidden border-b-2 border-border text-left @min-[50rem]:table-header-group">
           <tr>
-            <th scope="col" className="px-3 py-2 font-semibold">
+            <th scope="col" className="px-2.5 py-2 font-semibold">
               Tytuł
             </th>
-            <th scope="col" className="px-3 py-2 font-semibold">
+            <th scope="col" className="px-2.5 py-2 font-semibold">
               Kategoria
             </th>
-            <th scope="col" className="px-3 py-2 font-semibold">
+            <th scope="col" className="px-2.5 py-2 font-semibold">
               Status
             </th>
-            <th scope="col" className="px-3 py-2 font-semibold">
+            <th scope="col" className="px-2.5 py-2 font-semibold">
               Wektor
             </th>
-            <th scope="col" className="px-3 py-2 font-semibold">
+            <th scope="col" className="px-2.5 py-2 font-semibold">
               Zmieniono
             </th>
             {canEdit && (
-              <th scope="col" className="px-3 py-2 font-semibold">
+              <th scope="col" className="px-2.5 py-2 font-semibold">
                 <span className="sr-only">Akcje</span>
               </th>
             )}
@@ -186,9 +186,8 @@ export function InnovationsTable({
                 <td className={cn(CELL, "@max-[50rem]:before:content-none")}>
                   <Link
                     href={`/admin/innovations/${encodeURIComponent(item.id)}/edit`}
-                    className="inline-flex min-h-11 items-center gap-1.5 rounded-sm text-primary underline underline-offset-4 hover:no-underline"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-sm text-primary underline underline-offset-4 hover:no-underline"
                   >
-                    <PencilSquareIcon aria-hidden="true" className="size-5" />
                     Edytuj<span className="sr-only">: {item.title}</span>
                   </Link>
                 </td>

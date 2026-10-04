@@ -44,7 +44,7 @@ export default async function TrendsPage({
 
       <form
         method="get"
-        className="flex flex-wrap items-end gap-3"
+        className="flex flex-wrap items-end gap-2.5"
         aria-label="Okres"
       >
         <div className="flex flex-col gap-2">
@@ -55,7 +55,7 @@ export default async function TrendsPage({
             id="period"
             name="period"
             defaultValue={period}
-            className="min-h-11 rounded-md border border-input bg-background px-3 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring"
+            className="min-h-11 rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring"
           >
             {TREND_PERIODS.map(({ value, label }) => (
               <option key={value} value={value}>

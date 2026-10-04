@@ -55,7 +55,7 @@ describe("KnowledgeBrowser", () => {
       materials.length,
     );
     const mapLink = within(panel).getByRole("link", {
-      name: "Pobierz: Mapa Wyzwań Społecznych (PDF, 7,8 MB, po polsku), otwiera się w nowej karcie",
+      name: "Pobierz: Mapa Wyzwań Społecznych (PDF, 7,8 MB, po polsku) (otwiera się w nowym oknie)",
     });
     expect(mapLink).toHaveAttribute("target", "_blank");
     expect(

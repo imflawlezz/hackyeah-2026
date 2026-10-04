@@ -89,7 +89,7 @@ export default async function AdminOverviewPage() {
       />
       {notice && <Notice>{notice}</Notice>}
 
-      <section aria-labelledby="kpi-heading" className="flex flex-col gap-3">
+      <section aria-labelledby="kpi-heading" className="flex flex-col gap-2.5">
         <h2 id="kpi-heading" className="text-xl font-semibold">
           Liczby
         </h2>
@@ -97,7 +97,7 @@ export default async function AdminOverviewPage() {
           {kpis(overview).map((kpi) => (
             <div
               key={kpi.label}
-              className="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[minmax(0,1fr)_6rem]"
+              className="grid gap-x-6 gap-y-1 py-2.5 sm:grid-cols-[minmax(0,1fr)_6rem]"
             >
               <dt className="flex flex-col">
                 <span className="font-semibold">{kpi.label}</span>
@@ -119,7 +119,7 @@ export default async function AdminOverviewPage() {
 
       <section
         aria-labelledby="attention-heading"
-        className="flex flex-col gap-3"
+        className="flex flex-col gap-2.5"
       >
         <h2 id="attention-heading" className="text-xl font-semibold">
           Wymaga uwagi
@@ -129,7 +129,7 @@ export default async function AdminOverviewPage() {
             {items.map((item) => (
               <li
                 key={item.href}
-                className="flex flex-col gap-2 rounded-md border border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-2 rounded-md border border-border px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between"
               >
                 <span>{item.text}</span>
                 <Link

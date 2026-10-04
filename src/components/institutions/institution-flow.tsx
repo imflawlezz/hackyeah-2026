@@ -369,7 +369,7 @@ export function InstitutionFlow({
                       value={innovation.id}
                       checked={chosenId === innovation.id}
                       onChange={() => setChosenId(innovation.id)}
-                      className="mt-1.5 size-5 accent-primary"
+                      className="mt-2 size-5 accent-primary"
                     />
                     <span className="flex flex-col gap-1">
                       <span className="text-xl leading-snug font-semibold text-heading">
@@ -387,11 +387,11 @@ export function InstitutionFlow({
                   </label>
                 ))}
               </fieldset>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2.5">
                 <Button
                   type="submit"
                   aria-disabled={busy !== null || undefined}
-                  className="h-auto min-h-12 px-6 py-3 text-lg font-semibold whitespace-normal"
+                  className="h-auto min-h-12 px-6 py-2.5 text-lg font-semibold whitespace-normal"
                 >
                   Przygotuj plan
                 </Button>
@@ -414,8 +414,8 @@ export function InstitutionFlow({
 
       {stage.step === "plan" && profile && (
         <section aria-label="Plan wdrożenia" className="flex flex-col gap-8">
-          <div className="flex flex-col gap-3 print:hidden">
-            <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-2.5 print:hidden">
+            <div className="flex flex-wrap gap-2.5">
               <Button
                 type="button"
                 onClick={() => window.print()}
@@ -467,7 +467,7 @@ export function InstitutionFlow({
             headingRef={headingRef}
           />
 
-          <div className="flex flex-wrap gap-3 border-t border-border pt-6 print:hidden">
+          <div className="flex flex-wrap gap-2.5 border-t border-border pt-6 print:hidden">
             <Button
               type="button"
               variant="outline"

@@ -13,6 +13,13 @@ import {
   inputClassName,
   labelClassName,
 } from "@/components/auth/form-parts";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,11 +44,21 @@ export function SignInForm({
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, submitCount },
   } = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: { email: "", password: "" },
+    mode: "onBlur",
+    shouldFocusError: false,
   });
+  const summaryErrors = errorItems([
+    ["signin-email", errors.email?.message],
+    ["signin-password", errors.password?.message],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   const submit = handleSubmit(async (values) => {
     setServerError(null);
@@ -67,15 +84,22 @@ export function SignInForm({
         className="flex min-w-0 flex-col gap-6"
       >
         <FormAlert message={serverError} />
+        {submitCount > 0 && (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        )}
+        <RequiredFieldsNote />
 
         <div className="flex flex-col gap-2">
           <Label htmlFor="signin-email" className={labelClassName}>
             E-mail
+            <RequiredMark />
           </Label>
           <Input
             id="signin-email"
             type="email"
             autoComplete="email"
+            spellCheck={false}
+            aria-required="true"
             aria-invalid={errors.email ? true : undefined}
             aria-describedby={errors.email ? "signin-email-error" : undefined}
             className={inputClassName}
@@ -88,6 +112,7 @@ export function SignInForm({
           id="signin-password"
           label="Hasło"
           autoComplete="current-password"
+          required
           error={errors.password?.message}
           registration={register("password")}
         />

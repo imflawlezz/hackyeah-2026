@@ -30,7 +30,7 @@ export function ChallengeList({
             aria-labelledby={titleId}
             className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-4 border-b border-border py-8 sm:grid-cols-[4rem_minmax(0,1fr)] lg:grid-cols-[4rem_minmax(0,1fr)_17rem]"
           >
-            <div className="flex items-center gap-3 sm:flex-col sm:items-start">
+            <div className="flex items-center gap-2.5 sm:flex-col sm:items-start">
               <Icon aria-hidden="true" className="size-6 text-primary" />
             </div>
 

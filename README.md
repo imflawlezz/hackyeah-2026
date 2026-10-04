@@ -228,54 +228,52 @@ A role sent by the browser is never trusted: `sanitizeSignupRole` in `src/lib/au
 
 ## Design system and accessibility
 
-The theme lives in `src/app/globals.css` as CSS variables mapped to Tailwind classes (`bg-primary`, `text-muted-foreground`, `bg-success`, `text-highlight`, `bg-navy`). Components use those classes only and never hardcode hex values.
+The UI follows the visual language of [Design System Gov.pl](https://aplikacje.gov.pl/app/govpl-front-styleguide/) through the [govpl-design skill](.agents/skills/govpl-design/SKILL.md). The theme lives in `src/app/globals.css` as CSS variables mapped to Tailwind classes (`bg-primary`, `text-muted-foreground`, `bg-warning`, `bg-navy`). Components use those classes only and never hardcode hex values. The screen design and Polish copy rules live in [docs/design/STYLE.md](docs/design/STYLE.md).
 
 ### Palette
 
-Ratios are WCAG 2.x contrast against white unless noted, computed by `contrastRatio` in `src/lib/a11y/contrast.ts`. `src/lib/a11y/contrast.test.ts` reads the variables from `globals.css` and fails when a text pair drops below 4.5:1 (7:1 in high contrast) or a control boundary below 3:1.
+Ratios are WCAG 2.x contrast against white unless noted, computed by `contrastRatio` in `src/lib/a11y/contrast.ts`. `src/lib/a11y/contrast.test.ts` reads the variables from `globals.css`, checks that they match the Gov.pl values, and fails when a text pair drops below 4.5:1 (7:1 in high contrast) or a control boundary or status colour below 3:1.
 
-| Token                 | Hex       | Use                                                    | Contrast                                |
-| --------------------- | --------- | ------------------------------------------------------ | --------------------------------------- |
-| `primary`             | `#2462ad` | buttons, links, active nav, focus ring                 | 6.13:1 on white, 5.71:1 on surface      |
-| `primary-hover`       | `#1d508d` | hover and pressed state of primary                     | 8.13:1                                  |
-| `navy`                | `#0f4a91` | headings, footer background                            | 8.72:1 (white text on navy 8.72:1)      |
-| `highlight` (crimson) | `#d10a52` | sparingly: "Nowe" badge, highlight, match score accent | 5.42:1                                  |
-| `foreground`          | `#1a1a1a` | body text                                              | 17.4:1                                  |
-| `muted-foreground`    | `#4d4d4d` | secondary text                                         | 8.45:1                                  |
-| `muted` / `secondary` | `#f5f7fa` | cards, alternating sections (surface)                  | n/a                                     |
-| `accent`              | `#e8f0fa` | hover backgrounds, with `accent-foreground` `#0f4a91`  | 7.6:1 (navy text on accent)             |
-| `success`             | `#1e7f3c` | status                                                 | 5.05:1                                  |
-| `warning`             | `#b45309` | status                                                 | 5.02:1                                  |
-| `destructive`         | `#b91c1c` | errors                                                 | 6.47:1                                  |
-| `input`               | `#6b7280` | form-control and outline-button borders                | 4.83:1 (WCAG 1.4.11 needs at least 3:1) |
-| `border`              | `#d5dbe3` | decorative dividers only                               | n/a                                     |
+| Token                          | Hex       | Gov.pl name   | Use                                             | Contrast                       |
+| ------------------------------ | --------- | ------------- | ----------------------------------------------- | ------------------------------ |
+| `primary`, `ring`              | `#0052a5` | primary       | buttons, links, active nav, focus ring          | 7.64:1, 6.76:1 on surface      |
+| `primary-hover`                | `#006cd7` | primary-light | hover                                           | 5.09:1 (white text on it)      |
+| `navy`                         | `#00468d` | navy          | pressed buttons, footer background              | 9.29:1 (white text on navy)    |
+| `foreground`, `heading`        | `#1b1b1b` | text          | body text and headings                          | 17.22:1                        |
+| `muted-foreground`             | `#656565` | gray-700      | secondary text                                  | 5.83:1, 5.16:1 on surface      |
+| `input`                        | `#767676` | gray-600      | form-control and outline-button borders         | 4.54:1 (WCAG 1.4.11 needs 3:1) |
+| `border`                       | `#dadada` | gray-200      | decorative dividers only                        | n/a                            |
+| `muted`, `secondary`, `accent` | `#f1f1f1` | gray-100      | surfaces, hover backgrounds                     | n/a                            |
+| `destructive`, `highlight`     | `#a7162d` | danger-dark   | errors, irreversible actions, one emphasis      | 7.51:1                         |
+| `success`                      | `#598527` | success       | icons, borders, chart bars; never text          | 4.37:1 (3:1 for non-text)      |
+| `warning`                      | `#eba828` | warning       | background only, with `warning-foreground` text | 8.34:1 (`#1b1b1b` on warning)  |
 
-Crimson is `highlight`, not `accent`: shadcn uses `accent` for hover backgrounds. Status is never conveyed by colour alone; pair it with an icon and text.
-
-The screen design and Polish copy rules live in [docs/design/STYLE.md](docs/design/STYLE.md).
+Status is never conveyed by colour alone; pair it with an icon and text. Warning yellow is never text or an icon on white.
 
 `components.json` retains the shadcn CLI icon setting. After each `npx shadcn@latest add`, replace emitted lucide imports with `@heroicons/react`; the ESLint restriction catches missed imports.
 
-Typography pairs Source Serif 4 (600/700) for headings with Source Sans 3 (400/600) for body text, both self-hosted through `next/font/google` (`latin` and `latin-ext`) at an 18 px base (`html { font-size: 112.5% }`) with line-height 1.6 and navy headings.
+Typography uses Open Sans only (400, 600, 700), self-hosted through `next/font/google` (`latin` and `latin-ext`). The base is 16 px on desktop and 14 px below 700 px, with the Gov.pl scale 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px mapped onto Tailwind's `text-4xl` … `text-xs`. Body line-height is 1.5 and headings 1.25. On mobile, Tailwind's `--spacing` is compensated so spacing and 44 px targets keep their pixel size.
 
 ### Font size and high contrast
 
 Both settings sit in the "Ustawienia dostępności" toolbar at the top of the header and persist in `localStorage`.
 
-- **Font size.** `A` / `A+` / `A++` set `data-font-size` on `<html>` to `default`, `large` or `largest`, which scales the root font size to 100%, 115% or 130% of the base. Spacing and control heights are in `rem`, so they scale too. An inline script in `<head>` applies the stored value before first paint (key `hubmi-font-size`); `parseFontSize` in `src/lib/a11y/preferences.ts` falls back to `default` for unknown values.
-- **High contrast.** `next-themes` sets `data-theme` on `<html>` to `default` or `high-contrast` (key `hubmi-theme`) and applies it before first paint. The `[data-theme="high-contrast"]` block swaps the variables to a black background, white text, yellow (`#ffff00`) links and focus ring, and white borders.
+- **Font size.** `A` / `A+` / `A++` set `data-font-size` on `<html>` to `default`, `large` or `largest`, which scales the root font size to 100%, 115% or 130% of the base (16 px desktop, 14 px mobile). Spacing and control heights are in `rem`, so they scale too. An inline script in `<head>` applies the stored value before first paint (key `hubmi-font-size`); `parseFontSize` in `src/lib/a11y/preferences.ts` falls back to `default` for unknown values.
+- **High contrast.** `next-themes` sets `data-theme` on `<html>` to `default` or `high-contrast` (key `hubmi-theme`) and applies it before first paint. The `[data-theme="high-contrast"]` block swaps the variables to a black background, white text, yellow (`#ffff00`) links and focus ring, and white borders, and sets `color-scheme: dark`. Gov.pl has no high-contrast palette; this one is ours.
 
 Focus is a 3 px solid outline in `--ring` with a 2 px offset on every `:focus-visible` element. With "reduce motion" enabled in the OS, animations, transitions and smooth scrolling are turned off.
 
 ### Manual test checklist
 
-- [ ] First Tab on any page shows "Przejdź do treści"; Enter moves focus to `<main>`.
+- [ ] First Tab on any page shows "Przejdź do treści głównej"; Enter moves focus to `<main>`.
 - [ ] Tab through header, page and footer: every stop shows the 3 px focus ring, in order, with no trap.
 - [ ] At 360 px the header shows "Menu"; it opens with Enter, Esc closes it, focus returns to the button, and following a link closes it.
 - [ ] At 320 px there is no horizontal scroll; at 200% browser zoom nothing is clipped.
 - [ ] `A+` / `A++` and "Wysoki kontrast" apply, survive a reload and do not flash the default on load.
 - [ ] With OS "reduce motion" on, the mobile menu opens without animation.
-- [ ] Lighthouse Accessibility is at least 95 and axe reports no serious or critical issues on `/`, `/match` and `/accessibility`, in both themes.
+- [ ] Every form shows "* Pola obowiązkowe"; submitting it empty moves focus to the error summary, and each link in it focuses its field.
+- [ ] Each view has at most one filled primary button.
+- [ ] Lighthouse Accessibility is at least 95 and axe reports no serious or critical issues on every route, in both themes.
 - [ ] A screen reader (NVDA or VoiceOver) announces landmarks, the current page in the nav and the pressed state of the toolbar buttons.
 
 ## Before you open a PR

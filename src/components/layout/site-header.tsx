@@ -81,7 +81,7 @@ export function SiteHeader({
         </div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2.5 px-4 py-4">
         <Link href="/" className="flex flex-col rounded-md">
           <span className="font-heading text-2xl leading-tight font-bold text-heading">
             HubMI.pl
@@ -93,7 +93,7 @@ export function SiteHeader({
 
         <div
           data-slot="header-actions"
-          className="hidden items-center gap-3 md:flex"
+          className="hidden items-center gap-2.5 md:flex"
         >
           <HeaderActions user={user} demo={demo} />
         </div>
@@ -127,7 +127,7 @@ export function SiteHeader({
             <nav aria-label="Główna nawigacja" className="px-4">
               <NavList
                 className="flex flex-col gap-1"
-                linkClassName="flex min-h-11 items-center px-3 py-2"
+                linkClassName="flex min-h-11 items-center px-2.5 py-2"
                 onNavigate={closeMenu}
               />
             </nav>
@@ -143,11 +143,11 @@ export function SiteHeader({
 
       <nav
         aria-label="Główna nawigacja"
-        className="mx-auto hidden w-full max-w-6xl px-4 pb-3 md:block"
+        className="mx-auto hidden w-full max-w-6xl px-4 pb-2.5 md:block"
       >
         <NavList
-          className="-mx-3 flex flex-wrap gap-x-1 gap-y-1"
-          linkClassName="inline-flex min-h-11 items-center px-3 py-1"
+          className="-mx-2.5 flex flex-wrap gap-x-1 gap-y-1"
+          linkClassName="inline-flex min-h-11 items-center px-2.5 py-1"
         />
       </nav>
     </header>

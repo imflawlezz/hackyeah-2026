@@ -10,6 +10,43 @@ import { getMockStore } from "@/lib/messages/mock-store";
 import { startConversationSchema } from "@/lib/messages/schemas";
 import { DemoBanner } from "./messages-workspace";
 import type { ConversationKind } from "@/types";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { FieldError } from "@/components/testing/fields";
+import { cn } from "@/lib/utils";
+
+type FieldErrors = Partial<Record<"recipient" | "subject" | "body", string>>;
+
+/** Per-field checks for the error summary; the schema still runs on submit. */
+function fieldMessage(
+  name: keyof FieldErrors,
+  value: string,
+  recipientRequired: boolean,
+): string | undefined {
+  const text = value.trim();
+  if (name === "recipient") {
+    return recipientRequired && !text
+      ? "Wpisz identyfikator konta partnera."
+      : undefined;
+  }
+  if (name === "subject") {
+    if (!text) return "Wpisz temat wiadomości.";
+    return text.length > 200
+      ? "Temat może mieć najwyżej 200 znaków."
+      : undefined;
+  }
+  if (!text) return "Wpisz treść wiadomości.";
+  return text.length > 4000
+    ? "Wiadomość może mieć najwyżej 4000 znaków."
+    : undefined;
+}
+
 export function NewMessageForm({
   demo,
   experts,
@@ -29,9 +66,32 @@ export function NewMessageForm({
   const [kind, setKind] = useState(initialKind);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [submitCount, setSubmitCount] = useState(0);
   const router = useRouter();
+  const recipientRequired = kind === "partnership" && !demo;
+  const summaryErrors = errorItems([
+    ["new-recipient", fieldErrors.recipient],
+    ["new-subject", fieldErrors.subject],
+    ["new-body", fieldErrors.body],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
+
+  function validateField(name: keyof FieldErrors, value: string) {
+    setFieldErrors((current) => ({
+      ...current,
+      [name]: fieldMessage(name, value, recipientRequired),
+    }));
+  }
   return (
     <div className="mx-auto max-w-3xl space-y-6">
+      <Breadcrumbs
+        items={[{ href: "/messages", label: "Wiadomości" }]}
+        current="Napisz wiadomość"
+      />
       <h1 className="text-3xl text-heading">Napisz wiadomość</h1>
       {demo && <DemoBanner />}
       {(innovationId || ideaId) && (
@@ -49,9 +109,31 @@ export function NewMessageForm({
       )}
       <form
         className="space-y-6"
+        noValidate
+        aria-label="Nowa wiadomość"
         onSubmit={(e) => {
           e.preventDefault();
           const form = new FormData(e.currentTarget);
+          const nextErrors: FieldErrors = {
+            recipient: fieldMessage(
+              "recipient",
+              String(form.get("recipient") ?? ""),
+              recipientRequired,
+            ),
+            subject: fieldMessage(
+              "subject",
+              String(form.get("subject") ?? ""),
+              recipientRequired,
+            ),
+            body: fieldMessage(
+              "body",
+              String(form.get("body") ?? ""),
+              recipientRequired,
+            ),
+          };
+          setFieldErrors(nextErrors);
+          setSubmitCount((count) => count + 1);
+          if (Object.values(nextErrors).some(Boolean)) return;
           const result = startConversationSchema.safeParse({
             kind,
             subject: form.get("subject"),
@@ -83,11 +165,18 @@ export function NewMessageForm({
           });
         }}
       >
+        {submitCount > 0 && (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        )}
+        <RequiredFieldsNote />
         <fieldset>
-          <legend className="font-semibold">Do kogo piszesz?</legend>
+          <legend className="font-semibold">
+            Do kogo piszesz?
+            <RequiredMark />
+          </legend>
           {(["ask_rops", "ask_expert", "partnership"] as const).map(
             (value, i) => (
-              <label key={value} className="flex min-h-11 items-center gap-3">
+              <label key={value} className="flex min-h-11 items-center gap-2.5">
                 <input
                   type="radio"
                   name="kind"
@@ -101,11 +190,14 @@ export function NewMessageForm({
           )}
         </fieldset>
         {kind === "ask_expert" && (
-          <label className="block">
-            Ekspert (opcjonalnie)
+          <div className="flex flex-col gap-2">
+            <label htmlFor="new-recipient" className="font-semibold">
+              Ekspert
+            </label>
             <select
+              id="new-recipient"
               name="recipient"
-              className="mt-2 min-h-11 w-full border border-input p-2"
+              className="min-h-11 w-full rounded-sm border border-input bg-background p-2 text-foreground"
             >
               <option value="">Wszyscy eksperci</option>
               {experts.map((p) => (
@@ -114,56 +206,93 @@ export function NewMessageForm({
                 </option>
               ))}
             </select>
-          </label>
+          </div>
         )}
         {kind === "partnership" && (
-          <label className="block">
-            Odbiorca
+          <div className="flex flex-col gap-2">
+            <label htmlFor="new-recipient" className="font-semibold">
+              Odbiorca
+              <RequiredMark />
+            </label>
             {demo ? (
               <select
+                id="new-recipient"
                 name="recipient"
-                className="mt-2 min-h-11 w-full border border-input p-2"
+                aria-required="true"
+                className="min-h-11 w-full rounded-sm border border-input bg-background p-2 text-foreground"
               >
                 <option value="demo-cus">CUS w Gminie Przykładowej</option>
               </select>
             ) : (
               <>
-                <input
-                  name="recipient"
-                  required
-                  className="mt-2 min-h-11 w-full border border-input p-2"
-                  aria-describedby="recipient-hint"
-                />
                 <span id="recipient-hint" className="block text-sm">
                   Wpisz identyfikator konta partnera przekazany przez tę osobę.
                 </span>
+                <input
+                  id="new-recipient"
+                  name="recipient"
+                  type="text"
+                  autoComplete="off"
+                  spellCheck={false}
+                  aria-required="true"
+                  aria-invalid={fieldErrors.recipient ? true : undefined}
+                  aria-describedby={cn(
+                    "recipient-hint",
+                    fieldErrors.recipient && "new-recipient-error",
+                  )}
+                  onBlur={(e) => validateField("recipient", e.target.value)}
+                  className="min-h-11 w-full rounded-sm border border-input p-2"
+                />
+                <FieldError
+                  id="new-recipient-error"
+                  message={fieldErrors.recipient}
+                />
               </>
             )}
-          </label>
+          </div>
         )}
-        <label className="block">
-          Temat
+        <div className="flex flex-col gap-2">
+          <label htmlFor="new-subject" className="font-semibold">
+            Temat
+            <RequiredMark />
+          </label>
           <input
+            id="new-subject"
             name="subject"
-            required
+            type="text"
+            autoComplete="off"
+            aria-required="true"
             maxLength={200}
             defaultValue={subject}
-            className="mt-2 min-h-11 w-full border border-input p-3"
-            aria-describedby={error ? "new-error" : undefined}
+            aria-invalid={fieldErrors.subject ? true : undefined}
+            aria-describedby={
+              fieldErrors.subject ? "new-subject-error" : undefined
+            }
+            onBlur={(e) => validateField("subject", e.target.value)}
+            className="min-h-11 w-full rounded-sm border border-input p-2.5"
           />
-        </label>
-        <label className="block">
-          Twoja wiadomość
+          <FieldError id="new-subject-error" message={fieldErrors.subject} />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="new-body" className="font-semibold">
+            Twoja wiadomość
+            <RequiredMark />
+          </label>
           <textarea
+            autoComplete="off"
+            id="new-body"
             name="body"
+            aria-required="true"
             value={body}
             onChange={(event) => setBody(event.target.value)}
-            required
             maxLength={4000}
-            className="mt-2 min-h-40 w-full border border-input p-3"
-            aria-describedby={error ? "new-error" : undefined}
+            aria-invalid={fieldErrors.body ? true : undefined}
+            aria-describedby={fieldErrors.body ? "new-body-error" : undefined}
+            onBlur={(e) => validateField("body", e.target.value)}
+            className="min-h-40 w-full rounded-sm border border-input p-2.5"
           />
-        </label>
+          <FieldError id="new-body-error" message={fieldErrors.body} />
+        </div>
         <VoiceFieldInput
           getValue={() => body}
           onChange={(_value, text) =>
@@ -180,8 +309,9 @@ export function NewMessageForm({
           </p>
         )}
         <button
+          type="submit"
           disabled={busy}
-          className="min-h-11 bg-primary px-6 py-2 text-primary-foreground"
+          className="min-h-11 rounded-sm bg-primary px-6 py-2 text-primary-foreground hover:bg-primary-hover active:bg-navy"
         >
           {busy ? "Wysyłamy…" : "Wyślij"}
         </button>

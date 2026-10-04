@@ -13,6 +13,13 @@ import {
   inputClassName,
   labelClassName,
 } from "@/components/auth/form-parts";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,7 +52,7 @@ export function SignUpForm({
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, submitCount },
   } = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -55,7 +62,20 @@ export function SignUpForm({
       role: "resident",
       municipality: "",
     },
+    mode: "onBlur",
+    shouldFocusError: false,
   });
+  const summaryErrors = errorItems([
+    ["signup-name", errors.displayName?.message],
+    ["signup-email", errors.email?.message],
+    ["signup-password", errors.password?.message],
+    ["signup-role-resident", errors.role?.message],
+    ["signup-municipality", errors.municipality?.message],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   const submit = handleSubmit(async (values) => {
     setServerError(null);
@@ -98,10 +118,15 @@ export function SignUpForm({
         className="flex min-w-0 flex-col gap-6"
       >
         <FormAlert message={serverError} />
+        {submitCount > 0 && (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        )}
+        <RequiredFieldsNote />
 
         <div className="flex flex-col gap-2">
           <Label htmlFor="signup-name" className={labelClassName}>
             Imię lub nazwa wyświetlana
+            <RequiredMark />
           </Label>
           <p id="signup-name-hint" className="text-muted-foreground">
             Tak podpiszemy Twoje pomysły i wiadomości.
@@ -110,6 +135,7 @@ export function SignUpForm({
             id="signup-name"
             type="text"
             autoComplete="nickname"
+            aria-required="true"
             aria-invalid={errors.displayName ? true : undefined}
             aria-describedby={
               errors.displayName
@@ -128,11 +154,14 @@ export function SignUpForm({
         <div className="flex flex-col gap-2">
           <Label htmlFor="signup-email" className={labelClassName}>
             E-mail
+            <RequiredMark />
           </Label>
           <Input
             id="signup-email"
             type="email"
             autoComplete="email"
+            spellCheck={false}
+            aria-required="true"
             aria-invalid={errors.email ? true : undefined}
             aria-describedby={errors.email ? "signup-email-error" : undefined}
             className={inputClassName}
@@ -146,6 +175,7 @@ export function SignUpForm({
           label="Hasło"
           hint="Co najmniej 8 znaków."
           autoComplete="new-password"
+          required
           error={errors.password?.message}
           registration={register("password")}
         />
@@ -154,12 +184,15 @@ export function SignUpForm({
           aria-describedby={errors.role ? "signup-role-error" : undefined}
           className="flex min-w-0 flex-col gap-2"
         >
-          <legend className={`${labelClassName} mb-2`}>Kim jesteś?</legend>
+          <legend className={`${labelClassName} mb-2`}>
+            Kim jesteś?
+            <RequiredMark />
+          </legend>
           {SIGNUP_ROLES.map((role) => (
             <label
               key={role}
               htmlFor={`signup-role-${role}`}
-              className="flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-input p-3 has-checked:border-primary has-checked:bg-accent has-disabled:cursor-not-allowed has-disabled:opacity-50"
+              className="flex min-h-11 cursor-pointer items-start gap-2.5 rounded-md border border-input p-2.5 has-checked:border-primary has-checked:bg-accent has-disabled:cursor-not-allowed has-disabled:opacity-50"
             >
               <input
                 id={`signup-role-${role}`}
@@ -181,7 +214,7 @@ export function SignUpForm({
 
         <div className="flex flex-col gap-2">
           <Label htmlFor="signup-municipality" className={labelClassName}>
-            Gmina (opcjonalnie)
+            Gmina
           </Label>
           <Input
             id="signup-municipality"

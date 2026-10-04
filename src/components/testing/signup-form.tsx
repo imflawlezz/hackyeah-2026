@@ -12,9 +12,17 @@ import { useForm } from "react-hook-form";
 import { signUpForTest } from "@/app/(public)/test/actions";
 import {
   ChoiceGroup,
+  choiceId,
   FieldError,
   TextField,
 } from "@/components/testing/fields";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { addLocalSignup } from "@/lib/testing/local-store";
 import {
@@ -84,11 +92,27 @@ export function SignupForm({
     handleSubmit,
     getValues,
     control,
-    formState: { errors },
+    formState: { errors, submitCount },
   } = useForm<SignupFormInput, unknown, SignupFormValues>({
     resolver: zodResolver(signupFormSchema),
     defaultValues: SIGNUP_FORM_DEFAULTS,
+    mode: "onBlur",
+    shouldFocusError: false,
   });
+  const fieldId = (name: string) => `signup-${testId}-${name}`;
+  const summaryErrors = errorItems([
+    [
+      choiceId(fieldId("availability"), AVAILABILITY_OPTIONS[0].value),
+      errors.availability?.message,
+    ],
+    [fieldId("motivation"), errors.motivation?.message],
+    [fieldId("accessibility"), errors.accessibilityNeeds?.message],
+    [fieldId("consent"), errors.consent?.message],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   // The form is replaced by the message, so focus has to follow it.
   useEffect(() => {
@@ -159,7 +183,6 @@ export function SignupForm({
     }
   }
 
-  const fieldId = (name: string) => `signup-${testId}-${name}`;
   const submitting = status.kind === "submitting";
 
   return (
@@ -184,16 +207,23 @@ export function SignupForm({
         </div>
       )}
 
+      {submitCount > 0 && (
+        <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+      )}
+      <RequiredFieldsNote />
+
       <ChoiceGroup
         legend="Kiedy możesz?"
         options={AVAILABILITY_OPTIONS}
         registration={register("availability")}
         error={errors.availability?.message}
+        idPrefix={fieldId("availability")}
+        required
       />
 
       <TextField
         id={fieldId("motivation")}
-        label="Dlaczego chcesz przetestować? (opcjonalnie)"
+        label="Dlaczego chcesz przetestować?"
         control={control}
         name="motivation"
         registration={register("motivation")}
@@ -202,7 +232,7 @@ export function SignupForm({
 
       <TextField
         id={fieldId("accessibility")}
-        label="Czy potrzebujesz udogodnień? (opcjonalnie)"
+        label="Czy potrzebujesz udogodnień?"
         hint="Na przykład tłumacza języka migowego, podjazdu albo materiałów dużą czcionką."
         control={control}
         name="accessibilityNeeds"
@@ -211,9 +241,11 @@ export function SignupForm({
       />
 
       <div className="flex flex-col gap-1">
-        <label className="flex min-h-11 cursor-pointer items-center gap-3 text-base">
+        <label className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base">
           <input
+            id={fieldId("consent")}
             type="checkbox"
+            aria-required="true"
             aria-invalid={errors.consent ? true : undefined}
             aria-describedby={
               errors.consent ? fieldId("consent-error") : undefined
@@ -221,7 +253,10 @@ export function SignupForm({
             className="size-5 shrink-0 accent-primary"
             {...register("consent")}
           />
-          Zgadzam się na kontakt w sprawie testu.
+          <span>
+            Zgadzam się na kontakt w sprawie testu.
+            <RequiredMark />
+          </span>
         </label>
         <FieldError
           id={fieldId("consent-error")}
@@ -233,7 +268,7 @@ export function SignupForm({
         <Button
           type="submit"
           aria-disabled={submitting || undefined}
-          className="h-auto min-h-12 px-6 py-3 text-lg font-semibold"
+          className="h-auto min-h-12 px-6 py-2.5 text-lg font-semibold"
         >
           {submitting ? "Wysyłam…" : "Zgłoś się"}
           <span className="sr-only">: {testTitle}</span>

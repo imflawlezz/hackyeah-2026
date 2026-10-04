@@ -80,7 +80,7 @@ export function MatchResults({
             {Array.from({ length: SKELETON_CARDS }, (_, index) => (
               <li
                 key={index}
-                className="flex flex-col gap-3 rounded-md border border-border p-6"
+                className="flex flex-col gap-2.5 rounded-md border border-border p-6"
               >
                 <div className="h-5 w-24 rounded-sm bg-muted motion-safe:animate-pulse" />
                 <div className="h-6 w-3/4 rounded-md bg-muted motion-safe:animate-pulse" />
@@ -129,7 +129,7 @@ export function MatchResults({
       )}
 
       {state.status === "success" && state.results.length === 0 && (
-        <div className="flex flex-col items-start gap-3 rounded-md border border-dashed border-border p-6 sm:flex-row">
+        <div className="flex flex-col items-start gap-2.5 rounded-md border border-dashed border-border p-6 sm:flex-row">
           <MagnifyingGlassIcon aria-hidden="true" className="size-5 shrink-0" />
           <div>
             <h2

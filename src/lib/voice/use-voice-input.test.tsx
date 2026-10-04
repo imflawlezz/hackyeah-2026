@@ -244,13 +244,13 @@ it("preserves edits made during transcription on /match without submitting", asy
       screen.getByRole("button", { name: "Zatrzymaj nagrywanie" }),
     );
   });
-  fireEvent.change(screen.getByLabelText("Opis problemu"), {
+  fireEvent.change(screen.getByLabelText("Opis problemu", { exact: false }), {
     target: { value: "Nowa ręczna edycja" },
   });
   await act(async () => {
     resolve({ ok: true, json: async () => ({ text: "Moje słowa" }) });
   });
-  expect(screen.getByLabelText("Opis problemu")).toHaveValue(
+  expect(screen.getByLabelText("Opis problemu", { exact: false })).toHaveValue(
     "Nowa ręczna edycja\nMoje słowa",
   );
   expect(search).not.toHaveBeenCalled();
@@ -300,7 +300,7 @@ it("disables logged-out dictation while preserving typing", () => {
     "href",
     "/login?next=%2Fmatch",
   );
-  const field = screen.getByLabelText("Opis problemu");
+  const field = screen.getByLabelText("Opis problemu", { exact: false });
   fireEvent.change(field, { target: { value: "Wpisany opis problemu" } });
   expect(field).toHaveValue("Wpisany opis problemu");
   expect(fetcher).not.toHaveBeenCalled();

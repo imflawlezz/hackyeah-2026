@@ -1,66 +1,107 @@
 # HubMI.pl design and Polish copy
 
-This is the source of truth for screens and generated text. Read it alongside the [challenge brief](../task/CHALLENGE.md) and [README contrast table](../../README.md#palette).
+This is the source of truth for screens and generated text. HubMI.pl uses the visual language of [Design System Gov.pl](https://aplikacje.gov.pl/app/govpl-front-styleguide/) (KPRM, v1.0 beta), as described in the [govpl-design skill](../../.agents/skills/govpl-design/SKILL.md). Read it alongside the [challenge brief](../task/CHALLENGE.md) and the [README palette table](../../README.md#palette).
+
+We use the visual language only. Do not copy the gov.pl logo, top bar or portal footer, and do not install `@gov-design-system-ce/*` (that is the Czech design system). No EU logos: the project is not EU-funded.
 
 ## Principles
 
-Build a calm, editorial civic service for Małopolska residents, NGOs, gminy, CUS/OPS, experts and ROPS. Use real hierarchy, left-aligned text, generous whitespace and one primary action per screen. Asymmetric layouts, such as a 7/5 hero, should help readers distinguish introduction from example. Prefer a concrete problem or innovation over decoration. Do not imply that prototype fixtures are proven real-world outcomes.
+A calm, task-first public service for Małopolska residents, NGOs, gminy, CUS/OPS, experts and ROPS. Left-aligned text, one clear primary action per view, flat surfaces and plain sections. Key information first. Prefer a concrete problem or innovation over decoration. Do not imply that prototype fixtures are proven real-world outcomes.
 
-## Banned treatments
+## Banned treatments (anti AI-look)
 
-No gradient blobs or mesh backgrounds, glassmorphism, backdrop blur, emoji icons, sparkles motifs, "✨ AI-powered" labels, centred-everything heroes, three identical feature cards, stock photos, AI-generated images, pill-shaped everything or decorative animation. Loading feedback may animate only with reduced-motion support.
+Remove on sight:
 
-Also avoid: all-caps or letter-spaced labels above headings; number markers (01, 02, 03) on content that is not a real sequence; an arrow icon appended to every link or button in a list; a bordered box around every item of a list when a divided list would do.
+- gradients, gradient text, glassmorphism, backdrop blur, glowing blobs;
+- grids of identical rounded cards with an icon, a title and two lines for everything;
+- a large hero with a vague slogan and two CTAs; "01 / 02 / 03" markers on content that is not a sequence; all-caps or letter-spaced labels above headings;
+- fade-up animation on sections, hover lifts, decorative motion;
+- an arrow or decorative icon on every button or link, emoji as icons;
+- large radii and heavy shadows; content cards with shadows;
+- filler copy ("Odkryj moc…", "Twoja podróż zaczyna się tutaj").
 
 ## Palette and contrast
 
-Use only existing tokens from `src/app/globals.css`. Primary is for actions and links; navy is for headings and the footer. Use the semantic `heading` token for headings so high contrast remains readable. Crimson `highlight` appears at most once per screen, for example a "Nowe" badge or one key number. Use the muted surface for alternating sections. Never convey status by colour alone.
+Use only the tokens in `src/app/globals.css`; never a hex value elsewhere. Token names did not change when the palette moved to Gov.pl, so components keep using `bg-primary`, `text-muted-foreground` and so on.
 
-| Token             | Default | Contrast on white | Usage                          |
-| ----------------- | ------- | ----------------- | ------------------------------ |
-| primary           | #2462ad | 6.13:1            | Actions and links              |
-| primary-hover     | #1d508d | 8.13:1            | Action hover                   |
-| navy / heading    | #0f4a91 | 8.72:1            | Headings; white on navy footer |
-| highlight         | #d10a52 | 5.42:1            | One restrained emphasis        |
-| foreground        | #1a1a1a | 17.4:1            | Body text                      |
-| muted-foreground  | #4d4d4d | 8.45:1            | Secondary text                 |
-| muted / secondary | #f5f7fa | Surface           | Alternating sections           |
-| input             | #6b7280 | 4.83:1            | Control boundaries             |
-| border            | #d5dbe3 | Decorative only   | Dividers                       |
+| Token                          | Gov.pl colour | Value     | Use                                                                             |
+| ------------------------------ | ------------- | --------- | ------------------------------------------------------------------------------- |
+| `primary`, `ring`              | primary       | `#0052a5` | actions, links, focus ring (7.64:1 on white)                                    |
+| `primary-hover`                | primary-light | `#006cd7` | hover (white text 5.09:1)                                                       |
+| `navy`                         | navy          | `#00468d` | pressed buttons, footer background                                              |
+| `foreground`, `heading`        | text          | `#1b1b1b` | body text and headings                                                          |
+| `muted-foreground`             | gray-700      | `#656565` | secondary text (5.83:1)                                                         |
+| `input`                        | gray-600      | `#767676` | form-control borders (4.54:1, WCAG 1.4.11)                                      |
+| `border`                       | gray-200      | `#dadada` | dividers only, never a control boundary                                         |
+| `muted`, `secondary`, `accent` | gray-100      | `#f1f1f1` | surfaces and hover backgrounds                                                  |
+| `destructive`, `highlight`     | danger-dark   | `#a7162d` | errors, irreversible actions, one restrained emphasis                           |
+| `success`                      | success       | `#598527` | icons, borders and bars only (4.37:1, too low for text)                         |
+| `warning`                      | warning       | `#eba828` | background only, with `warning-foreground` text; never text or an icon on white |
 
-The [full contrast table](../../README.md#palette) covers status and hover tokens. `src/lib/a11y/contrast.test.ts` enforces 4.5:1 for default text, 7:1 for high-contrast text and 3:1 for control boundaries. High contrast changes surfaces to black, text and borders to white, links and focus to yellow. Use token classes so every screen follows these settings.
+Rules: text at least 4.5:1, controls and meaningful icons at least 3:1, never colour as the only signal. `src/lib/a11y/contrast.test.ts` asserts the palette values and every pair. The high-contrast theme (`[data-theme="high-contrast"]`) is our own; Gov.pl has none.
 
 ## Typography
 
-Headings use **Source Serif 4**, weights 600/700. Body uses **Source Sans 3**, weights 400/600. Both use `next/font/google`, `latin` and `latin-ext`, `display: swap`; font files are served locally after build. Verify `ąćęłńóśźż ĄĆĘŁŃÓŚŹŻ` in both families.
+**Open Sans only**, weights 400, 600 and 700, through `next/font/google` with `latin` and `latin-ext` so Polish letters render (`ąćęłńóśźż ĄĆĘŁŃÓŚŹŻ`). Headings and body use the same family; headings are bold.
 
-Use an 18 px base and a scale near 1.25: 14 / 16 / 18 / 22 / 28 / 35 / 44 px. Express sizes in rem so A, A+ and A++ scale them. Tailwind `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, `text-3xl`, `text-4xl` approximate the scale at our base. Body line-height is 1.5–1.6, heading line-height 1.15–1.25. Keep reading lines around 60–75ch and balance headings with `text-wrap: balance`.
+The base is 16 px on desktop and 14 px below 700 px. A+ and A++ scale it to 115% and 130%. On mobile, Tailwind's `--spacing` unit is compensated, so spacing and 44 px touch targets keep their pixel size while text is 14 px.
 
-Only the loaded weights exist, so use only these classes: serif `font-semibold` or `font-bold`; sans `font-normal` or `font-semibold`. Never `font-medium` or sans `font-bold`: the first falls back to 400 and the second is synthesised. `globals.css` gives h1–h4 serif 600 and `th`, `strong`, `b` sans 600 by default. The serif is for h1–h4 and the HubMI.pl wordmark only. Field legends, definition terms, step numbers and key figures use the sans at 600. Do not tighten or widen letter-spacing. Paragraphs are capped at 75ch in `globals.css`; do not truncate text with an ellipsis, because WCAG 1.4.12 text spacing must not hide content.
+The scale is 40 / 32 / 28 / 24 / 20 / 16 / 14 / 12 px, mapped onto Tailwind: `text-4xl` 40, `text-3xl` 32, `text-2xl` 28, `text-xl` 24, `text-lg` 20, `text-base` 16, `text-sm` 14, `text-xs` 12. Never below 12 px. Body line-height 1.5, headings 1.25.
+
+Left-aligned, never justified. Sentence case in headings and buttons. No all caps for emphasis (the footer heading "ADRES" is the Gov.pl exception). Paragraphs are capped at 75 characters in `globals.css`. Do not truncate text with an ellipsis: WCAG 1.4.12 text spacing must not hide content. Headings use `text-wrap: balance` and break long Polish words instead of overflowing.
 
 ## Spacing and shape
 
-Use an 8 px reference grid: Tailwind `2` = 8 px, `4` = 16 px, `6` = 24 px, `8` = 32 px, `12` = 48 px, `16` = 64 px at the standard 16 px root. Our 18 px root and larger accessibility settings scale rem spacing proportionally. Use `max-w-6xl` containers, small 4–8 px radii, 1 px solid `border` dividers and no content-card shadows. Only overlays (dialogs and menus) may have subtle shadows. Controls and navigation targets must be at least 44 px and allow long Polish labels to wrap.
+Spacing steps: 4 / 8 / 10 / 16 / 20 / 24 / 28 / 32 / 40 / 56 / 72 px, in Tailwind `1, 2, 2.5, 4, 5, 6, 7, 8, 10, 14, 18`. The default vertical gap is 20 px. The only exception is `mt-0.5`, a 2 px optical offset that aligns an icon with the first line of text.
+
+Radius 4 px (`--radius`). 1 px solid borders. Flat surfaces: no shadows on content; only overlays (dialogs, sheets, menus) may have one. Use `max-w-6xl` containers.
+
+## Buttons and links
+
+- Exactly one primary button per view: filled `primary` with white text. Views with no main action (statements, notifications) have none.
+- Secondary is outline (an alternative action). Tertiary is text-style (cancel, back).
+- Red (`destructive`) only for irreversible actions. Archiving can be undone, so it is not red.
+- Buttons perform actions; navigation uses links.
+- No decorative icons and no "→" arrows. An icon only when it adds meaning; icon-only buttons need an `aria-label`.
+- A link that opens a new window ends with hidden text: a space, then `<span class="sr-only">(otwiera się w nowym oknie)</span>`. Put the space outside the span, or the accessible name loses it.
+- Hover uses `primary-hover`, pressed uses `navy`. Every interactive element shows the global 3 px focus outline.
+
+## Forms
+
+- The label is always above the field and linked with `htmlFor`/`id`. A placeholder is never a label.
+- Required fields end with ` *` (`RequiredMark`, `aria-hidden`) and carry `aria-required="true"` or `required`. Under the form title: `* Pola obowiązkowe` (`RequiredFieldsNote`). Optional fields get no marker; never write "(opcjonalnie)". Forms with no required fields show no note.
+- Validate on blur (`mode: "onBlur"` in react-hook-form). The message sits under the field in `destructive` with an icon, is linked through `aria-describedby`, and the field gets `aria-invalid="true"`.
+- After a failed submit, `ErrorSummary` (`src/components/forms/error-summary.tsx`) appears at the top with `role="alert"`, receives focus, and lists every error as a link that focuses its field.
+- Correct `type`, `autocomplete` and `inputMode`: `autoComplete="off"` on non-account fields, `spellCheck={false}` on e-mail addresses.
+
+## Breadcrumbs, header and footer
+
+- Breadcrumbs (`src/components/layout/breadcrumbs.tsx`) only below the second level, under the header and above the `h1`: `<nav aria-label="Ścieżka okruszków"><ol>`, a house icon linking home with hidden "Strona główna" first, the current page as plain text with `aria-current="page"`. Hidden below 700 px.
+- The skip link "Przejdź do treści głównej" is the first focusable element.
+- Landmarks: `header`, `nav`, `main id="main"`, `footer`. One `h1` per page; no skipped heading levels. `<html lang="pl">`.
+- The footer has a horizontal list of 7–14 links including Deklaracja dostępności, Klauzula informacyjna RODO and Polityka cookies, a copyright line, and the owner's address under the heading `ADRES`.
 
 ## Imagery
 
-None by default. Use real content: an example problem or innovation. Any necessary photo must be licensed and specific to the service; simple illustrations are acceptable when useful. Record source and licence in [CREDITS.md](CREDITS.md). Never use AI-generated imagery.
+None by default. Use real content: an example problem or innovation. Any necessary photo must be licensed and specific to the service, with meaningful `alt` text (or `alt=""` when decorative). Record source and licence in [CREDITS.md](CREDITS.md). Never use AI-generated imagery.
 
 ## Heroicons
 
-Use [Heroicons](https://heroicons.com), following the [React README](https://github.com/tailwindlabs/heroicons/blob/master/react/README.md):
+Use [Heroicons](https://heroicons.com) only; ESLint rejects `lucide-react`.
 
 - UI and navigation: `@heroicons/react/24/outline`, `size-6`.
 - Inline text and buttons: `@heroicons/react/20/solid`, `size-5`.
 - Badges and dense tables: `@heroicons/react/16/solid`, `size-4`.
 
-Keep one style per context. Decorative icons get `aria-hidden="true"`. Icon-only buttons have a Polish `aria-label`, such as "Zamknij menu". Navigation always has a visible text label. The shadcn CLI still generates lucide imports; replace them after each add command. ESLint rejects `lucide-react`.
+Decorative icons get `aria-hidden="true"`. The shadcn CLI still generates lucide imports; replace them after each add command.
 
 ## Polish copy
 
-Use concrete Polish about social services in Małopolska: gminy, CUS/OPS, NGOs, seniors and caregivers. Write short sentences in active voice. Address residents with friendly-formal "Ty": "Opisz problem", "Sprawdź". Use neutral "Ty" for institutions too: "Twoja gmina", never "Państwo". Labels are nouns; buttons are verbs. Errors explain what happened and what to do next.
+Follow the Gov.pl language recommendations (skill §8) and the rules below.
 
-No marketing fluff: "rewolucyjny", "innowacyjna platforma oparta na AI", "przełomowy", "kompleksowe rozwiązanie", "z łatwością". No exclamation marks in UI. Prefer full stops to long dashes, at most one dash per paragraph. Avoid English loanwords when Polish words exist. Do not put "AI" in headings unless necessary to explain data handling.
+Use concrete Polish about social services in Małopolska: gminy, CUS/OPS, NGOs, seniors and caregivers. Write short sentences in active voice, key information first, one idea per paragraph, for a reader with 8–9 years of schooling. Address people with "Ty": "Opisz problem", "Sprawdź", "Twoja gmina", never "Państwo". Avoid gendered verb forms ("Wyślij zgłoszenie", not "Wysłałeś"). Labels are nouns; buttons are verbs. Errors explain what happened and what to do next.
+
+Link text says where it goes; never "kliknij tutaj". Downloads show format and size: "Pobierz regulamin (PDF, 240 KB)". No marketing fluff ("rewolucyjny", "innowacyjna platforma oparta na AI", "przełomowy", "kompleksowe rozwiązanie", "z łatwością"), no exclamation marks and no emoji in the UI. Prefer full stops to long dashes. Avoid English loanwords when Polish words exist. Do not put "AI" in headings unless needed to explain data handling.
 
 | Context          | Do                                                            | Don't                                             |
 | ---------------- | ------------------------------------------------------------- | ------------------------------------------------- |
@@ -82,14 +123,18 @@ Generated text follows these same rules through `src/lib/ai/style.ts`. Wrap ever
 
 ## Accessibility non-negotiables
 
-WCAG 2.1 AA. Preserve the first skip link, toolbar, persistent preferences, high contrast, reduced-motion rules and visible 3 px focus. Every control has a label. Async states use `aria-live`; errors explain recovery. Score and status include text, not only colour. Preserve result-heading focus management and keyboard menu behaviour. Reflow at 320 px and 200% zoom without clipping. All screens work at A++ and in high contrast.
+WCAG 2.1 AA and the ustawa o dostępności cyfrowej. Preserve the skip link, the accessibility toolbar (A / A+ / A++), persistent preferences, the high-contrast theme, reduced-motion rules and the visible 3 px focus outline. Full keyboard operation; modals trap focus and return it on close. Touch targets at least 44 × 44 px. Status messages use `aria-live="polite"`. Score and status include text, not only colour. Reflow at 320 px and 200% zoom without clipping. All screens work at A++ and in high contrast.
+
+The accessibility statement (`/accessibility`) follows the structure of "Warunki techniczne publikacji oraz struktura dokumentu elektronicznego deklaracji dostępności" v2.0: dates, compliance status, inaccessible content, preparation, facilities, keyboard shortcuts, contact, requests and complaints, mobile apps, architectural and communication accessibility.
 
 ## How to review a screen
 
-- Is the main action clear, with concrete Polish copy and honest prototype claims?
-- Is the hierarchy left-aligned, with useful content rather than decorative cards?
-- Are tokens, font pairing, spacing and icon contexts consistent?
+Use the govpl-design review procedure: check skill sections 1–10 in order, report findings as `file:line — problem — fix`, then fix with minimal diffs. Then run the web-design-guidelines skill on the changed files. Where they disagree (for example Title Case or focusing the first invalid field), govpl-design wins.
+
+- Is there exactly one primary action, with concrete Polish copy and honest prototype claims?
+- Is the text Open Sans on the Gov.pl scale, left-aligned, in sentence case?
+- Are tokens, 4 px radii, 1 px borders, flat surfaces and the spacing steps consistent?
+- Do forms mark required fields, validate on blur and focus an error summary after submit?
 - Do keyboard focus, labels, live regions and menu close/return focus work?
-- Does it reflow at 320 px, A++ and 200% zoom in both themes?
-- Are generated output and example data labelled plainly?
+- Does it reflow at 320 px, A++ and 200% zoom in both themes, also with WCAG 1.4.12 text spacing?
 - Do contrast tests pass, Lighthouse accessibility reach 95 and axe show no serious or critical findings?

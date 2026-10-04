@@ -8,7 +8,7 @@ export function PlaceholderPage({
   return (
     <div className="max-w-3xl">
       <h1 className="text-3xl font-bold">{title}</h1>
-      <p className="mt-3 text-lg">{description}</p>
+      <p className="mt-2.5 text-lg">{description}</p>
     </div>
   );
 }

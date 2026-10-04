@@ -9,7 +9,13 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { submitFeedback } from "@/app/(public)/test/actions";
-import { ChoiceGroup, TextField } from "@/components/testing/fields";
+import { ChoiceGroup, TextField, choiceId } from "@/components/testing/fields";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  errorItems,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { DEMO_NOTE, type TestingMode } from "@/components/testing/signup-form";
 import { Button } from "@/components/ui/button";
 import { addLocalFeedback } from "@/lib/testing/local-store";
@@ -54,11 +60,28 @@ export function FeedbackForm({
     getValues,
     reset,
     control,
-    formState: { errors },
+    formState: { errors, submitCount },
   } = useForm<FeedbackFormInput, unknown, FeedbackFormValues>({
     resolver: zodResolver(feedbackFormSchema),
     defaultValues: { ...FEEDBACK_FORM_DEFAULTS, testId: testId ?? "" },
+    mode: "onBlur",
+    shouldFocusError: false,
   });
+  const summaryErrors = errorItems([
+    [choiceId("rating", RATING_OPTIONS[0].value), errors.rating?.message],
+    [choiceId("easeOfUse", EASE_OPTIONS[0].value), errors.easeOfUse?.message],
+    [
+      choiceId("wouldRecommend", RECOMMEND_OPTIONS[0].value),
+      errors.wouldRecommend?.message,
+    ],
+    ["feedback-what-worked", errors.whatWorked?.message],
+    ["feedback-what-to-improve", errors.whatToImprove?.message],
+    ["feedback-comment", errors.comment?.message],
+  ]);
+  const summaryRef = useFocusErrorSummary(
+    submitCount,
+    summaryErrors.length > 0,
+  );
 
   useEffect(() => {
     if (status.kind === "success" || status.kind === "error") {
@@ -145,22 +168,28 @@ export function FeedbackForm({
         </div>
       )}
 
+      {submitCount > 0 && (
+        <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+      )}
+      <RequiredFieldsNote />
+
       <ChoiceGroup
         legend="Jak oceniasz to rozwiązanie?"
         options={RATING_OPTIONS}
         registration={register("rating")}
         error={errors.rating?.message}
+        required
       />
 
       <ChoiceGroup
-        legend="Na ile było proste w użyciu? (opcjonalnie)"
+        legend="Na ile było proste w użyciu?"
         options={EASE_OPTIONS}
         registration={register("easeOfUse")}
         error={errors.easeOfUse?.message}
       />
 
       <ChoiceGroup
-        legend="Czy polecisz je innym? (opcjonalnie)"
+        legend="Czy polecisz je innym?"
         options={RECOMMEND_OPTIONS}
         registration={register("wouldRecommend")}
         error={errors.wouldRecommend?.message}
@@ -168,7 +197,7 @@ export function FeedbackForm({
 
       <TextField
         id="feedback-what-worked"
-        label="Co zadziałało? (opcjonalnie)"
+        label="Co zadziałało?"
         control={control}
         name="whatWorked"
         registration={register("whatWorked")}
@@ -177,7 +206,7 @@ export function FeedbackForm({
 
       <TextField
         id="feedback-what-to-improve"
-        label="Co trzeba poprawić? (opcjonalnie)"
+        label="Co trzeba poprawić?"
         control={control}
         name="whatToImprove"
         registration={register("whatToImprove")}
@@ -186,7 +215,7 @@ export function FeedbackForm({
 
       <TextField
         id="feedback-comment"
-        label="Chcesz coś dodać? (opcjonalnie)"
+        label="Chcesz coś dodać?"
         hint="Komentarze czyta tylko zespół ROPS. Publicznie pokazujemy same liczby."
         control={control}
         name="comment"
@@ -197,8 +226,9 @@ export function FeedbackForm({
       <div className="flex flex-col items-start gap-2">
         <Button
           type="submit"
+          variant="outline"
           aria-disabled={submitting || undefined}
-          className="h-auto min-h-12 px-6 py-3 text-lg font-semibold"
+          className="h-auto min-h-12 px-6 py-2.5 text-lg font-semibold"
         >
           {submitting ? "Wysyłam…" : "Wyślij opinię"}
         </Button>

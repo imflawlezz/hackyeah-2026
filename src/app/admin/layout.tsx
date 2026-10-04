@@ -31,7 +31,7 @@ const MODE_LABELS: Record<Exclude<AdminMode, "denied">, string> = {
 function ModeNotice({ mode }: { mode: "preview" | "demo" }) {
   const Icon = mode === "demo" ? InformationCircleIcon : EyeIcon;
   return (
-    <div className="flex items-start gap-3 rounded-md border border-border bg-muted px-4 py-3 text-base">
+    <div className="flex items-start gap-2.5 rounded-md border border-border bg-muted px-4 py-2.5 text-base">
       <Icon aria-hidden="true" className="size-6 shrink-0 text-heading" />
       <p>
         {mode === "demo"
@@ -80,7 +80,7 @@ export default async function AdminLayout({
 
   return (
     <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-10">
-      <aside className="flex flex-col gap-3 lg:border-r lg:border-border lg:pr-6">
+      <aside className="flex flex-col gap-2.5 lg:border-r lg:border-border lg:pr-6">
         <p className="text-base font-semibold text-muted-foreground">
           {MODE_LABELS[access.mode]}
         </p>

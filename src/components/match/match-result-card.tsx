@@ -41,8 +41,9 @@ const TIER_STYLES: Record<
   },
   low: {
     icon: ExclamationTriangleIcon,
-    className: "border-dashed border-warning bg-warning/10",
-    accent: "text-warning",
+    className:
+      "border-dashed border-warning bg-warning text-warning-foreground",
+    accent: "text-warning-foreground",
     filled: 1,
   },
 };
@@ -74,14 +75,14 @@ export function MatchResultCard({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Badge
           variant="outline"
-          className="h-auto px-3 py-1 text-sm whitespace-normal"
+          className="h-auto px-2.5 py-1 text-sm whitespace-normal"
         >
           {innovation.category}
         </Badge>
         <p
           data-tier={tier}
           className={cn(
-            "inline-flex items-center gap-2 rounded-md border px-3 py-1 text-sm font-semibold text-foreground",
+            "inline-flex items-center gap-2 rounded-md border px-2.5 py-1 text-sm font-semibold text-foreground",
             tierClassName,
           )}
         >
@@ -95,7 +96,7 @@ export function MatchResultCard({
               ({formatPercent(relevance)})
             </span>
           )}
-          <span aria-hidden="true" className={cn("flex gap-0.5", accent)}>
+          <span aria-hidden="true" className={cn("flex gap-1", accent)}>
             {[1, 2, 3].map((step) => (
               <span
                 key={step}
@@ -129,7 +130,7 @@ export function MatchResultCard({
           {innovation.tags.slice(0, MAX_TAGS).map((tag) => (
             <li
               key={tag}
-              className="rounded-md bg-muted px-2 py-0.5 text-sm text-foreground"
+              className="rounded-md bg-muted px-2 py-1 text-sm text-foreground"
             >
               #{tag}
             </li>

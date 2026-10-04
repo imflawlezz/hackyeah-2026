@@ -9,6 +9,7 @@ import {
 import type { UseFormRegisterReturn } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RequiredMark } from "@/components/forms/error-summary";
 import { cn } from "@/lib/utils";
 
 export const labelClassName = "text-base leading-snug font-semibold";
@@ -19,7 +20,7 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
   return (
     <p
       id={id}
-      className="flex items-start gap-1.5 font-semibold text-destructive"
+      className="flex items-start gap-2 font-semibold text-destructive"
     >
       <ExclamationCircleIcon
         aria-hidden="true"
@@ -62,6 +63,7 @@ export function PasswordField({
   error,
   autoComplete,
   registration,
+  required = false,
 }: {
   id: string;
   label: string;
@@ -69,6 +71,7 @@ export function PasswordField({
   error?: string;
   autoComplete: "current-password" | "new-password";
   registration: UseFormRegisterReturn;
+  required?: boolean;
 }) {
   const [visible, setVisible] = useState(false);
   const Icon = visible ? EyeSlashIcon : EyeIcon;
@@ -77,6 +80,7 @@ export function PasswordField({
     <div className="flex flex-col gap-2">
       <Label htmlFor={id} className={labelClassName}>
         {label}
+        {required && <RequiredMark />}
       </Label>
       {hint ? (
         <p id={`${id}-hint`} className="text-muted-foreground">
@@ -88,11 +92,12 @@ export function PasswordField({
           id={id}
           type={visible ? "text" : "password"}
           autoComplete={autoComplete}
+          aria-required={required || undefined}
           aria-invalid={error ? true : undefined}
           aria-describedby={
             cn(hint && `${id}-hint`, error && `${id}-error`) || undefined
           }
-          className={cn(inputClassName, "pr-12")}
+          className={cn(inputClassName, "pr-10")}
           {...registration}
         />
         <button

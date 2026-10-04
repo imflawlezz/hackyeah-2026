@@ -96,7 +96,7 @@ export function InnovationLibrary({
   }
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] gap-x-12 gap-y-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-x-10 gap-y-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
       <form
         role="search"
         aria-label="Filtry biblioteki"
@@ -126,7 +126,7 @@ export function InnovationLibrary({
           {categories.map((category) => (
             <label
               key={category}
-              className="flex min-h-11 cursor-pointer items-center gap-3 text-base"
+              className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base"
             >
               <input
                 type="checkbox"
@@ -158,7 +158,7 @@ export function InnovationLibrary({
               });
               setEmittedQ(text.trim());
             }}
-            className={cn(FIELD_CLASSES, "min-h-12 px-3 text-base")}
+            className={cn(FIELD_CLASSES, "min-h-12 px-2.5 text-base")}
           >
             <option value="">Wszystkie grupy</option>
             {groups.map((group) => (
@@ -203,18 +203,18 @@ export function InnovationLibrary({
                     aria-labelledby={titleId}
                     className="grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-4 py-8 md:grid-cols-[minmax(0,1fr)_14rem]"
                   >
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-2.5">
                       <div className="flex flex-wrap items-center gap-2">
                         <Badge
                           variant="outline"
-                          className="h-auto rounded-md px-3 py-1 text-sm whitespace-normal"
+                          className="h-auto rounded-md px-2.5 py-1 text-sm whitespace-normal"
                         >
                           {innovation.category}
                         </Badge>
                         {innovation.videoUrl && (
                           <Badge
                             variant="secondary"
-                            className="h-auto gap-1.5 rounded-md border-border px-3 py-1 text-sm [&>svg]:size-4!"
+                            className="h-auto gap-2 rounded-md border-border px-2.5 py-1 text-sm [&>svg]:size-4!"
                           >
                             <PlayCircleIcon aria-hidden="true" />
                             Film
@@ -235,7 +235,7 @@ export function InnovationLibrary({
                           {innovation.tags.slice(0, MAX_TAGS).map((tag) => (
                             <li
                               key={tag}
-                              className="rounded-md bg-muted px-2 py-0.5 text-sm text-foreground"
+                              className="rounded-md bg-muted px-2 py-1 text-sm text-foreground"
                             >
                               #{tag}
                             </li>
@@ -244,7 +244,7 @@ export function InnovationLibrary({
                       )}
                     </div>
 
-                    <div className="flex flex-col items-start gap-3 text-base">
+                    <div className="flex flex-col items-start gap-2.5 text-base">
                       <p>
                         <span className="font-semibold">Dla kogo:</span>{" "}
                         {innovation.targetGroup}

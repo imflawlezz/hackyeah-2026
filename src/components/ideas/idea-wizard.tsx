@@ -16,6 +16,12 @@ import { IdeaWorkspace } from "@/components/ideas/idea-workspace";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  ErrorSummary,
+  RequiredFieldsNote,
+  RequiredMark,
+  useFocusErrorSummary,
+} from "@/components/forms/error-summary";
 import { Textarea } from "@/components/ui/textarea";
 import {
   draftToIdea,
@@ -44,6 +50,11 @@ function subscribe() {
 export type WizardDraft = { id: string; values: IdeaDraftValues };
 
 const LAST_STEP = IDEA_STEPS.length - 1;
+
+/** validateIdeaStep checks every field except these two; stage always has a value. */
+function isRequiredIdeaField(field: keyof IdeaDraftValues): boolean {
+  return field !== "municipality";
+}
 
 export function IdeaWizard({
   call,
@@ -96,6 +107,14 @@ export function IdeaWizard({
   } | null>(null);
   const [notice, setNotice] = useState("");
   const [formError, setFormError] = useState("");
+  const [stepAttempts, setStepAttempts] = useState(0);
+  const summaryErrors = error
+    ? [{ fieldId: `idea-${error.field}`, message: error.message }]
+    : [];
+  const summaryRef = useFocusErrorSummary(
+    stepAttempts,
+    summaryErrors.length > 0,
+  );
   const [saving, setSaving] = useState(false);
   const [newId, setNewId] = useState<string>();
   // Saving or sending an edited draft always updates that row, never inserts.
@@ -146,11 +165,22 @@ export function IdeaWizard({
     const issue = validateIdeaStep(step, values);
     if (issue) {
       setError(issue);
-      fieldRefs.current.get(issue.field)?.focus();
+      // Gov.pl forms: focus moves to the error summary, which links the field.
+      setStepAttempts((count) => count + 1);
       return;
     }
     setError(null);
     changeStep(Math.min(step + 1, IDEA_STEPS.length - 1));
+  }
+
+  /** Validate on blur: show this field's problem, or clear it once fixed. */
+  function validateOnBlur(field: keyof IdeaDraftValues) {
+    const issue = validateIdeaStep(step, values);
+    if (issue?.field === field) setError(issue);
+    else
+      setError((currentError) =>
+        currentError?.field === field ? null : currentError,
+      );
   }
 
   function goBack() {
@@ -218,7 +248,15 @@ export function IdeaWizard({
           className="text-2xl text-heading outline-none"
         >
           {current.title}
+          {current.fields.length === 1 &&
+          isRequiredIdeaField(current.fields[0]) ? (
+            <RequiredMark />
+          ) : null}
         </h2>
+        {current.review ? null : <RequiredFieldsNote />}
+        {stepAttempts > 0 && error ? (
+          <ErrorSummary ref={summaryRef} errors={summaryErrors} />
+        ) : null}
         <div className="flex max-w-2xl flex-col gap-4">
           {current.fields.map((field) => (
             <Field
@@ -234,6 +272,7 @@ export function IdeaWizard({
                 else fieldRefs.current.delete(field);
               }}
               onChange={(value) => update(field, value)}
+              onBlur={() => validateOnBlur(field)}
             />
           ))}
         </div>
@@ -289,7 +328,7 @@ function Review({
   return (
     <section
       aria-labelledby="review-heading"
-      className="flex max-w-2xl flex-col gap-3"
+      className="flex max-w-2xl flex-col gap-2.5"
     >
       <h3 id="review-heading" className="text-xl text-heading">
         Podsumowanie
@@ -324,6 +363,7 @@ function Field({
   labelledBy,
   inputRef,
   onChange,
+  onBlur,
 }: {
   field: keyof IdeaDraftValues;
   value: string;
@@ -331,22 +371,31 @@ function Field({
   labelledBy?: string;
   inputRef: (node: HTMLElement | null) => void;
   onChange: (value: string) => void;
+  onBlur: () => void;
 }) {
   const id = `idea-${field}`;
   const invalid = error?.field === field;
   const describedBy = invalid ? `${id}-error` : undefined;
   const label = fieldLabel(field);
+  const required = isRequiredIdeaField(field);
+  const labelText = (
+    <>
+      {label}
+      {required ? <RequiredMark /> : null}
+    </>
+  );
 
   if (field === "stage") {
     return (
       <div className="flex flex-col gap-2">
-        <Label htmlFor={id}>{label}</Label>
+        <Label htmlFor={id}>{labelText}</Label>
         <select
           id={id}
+          aria-required="true"
           ref={(node) => inputRef(node)}
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="h-11 border border-border bg-background px-3"
+          className="h-11 rounded-sm border border-input bg-background px-2.5 text-foreground"
         >
           <option value="idea">Pomysł</option>
           <option value="prototype">Prototyp</option>
@@ -362,21 +411,25 @@ function Field({
     "aria-invalid": invalid || undefined,
     "aria-describedby": describedBy,
     "aria-labelledby": labelledBy,
+    "aria-required": required || undefined,
+    onBlur,
     onChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       onChange(event.target.value),
   };
 
   return (
     <div className="flex flex-col gap-2">
-      {labelledBy ? null : <Label htmlFor={id}>{label}</Label>}
+      {labelledBy ? null : <Label htmlFor={id}>{labelText}</Label>}
       {field === "title" || field === "municipality" ? (
         <Input
+          autoComplete="off"
           {...shared}
           ref={(node) => inputRef(node)}
           maxLength={field === "title" ? 160 : 120}
         />
       ) : (
         <Textarea
+          autoComplete="off"
           {...shared}
           ref={(node) => inputRef(node)}
           maxLength={2000}

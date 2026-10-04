@@ -9,6 +9,7 @@ import {
   type UseFormRegisterReturn,
   useWatch,
 } from "react-hook-form";
+import { RequiredMark } from "@/components/forms/error-summary";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TEXT_MAX_LENGTH } from "@/lib/testing/schemas";
@@ -20,7 +21,7 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
     <p
       id={id}
       role="alert"
-      className="flex items-start gap-1.5 text-base font-semibold text-destructive"
+      className="flex items-start gap-2 text-base font-semibold text-destructive"
     >
       <ExclamationCircleIcon
         aria-hidden="true"
@@ -31,6 +32,11 @@ export function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
+/** Id of one radio option; the error summary links to the first option. */
+export function choiceId(name: string, value: string | number): string {
+  return `${name}-${String(value)}`;
+}
+
 /** A native radio group in a fieldset: arrow keys, one tab stop, text labels. */
 export function ChoiceGroup({
   legend,
@@ -39,6 +45,8 @@ export function ChoiceGroup({
   registration,
   error,
   className,
+  required = false,
+  idPrefix,
 }: {
   legend: ReactNode;
   hint?: string;
@@ -46,10 +54,13 @@ export function ChoiceGroup({
   registration: UseFormRegisterReturn;
   error?: string;
   className?: string;
+  required?: boolean;
+  /** Needed when the same form appears more than once on a page. */
+  idPrefix?: string;
 }) {
-  const { name } = registration;
-  const hintId = `${name}-hint`;
-  const errorId = `${name}-error`;
+  const prefix = idPrefix ?? registration.name;
+  const hintId = `${prefix}-hint`;
+  const errorId = `${prefix}-error`;
   const describedBy = cn(hint && hintId, error && errorId) || undefined;
 
   return (
@@ -57,7 +68,10 @@ export function ChoiceGroup({
       aria-describedby={describedBy}
       className={cn("flex flex-col gap-1", className)}
     >
-      <legend className="mb-1 text-lg font-semibold">{legend}</legend>
+      <legend className="mb-1 text-lg font-semibold">
+        {legend}
+        {required && <RequiredMark />}
+      </legend>
       {hint && (
         <p id={hintId} className="text-base text-muted-foreground">
           {hint}
@@ -67,11 +81,13 @@ export function ChoiceGroup({
         {options.map((option) => (
           <label
             key={option.value}
-            className="flex min-h-11 cursor-pointer items-center gap-3 text-base"
+            className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base"
           >
             <input
+              id={choiceId(prefix, option.value)}
               type="radio"
               value={String(option.value)}
+              required={required}
               aria-describedby={error ? errorId : undefined}
               className="size-5 shrink-0 accent-primary"
               {...registration}
@@ -85,7 +101,7 @@ export function ChoiceGroup({
   );
 }
 
-/** An optional textarea with a visible label and a live character count. */
+/** A textarea with a visible label and a live character count. */
 export function TextField<TValues extends FieldValues, TOutput>({
   id,
   label,
@@ -96,7 +112,9 @@ export function TextField<TValues extends FieldValues, TOutput>({
   error,
   rows = 3,
   maxLength = TEXT_MAX_LENGTH,
+  required = false,
 }: {
+  required?: boolean;
   id: string;
   label: string;
   hint?: string;
@@ -119,6 +137,7 @@ export function TextField<TValues extends FieldValues, TOutput>({
     <div className="flex flex-col gap-2">
       <Label htmlFor={id} className="text-lg leading-snug font-semibold">
         {label}
+        {required && <RequiredMark />}
       </Label>
       {hint && (
         <p id={hintId} className="text-base text-muted-foreground">
@@ -128,9 +147,10 @@ export function TextField<TValues extends FieldValues, TOutput>({
       <Textarea
         id={id}
         rows={rows}
+        aria-required={required || undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={cn(hint && hintId, error && errorId, countId)}
-        className="field-sizing-fixed min-h-24 resize-y rounded-md bg-background px-3 py-2 text-base md:text-base"
+        className="field-sizing-fixed min-h-24 resize-y rounded-md bg-background px-2.5 py-2 text-base md:text-base"
         {...registration}
       />
       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">

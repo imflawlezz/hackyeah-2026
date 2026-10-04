@@ -151,7 +151,7 @@ export function MatchExperience({
           <h2 id="writing-tips-heading" className="text-xl font-semibold">
             Jak dobrze opisać problem
           </h2>
-          <ul className="mt-4 list-disc space-y-3 pl-5 text-base">
+          <ul className="mt-4 list-disc space-y-2.5 pl-5 text-base">
             <li>
               Napisz, kto potrzebuje wsparcia, na przykład seniorzy lub
               opiekunowie.

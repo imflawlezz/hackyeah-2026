@@ -37,15 +37,26 @@ const TEXT_PAIRS = [
   ["highlight", "background"],
   ["highlight", "muted"],
   ["highlight-foreground", "highlight"],
+  ["warning-foreground", "warning"],
+  ["destructive", "background"],
+  ["destructive", "muted"],
+  ["destructive-foreground", "destructive"],
+] as const;
+
+// In the Gov.pl palette success (4.37:1) and warning (2.07:1) are never text
+// on white, so these text pairs apply to the high-contrast theme only. The
+// default theme checks success as a non-text colour in DEFAULT_UI_PAIRS.
+const HIGH_CONTRAST_TEXT_PAIRS = [
   ["success", "background"],
   ["success", "muted"],
   ["success-foreground", "success"],
   ["warning", "background"],
   ["warning", "muted"],
-  ["warning-foreground", "warning"],
-  ["destructive", "background"],
-  ["destructive", "muted"],
-  ["destructive-foreground", "destructive"],
+] as const;
+
+const DEFAULT_UI_PAIRS = [
+  ["success", "background"],
+  ["success", "muted"],
 ] as const;
 
 // Non-text boundaries and focus indicators (WCAG 1.4.11).
@@ -60,11 +71,11 @@ const UI_PAIRS = [
 describe("contrastRatio", () => {
   it("returns 21 for black on white and 1 for identical colours", () => {
     expect(contrastRatio("#000000", "#ffffff")).toBeCloseTo(21, 5);
-    expect(contrastRatio("#2462ad", "#2462AD")).toBe(1);
+    expect(contrastRatio("#0052a5", "#0052A5")).toBe(1);
   });
 
   it("matches the documented ratio for primary on white", () => {
-    expect(contrastRatio("#2462ad", "#ffffff")).toBeCloseTo(6.13, 1);
+    expect(contrastRatio("#0052a5", "#ffffff")).toBeCloseTo(7.64, 1);
   });
 
   it("rejects values that are not 6-digit hex", () => {
@@ -86,5 +97,42 @@ describe.each([
 
   it.each(UI_PAIRS)("%s against %s is at least 3:1", (ui, bg) => {
     expect(contrastRatio(theme[ui], theme[bg])).toBeGreaterThanOrEqual(3);
+  });
+});
+
+describe("high-contrast only text pairs", () => {
+  const theme = tokens('[data-theme="high-contrast"]');
+  it.each(HIGH_CONTRAST_TEXT_PAIRS)("%s on %s is at least 7:1", (text, bg) => {
+    expect(contrastRatio(theme[text], theme[bg])).toBeGreaterThanOrEqual(7);
+  });
+});
+
+describe("default theme follows Design System Gov.pl", () => {
+  const theme = tokens(":root");
+
+  it("uses the Gov.pl palette values", () => {
+    expect(theme).toMatchObject({
+      foreground: "#1b1b1b",
+      primary: "#0052a5",
+      "primary-hover": "#006cd7",
+      navy: "#00468d",
+      "muted-foreground": "#656565",
+      muted: "#f1f1f1",
+      border: "#dadada",
+      destructive: "#a7162d",
+      success: "#598527",
+      warning: "#eba828",
+    });
+  });
+
+  it.each(DEFAULT_UI_PAIRS)("%s against %s is at least 3:1", (ui, bg) => {
+    expect(contrastRatio(theme[ui], theme[bg])).toBeGreaterThanOrEqual(3);
+  });
+
+  it("never needs warning as text: it is below 3:1 on white", () => {
+    expect(contrastRatio(theme.warning, theme.background)).toBeLessThan(3);
+    expect(
+      contrastRatio(theme["warning-foreground"], theme.warning),
+    ).toBeGreaterThanOrEqual(4.5);
   });
 });
