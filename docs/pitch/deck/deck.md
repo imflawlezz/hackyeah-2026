@@ -101,6 +101,6 @@ Wizual: Usługi 278,60 PLN, w tym AI 12,89 PLN; rezerwa 55,72 PLN. Przy dziesię
 - Zmierzymy trafność dopasowań, czas obsługi i zrozumiałość.
 - Zespół 313Team: interfejs i dostępność, API i AI, testy i materiały.
 
-Wizual: Demo: https://hubml-hackyeah2026-ab.vercel.app · Repozytorium: https://github.com/imflawlezz/hackyeah-2026 · Makiety: https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf · Konta demonstracyjne: jedno kliknięcie na stronie logowania.
+Linki: Demo: https://hubml-hackyeah2026-ab.vercel.app · Repozytorium: https://github.com/imflawlezz/hackyeah-2026 · Makiety: https://github.com/imflawlezz/hackyeah-2026/blob/main/docs/mockups/hubmi-makiety.pdf · Konta demonstracyjne: jedno kliknięcie na stronie logowania.
 
 Ujawnienie AI: HubMI.pl wykorzystuje modele OpenAI text-embedding-3-small, gpt-4o-mini i gpt-4o-mini-transcribe oraz Vercel AI SDK; w budowie kodu i dokumentacji pomagały Cursor i jego agenci, Claude oraz OpenAI Codex, a ocena i zatwierdzenie propozycji AI należą do człowieka.

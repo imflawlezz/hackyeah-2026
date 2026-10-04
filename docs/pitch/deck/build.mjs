@@ -36,7 +36,8 @@ for (const [i, slide] of slides.entries()) {
     bullets.some((b) => words(b.replace(" :: ", " ")) > 12)
   )
     throw new Error(`Przekroczony limit tekstu: ${i + 1}`);
-  const visual = lines.find((l) => l.startsWith("Wizual: ")).slice(8);
+  // "Wizual:" to notatka do konspektu; na slajd trafia tylko wiersz "Linki:".
+  const links = lines.find((l) => l.startsWith("Linki: "))?.slice(7);
   const imgLine = lines.find((l) => l.startsWith("Obraz: "));
   let img = "";
   if (imgLine) {
@@ -52,7 +53,7 @@ for (const [i, slide] of slides.entries()) {
     ? `<dl class="keys${lines.includes("Układ: lista") ? " stacked" : ""}">${cards.map(([k, d]) => `<div><dt>${escape(k)}</dt><dd>${escape(d)}</dd></div>`).join("")}</dl>`
     : `<ul>${bullets.map((b) => `<li>${escape(b)}</li>`).join("")}</ul>`;
   sections.push(
-    `<section><header>HubMI.pl · HackYeah 2026 · prototyp</header><h1>${escape(title)}</h1><div class="body ${img ? "with-image" : ""}">${list}${img}</div><p class="visual">${escape(visual)}</p>${disclosure ? `<p class="disclosure">${escape(disclosure.slice(15))}</p>` : ""}<footer>${i + 1} / 10</footer></section>`,
+    `<section><header>HubMI.pl · HackYeah 2026 · prototyp</header><h1>${escape(title)}</h1><div class="body ${img ? "with-image" : ""}">${list}${img}</div>${links ? `<p class="visual">${escape(links)}</p>` : ""}${disclosure ? `<p class="disclosure">${escape(disclosure.slice(15))}</p>` : ""}<footer>${i + 1} / 10</footer></section>`,
   );
 }
 const font = await fs.readFile(path.join(dir, "open-sans-400.ttf"));
