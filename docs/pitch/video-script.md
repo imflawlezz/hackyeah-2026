@@ -4,7 +4,7 @@ Plan: **2:58**, spokojne tempo około 120 słów na minutę. Czytamy tylko cytow
 
 ## 00:00–00:19 — Problem i rozwiązanie
 
-Obraz: slajdy 1–2 z hasłami, następnie strona główna produkcji.
+Obraz: slajd 3 (potrzeba), potem slajd 2, następnie strona główna produkcji.
 
 > Samotność, wykluczenie cyfrowe i bariery usług wymagają lokalnych odpowiedzi. Wiedza i partnerzy są rozproszeni. HubMI.pl łączy potrzeby społeczne, innowacje i współpracę w jednym miejscu. To prototyp przygotowany dla Małopolskiego Hubu Innowacji Społecznych, a nie działająca usługa ROPS.
 
