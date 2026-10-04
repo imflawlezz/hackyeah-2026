@@ -23,10 +23,6 @@ export default async function KnowledgePage() {
         <h1 className="font-heading text-3xl font-bold text-balance sm:text-4xl">
           Baza wiedzy
         </h1>
-        <p className="text-lg">
-          Sprawdź, jakie wyzwania społeczne ma Małopolska, jakie rozwiązania już
-          działają i z jakich materiałów możesz skorzystać.
-        </p>
       </header>
 
       {/* The fallback is the prerendered default tab; the query string is read after hydration. */}

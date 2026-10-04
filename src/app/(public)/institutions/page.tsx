@@ -26,10 +26,6 @@ export default async function InstitutionsPage({ searchParams }: PageProps) {
         <h1 className="text-3xl font-bold text-balance sm:text-4xl">
           Dla instytucji
         </h1>
-        <p className="text-lg">
-          Opisz swoją gminę lub placówkę. Dobierzemy sprawdzone rozwiązanie i
-          przygotujemy szkic planu wdrożenia do omówienia w zespole.
-        </p>
       </header>
 
       {/* The key resets the flow when the preselected innovation changes. */}

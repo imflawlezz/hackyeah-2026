@@ -104,10 +104,6 @@ export function IdeasBrowser({
           </ul>
         </section>
       ) : null}
-
-      <p id="szablon-kanwy" className="text-sm text-muted-foreground">
-        Plik PDF z kanwą dodamy po uzgodnieniu wzoru z ROPS.
-      </p>
     </div>
   );
 }

@@ -14,8 +14,7 @@ import {
 import { useLocalSignups } from "@/lib/testing/local-store";
 import { cn } from "@/lib/utils";
 
-export const NO_OPEN_TESTS_TEXT =
-  "Teraz nie ma otwartych testów. Zajrzyj tu za kilka dni.";
+export const NO_OPEN_TESTS_TEXT = "Teraz nie ma otwartych testów.";
 
 const ROW_GRID =
   "grid grid-cols-[minmax(0,1fr)] gap-x-8 gap-y-2.5 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1fr)_10rem] md:items-center";
@@ -52,6 +51,14 @@ export function OpenTestsList({
 
   return (
     <div className="flex flex-col gap-6">
+      <p
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="text-base font-semibold"
+      >
+        Otwarte testy: {testsText(visible.length)}
+      </p>
       <div className="flex flex-col gap-2 sm:max-w-xs">
         <Label htmlFor="tests-municipality" className="text-base font-semibold">
           Gmina
@@ -70,15 +77,6 @@ export function OpenTestsList({
           ))}
         </select>
       </div>
-
-      <p
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-        className="text-base font-semibold"
-      >
-        Otwarte testy: {testsText(visible.length)}
-      </p>
 
       <div>
         <div

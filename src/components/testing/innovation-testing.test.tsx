@@ -418,10 +418,6 @@ describe("OpenTestsList", () => {
 
   it("shows the empty state", () => {
     render(<OpenTestsList tests={[]} demo={false} />);
-    expect(
-      screen.getByText(
-        "Teraz nie ma otwartych testów. Zajrzyj tu za kilka dni.",
-      ),
-    ).toBeVisible();
+    expect(screen.getByText("Teraz nie ma otwartych testów.")).toBeVisible();
   });
 });

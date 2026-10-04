@@ -21,7 +21,7 @@ export default async function ModerationPage({
   const header = (
     <AdminPageHeader
       title="Moderacja"
-      description="Przejrzyj pomysły mieszkańców, nowe zgłoszenia problemów i szkice innowacji. Każda zmiana wymaga potwierdzenia."
+      description="Każda zmiana wymaga potwierdzenia."
     />
   );
   if (!canModerate(access.mode)) {
