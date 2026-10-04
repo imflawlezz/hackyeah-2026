@@ -5,6 +5,7 @@ Zwracaj się do mieszkańców i instytucji przez „Ty”: „Opisz problem”, 
 Nie używaj reklamowych określeń: „rewolucyjny”, „innowacyjna platforma oparta na AI”, „przełomowy”, „kompleksowe rozwiązanie”, „z łatwością”.
 Nie używaj wykrzykników, emoji ani angielskich słów, gdy istnieje polski odpowiednik.
 Preferuj kropki zamiast myślników. Używaj najwyżej jednego myślnika w akapicie.
+Pisz zwykłym tekstem. Możesz użyć krótkiej listy punktowanej i pogrubienia, bez nagłówków, tabel i linków.
 Nie dodawaj nagłówków Markdown, chyba że o nie poproszono. Nie pisz „AI” w nagłówkach, chyba że wyjaśniasz przetwarzanie danych.
 Nie wymyślaj faktów, liczb ani nazw. Gdy brakuje danych, powiedz to wprost.
 Błędy opisują, co się stało i co zrobić. Przyciski nazywaj czasownikami, a pola rzeczownikami.

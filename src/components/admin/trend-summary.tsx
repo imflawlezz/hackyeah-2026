@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { summarizeTrendsAction } from "@/app/admin/actions";
+import { AiText } from "@/components/ai/ai-text";
 import { useAdminAction } from "@/components/admin/use-admin-action";
 import { Button } from "@/components/ui/button";
 import type { TrendPeriod } from "@/lib/admin/types";
@@ -32,7 +33,7 @@ export function TrendSummary({
       </h2>
       {summary ? (
         <div className="flex flex-col gap-2">
-          <p>{summary.text}</p>
+          <AiText>{summary.text}</AiText>
           <p className="text-base text-muted-foreground">
             {summary.source === "ai"
               ? AI_LABEL
