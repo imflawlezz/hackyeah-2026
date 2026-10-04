@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IdeaWizard, type WizardDraft } from "@/components/ideas/idea-wizard";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { getCurrentUser } from "@/lib/auth/session";
 import { getActiveGrantCall } from "@/lib/data/grant-calls";
 import { getIdea } from "@/lib/data/ideas";
@@ -35,11 +36,15 @@ export default async function NewIdeaPage({
   const localDraftId = draftId?.startsWith("local-") ? draftId : undefined;
   const editing = Boolean(initialDraft || localDraftId);
 
+  const title = editing ? "Edytuj szkic pomysłu" : "Dodaj pomysł";
+
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl text-heading">
-        {editing ? "Edytuj szkic pomysłu" : "Dodaj pomysł"}
-      </h1>
+      <Breadcrumbs
+        items={[{ href: "/ideas", label: "Kreator pomysłów" }]}
+        current={title}
+      />
+      <h1 className="text-3xl text-heading">{title}</h1>
       <IdeaWizard
         // A fresh instance per draft, so a new idea never inherits old state.
         key={initialDraft?.id ?? localDraftId ?? "new"}

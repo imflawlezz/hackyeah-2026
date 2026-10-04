@@ -32,7 +32,7 @@ export default async function IdeaDetailsPage({
   }
 
   return (
-    <IdeaWorkspace idea={idea}>
+    <IdeaWorkspace idea={idea} crumb={idea.title}>
       {idea.status === "draft" && user && idea.authorId === user.id ? (
         <p>
           <Link

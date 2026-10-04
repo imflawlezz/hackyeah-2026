@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import type { Idea } from "@/types";
 import { AssistantPanel } from "@/components/ideas/assistant-panel";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
@@ -15,13 +16,24 @@ import {
 
 export function IdeaWorkspace({
   idea,
+  crumb,
   children,
 }: {
   idea?: Partial<Idea>;
+  /** Label of the current page in the breadcrumb trail. */
+  crumb?: string;
   children: ReactNode;
 }) {
   return (
     <>
+      {crumb ? (
+        <div className="mb-5">
+          <Breadcrumbs
+            items={[{ href: "/ideas", label: "Kreator pomysłów" }]}
+            current={crumb}
+          />
+        </div>
+      ) : null}
       <div className="mb-6 lg:hidden">
         <Sheet>
           <SheetTrigger className={buttonVariants({ variant: "outline" })}>

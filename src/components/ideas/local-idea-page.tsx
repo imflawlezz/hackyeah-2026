@@ -36,7 +36,7 @@ export function LocalIdeaPage({
   }
 
   return (
-    <IdeaWorkspace idea={idea}>
+    <IdeaWorkspace idea={idea} crumb={idea.title}>
       {idea.status === "draft" ? (
         <p>
           <Link

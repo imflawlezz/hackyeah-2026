@@ -17,6 +17,7 @@ import {
   errorItems,
   useFocusErrorSummary,
 } from "@/components/forms/error-summary";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { FieldError } from "@/components/testing/fields";
 import { cn } from "@/lib/utils";
 
@@ -87,6 +88,10 @@ export function NewMessageForm({
   }
   return (
     <div className="mx-auto max-w-3xl space-y-6">
+      <Breadcrumbs
+        items={[{ href: "/messages", label: "Wiadomości" }]}
+        current="Napisz wiadomość"
+      />
       <h1 className="text-3xl text-heading">Napisz wiadomość</h1>
       {demo && <DemoBanner />}
       {(innovationId || ideaId) && (
