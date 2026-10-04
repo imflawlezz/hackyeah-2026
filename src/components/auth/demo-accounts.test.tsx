@@ -1,9 +1,11 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 vi.mock("@/app/(auth)/login/demo-actions", () => ({ signInAsDemo: vi.fn() }));
 import { DemoAccounts } from "./demo-accounts";
+import { signInAsDemo } from "@/app/(auth)/login/demo-actions";
 afterEach(cleanup);
 
 it("renders four named form buttons with descriptions when enabled", () => {
@@ -23,6 +25,32 @@ it("renders four named form buttons with descriptions when enabled", () => {
 it("hides all demo controls when disabled", () => {
   render(<DemoAccounts enabled={false} />);
   expect(screen.queryByRole("button")).toBeNull();
+});
+
+it("shows a pending state and announces a returned error", async () => {
+  let finish!: (result: { error: string }) => void;
+  vi.mocked(signInAsDemo).mockImplementationOnce(
+    () =>
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+  );
+  render(<DemoAccounts enabled />);
+  await userEvent.click(
+    screen.getByRole("button", { name: "Mieszkaniec", exact: true }),
+  );
+  expect(
+    screen.getByRole("button", { name: "Loguję… Mieszkaniec" }),
+  ).toBeDisabled();
+  await act(async () => {
+    finish({ error: "Logowanie demonstracyjne jest wyłączone." });
+  });
+  expect(screen.getByRole("alert")).toHaveTextContent(
+    "Logowanie demonstracyjne jest wyłączone.",
+  );
+  expect(
+    screen.getByRole("button", { name: "Mieszkaniec", exact: true }),
+  ).toBeEnabled();
 });
 it("keeps the server password out of client props and rendered markup", () => {
   const source = readFileSync("src/components/auth/demo-accounts.tsx", "utf8");
