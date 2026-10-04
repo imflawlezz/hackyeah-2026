@@ -17,6 +17,10 @@ import {
   GENERIC_MATCH_ERROR,
   MatchApiError,
 } from "@/lib/api/match";
+import {
+  clearChallengeDraft,
+  saveChallengeDraft,
+} from "@/lib/match/challenge-draft";
 import { toRelevance } from "@/lib/match/score";
 import type { MatchRequest } from "@/types";
 
@@ -72,15 +76,25 @@ export function MatchExperience({
     setState({ status: "loading" });
 
     try {
-      const { results, source } = await fetchMatches(
+      const { results, noGoodMatch, source } = await fetchMatches(
         request,
         controller.signal,
       );
       if (controller.signal.aborted) return;
+      // "Zgłoś nowe wyzwanie" opens the message form, which reads this draft.
+      if (noGoodMatch) {
+        saveChallengeDraft(request.problem, request.category);
+      } else {
+        clearChallengeDraft();
+      }
       setState({
         status: "success",
         results,
-        relevance: toRelevance(results, source),
+        relevance: toRelevance(
+          results.filter(({ tier }) => tier === "match"),
+          source,
+        ),
+        noGoodMatch,
         source,
       });
     } catch (error) {
@@ -159,9 +173,6 @@ export function MatchExperience({
             <li>Wskaż miejsce, na przykład gminę, osiedle lub świetlicę.</li>
             <li>Podaj konkretną trudność i to, czego dziś brakuje.</li>
           </ul>
-          <p className="mt-6 border-t border-border pt-4 text-base font-semibold">
-            Nie wpisuj imion, nazwisk ani adresów.
-          </p>
         </aside>
       </div>
       <MatchResults

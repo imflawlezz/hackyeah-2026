@@ -1,5 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { z } from "zod";
+import { MATCH_THRESHOLD, RELATED_THRESHOLD } from "@/lib/match/score";
 import { matchResultSchema } from "@/lib/validators";
+
+const responseSchema = z.object({
+  results: matchResultSchema
+    .extend({ tier: z.enum(["match", "related"]) })
+    .array(),
+  noGoodMatch: z.boolean(),
+});
 
 const mocks = vi.hoisted(() => ({ configured: false, embed: vi.fn() }));
 vi.mock("@/lib/ai/models", () => ({
@@ -42,12 +51,21 @@ describe("POST /api/match", () => {
     );
     expect(response.status).toBe(200);
     expect(response.headers.get("X-Match-Source")).toBe("mock");
-    const results = matchResultSchema.array().parse(await response.json());
+    const { results, noGoodMatch } = responseSchema.parse(
+      await response.json(),
+    );
     expect(results.length).toBeGreaterThan(0);
     expect(results.length).toBeLessThanOrEqual(5);
     expect(results[0].score).toBeGreaterThan(0);
     expect(results.every(({ score }) => score >= 0 && score < 1)).toBe(true);
     expect(mocks.embed).not.toHaveBeenCalled();
+    // The tier follows the score, and results below the related tier are gone.
+    expect(noGoodMatch).toBe(false);
+    expect(results[0].tier).toBe("match");
+    for (const { score, tier } of results) {
+      expect(score).toBeGreaterThanOrEqual(RELATED_THRESHOLD);
+      expect(tier).toBe(score >= MATCH_THRESHOLD ? "match" : "related");
+    }
   });
 
   it.each([
@@ -65,7 +83,9 @@ describe("POST /api/match", () => {
       request({ problem: "  seniorzy  ", limit: 100 }),
     );
     expect(response.status).toBe(200);
-    expect((await response.json()).length).toBeLessThanOrEqual(10);
+    expect(
+      responseSchema.parse(await response.json()).results.length,
+    ).toBeLessThanOrEqual(10);
   });
 
   it("falls back when the mocked AI module throws", async () => {
@@ -76,15 +96,15 @@ describe("POST /api/match", () => {
     );
     expect(response.status).toBe(200);
     expect(response.headers.get("X-Match-Source")).toBe("mock");
-    const results = matchResultSchema.array().parse(await response.json());
+    const { results } = responseSchema.parse(await response.json());
     expect(results[0].score).toBeGreaterThan(0);
     expect(results[0].score).toBeLessThan(1);
   });
 
-  it("returns an empty array when no mocks match", async () => {
+  it("reports no good match when nothing fits", async () => {
     const response = await POST(request({ problem: "xyzqwerty" }));
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual([]);
+    expect(await response.json()).toEqual({ results: [], noGoodMatch: true });
   });
 
   it("limits each IP to 20 requests per minute", async () => {

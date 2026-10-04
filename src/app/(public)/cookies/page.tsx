@@ -34,6 +34,12 @@ const BROWSER_STORAGE = [
     where: "Pamięć karty (sessionStorage)",
   },
   {
+    name: "hubmi-challenge-draft",
+    purpose:
+      "Opis problemu bez dopasowania, przekazywany do formularza wiadomości.",
+    where: "Pamięć karty (sessionStorage)",
+  },
+  {
     name: "hubmi-test-signups, hubmi-test-feedback",
     purpose: "Zgłoszenia do testów i opinie w wersji demonstracyjnej.",
     where: "Pamięć przeglądarki (localStorage)",

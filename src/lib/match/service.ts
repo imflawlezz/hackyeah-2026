@@ -1,4 +1,5 @@
 import type { MatchRequest, MatchResult } from "@/types";
+import { type MatchTier, matchTier } from "@/lib/match/score";
 import { mockMatch } from "@/lib/mocks";
 import { embedText } from "@/lib/ai/embeddings";
 import { generateReasons } from "@/lib/ai/reasons";
@@ -15,8 +16,47 @@ export const PERSIST_WAIT_MS = 300;
 /** Minimum number of nearest innovations fetched before the rerank. */
 export const RERANK_POOL = 15;
 
+export type TieredMatchResult = MatchResult & { tier: MatchTier };
+
+export type MatchOutcome = {
+  /** Best first, so "match" results come before "related" ones. */
+  results: TieredMatchResult[];
+  /** True when no result reached the "match" tier. */
+  noGoodMatch: boolean;
+  source: "ai" | "mock";
+};
+
+export type MatchOptions = {
+  /**
+   * Drop results below RELATED_THRESHOLD. `/match` sets it; callers that only
+   * need the nearest innovations (assistant, institutions) keep every result.
+   */
+  hideWeak?: boolean;
+};
+
+/** Adds the tier to each result. Results below the related tier are dropped, or kept as "related" when not hiding. */
+export function classifyResults(
+  results: MatchResult[],
+  hideWeak: boolean,
+): Pick<MatchOutcome, "results" | "noGoodMatch"> {
+  const tiered = results.flatMap((result): TieredMatchResult[] => {
+    const tier = matchTier(result.score);
+    if (!tier && hideWeak) return [];
+    return [{ ...result, tier: tier ?? "related" }];
+  });
+  return {
+    results: tiered,
+    noGoodMatch: !tiered.some(({ tier }) => tier === "match"),
+  };
+}
+
+function matchCount(results: TieredMatchResult[]): number {
+  return results.filter(({ tier }) => tier === "match").length;
+}
+
 type ProblemRecord = {
   request: MatchRequest;
+  /** Results in the "match" tier; with none the problem is stored as `new`. */
   resultCount: number;
   bestScore: number | null;
   source: "ai" | "mock";
@@ -92,22 +132,26 @@ export function normalizeMockScores(results: MatchResult[]): MatchResult[] {
 
 async function fallback(
   request: MatchRequest,
+  hideWeak: boolean,
   cause: string,
   embedding?: number[],
-) {
+): Promise<MatchOutcome> {
   console.warn("Match fallback", {
     cause,
     problemLength: request.problem.length,
   });
-  const results = normalizeMockScores(mockMatch(request));
+  const outcome = classifyResults(
+    normalizeMockScores(mockMatch(request)),
+    hideWeak,
+  );
   await recordProblem({
     request,
-    resultCount: results.length,
+    resultCount: matchCount(outcome.results),
     bestScore: null,
     source: "mock",
     embedding,
   });
-  return { results, source: "mock" as const };
+  return { ...outcome, source: "mock" };
 }
 
 // Also bounds operations that ignore AbortSignal, without leaving a timer running.
@@ -132,9 +176,10 @@ async function withinDeadline<T>(
 
 export async function matchProblem(
   request: MatchRequest,
-): Promise<{ results: MatchResult[]; source: "ai" | "mock" }> {
+  { hideWeak = false }: MatchOptions = {},
+): Promise<MatchOutcome> {
   if (!hasSupabase || !hasOpenAI)
-    return fallback(request, "configuration missing");
+    return fallback(request, hideWeak, "configuration missing");
   const signal = AbortSignal.timeout(7500);
   let embedding: number[] | undefined;
   try {
@@ -143,7 +188,8 @@ export async function matchProblem(
       signal,
     );
     const client = await withinDeadline(createClient(), signal);
-    if (!client) return fallback(request, "Supabase unavailable", embedding);
+    if (!client)
+      return fallback(request, hideWeak, "Supabase unavailable", embedding);
     const limit = request.limit ?? 5;
     // Fetch a wider pool than shown, so the keyword rerank can promote a close
     // runner-up (similarities are often within a few hundredths of each other).
@@ -156,9 +202,9 @@ export async function matchProblem(
         .abortSignal(signal),
       signal,
     );
-    if (error) return fallback(request, "RPC failed", embedding);
+    if (error) return fallback(request, hideWeak, "RPC failed", embedding);
     if (!Array.isArray(data) || !data.length)
-      return fallback(request, "RPC returned no rows", embedding);
+      return fallback(request, hideWeak, "RPC returned no rows", embedding);
     const similarity = new Map<string, number>(
       data.map((row) => [String(row.id), Number(row.similarity)]),
     );
@@ -173,31 +219,38 @@ export async function matchProblem(
           innovation.category.toLocaleLowerCase("pl") === category,
       );
     }
-    const results: MatchResult[] = rerank(request.problem, candidates)
+    const ranked: MatchResult[] = rerank(request.problem, candidates)
       .slice(0, limit)
       .map(({ innovation, score }) => ({
         innovation,
         score: normalizeScore(score),
         reason: "",
       }));
-    if (!results.length)
-      return fallback(request, "no category matches", embedding);
+    // No candidates here means the category filter removed them all. That is
+    // an answer ("nothing fits"), not a reason to switch to keyword results.
+    const { results, noGoodMatch } = classifyResults(ranked, hideWeak);
     const topSimilarity = Math.max(
-      ...results.map(({ innovation }) => similarity.get(innovation.id) ?? 0),
+      ...ranked.map(({ innovation }) => similarity.get(innovation.id) ?? 0),
     );
     await recordProblem({
       request,
-      resultCount: results.length,
+      resultCount: matchCount(results),
       bestScore: Number.isFinite(topSimilarity) ? topSimilarity : null,
       source: "ai",
       embedding,
     });
+    // On /match a "related" result is shown without a "why it fits" text, so
+    // only matches are explained there; other callers explain every result.
+    const explained = results.filter(
+      ({ tier }) => !hideWeak || tier === "match",
+    );
+    if (!explained.length) return { source: "ai", results, noGoodMatch };
     let reasons: Record<string, string> = {};
     try {
       reasons = await withinDeadline(
         generateReasons(
           request.problem,
-          results.map(({ innovation }) => innovation),
+          explained.map(({ innovation }) => innovation),
           signal,
         ),
         signal,
@@ -209,16 +262,19 @@ export async function matchProblem(
     }
     return {
       source: "ai",
+      noGoodMatch,
       results: results.map((result) => ({
         ...result,
-        reason:
-          reasons[result.innovation.id] ||
-          `Kategoria: ${result.innovation.category}. Dla kogo: ${result.innovation.targetGroup}.`,
+        reason: explained.includes(result)
+          ? reasons[result.innovation.id] ||
+            `Kategoria: ${result.innovation.category}. Dla kogo: ${result.innovation.targetGroup}.`
+          : "",
       })),
     };
   } catch {
     return fallback(
       request,
+      hideWeak,
       signal.aborted ? "timeout" : "embedding or search failed",
       embedding,
     );
