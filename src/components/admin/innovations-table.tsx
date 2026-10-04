@@ -4,13 +4,11 @@ import Link from "next/link";
 import { useDeferredValue, useId, useState } from "react";
 import { EmbeddingBadge, StatusBadge } from "@/components/admin/badges";
 import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Label } from "@/components/ui/label";
 import { INNOVATION_STATUSES } from "@/lib/admin/innovation-schema";
 import type { AdminInnovation } from "@/lib/admin/types";
 import { cn } from "@/lib/utils";
-
-const FIELD =
-  "min-h-11 w-full rounded-md border border-input bg-background px-2.5 text-base text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring";
 
 // Below sm the table stacks into labelled rows instead of scrolling sideways.
 const CELL =
@@ -78,7 +76,6 @@ export function InnovationsTable({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="text-base md:text-base"
             autoComplete="off"
           />
         </div>
@@ -86,27 +83,25 @@ export function InnovationsTable({
           <Label htmlFor={`${id}-category`} className="text-base">
             Kategoria
           </Label>
-          <select
+          <NativeSelect
             id={`${id}-category`}
             value={category}
             onChange={(event) => setCategory(event.target.value)}
-            className={FIELD}
           >
             <option value="">Wszystkie</option>
             {categories.map((item) => (
               <option key={item}>{item}</option>
             ))}
-          </select>
+          </NativeSelect>
         </div>
         <div className="flex flex-col gap-2">
           <Label htmlFor={`${id}-status`} className="text-base">
             Status
           </Label>
-          <select
+          <NativeSelect
             id={`${id}-status`}
             value={status}
             onChange={(event) => setStatus(event.target.value)}
-            className={FIELD}
           >
             <option value="">Wszystkie</option>
             {INNOVATION_STATUSES.map((item) => (
@@ -114,7 +109,7 @@ export function InnovationsTable({
                 {item.label}
               </option>
             ))}
-          </select>
+          </NativeSelect>
         </div>
       </div>
 

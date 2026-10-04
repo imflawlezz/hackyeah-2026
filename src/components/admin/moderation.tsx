@@ -164,7 +164,7 @@ export function Moderation({
                       <Button
                         type="button"
                         variant="outline"
-                        className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                        className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
                           !pending &&
@@ -236,7 +236,7 @@ export function Moderation({
                       <Button
                         type="button"
                         variant="outline"
-                        className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                        className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
                           !pending &&
@@ -317,7 +317,7 @@ export function Moderation({
                       <Button
                         type="button"
                         variant="outline"
-                        className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                        className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
                           !pending &&
@@ -342,7 +342,7 @@ export function Moderation({
                       <Button
                         type="button"
                         variant="outline"
-                        className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                        className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                         aria-disabled={pending || undefined}
                         onClick={() =>
                           !pending &&

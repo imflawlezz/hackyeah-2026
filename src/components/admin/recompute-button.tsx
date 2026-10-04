@@ -16,7 +16,7 @@ export function RecomputeEmbeddingsButton({ missing }: { missing: number }) {
         onClick={() => {
           if (!pending) run(() => recomputeEmbeddingsAction());
         }}
-        className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+        className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
       >
         {pending ? "Przeliczam wektory…" : "Przelicz brakujące wektory"}
       </Button>

@@ -32,7 +32,7 @@ export default async function AdminInnovationsPage() {
               href="/admin/innovations/new"
               className={cn(
                 buttonVariants(),
-                "h-auto min-h-11 max-w-full py-2 text-base whitespace-normal",
+                "h-auto min-h-11 max-w-full py-2 whitespace-normal",
               )}
             >
               Dodaj innowację

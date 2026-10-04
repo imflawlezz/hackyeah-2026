@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import { PlanDocument } from "@/components/institutions/plan-document";
 import { ProfileForm } from "@/components/institutions/profile-form";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Radio } from "@/components/ui/radio";
 import {
   fetchCandidates,
   fetchPlan,
@@ -361,15 +362,15 @@ export function InstitutionFlow({
                 {candidates.results.map(({ innovation, reason }, index) => (
                   <label
                     key={innovation.id}
-                    className="grid cursor-pointer grid-cols-[1.25rem_minmax(0,1fr)] gap-x-4 border-t border-border py-5 last:border-b"
+                    className="grid cursor-pointer grid-cols-[1.5rem_minmax(0,1fr)] items-start gap-x-4 border-t border-border py-5 last:border-b"
                   >
-                    <input
-                      type="radio"
+                    <Radio
                       name="candidate"
                       value={innovation.id}
+                      required
                       checked={chosenId === innovation.id}
                       onChange={() => setChosenId(innovation.id)}
-                      className="mt-2 size-5 accent-primary"
+                      className="mt-1"
                     />
                     <span className="flex flex-col gap-1">
                       <span className="text-xl leading-snug font-semibold text-heading">

@@ -10,7 +10,6 @@ import {
   FieldError,
   FormAlert,
   PasswordField,
-  inputClassName,
   labelClassName,
 } from "@/components/auth/form-parts";
 import {
@@ -22,6 +21,7 @@ import {
 } from "@/components/forms/error-summary";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Radio } from "@/components/ui/radio";
 import { Label } from "@/components/ui/label";
 import { ROLE_LABELS, SIGNUP_ROLES, type SignupRole } from "@/lib/auth/roles";
 import {
@@ -142,7 +142,6 @@ export function SignUpForm({
                 ? "signup-name-hint signup-name-error"
                 : "signup-name-hint"
             }
-            className={inputClassName}
             {...register("displayName")}
           />
           <FieldError
@@ -164,7 +163,6 @@ export function SignUpForm({
             aria-required="true"
             aria-invalid={errors.email ? true : undefined}
             aria-describedby={errors.email ? "signup-email-error" : undefined}
-            className={inputClassName}
             {...register("email")}
           />
           <FieldError id="signup-email-error" message={errors.email?.message} />
@@ -194,12 +192,13 @@ export function SignUpForm({
               htmlFor={`signup-role-${role}`}
               className="flex min-h-11 cursor-pointer items-start gap-2.5 rounded-md border border-input p-2.5 has-checked:border-primary has-checked:bg-accent has-disabled:cursor-not-allowed has-disabled:opacity-50"
             >
-              <input
+              <Radio
                 id={`signup-role-${role}`}
-                type="radio"
                 value={role}
-                className="mt-1 size-5 shrink-0 accent-primary"
+                aria-invalid={errors.role ? true : undefined}
+                className="mt-1"
                 {...register("role")}
+                required
               />
               <span className="flex flex-col">
                 <span className="font-semibold">{ROLE_LABELS[role]}</span>
@@ -224,7 +223,6 @@ export function SignUpForm({
             aria-describedby={
               errors.municipality ? "signup-municipality-error" : undefined
             }
-            className={inputClassName}
             {...register("municipality")}
           />
           <FieldError

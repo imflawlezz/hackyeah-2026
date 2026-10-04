@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 import { VoiceInputButton } from "./voice-input-button";
 import { appendTranscript } from "@/lib/voice/append";
 
@@ -34,8 +35,8 @@ export function VoiceFieldInput({
           </p>
           <label className="block">
             Rozpoznany tekst do skrócenia
-            <textarea
-              className="mt-2 min-h-28 w-full border border-input bg-background p-2.5"
+            <Textarea
+              className="mt-2 field-sizing-fixed min-h-28"
               value={overflow}
               onChange={(event) => setOverflow(event.target.value)}
             />

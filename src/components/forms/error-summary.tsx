@@ -66,16 +66,23 @@ export function useFocusErrorSummary(trigger: number, hasErrors: boolean) {
   return ref;
 }
 
-/** "* Pola obowiązkowe", placed under the form title. */
+/** "* pole wymagane", placed under the form title. */
 export function RequiredFieldsNote() {
   return (
-    <p className="text-sm text-muted-foreground">
-      <span aria-hidden="true">*</span> Pola obowiązkowe
+    <p className="text-foreground">
+      <span aria-hidden="true" className="text-destructive">
+        *
+      </span>{" "}
+      pole wymagane
     </p>
   );
 }
 
-/** The visible " *" after a required field's label. */
+/** The visible asterisk after a required field's label. Hidden from AT. */
 export function RequiredMark() {
-  return <span aria-hidden="true"> *</span>;
+  return (
+    <span aria-hidden="true" className="text-destructive">
+      {" *"}
+    </span>
+  );
 }

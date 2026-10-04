@@ -11,6 +11,7 @@ import {
 } from "react-hook-form";
 import { RequiredMark } from "@/components/forms/error-summary";
 import { Label } from "@/components/ui/label";
+import { Radio } from "@/components/ui/radio";
 import { Textarea } from "@/components/ui/textarea";
 import { TEXT_MAX_LENGTH } from "@/lib/testing/schemas";
 import { cn } from "@/lib/utils";
@@ -83,14 +84,13 @@ export function ChoiceGroup({
             key={option.value}
             className="flex min-h-11 cursor-pointer items-center gap-2.5 text-base"
           >
-            <input
+            <Radio
               id={choiceId(prefix, option.value)}
-              type="radio"
               value={String(option.value)}
-              required={required}
+              aria-invalid={error ? true : undefined}
               aria-describedby={error ? errorId : undefined}
-              className="size-5 shrink-0 accent-primary"
               {...registration}
+              required={required}
             />
             {option.label}
           </label>
@@ -150,7 +150,7 @@ export function TextField<TValues extends FieldValues, TOutput>({
         aria-required={required || undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={cn(hint && hintId, error && errorId, countId)}
-        className="field-sizing-fixed min-h-24 resize-y rounded-md bg-background px-2.5 py-2 text-base md:text-base"
+        className="field-sizing-fixed min-h-24 resize-y"
         {...registration}
       />
       <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">

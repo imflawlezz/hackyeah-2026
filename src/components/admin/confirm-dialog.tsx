@@ -87,7 +87,7 @@ export function ConfirmDialog({
                 value={note}
                 aria-describedby={shown.noteHint ? `${id}-hint` : undefined}
                 onChange={(event) => setNote(event.target.value)}
-                className="field-sizing-fixed text-base md:text-base"
+                className="field-sizing-fixed"
               />
             </div>
           )}
@@ -96,7 +96,7 @@ export function ConfirmDialog({
               render={
                 <Button
                   variant="outline"
-                  className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+                  className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
                 />
               }
             >
@@ -105,7 +105,7 @@ export function ConfirmDialog({
             <Button
               type="button"
               variant={shown.destructive ? "destructive" : "default"}
-              className="h-auto min-h-11 max-w-full py-2 text-base whitespace-normal"
+              className="h-auto min-h-11 max-w-full py-2 whitespace-normal"
               onClick={() => {
                 setConfirmed(true);
                 shown.onConfirm(note.trim());

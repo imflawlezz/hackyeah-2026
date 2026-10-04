@@ -7,6 +7,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { NativeSelect } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
 import {
   ErrorSummary,
@@ -50,9 +51,6 @@ const EXAMPLES = problems.slice(0, 4).map((problem) => ({
   label: EXAMPLE_LABELS[problem.id] ?? problem.description.slice(0, 32),
   description: problem.description,
 }));
-
-const FIELD_CLASSES =
-  "w-full rounded-lg border border-input bg-background text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20";
 
 export function MatchForm({
   signedIn = false,
@@ -141,10 +139,7 @@ export function MatchForm({
             problemError && "problem-error",
             "problem-count",
           )}
-          className={cn(
-            FIELD_CLASSES,
-            "field-sizing-fixed min-h-40 resize-y px-4 py-2.5 text-lg leading-relaxed md:text-lg",
-          )}
+          className="field-sizing-fixed min-h-40 resize-y"
           {...register("problem")}
         />
         <VoiceFieldInput
@@ -223,21 +218,14 @@ export function MatchForm({
         <Label htmlFor="category" className="text-lg font-semibold">
           Kategoria
         </Label>
-        <select
-          id="category"
-          className={cn(
-            FIELD_CLASSES,
-            "min-h-12 max-w-full min-w-0 px-2.5 text-lg",
-          )}
-          {...register("category")}
-        >
+        <NativeSelect id="category" {...register("category")}>
           <option value="">Wszystkie kategorie</option>
           {CATEGORIES.map((category) => (
             <option key={category} value={category}>
               {category}
             </option>
           ))}
-        </select>
+        </NativeSelect>
       </div>
 
       <div>

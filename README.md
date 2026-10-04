@@ -271,7 +271,7 @@ Focus is a 3 px solid outline in `--ring` with a 2 px offset on every `:focus-vi
 - [ ] At 320 px there is no horizontal scroll; at 200% browser zoom nothing is clipped.
 - [ ] `A+` / `A++` and "Wysoki kontrast" apply, survive a reload and do not flash the default on load.
 - [ ] With OS "reduce motion" on, the mobile menu opens without animation.
-- [ ] Every form shows "* Pola obowiązkowe"; submitting it empty moves focus to the error summary, and each link in it focuses its field.
+- [ ] Every form shows "* pole wymagane"; submitting it empty moves focus to the error summary, and each link in it focuses its field.
 - [ ] Each view has at most one filled primary button.
 - [ ] Lighthouse Accessibility is at least 95 and axe reports no serious or critical issues on every route, in both themes.
 - [ ] A screen reader (NVDA or VoiceOver) announces landmarks, the current page in the nav and the pressed state of the toolbar buttons.
